@@ -14,6 +14,8 @@
 		065B0A192A6EA90C00B1D35F /* ChoresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A182A6EA90C00B1D35F /* ChoresTests.swift */; };
 		065B0A232A6EA90C00B1D35F /* ChoresUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A222A6EA90C00B1D35F /* ChoresUITests.swift */; };
 		065B0A252A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A242A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift */; };
+		065B0A332A6EBB9300B1D35F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A322A6EBB9300B1D35F /* Task.swift */; };
+		067DFA1E2A6EC89000A0E2F6 /* Decoable+LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067DFA1D2A6EC89000A0E2F6 /* Decoable+LoadData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		065B0A1E2A6EA90C00B1D35F /* ChoresUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChoresUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		065B0A222A6EA90C00B1D35F /* ChoresUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresUITests.swift; sourceTree = "<group>"; };
 		065B0A242A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		065B0A322A6EBB9300B1D35F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		067DFA1D2A6EC89000A0E2F6 /* Decoable+LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoable+LoadData.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 		065B0A062A6EA90B00B1D35F /* Chores */ = {
 			isa = PBXGroup;
 			children = (
+				067DFA1C2A6EC88100A0E2F6 /* Extension */,
+				065B0A312A6EB98300B1D35F /* Model */,
 				065B0A072A6EA90B00B1D35F /* ChoresApp.swift */,
 				065B0A092A6EA90B00B1D35F /* ContentView.swift */,
 				065B0A0B2A6EA90C00B1D35F /* Assets.xcassets */,
@@ -125,6 +131,22 @@
 				065B0A242A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift */,
 			);
 			path = ChoresUITests;
+			sourceTree = "<group>";
+		};
+		065B0A312A6EB98300B1D35F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				065B0A322A6EBB9300B1D35F /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		067DFA1C2A6EC88100A0E2F6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				067DFA1D2A6EC89000A0E2F6 /* Decoable+LoadData.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				067DFA1E2A6EC89000A0E2F6 /* Decoable+LoadData.swift in Sources */,
 				065B0A0A2A6EA90B00B1D35F /* ContentView.swift in Sources */,
+				065B0A332A6EBB9300B1D35F /* Task.swift in Sources */,
 				065B0A082A6EA90B00B1D35F /* ChoresApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
