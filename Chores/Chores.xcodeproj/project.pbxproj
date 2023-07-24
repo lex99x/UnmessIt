@@ -108,6 +108,8 @@
 		065B0A062A6EA90B00B1D35F /* Chores */ = {
 			isa = PBXGroup;
 			children = (
+				067DFA1C2A6EC88100A0E2F6 /* Extension */,
+				065B0A312A6EB98300B1D35F /* Model */,
 				065B0A072A6EA90B00B1D35F /* ChoresApp.swift */,
 				065B0A312A6EB98300B1D35F /* Model */,
 				170FE7752A70049D00F7BD45 /* View */,
