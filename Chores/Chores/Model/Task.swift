@@ -31,39 +31,3 @@ struct Task {
     var datetime: Date
 }
 
-
-
-//
-//Roupas
-//Cozinha
-//Limpeza leve/Manutencao
-//Limpeza Pesada
-//Compras
-//Pet
-//Pagamentos
-
-
-//
-//Atributos:
-//
-//tipo de tarefa (definir categorias)
-//
-//nome (autocomplete)
-//
-//descrição
-//
-//recorrência/frequência
-//
-//data
-//
-//importância bool
-//
-//Responsável
-//- Morador
-//- Sem responsável
-//- Revezamento
-//
-//Status
-//- Feito
-//- Pendente
-//- Não pôde ser realizada
