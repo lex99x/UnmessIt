@@ -22,6 +22,8 @@ struct Task {
     enum TaskOwner {
         case none, resident, rotation
     }
+    
+    let ID = UUID()
     var type: Types
     var status: Status
     var taskOwner: TaskOwner
