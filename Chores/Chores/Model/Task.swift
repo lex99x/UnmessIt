@@ -6,30 +6,33 @@
 //
 
 import Foundation
-import SwiftUI
-import Combine
+import RealmSwift
 
-struct Task {
+final class Task: Object, ObjectKeyIdentifiable {
     
-    enum Types {
+    
+    enum Types: String, PersistableEnum  {
         case none, clothes, cooking, ligthCleaning, heavyCleanign, grocery, payments, pet, custom
     }
     
-    enum Status {
+    enum Status: String, PersistableEnum {
         case none, done, pending, cantDo
     }
     
-    enum TaskOwner {
-        case none, resident, rotation
+    enum TaskOwner: String, PersistableEnum {
+        case resident, rotation
     }
     
-    let ID = UUID()
-    var type: Types
-    var status: Status
-    var taskOwner: TaskOwner
-    var isImportant: Bool
-    var description: String
-    var name: String
-    var datetime: Date
+    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted var title = ""
+    @Persisted var desc = ""
+    @Persisted var isImportant = false
+    @Persisted var createdAt = Date()
+    
+    // MARK: ENUMS
+    @Persisted var type: Types = .none
+    @Persisted var status: Status = .none
+    @Persisted var taskOwner: TaskOwner?
+    
 }
-
+    

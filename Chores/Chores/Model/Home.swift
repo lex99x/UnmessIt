@@ -7,12 +7,20 @@
 
 import Foundation
 
-struct Home {
+import RealmSwift
+import Foundation
+
+final class Home: Object, ObjectKeyIdentifiable {
     
-    let id = UUID()
-    var title: String
-    var description: String
-    var numberMembers: Int
-    var terms: String
+    @Persisted(primaryKey: true) var id: ObjectId
+
+    // MARK: Home propeties
+    @Persisted var title = ""
+    @Persisted var desc = ""
+    @Persisted var membersNumber = 0
+    @Persisted var terms = ""
+    
+    // MARK: Task list - one home can have many tasks
+    @Persisted var tasks: List<Task>
     
 }
