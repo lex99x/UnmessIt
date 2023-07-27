@@ -9,4 +9,13 @@ import SwiftUI
 
 class CreateHomeViewModel: ObservableObject {
     
+    @Published var nameTextfield = ""
+    @Published var descriptionTextfield = ""
+    @Published var urlsTextfield = ""
+    @Published var notesTextfield = ""
+    
+    @Published var fileName = ""
+    @Published var isFileOpen = false
+    
+    
 }

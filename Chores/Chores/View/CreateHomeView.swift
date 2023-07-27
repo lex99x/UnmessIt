@@ -9,44 +9,37 @@ import SwiftUI
 
 struct CreateHomeView: View {
     
-    @State var nameTextfield = ""
-    @State var descriptionTextfield = ""
-    @State var urlsTextfield = ""
+    @ObservedObject var viewModel = CreateHomeViewModel()
     
     var body: some View {
         
         Divider()
-                        
-        VStack(alignment: .leading) {
-                    
+        
+        VStack(alignment: .leading, spacing: 25) {
+            
             CustomTextFieldView(title: "Name",
                                 optionalLabel: nil,
                                 placeholder: "Type the name of the place",
-                                textfield: $nameTextfield)
-            .padding(.vertical)
+                                textfield: $viewModel.nameTextfield)
+            .padding(.top, 10)
             
             CustomTextFieldView(title: "Description",
                                 optionalLabel: "Optional",
                                 placeholder: "Small description about the place",
-                                textfield: $descriptionTextfield)
-            .padding(.bottom)
-        
+                                textfield: $viewModel.descriptionTextfield)
+            
             Text("Agreements, terms and rules")
                 .font(.title3)
             
             CustomFilePickerView()
-                .padding(.bottom)
             
-            CustomTextFieldView(title: "URLs", optionalLabel: "Optional", placeholder: "Paste useful links here", textfield: $urlsTextfield)
-                .padding(.bottom)
+            CustomTextFieldView(title: "URLs", optionalLabel: "Optional", placeholder: "Paste useful links here", textfield: $viewModel.urlsTextfield)
             
-            CustomTextFieldView(title: "Notes", optionalLabel: "Optional", placeholder: "Add useful information about living in this place", textfield: $urlsTextfield)
-                .padding(.bottom)
+            CustomTextFieldView(title: "Notes", optionalLabel: "Optional", placeholder: "Add useful information about living in this place", textfield: $viewModel.notesTextfield)
             
             Spacer()
             
             Button("Add place", action: {
-                
             })
             .buttonStyle(CustomButtonStyle())
             
