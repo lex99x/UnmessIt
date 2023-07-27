@@ -21,6 +21,9 @@
 		170FE7732A70020300F7BD45 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FE7722A70020300F7BD45 /* Home.swift */; };
 		170FE7782A70051400F7BD45 /* CreateHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FE7772A70051400F7BD45 /* CreateHomeViewModel.swift */; };
 		170FE77A2A70055100F7BD45 /* CreateHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FE7792A70055100F7BD45 /* CreateHomeView.swift */; };
+		17213CE92A72B449002F0924 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CE82A72B449002F0924 /* CustomTextFieldView.swift */; };
+		17213CEB2A72BE1D002F0924 /* CustomFilePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CEA2A72BE1D002F0924 /* CustomFilePickerView.swift */; };
+		17213CEF2A72BFDA002F0924 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CEE2A72BFDA002F0924 /* CustomButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		170FE7722A70020300F7BD45 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		170FE7772A70051400F7BD45 /* CreateHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHomeViewModel.swift; sourceTree = "<group>"; };
 		170FE7792A70055100F7BD45 /* CreateHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHomeView.swift; sourceTree = "<group>"; };
+		17213CE82A72B449002F0924 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		17213CEA2A72BE1D002F0924 /* CustomFilePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFilePickerView.swift; sourceTree = "<group>"; };
+		17213CEE2A72BFDA002F0924 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,12 +114,11 @@
 		065B0A062A6EA90B00B1D35F /* Chores */ = {
 			isa = PBXGroup;
 			children = (
-				067DFA1C2A6EC88100A0E2F6 /* Extension */,
-				065B0A312A6EB98300B1D35F /* Model */,
 				065B0A072A6EA90B00B1D35F /* ChoresApp.swift */,
 				065B0A312A6EB98300B1D35F /* Model */,
 				170FE7752A70049D00F7BD45 /* View */,
 				170FE7762A70050800F7BD45 /* ViewModel */,
+				17213CED2A72BFC5002F0924 /* Style */,
 				067DFA1C2A6EC88100A0E2F6 /* Extension */,
 				065B0A0B2A6EA90C00B1D35F /* Assets.xcassets */,
 				065B0A0D2A6EA90C00B1D35F /* Preview Content */,
@@ -168,6 +173,8 @@
 			children = (
 				065B0A092A6EA90B00B1D35F /* ContentView.swift */,
 				170FE7792A70055100F7BD45 /* CreateHomeView.swift */,
+				17213CEA2A72BE1D002F0924 /* CustomFilePickerView.swift */,
+				17213CE82A72B449002F0924 /* CustomTextFieldView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +185,14 @@
 				170FE7772A70051400F7BD45 /* CreateHomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		17213CED2A72BFC5002F0924 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				17213CEE2A72BFDA002F0924 /* CustomButtonStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,9 +332,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17213CEB2A72BE1D002F0924 /* CustomFilePickerView.swift in Sources */,
 				067DFA1E2A6EC89000A0E2F6 /* Decodable+LoadData.swift in Sources */,
+				17213CEF2A72BFDA002F0924 /* CustomButtonStyle.swift in Sources */,
 				170FE7782A70051400F7BD45 /* CreateHomeViewModel.swift in Sources */,
 				065B0A0A2A6EA90B00B1D35F /* ContentView.swift in Sources */,
+				17213CE92A72B449002F0924 /* CustomTextFieldView.swift in Sources */,
 				170FE7732A70020300F7BD45 /* Home.swift in Sources */,
 				170FE77A2A70055100F7BD45 /* CreateHomeView.swift in Sources */,
 				065B0A332A6EBB9300B1D35F /* Task.swift in Sources */,
