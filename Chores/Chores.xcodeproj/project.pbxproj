@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06241C252A72A1AF00FFCDC4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06241C242A72A1AF00FFCDC4 /* User.swift */; };
 		065B0A082A6EA90B00B1D35F /* ChoresApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A072A6EA90B00B1D35F /* ChoresApp.swift */; };
 		065B0A0A2A6EA90B00B1D35F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A092A6EA90B00B1D35F /* ContentView.swift */; };
 		065B0A0C2A6EA90C00B1D35F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 065B0A0B2A6EA90C00B1D35F /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06241C242A72A1AF00FFCDC4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		065B0A042A6EA90B00B1D35F /* Chores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065B0A072A6EA90B00B1D35F /* ChoresApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresApp.swift; sourceTree = "<group>"; };
 		065B0A092A6EA90B00B1D35F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				065B0A322A6EBB9300B1D35F /* Task.swift */,
 				170FE7722A70020300F7BD45 /* Home.swift */,
+				06241C242A72A1AF00FFCDC4 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				065B0A0A2A6EA90B00B1D35F /* ContentView.swift in Sources */,
 				17213CE92A72B449002F0924 /* CustomTextFieldView.swift in Sources */,
 				170FE7732A70020300F7BD45 /* Home.swift in Sources */,
+				06241C252A72A1AF00FFCDC4 /* User.swift in Sources */,
 				170FE77A2A70055100F7BD45 /* CreateHomeView.swift in Sources */,
 				065B0A332A6EBB9300B1D35F /* Task.swift in Sources */,
 				065B0A082A6EA90B00B1D35F /* ChoresApp.swift in Sources */,

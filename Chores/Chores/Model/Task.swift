@@ -8,12 +8,12 @@
 import Foundation
 import RealmSwift
 
+public enum Types: String, PersistableEnum  {
+   case none, clothes, cooking, ligthCleaning, heavyCleanign, grocery, payments, pet, custom
+}
+
 final class Task: Object, ObjectKeyIdentifiable {
-    
-    
-    enum Types: String, PersistableEnum  {
-        case none, clothes, cooking, ligthCleaning, heavyCleanign, grocery, payments, pet, custom
-    }
+
     
     enum Status: String, PersistableEnum {
         case none, done, pending, cantDo
@@ -24,6 +24,7 @@ final class Task: Object, ObjectKeyIdentifiable {
     }
     
     @Persisted(primaryKey: true) var id: ObjectId
+    
     @Persisted var title = ""
     @Persisted var desc = ""
     @Persisted var isImportant = false
@@ -33,6 +34,8 @@ final class Task: Object, ObjectKeyIdentifiable {
     @Persisted var type: Types = .none
     @Persisted var status: Status = .none
     @Persisted var taskOwner: TaskOwner?
+
     
+    @Persisted var taskParticipants: List<User>
 }
     
