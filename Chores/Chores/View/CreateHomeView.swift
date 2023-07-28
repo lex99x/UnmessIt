@@ -31,7 +31,7 @@ struct CreateHomeView: View {
             Text("Agreements, terms and rules")
                 .font(.title3)
             
-            CustomFilePickerView()
+            CustomFilePickerView(files: $viewModel.files)
             
             CustomTextFieldView(title: "URLs", optionalLabel: "Optional", placeholder: "Paste useful links here", textfield: $viewModel.urlsTextfield)
             

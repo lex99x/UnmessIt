@@ -14,8 +14,7 @@ class CreateHomeViewModel: ObservableObject {
     @Published var urlsTextfield = ""
     @Published var notesTextfield = ""
     
-    @Published var fileName = ""
+    @Published var files: [String] = []
     @Published var isFileOpen = false
-    
-    
+        
 }
