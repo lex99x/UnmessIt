@@ -19,6 +19,6 @@ final class Home: Object, ObjectKeyIdentifiable {
     @Persisted var terms = ""
     
     // MARK: Task list - one home can have many tasks
-    @Persisted var tasks: List<Task>
+    @Persisted var tasks =  RealmSwift.List<Task>()
     
 }

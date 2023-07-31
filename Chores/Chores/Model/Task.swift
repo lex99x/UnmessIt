@@ -36,6 +36,6 @@ final class Task: Object, ObjectKeyIdentifiable {
     @Persisted var taskOwner: TaskOwner?
 
     
-    @Persisted var taskParticipants: List<User>
+    @Persisted var taskParticipants = RealmSwift.List<User>()
 }
     
