@@ -8,23 +8,29 @@
 import SwiftUI
 
 struct CustomButtonStyle: ButtonStyle {
+    
+    let width: CGFloat
+    let foregroundColor: Color
+    let backgroundColor: Color
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundColor(.white)
+            .foregroundColor(foregroundColor)
             .bold(true)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: width)
             .padding()
             .background {
-                Color(red: 0.18, green: 0.21, blue: 0.28)
+                backgroundColor
             }
             .clipShape(RoundedRectangle(cornerRadius: 5))
     }
+    
 }
 
 struct CustomButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
         Button("Button title", action: {})
-            .buttonStyle(CustomButtonStyle())
+            .buttonStyle(CustomButtonStyle(width: .infinity, foregroundColor: .white, backgroundColor: .blue))
             .padding()
     }
 }

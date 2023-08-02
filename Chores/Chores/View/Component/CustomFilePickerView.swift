@@ -62,10 +62,7 @@ struct CustomFilePickerView: View {
                 
             }
             .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(.gray, lineWidth: 1.0)
-            )
+            .inputOverlay()
             
             Text("You can attach PDFs (up to 1 MB) and images up to (1 MB)")
                 .font(.footnote)

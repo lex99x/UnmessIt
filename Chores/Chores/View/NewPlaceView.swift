@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CreateHomeView: View {
+struct NewPlaceView: View {
     
-    @ObservedObject var viewModel = CreateHomeViewModel()
+    @ObservedObject var viewModel = NewPlaceViewModel()
     
     var body: some View {
         
@@ -41,7 +41,7 @@ struct CreateHomeView: View {
             
             Button("Add place", action: {
             })
-            .buttonStyle(CustomButtonStyle())
+            .buttonStyle(CustomButtonStyle(width: .infinity, foregroundColor: .white, backgroundColor: Color(red: 0.18, green: 0.21, blue: 0.28)))
             
         }
         .padding(.horizontal)
@@ -52,10 +52,10 @@ struct CreateHomeView: View {
     
 }
 
-struct CreateHomeView_Previews: PreviewProvider {
+struct NewPlaceView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CreateHomeView()
+            NewPlaceView()
         }
     }
 }
