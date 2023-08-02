@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class CreateHomeViewModel: ObservableObject {
+class NewPlaceViewModel: ObservableObject {
     
     @Published var nameTextfield = ""
     @Published var descriptionTextfield = ""
