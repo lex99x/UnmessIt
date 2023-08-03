@@ -381,9 +381,8 @@
 				17CE41D02A7806F600A622A1 /* CustomSelectionInputView.swift in Sources */,
 				170FE7782A70051400F7BD45 /* NewPlaceViewModel.swift in Sources */,
 				17CE41D22A780A3600A622A1 /* NewTaskViewModel.swift in Sources */,
-				170FE7782A70051400F7BD45 /* CreateHomeViewModel.swift in Sources */,
+				170FE7782A70051400F7BD45 /* NewPlaceViewModel.swift in Sources */,
 				063F8F2D2A77F665002792D5 /* LocalNotificationService.swift in Sources */,
-				065B0A0A2A6EA90B00B1D35F /* ContentView.swift in Sources */,
 				17213CE92A72B449002F0924 /* CustomTextFieldView.swift in Sources */,
 				17CE41CC2A77EA0100A622A1 /* PlacesView.swift in Sources */,
 				17CE41CE2A77F13800A622A1 /* NewTaskView.swift in Sources */,
@@ -555,7 +554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chores/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RQJKDFTU3K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -586,7 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chores/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RQJKDFTU3K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

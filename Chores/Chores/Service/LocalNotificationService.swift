@@ -11,11 +11,9 @@ import UserNotifications
 
 final class LocalNotificaitonService {
     static let shared = LocalNotificaitonService()
-    private let authSigned = UserDefaults.standard.bool(forKey: "notificationAuthSigned")
     
     
     func requestAuth() -> Void {
-        if !authSigned {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
                 if success {
                     UserDefaults.standard.set(true, forKey: "notificationAuthSigned")
@@ -24,17 +22,27 @@ final class LocalNotificaitonService {
                 }
             }
         }
-    }
     
     func schedule( notificaitonBody:LocalNotificationBody ) {
-        if authSigned {
-            let content = UNMutableNotificationContent()
-            content.title = notificaitonBody.title
-            content.subtitle = notificaitonBody.subtitle
-            content.sound = UNNotificationSound.default
+        let content = UNMutableNotificationContent()
             
-            // show this notification five seconds from now
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: notificaitonBody.timeInterval, repeats: notificaitonBody.repeats)
+        content.title = notificaitonBody.title
+        content.subtitle = notificaitonBody.subtitle
+            
+        content.sound = UNNotificationSound.default
+            
+        
+        switch notificaitonBody.frequency {
+        case .none:
+            print("none")
+        case .daily:
+            var date = DateComponents()
+
+            date.hour = 10
+
+            date.minute = 30
+
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
             
             // choose a random identifier
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -42,5 +50,18 @@ final class LocalNotificaitonService {
             // add our notification request
             UNUserNotificationCenter.current().add(request)
         }
+        
+        }
+    
+    
+    
+    func getPendingRequestsCount() -> Int {
+        var requestCount = 0
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notifications) in
+            print("Count: \(notifications.count)")
+            requestCount = notifications.count
+        }
+        return requestCount
     }
+    
 }
