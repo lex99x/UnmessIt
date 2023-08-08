@@ -13,7 +13,7 @@ struct ChoresApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                PlacesView()
+                NewTaskView()
             }
 //            .onAppear {
 //                // MARK: Daily notification time

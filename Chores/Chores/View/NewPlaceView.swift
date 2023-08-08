@@ -15,7 +15,7 @@ struct NewPlaceView: View {
         
         Divider()
         
-        VStack(alignment: .leading, spacing: 25) {
+        VStack(alignment: .leading, spacing: 24) {
             
             CustomTextFieldView(title: "Name",
                                 optionalLabel: nil,

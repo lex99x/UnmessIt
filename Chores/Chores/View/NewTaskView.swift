@@ -13,24 +13,19 @@ struct NewTaskView: View {
     
     var body: some View {
         
-        Divider()
-        
         ScrollView {
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 24) {
                 
                 CustomSelectionInputView(placeholder: "Task type",
-                                         options: viewModel.taskOptions,
+                                         options: Task.taskOptions,
                                          selectedOption: $viewModel.selectedOption)
-                .padding(.bottom, 24)
                 
                 Text("Identification")
                     .font(.title3)
-                    .padding(.bottom, 16)
                 
                 CustomDescriptionInputView(whatToDo: $viewModel.whatToDo,
-                                         howToDo: $viewModel.howToDo)
-                .padding(.bottom, 16)
+                                           howToDo: $viewModel.howToDo)
                 
                 Toggle("Important", isOn: $viewModel.isImportantToggleOn)
                     .foregroundColor(.gray)
@@ -39,31 +34,91 @@ struct NewTaskView: View {
                 
                 Text("When it will happen")
                     .font(.title3)
-                    .padding(.top, 16)
                 
                 DatePicker("Date and time", selection: $viewModel.selectedDate)
                     .padding()
                     .foregroundColor(.gray)
                     .inputOverlay()
                 
-                CustomSelectionInputView(placeholder: "Repeat",
-                                         options: viewModel.repetionOptions,
-                                         selectedOption: $viewModel.selectedRepetionOption)
-                .padding(.top, 16)
+                VStack {
+                    
+                    Toggle("Recurrent task", isOn: $viewModel.isRecurrentToggleOn)
+                        .foregroundColor(.gray)
+                    
+                    if viewModel.isRecurrentToggleOn {
+                        
+                        Divider()
+                        
+                        HStack {
+                            
+                            Text("Repeats every")
+                            Spacer()
+                            Text("\(viewModel.selectedTimeOption)")
+                                .padding(.trailing, .zero)
+                            
+                            if viewModel.selectedTimeOption == 1 {
+                                Text("\(viewModel.selectedRepetionOption.lowercased().replacingOccurrences(of: "s", with: ""))")
+                            } else {
+                                Text("\(viewModel.selectedRepetionOption.lowercased())")
+                            }
+                            
+                        }
+                        .padding(.top, 11)
+                        .foregroundColor(.gray)
+                        
+                        HStack {
+                            
+                            Picker("", selection: $viewModel.selectedTimeOption)
+                            {
+                                ForEach(1...12, id: \.self) {
+                                    Text("\($0)")
+                                }
+                            }
+                            .pickerStyle(.wheel)
+                            
+                            Picker("", selection: $viewModel.selectedRepetionOption)
+                            {
+                                ForEach(Task.timeOptions, id: \.self) {
+                                    Text($0)
+                                }
+                            }
+                            .pickerStyle(.wheel)
+                            
+                        }
+                        
+                        Divider()
+                        
+                        Toggle("End repeat", isOn: $viewModel.isEndRepeatToggleOn)
+                            .foregroundColor(.gray)
+                            .padding(.top, 11)
+                        
+                        if viewModel.isEndRepeatToggleOn {
+                            
+                            Divider()
+//                                .padding(.top, 11)
+                            
+                            DatePicker("Repeats until", selection: $viewModel.selectedEndRepeatDate, displayedComponents: .date)
+                                .foregroundColor(.gray)
+                                .padding(.top, 11)
+                            
+                        }
+                        
+                    }
+                    
+                }
+                .padding()
+                .inputOverlay()
                 
                 Text("Who should do it")
                     .font(.title3)
-                    .padding(.top, 24)
                 
                 CustomSelectionInputView(placeholder: "Assignees",
                                          options: viewModel.assigneeOptions,
                                          selectedOption: $viewModel.selectedAssigneeOption)
                 
-//                Spacer()
-                
             }
             .padding()
-            .navigationTitle("New task")
+            .navigationTitle("Add task")
             .navigationBarTitleDisplayMode(.inline)
             
         }

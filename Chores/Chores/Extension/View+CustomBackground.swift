@@ -27,4 +27,5 @@ struct CustomBackgroundModifier: ViewModifier {
             .toolbarBackground(color, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
     }
+    
 }
