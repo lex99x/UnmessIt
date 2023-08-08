@@ -16,8 +16,8 @@ class NewTaskViewModel: ObservableObject {
     @Published var selectedRepetionOption = Time.hours.rawValue
     @Published var selectedAssigneeOption: String?
     @Published var isImportantToggleOn = false
-    @Published var isRecurrentToggleOn = true
-    @Published var isEndRepeatToggleOn = true
+    @Published var isRecurrentToggleOn = false
+    @Published var isEndRepeatToggleOn = false
     @Published var whatToDo: String = ""
     @Published var howToDo: String = ""
     
