@@ -92,3 +92,7 @@ iOSInjectionProject/
 Chores/Chores.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
 
 *.resolved
+
+Chores/Chores/View/.DS_Store
+
+Chores/Chores/.DS_Store
