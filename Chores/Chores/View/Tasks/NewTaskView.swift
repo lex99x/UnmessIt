@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewTaskView: View {
     
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = NewTaskViewModel()
     
     var body: some View {
@@ -19,13 +20,13 @@ struct NewTaskView: View {
                 
                 CustomSelectionInputView(placeholder: "Task type",
                                          options: Task.taskOptions,
-                                         selectedOption: $viewModel.selectedOption)
+                                         selectedOption: $viewModel.selectedTaskTypeOption)
                 
                 Text("Identification")
                     .font(.title3)
                 
-                CustomDescriptionInputView(whatToDo: $viewModel.whatToDo,
-                                           howToDo: $viewModel.howToDo)
+                CustomDescriptionInputView(whatToDo: $viewModel.title,
+                                           howToDo: $viewModel.description)
                 
                 Toggle("Important", isOn: $viewModel.isImportantToggleOn)
                     .foregroundColor(.gray)
@@ -35,7 +36,7 @@ struct NewTaskView: View {
                 Text("When it will happen")
                     .font(.title3)
                 
-                DatePicker("Date and time", selection: $viewModel.selectedDate)
+                DatePicker("Date and time", selection: $viewModel.selectedStartDate)
                     .padding()
                     .foregroundColor(.gray)
                     .inputOverlay()
@@ -95,7 +96,6 @@ struct NewTaskView: View {
                         if viewModel.isEndRepeatToggleOn {
                             
                             Divider()
-//                                .padding(.top, 11)
                             
                             DatePicker("Repeats until", selection: $viewModel.selectedEndRepeatDate, displayedComponents: .date)
                                 .foregroundColor(.gray)
@@ -120,9 +120,25 @@ struct NewTaskView: View {
             .padding()
             .navigationTitle("Add task")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Text("Cancel")
+                    })
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        viewModel.addNewTask()
+                    }, label: {
+                        Text("Save")
+                    })
+                }
+            }
             
         }
-        .customBackground()
+//        .customBackground()
         
     }
     

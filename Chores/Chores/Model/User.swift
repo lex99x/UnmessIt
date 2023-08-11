@@ -16,6 +16,6 @@ final class User: Object, ObjectKeyIdentifiable {
     @Persisted var email = ""
     
     @Persisted var preferences: List<Types>
-    @Persisted var places = RealmSwift.List<Home>()
+    @Persisted var places = RealmSwift.List<Space>()
     
 }

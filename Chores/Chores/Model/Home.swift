@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-final class Home: Object, ObjectKeyIdentifiable {
+final class Space: Object, ObjectKeyIdentifiable {
     
     @Persisted(primaryKey: true) var id: ObjectId
 
