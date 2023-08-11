@@ -8,12 +8,11 @@
 import Foundation
 import SwiftUI
 
-class OnboardViewModel: ObservableObject {
+class OnboardingViewModel: ObservableObject {
     
     @Published var userNameTextfield = ""
     @Published var selectedNotificationTime = Date.now
 
-    
     func registerUserName() -> String? {
         UserDefaults.standard.set(self.userNameTextfield, forKey: "userName")
         return UserDefaults.standard.string(forKey: "userName")

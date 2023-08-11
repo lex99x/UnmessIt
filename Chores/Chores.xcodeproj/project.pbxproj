@@ -23,7 +23,7 @@
 		066B70252A7D339300E9FB1E /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B70242A7D339300E9FB1E /* TaskItem.swift */; };
 		067DFA1E2A6EC89000A0E2F6 /* Decodable+LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067DFA1D2A6EC89000A0E2F6 /* Decodable+LoadData.swift */; };
 		06BCFF812A833C0700D212A9 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF802A833C0700D212A9 /* TaskViewModel.swift */; };
-		06BCFF832A83C00000D212A9 /* vm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF822A83C00000D212A9 /* vm.swift */; };
+		06BCFF832A83C00000D212A9 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF822A83C00000D212A9 /* OnboardingViewModel.swift */; };
 		06D816552A848A6F00606F03 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D816542A848A6F00606F03 /* Coordinator.swift */; };
 		06D816592A848B0400606F03 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D816582A848B0400606F03 /* CoordinatorView.swift */; };
 		06D8165B2A848EFE00606F03 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D8165A2A848EFE00606F03 /* OnboardingView.swift */; };
@@ -86,7 +86,7 @@
 		066B70242A7D339300E9FB1E /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		067DFA1D2A6EC89000A0E2F6 /* Decodable+LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+LoadData.swift"; sourceTree = "<group>"; };
 		06BCFF802A833C0700D212A9 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
-		06BCFF822A83C00000D212A9 /* vm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vm.swift; sourceTree = "<group>"; };
+		06BCFF822A83C00000D212A9 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		06D816542A848A6F00606F03 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		06D816582A848B0400606F03 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		06D8165A2A848EFE00606F03 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -255,10 +255,10 @@
 			children = (
 				066B70232A7D329600E9FB1E /* Tasks */,
 				17A834862A7A863600625FD2 /* Component */,
+				06D8165A2A848EFE00606F03 /* OnboardingView.swift */,
 				17CE41CB2A77EA0100A622A1 /* PlacesView.swift */,
 				170FE7792A70055100F7BD45 /* NewPlaceView.swift */,
 				06D816582A848B0400606F03 /* CoordinatorView.swift */,
-				06D8165A2A848EFE00606F03 /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,9 +266,9 @@
 		170FE7762A70050800F7BD45 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				06BCFF822A83C00000D212A9 /* OnboardingViewModel.swift */,
 				17CE41D12A780A3600A622A1 /* NewTaskViewModel.swift */,
 				170FE7772A70051400F7BD45 /* NewPlaceViewModel.swift */,
-				06BCFF822A83C00000D212A9 /* vm.swift */,
 				06BCFF802A833C0700D212A9 /* TaskViewModel.swift */,
 			);
 			path = ViewModel;
@@ -471,7 +471,7 @@
 				06D8165B2A848EFE00606F03 /* OnboardingView.swift in Sources */,
 				06D816552A848A6F00606F03 /* Coordinator.swift in Sources */,
 				065B0A332A6EBB9300B1D35F /* Task.swift in Sources */,
-				06BCFF832A83C00000D212A9 /* vm.swift in Sources */,
+				06BCFF832A83C00000D212A9 /* OnboardingViewModel.swift in Sources */,
 				063F8F2F2A77FD3F002792D5 /* LocalNotificationBody.swift in Sources */,
 				174447F82A8664F10083142F /* Font+CustomFonts.swift in Sources */,
 				065B0A082A6EA90B00B1D35F /* ChoresApp.swift in Sources */,
@@ -636,7 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chores/Preview Content\"";
-				DEVELOPMENT_TEAM = ZPDCX326AZ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chores/Info.plist;
@@ -668,7 +668,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chores/Preview Content\"";
-				DEVELOPMENT_TEAM = ZPDCX326AZ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chores/Info.plist;
