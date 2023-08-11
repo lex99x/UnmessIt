@@ -35,7 +35,7 @@ final class Task: Object, ObjectKeyIdentifiable {
     static let timeOptions: [String] = [Time.hours.rawValue, Time.days.rawValue, Time.weeks.rawValue, Time.months.rawValue, Time.years.rawValue]
     
     enum Status: String, PersistableEnum {
-        case none, done, pending, cantDo
+        case done, pending, cantDo
     }
     
     enum TaskOwner: String, PersistableEnum {
@@ -43,17 +43,29 @@ final class Task: Object, ObjectKeyIdentifiable {
     }
     
     @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted var createdAt = Date.now
+    @Persisted var startDate: Date
+    @Persisted var endRepeatDate: Date
     
     @Persisted var title = ""
     @Persisted var desc = ""
     @Persisted var isImportant = false
-    @Persisted var createdAt = Date()
     
     // MARK: ENUMS
     @Persisted var type: Types = .none
-    @Persisted var status: Status = .none
+    @Persisted var status: Status = .pending
     @Persisted var taskOwner: TaskOwner?
     
     @Persisted var taskParticipants = RealmSwift.List<User>()
+    
+    
+    
+    func updateStatus(status: Status){
+        if let realm = self.realm {
+            try? realm.write({
+                self.status = status
+            })
+        }
+    }
     
 }

@@ -10,6 +10,7 @@
 		06241C252A72A1AF00FFCDC4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06241C242A72A1AF00FFCDC4 /* User.swift */; };
 		063F8F2D2A77F665002792D5 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063F8F2C2A77F665002792D5 /* LocalNotificationService.swift */; };
 		063F8F2F2A77FD3F002792D5 /* LocalNotificationBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063F8F2E2A77FD3F002792D5 /* LocalNotificationBody.swift */; };
+		065590B12A814BC100A0B5B4 /* TaskStatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065590B02A814BC100A0B5B4 /* TaskStatusBadge.swift */; };
 		065B0A082A6EA90B00B1D35F /* ChoresApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A072A6EA90B00B1D35F /* ChoresApp.swift */; };
 		065B0A0C2A6EA90C00B1D35F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 065B0A0B2A6EA90C00B1D35F /* Assets.xcassets */; };
 		065B0A0F2A6EA90C00B1D35F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 065B0A0E2A6EA90C00B1D35F /* Preview Assets.xcassets */; };
@@ -17,9 +18,15 @@
 		065B0A232A6EA90C00B1D35F /* ChoresUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A222A6EA90C00B1D35F /* ChoresUITests.swift */; };
 		065B0A252A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A242A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift */; };
 		065B0A332A6EBB9300B1D35F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A322A6EBB9300B1D35F /* Task.swift */; };
-		066E17D22A8270AD0084C389 /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066E17D12A8270AD0084C389 /* OnboardViewModel.swift */; };
-		066E17D42A827B640084C389 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066E17D32A827B640084C389 /* Onboard.swift */; };
+		066B70202A7BF75100E9FB1E /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B701F2A7BF75100E9FB1E /* Tasks.swift */; };
+		066B70222A7BFD7400E9FB1E /* Color+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B70212A7BFD7400E9FB1E /* Color+CustomColors.swift */; };
+		066B70252A7D339300E9FB1E /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B70242A7D339300E9FB1E /* TaskItem.swift */; };
 		067DFA1E2A6EC89000A0E2F6 /* Decodable+LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067DFA1D2A6EC89000A0E2F6 /* Decodable+LoadData.swift */; };
+		06BCFF812A833C0700D212A9 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF802A833C0700D212A9 /* TaskViewModel.swift */; };
+		06BCFF832A83C00000D212A9 /* vm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF822A83C00000D212A9 /* vm.swift */; };
+		06D816552A848A6F00606F03 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D816542A848A6F00606F03 /* Coordinator.swift */; };
+		06D816592A848B0400606F03 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D816582A848B0400606F03 /* CoordinatorView.swift */; };
+		06D8165B2A848EFE00606F03 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D8165A2A848EFE00606F03 /* OnboardingView.swift */; };
 		170FE76F2A70003B00F7BD45 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 170FE76E2A70003B00F7BD45 /* Realm */; };
 		170FE7712A70003B00F7BD45 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 170FE7702A70003B00F7BD45 /* RealmSwift */; };
 		170FE7732A70020300F7BD45 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FE7722A70020300F7BD45 /* Home.swift */; };
@@ -63,6 +70,7 @@
 		06241C242A72A1AF00FFCDC4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		063F8F2C2A77F665002792D5 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		063F8F2E2A77FD3F002792D5 /* LocalNotificationBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationBody.swift; sourceTree = "<group>"; };
+		065590B02A814BC100A0B5B4 /* TaskStatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusBadge.swift; sourceTree = "<group>"; };
 		065B0A042A6EA90B00B1D35F /* Chores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065B0A072A6EA90B00B1D35F /* ChoresApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresApp.swift; sourceTree = "<group>"; };
 		065B0A0B2A6EA90C00B1D35F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,9 +81,15 @@
 		065B0A222A6EA90C00B1D35F /* ChoresUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresUITests.swift; sourceTree = "<group>"; };
 		065B0A242A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		065B0A322A6EBB9300B1D35F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		066E17D12A8270AD0084C389 /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
-		066E17D32A827B640084C389 /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
+		066B701F2A7BF75100E9FB1E /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		066B70212A7BFD7400E9FB1E /* Color+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CustomColors.swift"; sourceTree = "<group>"; };
+		066B70242A7D339300E9FB1E /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		067DFA1D2A6EC89000A0E2F6 /* Decodable+LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+LoadData.swift"; sourceTree = "<group>"; };
+		06BCFF802A833C0700D212A9 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		06BCFF822A83C00000D212A9 /* vm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vm.swift; sourceTree = "<group>"; };
+		06D816542A848A6F00606F03 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		06D816582A848B0400606F03 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
+		06D8165A2A848EFE00606F03 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		170FE7722A70020300F7BD45 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		170FE7772A70051400F7BD45 /* NewPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewModel.swift; sourceTree = "<group>"; };
 		170FE7792A70055100F7BD45 /* NewPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceView.swift; sourceTree = "<group>"; };
@@ -160,6 +174,7 @@
 				065B0A312A6EB98300B1D35F /* Model */,
 				170FE7752A70049D00F7BD45 /* View */,
 				170FE7762A70050800F7BD45 /* ViewModel */,
+				06D816532A848A6400606F03 /* Manager */,
 				17213CED2A72BFC5002F0924 /* Style */,
 				067DFA1C2A6EC88100A0E2F6 /* Extension */,
 				063F8F2B2A77F643002792D5 /* Service */,
@@ -205,6 +220,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		066B70232A7D329600E9FB1E /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				066B701F2A7BF75100E9FB1E /* Tasks.swift */,
+				17CE41CD2A77F13800A622A1 /* NewTaskView.swift */,
+				066B70242A7D339300E9FB1E /* TaskItem.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
 		067DFA1C2A6EC88100A0E2F6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,18 +237,28 @@
 				17CE41D52A78131600A622A1 /* View+InputOverlay.swift */,
 				17CE41D72A79340D00A622A1 /* View+CustomBackground.swift */,
 				174447F72A8664F10083142F /* Font+CustomFonts.swift */,
+				066B70212A7BFD7400E9FB1E /* Color+CustomColors.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		06D816532A848A6400606F03 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				06D816542A848A6F00606F03 /* Coordinator.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		170FE7752A70049D00F7BD45 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				066B70232A7D329600E9FB1E /* Tasks */,
 				17A834862A7A863600625FD2 /* Component */,
 				17CE41CB2A77EA0100A622A1 /* PlacesView.swift */,
-				17CE41CD2A77F13800A622A1 /* NewTaskView.swift */,
 				170FE7792A70055100F7BD45 /* NewPlaceView.swift */,
-				066E17D32A827B640084C389 /* Onboard.swift */,
+				06D816582A848B0400606F03 /* CoordinatorView.swift */,
+				06D8165A2A848EFE00606F03 /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,7 +268,8 @@
 			children = (
 				17CE41D12A780A3600A622A1 /* NewTaskViewModel.swift */,
 				170FE7772A70051400F7BD45 /* NewPlaceViewModel.swift */,
-				066E17D12A8270AD0084C389 /* OnboardViewModel.swift */,
+				06BCFF822A83C00000D212A9 /* vm.swift */,
+				06BCFF802A833C0700D212A9 /* TaskViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -265,6 +301,7 @@
 				17CE41CF2A7806F600A622A1 /* CustomSelectionInputView.swift */,
 				17CE41D32A78108500A622A1 /* CustomDescriptionInputView.swift */,
 				17DDC0472A8270EA00D02BB8 /* CustomSectionHeaderView.swift */,
+				065590B02A814BC100A0B5B4 /* TaskStatusBadge.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -410,24 +447,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				17213CEB2A72BE1D002F0924 /* CustomFilePickerView.swift in Sources */,
+				065590B12A814BC100A0B5B4 /* TaskStatusBadge.swift in Sources */,
 				067DFA1E2A6EC89000A0E2F6 /* Decodable+LoadData.swift in Sources */,
 				17DDC0482A8270EA00D02BB8 /* CustomSectionHeaderView.swift in Sources */,
 				17213CEF2A72BFDA002F0924 /* CustomButtonStyle.swift in Sources */,
 				17CE41D02A7806F600A622A1 /* CustomSelectionInputView.swift in Sources */,
+				066B70202A7BF75100E9FB1E /* Tasks.swift in Sources */,
 				170FE7782A70051400F7BD45 /* NewPlaceViewModel.swift in Sources */,
 				17CE41D22A780A3600A622A1 /* NewTaskViewModel.swift in Sources */,
 				170FE7782A70051400F7BD45 /* NewPlaceViewModel.swift in Sources */,
 				063F8F2D2A77F665002792D5 /* LocalNotificationService.swift in Sources */,
+				066B70222A7BFD7400E9FB1E /* Color+CustomColors.swift in Sources */,
 				17213CE92A72B449002F0924 /* CustomTextFieldView.swift in Sources */,
-				066E17D42A827B640084C389 /* Onboard.swift in Sources */,
-				066E17D22A8270AD0084C389 /* OnboardViewModel.swift in Sources */,
 				17CE41CC2A77EA0100A622A1 /* PlacesView.swift in Sources */,
 				17CE41CE2A77F13800A622A1 /* NewTaskView.swift in Sources */,
+				066B70252A7D339300E9FB1E /* TaskItem.swift in Sources */,
+				06D816592A848B0400606F03 /* CoordinatorView.swift in Sources */,
 				170FE7732A70020300F7BD45 /* Home.swift in Sources */,
+				06BCFF812A833C0700D212A9 /* TaskViewModel.swift in Sources */,
 				06241C252A72A1AF00FFCDC4 /* User.swift in Sources */,
 				17CE41D62A78131600A622A1 /* View+InputOverlay.swift in Sources */,
 				170FE77A2A70055100F7BD45 /* NewPlaceView.swift in Sources */,
+				06D8165B2A848EFE00606F03 /* OnboardingView.swift in Sources */,
+				06D816552A848A6F00606F03 /* Coordinator.swift in Sources */,
 				065B0A332A6EBB9300B1D35F /* Task.swift in Sources */,
+				06BCFF832A83C00000D212A9 /* vm.swift in Sources */,
 				063F8F2F2A77FD3F002792D5 /* LocalNotificationBody.swift in Sources */,
 				174447F82A8664F10083142F /* Font+CustomFonts.swift in Sources */,
 				065B0A082A6EA90B00B1D35F /* ChoresApp.swift in Sources */,
@@ -592,7 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chores/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZPDCX326AZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chores/Info.plist;
@@ -624,7 +668,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chores/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZPDCX326AZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chores/Info.plist;

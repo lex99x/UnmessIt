@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomButtonStyle: ButtonStyle {
     
     let width: CGFloat
-    let foregroundColor: Color
+    let foregroundColor: Color?
     let backgroundColor: Color
     
     func makeBody(configuration: Configuration) -> some View {
@@ -30,7 +30,9 @@ struct CustomButtonStyle: ButtonStyle {
 struct CustomButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
         Button("Button title", action: {})
-            .buttonStyle(CustomButtonStyle(width: .infinity, foregroundColor: .white, backgroundColor: .blue))
+            .buttonStyle(CustomButtonStyle(width: .infinity,
+                                           foregroundColor: nil,
+                                           backgroundColor: .blue))
             .padding()
     }
 }
