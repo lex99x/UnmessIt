@@ -36,9 +36,9 @@
 		17213CEB2A72BE1D002F0924 /* CustomFilePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CEA2A72BE1D002F0924 /* CustomFilePickerView.swift */; };
 		17213CEF2A72BFDA002F0924 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CEE2A72BFDA002F0924 /* CustomButtonStyle.swift */; };
 		174447F82A8664F10083142F /* Font+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174447F72A8664F10083142F /* Font+CustomFonts.swift */; };
-		174447FC2A86662C0083142F /* GeneralSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 174447F92A86662C0083142F /* GeneralSans-Regular.otf */; };
-		174447FD2A86662C0083142F /* GeneralSans-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 174447FA2A86662C0083142F /* GeneralSans-Semibold.otf */; };
-		174447FE2A86662C0083142F /* GeneralSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 174447FB2A86662C0083142F /* GeneralSans-Medium.otf */; };
+		17C1D4282A8A5F0400286FA1 /* GeneralSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 17C1D4252A8A5F0400286FA1 /* GeneralSans-Regular.otf */; };
+		17C1D4292A8A5F0400286FA1 /* GeneralSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 17C1D4262A8A5F0400286FA1 /* GeneralSans-Medium.otf */; };
+		17C1D42A2A8A5F0400286FA1 /* GeneralSans-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 17C1D4272A8A5F0400286FA1 /* GeneralSans-Semibold.otf */; };
 		17CE41CC2A77EA0100A622A1 /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE41CB2A77EA0100A622A1 /* PlacesView.swift */; };
 		17CE41CE2A77F13800A622A1 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE41CD2A77F13800A622A1 /* NewTaskView.swift */; };
 		17CE41D02A7806F600A622A1 /* CustomSelectionInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE41CF2A7806F600A622A1 /* CustomSelectionInputView.swift */; };
@@ -98,9 +98,9 @@
 		17213CEE2A72BFDA002F0924 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		174447F62A86646B0083142F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174447F72A8664F10083142F /* Font+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+CustomFonts.swift"; sourceTree = "<group>"; };
-		174447F92A86662C0083142F /* GeneralSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GeneralSans-Regular.otf"; path = "../../../../../../../../Downloads/OTF/GeneralSans-Regular.otf"; sourceTree = "<group>"; };
-		174447FA2A86662C0083142F /* GeneralSans-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GeneralSans-Semibold.otf"; path = "../../../../../../../../Downloads/OTF/GeneralSans-Semibold.otf"; sourceTree = "<group>"; };
-		174447FB2A86662C0083142F /* GeneralSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GeneralSans-Medium.otf"; path = "../../../../../../../../Downloads/OTF/GeneralSans-Medium.otf"; sourceTree = "<group>"; };
+		17C1D4252A8A5F0400286FA1 /* GeneralSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Regular.otf"; sourceTree = "<group>"; };
+		17C1D4262A8A5F0400286FA1 /* GeneralSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Medium.otf"; sourceTree = "<group>"; };
+		17C1D4272A8A5F0400286FA1 /* GeneralSans-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Semibold.otf"; sourceTree = "<group>"; };
 		17CE41CB2A77EA0100A622A1 /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
 		17CE41CD2A77F13800A622A1 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
 		17CE41CF2A7806F600A622A1 /* CustomSelectionInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectionInputView.swift; sourceTree = "<group>"; };
@@ -286,9 +286,9 @@
 			isa = PBXGroup;
 			children = (
 				065B0A0B2A6EA90C00B1D35F /* Assets.xcassets */,
-				174447F92A86662C0083142F /* GeneralSans-Regular.otf */,
-				174447FB2A86662C0083142F /* GeneralSans-Medium.otf */,
-				174447FA2A86662C0083142F /* GeneralSans-Semibold.otf */,
+				17C1D4252A8A5F0400286FA1 /* GeneralSans-Regular.otf */,
+				17C1D4262A8A5F0400286FA1 /* GeneralSans-Medium.otf */,
+				17C1D4272A8A5F0400286FA1 /* GeneralSans-Semibold.otf */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -417,10 +417,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				174447FE2A86662C0083142F /* GeneralSans-Medium.otf in Resources */,
-				174447FC2A86662C0083142F /* GeneralSans-Regular.otf in Resources */,
-				174447FD2A86662C0083142F /* GeneralSans-Semibold.otf in Resources */,
 				065B0A0F2A6EA90C00B1D35F /* Preview Assets.xcassets in Resources */,
+				17C1D42A2A8A5F0400286FA1 /* GeneralSans-Semibold.otf in Resources */,
+				17C1D4282A8A5F0400286FA1 /* GeneralSans-Regular.otf in Resources */,
+				17C1D4292A8A5F0400286FA1 /* GeneralSans-Medium.otf in Resources */,
 				065B0A0C2A6EA90C00B1D35F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
