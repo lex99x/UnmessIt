@@ -8,11 +8,11 @@
 import SwiftUI
 
 extension Color {
-    static let textPrimaryColor = Color("TextPrimaryColor")
-    static let textSecondaryColor = Color("TextSecondaryColor")
-    static let textInvertColor = Color("TextInvertColor")
-    static let surfaceButtonSecondaryColor = Color("SurfaceButtonSecondaryColor")
-    static let surfaceSecondaryColor = Color("SurfaceSecondaryColor")
+    static let textPrimaryColor = Color("TextPrimary")
+    static let textSecondaryColor = Color("TextSecondary")
+    static let textInvertColor = Color("TextInvert")
+    static let surfaceButtonSecondaryColor = Color("SurfaceButtonSecondary")
+    static let surfaceSecondaryColor = Color("SurfaceSecondary")
 }
 
 extension Color {
