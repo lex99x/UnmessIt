@@ -44,6 +44,11 @@ extension Color {
     static let notDoneTaskBadgeBackground = Color(hex: "FF5252").opacity(0.15)
     
     static let taskTypeBackgroudn = Color(hex: "DADBF7")
+    static let taskRowBackground = Color(hex: "D6D6D6").opacity(0.5)
+    
+    static let surfaceSurfaceSecondary: Color = Color(red: 0.96, green: 0.96, blue: 0.96)
+    static let borderBorderDefault: Color = Color(red: 0.84, green: 0.84, blue: 0.84)
+    
 }
 
 extension CGColor {

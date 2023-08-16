@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06241C252A72A1AF00FFCDC4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06241C242A72A1AF00FFCDC4 /* User.swift */; };
+		0629C3542A8D0EA3007739CB /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629C3532A8D0EA3007739CB /* TaskRow.swift */; };
 		063F8F2D2A77F665002792D5 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063F8F2C2A77F665002792D5 /* LocalNotificationService.swift */; };
 		063F8F2F2A77FD3F002792D5 /* LocalNotificationBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063F8F2E2A77FD3F002792D5 /* LocalNotificationBody.swift */; };
 		065590B12A814BC100A0B5B4 /* TaskStatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065590B02A814BC100A0B5B4 /* TaskStatusBadge.swift */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		06241C242A72A1AF00FFCDC4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0629C3532A8D0EA3007739CB /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		063F8F2C2A77F665002792D5 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		063F8F2E2A77FD3F002792D5 /* LocalNotificationBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationBody.swift; sourceTree = "<group>"; };
 		065590B02A814BC100A0B5B4 /* TaskStatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusBadge.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				17CE41CD2A77F13800A622A1 /* NewTaskView.swift */,
 				066B70242A7D339300E9FB1E /* TaskItem.swift */,
 				1794525D2A8CF461002FECC5 /* TaskDetailsView.swift */,
+				0629C3532A8D0EA3007739CB /* TaskRow.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				06D816592A848B0400606F03 /* CoordinatorView.swift in Sources */,
 				170FE7732A70020300F7BD45 /* Home.swift in Sources */,
 				06BCFF812A833C0700D212A9 /* TaskViewModel.swift in Sources */,
+				0629C3542A8D0EA3007739CB /* TaskRow.swift in Sources */,
 				06241C252A72A1AF00FFCDC4 /* User.swift in Sources */,
 				17CE41D62A78131600A622A1 /* View+InputOverlay.swift in Sources */,
 				170FE77A2A70055100F7BD45 /* NewPlaceView.swift in Sources */,

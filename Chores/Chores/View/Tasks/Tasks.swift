@@ -66,7 +66,7 @@ struct Tasks: View {
                     List {
                         Section {
                             ForEach(viewModel.tasks.freeze()) { item in
-                                TaskItem(item: item)
+                                TaskRow(item: item)
                                     .listRowSeparator(.hidden)
                                     .swipeActions(edge: .trailing) {
                                         

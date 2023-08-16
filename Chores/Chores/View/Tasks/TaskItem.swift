@@ -9,13 +9,10 @@ import SwiftUI
 
 struct TaskItem: View {
     
-     var item: Task
+    var item: Task
     
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
-            
-            
-            
             ZStack {
                 VStack {
                  Image(systemName: "circle")
