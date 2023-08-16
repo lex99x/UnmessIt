@@ -130,9 +130,9 @@ struct Tasks: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {}, label: {
-                    Image(systemName: "ellipsis.circle")
+                    Image.moreIcon
+                        .foregroundColor(.textPrimaryColor)
                 })
-                .foregroundColor(.textPrimaryColor)
             }
         }
         
