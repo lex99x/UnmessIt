@@ -36,6 +36,7 @@
 		17213CEB2A72BE1D002F0924 /* CustomFilePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CEA2A72BE1D002F0924 /* CustomFilePickerView.swift */; };
 		17213CEF2A72BFDA002F0924 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CEE2A72BFDA002F0924 /* CustomButtonStyle.swift */; };
 		174447F82A8664F10083142F /* Font+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174447F72A8664F10083142F /* Font+CustomFonts.swift */; };
+		1794525E2A8CF461002FECC5 /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1794525D2A8CF461002FECC5 /* TaskDetailsView.swift */; };
 		17C1D4282A8A5F0400286FA1 /* GeneralSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 17C1D4252A8A5F0400286FA1 /* GeneralSans-Regular.otf */; };
 		17C1D4292A8A5F0400286FA1 /* GeneralSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 17C1D4262A8A5F0400286FA1 /* GeneralSans-Medium.otf */; };
 		17C1D42A2A8A5F0400286FA1 /* GeneralSans-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 17C1D4272A8A5F0400286FA1 /* GeneralSans-Semibold.otf */; };
@@ -98,6 +99,7 @@
 		17213CEE2A72BFDA002F0924 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		174447F62A86646B0083142F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174447F72A8664F10083142F /* Font+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+CustomFonts.swift"; sourceTree = "<group>"; };
+		1794525D2A8CF461002FECC5 /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
 		17C1D4252A8A5F0400286FA1 /* GeneralSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Regular.otf"; sourceTree = "<group>"; };
 		17C1D4262A8A5F0400286FA1 /* GeneralSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Medium.otf"; sourceTree = "<group>"; };
 		17C1D4272A8A5F0400286FA1 /* GeneralSans-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Semibold.otf"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				066B701F2A7BF75100E9FB1E /* Tasks.swift */,
 				17CE41CD2A77F13800A622A1 /* NewTaskView.swift */,
 				066B70242A7D339300E9FB1E /* TaskItem.swift */,
+				1794525D2A8CF461002FECC5 /* TaskDetailsView.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				065590B12A814BC100A0B5B4 /* TaskStatusBadge.swift in Sources */,
 				067DFA1E2A6EC89000A0E2F6 /* Decodable+LoadData.swift in Sources */,
 				17DDC0482A8270EA00D02BB8 /* CustomSectionHeaderView.swift in Sources */,
+				1794525E2A8CF461002FECC5 /* TaskDetailsView.swift in Sources */,
 				17213CEF2A72BFDA002F0924 /* CustomButtonStyle.swift in Sources */,
 				17CE41D02A7806F600A622A1 /* CustomSelectionInputView.swift in Sources */,
 				066B70202A7BF75100E9FB1E /* Tasks.swift in Sources */,

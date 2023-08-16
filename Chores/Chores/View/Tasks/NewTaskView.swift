@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewTaskView: View {
-    
+        
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = NewTaskViewModel()
     

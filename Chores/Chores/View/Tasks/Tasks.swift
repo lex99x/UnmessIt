@@ -10,9 +10,9 @@ import RealmSwift
 
 struct Tasks: View {
     
-    
     @StateObject private var viewModel = TaskViewModel()
     @State private var searchText = ""
+    
     //    private var a: Results
     
     //    var searchResults: RealmSwift.List<Task>  {
@@ -27,29 +27,40 @@ struct Tasks: View {
     //
     var body: some View {
         
-        ZStack {
+        VStack {
             
             if viewModel.tasks.isEmpty {
+                
+                Spacer()
                 
                 VStack(spacing: 56) {
                     VStack {
                         Text("It's so quiet and empty in here...")
                         Text("Add a few tasks to your routine")
-                            .padding(.bottom, 24)
-                            .padding(.top, 4)
                     }
-                    .foregroundColor(.gray)
-                    
-                    Button("Add task", action: {
-                        // TODO: add navigation to add new task
-//                        viewModel.addNewTask()
-                        viewModel.isAddingNewTask.toggle()
-                    })
-                    .buttonStyle(CustomButtonStyle(width: .infinity,
-                                                   foregroundColor: .white,
-                                                   backgroundColor: .btnDarkBackground))
+//                    .padding(.bottom, 24)
+                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    .foregroundColor(.textSecondaryColor)
                 }
-                .padding()
+                
+                Spacer()
+                
+                Button(action: {
+                    // TODO: add navigation to add new task
+                    viewModel.isAddingNewTask.toggle()
+                }, label: {
+                    Label("Add a task", systemImage: "plus")
+                })
+                .buttonStyle(CustomButtonStyle(width: .infinity,
+                                               foregroundColor: .textInvertColor,
+                                               backgroundColor: .accentColor))
+                .padding(.horizontal)
+                .padding(.bottom, 8)
+                .sheet(isPresented: $viewModel.isAddingNewTask) {
+                    NavigationStack {
+                        NewTaskView()
+                    }
+                }
                 
             } else {
                 VStack {
@@ -92,7 +103,7 @@ struct Tasks: View {
                         
                     }
                     .listStyle(.inset)
-                    
+                                        
                     Button("Add task", action: {
                         // TODO: add navigation to add new task
 //                        viewModel.addNewTask()
@@ -115,13 +126,14 @@ struct Tasks: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Text("Place Name")
-                    .fontWeight(.bold)
+                    .font(Font.custom(Font.generalSansFontMedium, size: 17))
             }
-//            ToolbarItem(placement: .navigationBarTrailing) {
-//                Button(action: {}, label: {
-//                    Image(systemName: "ellipsis.circle")
-//                })
-//            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {}, label: {
+                    Image(systemName: "ellipsis.circle")
+                })
+                .foregroundColor(.textPrimaryColor)
+            }
         }
         
     }
