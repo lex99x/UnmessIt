@@ -13,7 +13,8 @@ struct ChoresApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                Tasks()
+                @ObservedObject var viewModel = OnboardingViewModel()
+                OnboardingNewPlaceView(placeNameTextfield: $viewModel.placeNameTextfield, placeResidents: $viewModel.placeResidents)
             }
 //            .onAppear {
 //                // MARK: Daily notification time

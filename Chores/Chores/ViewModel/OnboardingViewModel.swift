@@ -12,6 +12,8 @@ class OnboardingViewModel: ObservableObject {
     
     @Published var userNameTextfield = ""
     @Published var selectedNotificationTime = Date.now
+    @Published var placeNameTextfield = ""
+    @Published var placeResidents: [String] = ["Fulano", "Ciclano", "Beltrano"]
 
     func registerUserName() -> String? {
         UserDefaults.standard.set(self.userNameTextfield, forKey: "userName")

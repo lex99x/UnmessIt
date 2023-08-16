@@ -25,13 +25,11 @@ struct OnboardingView: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color.textSecondaryColor)
                 .frame(maxWidth: .infinity, alignment: .top)
-                .padding(.horizontal)
             
             CustomTextFieldView(title: "How would you like to be called?",
                                 optionalLabel: nil,
                                 placeholder: "Type your name or nickname",
                                 textfield: $viewModel.userNameTextfield)
-            .padding(.horizontal)
             .padding(.top, 128)
             
             NavigationLink(destination: OnboardingNotificationsView(selectedNotificationTime: $viewModel.selectedNotificationTime), label: {
@@ -44,12 +42,12 @@ struct OnboardingView: View {
             .opacity(viewModel.userNameTextfield.isEmpty ? 0.5 : 1)
             .buttonStyle(CustomButtonStyle(width: .infinity,
                                            foregroundColor: nil,
-                                           backgroundColor: Color.surfaceButtonSecondaryColor))
-            .padding(.horizontal)
+                                           backgroundColor: Color.accentColor))
             
             Spacer()
             
         }
+        .padding(.horizontal)
         
     }
     
@@ -96,10 +94,8 @@ struct OnboardingNotificationsView: View {
             .padding(.top, 105)
             
             Spacer()
-                        
-            Button(action: {
-                // implement navigation
-            }, label: {
+            
+            NavigationLink(destination: EmptyView(), label: {
                 Text("Get started")
             })
             .buttonStyle(CustomButtonStyle(width: .infinity,
@@ -113,15 +109,139 @@ struct OnboardingNotificationsView: View {
         .navigationBarBackButtonHidden()
         
     }
+    
+}
 
+struct OnboardingNewPlaceView: View {
+    
+    @Binding var placeNameTextfield: String
+    
+    @State var residentNameTextfield = ""
+    @State var isResidentTextfieldVisible = false
+    @FocusState var isResidentTextfieldFocused: Bool
+    
+    @State var isPlaceResidentEmpty = true
+    
+    @Binding var placeResidents: [String]
+    
+    var body: some View {
+        
+        VStack(spacing: 24) {
+            
+            Text("New place")
+                .font(Font.custom(Font.generalSansFontSemibold, size: 28))
+                .padding(.top, 120)
+            
+            Text("Now add your place to UnmessIt and register who lives that live with you, unless you live alone.")
+                .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                .foregroundColor(Color.textSecondaryColor)
+                .fixedSize(horizontal: false, vertical: true)
+            
+            CustomTextFieldView(title: "Place's name",
+                                optionalLabel: nil,
+                                placeholder: "Give a name to this place",
+                                textfield: $placeNameTextfield)
+            //            .padding(.top, 41)
+            
+            HStack {
+                Text("Residents")
+                Spacer()
+            }
+            
+            VStack {
+                
+                if isResidentTextfieldVisible {
+                    
+                    HStack {
+                        
+                        TextField("Resident's name", text: $residentNameTextfield)
+                            .focused($isResidentTextfieldFocused)
+                            .onSubmit {
+                                placeResidents.append(residentNameTextfield)
+                                isPlaceResidentEmpty = false
+                                print(placeResidents)
+                                residentNameTextfield = ""
+                            }
+                        
+                        Button(action: {
+                            isResidentTextfieldVisible = false
+                            isResidentTextfieldFocused = false
+                        }, label: {
+                            Image(systemName: "x.circle")
+                                .foregroundColor(Color.textPrimaryColor)
+                        })
+                        //                        .disabled(placeResidents.isEmpty)
+                        
+                    }
+                    
+                } else {
+                    
+                    Button(action: {
+                        isResidentTextfieldVisible = true
+                        isResidentTextfieldFocused = true
+                    }, label: {
+                        
+                        HStack {
+                            Image(systemName: "person.badge.plus")
+                            Text("Add resident")
+                            Spacer()
+                        }
+                        .foregroundColor(Color.textPrimaryColor)
+                        
+                    })
+                    
+                }
+                
+            }
+            .padding()
+            .inputOverlay()
+            
+            if isPlaceResidentEmpty {
+                
+                List {
+                    
+                    ForEach(placeResidents, id: \.self) { resident in
+                        Text(resident)
+                    }
+                    .onDelete(perform: { offsets in
+                        placeResidents.remove(atOffsets: offsets)
+                        if placeResidents.isEmpty {
+                            isPlaceResidentEmpty = true
+                        }
+                        print(placeResidents)
+                    })
+                    
+                }
+                .listStyle(.plain)
+                .inputOverlay()
+                
+                Spacer()
+                
+                NavigationLink(destination: EmptyView(), label: {
+                    Text("Get started")
+                })
+                .buttonStyle(CustomButtonStyle(width: .infinity,
+                                               foregroundColor: nil,
+                                               backgroundColor: Color.accentColor))
+                
+            }
+            
+        }
+        .padding(.horizontal)
+        
+    }
 }
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
+        @ObservedObject var viewModel = OnboardingViewModel()
         NavigationStack {
             OnboardingView()
         }
         OnboardingNotificationsView(selectedNotificationTime: .constant(Date.now))
             .previewDisplayName("Onboarding Notifications View")
+        OnboardingNewPlaceView(placeNameTextfield: $viewModel.placeNameTextfield,
+                               placeResidents: $viewModel.placeResidents)
+        .previewDisplayName("Onboarding New Place View")
     }
 }

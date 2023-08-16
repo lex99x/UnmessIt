@@ -33,10 +33,7 @@ struct CustomTextFieldView: View {
         
             TextField(placeholder, text: textfield)
                 .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(.gray, lineWidth: 1.0)
-                )
+                .inputOverlay()
             
         }
         

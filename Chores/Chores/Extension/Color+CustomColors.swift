@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension Color {
+    static let textPrimaryColor = Color("TextPrimaryColor")
     static let textSecondaryColor = Color("TextSecondaryColor")
     static let surfaceButtonSecondaryColor = Color("SurfaceButtonSecondaryColor")
     static let surfaceSecondaryColor = Color("SurfaceSecondaryColor")
