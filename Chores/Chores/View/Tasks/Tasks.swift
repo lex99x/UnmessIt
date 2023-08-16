@@ -13,18 +13,6 @@ struct Tasks: View {
     @StateObject private var viewModel = TaskViewModel()
     @State private var searchText = ""
     
-    //    private var a: Results
-    
-    //    var searchResults: RealmSwift.List<Task>  {
-    //        if searchText.isEmpty {
-    //            return viewModel.tasks
-    //        } else {
-    //
-    //            return viewModel.tasks.where{$0.title.contains(searchText)}
-    //
-    //        }
-    //    }
-    //
     var body: some View {
         
         VStack {
