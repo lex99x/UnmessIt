@@ -38,7 +38,6 @@ struct Tasks: View {
                         Text("It's so quiet and empty in here...")
                         Text("Add a few tasks to your routine")
                     }
-//                    .padding(.bottom, 24)
                     .font(Font.custom(Font.generalSansFontRegular, size: 17))
                     .foregroundColor(.textSecondaryColor)
                 }
@@ -49,7 +48,7 @@ struct Tasks: View {
                     // TODO: add navigation to add new task
                     viewModel.isAddingNewTask.toggle()
                 }, label: {
-                    Label("Add a task", systemImage: "plus")
+                    Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
                 })
                 .buttonStyle(CustomButtonStyle(width: .infinity,
                                                foregroundColor: .textInvertColor,
