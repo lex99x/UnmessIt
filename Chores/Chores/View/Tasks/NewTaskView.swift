@@ -79,7 +79,7 @@ struct NewTaskView: View {
                             
                             Picker("", selection: $viewModel.selectedRepetionOption)
                             {
-                                ForEach(Task.timeOptions, id: \.self) {
+                                ForEach(Task.timePeriodOptions, id: \.self) {
                                     Text($0)
                                 }
                             }

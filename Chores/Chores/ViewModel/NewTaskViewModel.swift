@@ -15,9 +15,9 @@ class NewTaskViewModel: ObservableObject {
     @Published var selectedStartDate = Date.now
     @Published var selectedEndRepeatDate = Date.now
     
-    @Published var selectedTaskTypeOption = Types.none.rawValue
+    @Published var selectedTaskTypeOption = TaskCategory.none.rawValue
     @Published var selectedTimeOption = 1
-    @Published var selectedRepetionOption = Time.hours.rawValue
+    @Published var selectedRepetionOption = TimePeriod.hours.rawValue
     @Published var selectedAssigneeOption = ""
     
     @Published var isImportantToggleOn = false
@@ -30,7 +30,7 @@ class NewTaskViewModel: ObservableObject {
         
         let task = Task()
         
-        guard case task.type = Types(rawValue: selectedTaskTypeOption) else { return }
+        guard case task.category = TaskCategory(rawValue: selectedTaskTypeOption) else { return }
         task.title = title
         task.desc = description
         task.isImportant = isImportantToggleOn

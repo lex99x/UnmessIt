@@ -15,7 +15,7 @@ final class User: Object, ObjectKeyIdentifiable {
     @Persisted var profilePhotoPath = ""
     @Persisted var email = ""
     
-    @Persisted var preferences: List<Types>
+    @Persisted var preferences: List<TaskCategory>
     @Persisted var places = RealmSwift.List<Space>()
     
 }

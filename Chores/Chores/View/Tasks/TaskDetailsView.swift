@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct TaskDetailsView: View {
     
     let task: Task
-    
-    @State var isImportantTask = true // MARK: temp
     
     @State var isShowingDeleteAlert = false
     @Environment(\.dismiss) private var dismiss
@@ -23,10 +22,9 @@ struct TaskDetailsView: View {
             // MARK: Title + Description
             VStack(alignment: .leading, spacing: 16) {
                 
-                Text("Take out the trash")
+                Text(task.title)
                     .font(Font.custom(Font.generalSansFontMedium, size: 20))
-                
-                Text("Empty all trash cans and take it out before 14h. Don't forget that box for recycling.")
+                Text(task.desc)
                     .font(Font.custom(Font.generalSansFontRegular, size: 17))
                 
             }
@@ -35,7 +33,7 @@ struct TaskDetailsView: View {
             HStack(spacing: 8) {
                 
                 HStack {
-                    Text("Light cleaning")
+                    Text(task.category.rawValue)
                         .foregroundColor(.textSecondaryColor)
                     Image.lightCleaningIcon
                         .resizable()
@@ -50,7 +48,7 @@ struct TaskDetailsView: View {
                     Color.surfaceSecondaryColor
                 }
                 
-                if isImportantTask {
+                if task.isImportant {
                     
                     HStack {
                         Text("Important task")
@@ -77,31 +75,39 @@ struct TaskDetailsView: View {
                 HStack {
                     
                     HStack {
-                        Text("10 Aug 2023")
+                        Text(task.startDate.formatted(date: .abbreviated, time: .omitted))
                         Image(systemName: "circle.fill")
                             .resizable()
                             .frame(width: 4, height: 4)
-                        Text("12:00")
+                        Text(task.startDate.formatted(date: .omitted, time: .shortened))
                     }
                     .font(Font.custom(Font.generalSansFontRegular, size: 17))
                     .foregroundColor(.textPrimaryColor)
                     
                     Spacer()
                     
-                    HStack {
-                        Text("Recurrent task")
-                        Image.repeatIcon
-                            .resizable()
-                            .frame(width: 16, height: 16)
+                    if task.endRepeatDate != nil {
+                        
+                        HStack {
+                            Text("Recurrent task")
+                            Image.repeatIcon
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                        }
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textSecondaryColor)
+                        
                     }
-                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                    .foregroundColor(.textSecondaryColor)
                     
                 }
                 
-                Text("Repeats every 2 days until 23 Sep 2023")
-                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                    .foregroundColor(.textSecondaryColor)
+                if let endRepeatDate = task.endRepeatDate {
+                    
+                    Text("Repeats every \(task.repetitionNumber) \(task.repetitionTimePeriod.rawValue.lowercased()) until \(endRepeatDate.formatted(date: .abbreviated, time: .omitted))")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textSecondaryColor)
+                    
+                }
                 
             }
             .frame(maxWidth: .infinity)
@@ -120,31 +126,21 @@ struct TaskDetailsView: View {
                 
                 VStack(spacing: 12) {
                     
-                    VStack {
+                    ForEach(task.assignees) { assignee in
                         
-                        HStack {
-                            Text("Fulano de tal")
-                                .foregroundColor(.textPrimaryColor)
-                            Spacer()
-                            Text("Today")
-                                .foregroundColor(.textSecondaryColor)
+                        VStack {
+                            
+                            HStack {
+                                Text(assignee.nickname)
+                                    .foregroundColor(.textPrimaryColor)
+                                Spacer()
+                                Text("Today")
+                                    .foregroundColor(.textSecondaryColor)
+                            }
+                            
+                            Divider()
+                            
                         }
-                        
-                        Divider()
-                        
-                    }
-                    
-                    VStack {
-                        
-                        HStack {
-                            Text("Fulano de tal")
-                                .foregroundColor(.textPrimaryColor)
-                            Spacer()
-                            Text("Today")
-                                .foregroundColor(.textSecondaryColor)
-                        }
-                        
-                        Divider()
                         
                     }
                     
@@ -208,9 +204,19 @@ struct TaskDetailsView: View {
 }
 
 struct TaskDetailsView_Previews: PreviewProvider {
+    
+    static let mockedTask = Task(value: ["title": "Take ou the trash",
+                                         "desc": "Empty all trash cans and take it out before 14h. Don't forget that box for recycling.",
+                                         "isImportant": true,
+                                         "category": TaskCategory.ligthCleaning,
+                                         "startDate": Date.now,
+                                         "repetitionNumber": 2,
+                                         "repetitionTimePeriod": TimePeriod.days,
+                                         "endRepeatDate": Date.now] as [String : Any])
+    
     static var previews: some View {
         NavigationStack {
-            TaskDetailsView(task: Task())
+            TaskDetailsView(task: TaskDetailsView_Previews.mockedTask)
         }
     }
 }
