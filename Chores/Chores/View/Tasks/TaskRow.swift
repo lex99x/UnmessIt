@@ -17,8 +17,8 @@ struct TaskRow: View {
                     HStack {
                         // Type image
                         ZStack {
-                            Image(item.type.rawValue)
-                                .padding(12)
+//                            Image(item.type.rawValue)
+//                                .padding(12)
                         }
                         .background(Color(hex: "D6D6D6"))
                         .cornerRadius(16)
