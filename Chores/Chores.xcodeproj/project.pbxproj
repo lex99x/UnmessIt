@@ -28,6 +28,7 @@
 		069EC1592A934B6E002BBDE6 /* Residents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069EC1582A934B6E002BBDE6 /* Residents.swift */; };
 		069EC15B2A934B9D002BBDE6 /* ResidentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069EC15A2A934B9D002BBDE6 /* ResidentsViewModel.swift */; };
 		069EC15E2A934F35002BBDE6 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069EC15D2A934F35002BBDE6 /* RealmHelper.swift */; };
+		06AF99C22A935D13006BFBD4 /* ResidentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF99C12A935D13006BFBD4 /* ResidentRow.swift */; };
 		06BCFF812A833C0700D212A9 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF802A833C0700D212A9 /* TaskViewModel.swift */; };
 		06BCFF832A83C00000D212A9 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF822A83C00000D212A9 /* OnboardingViewModel.swift */; };
 		06D816552A848A6F00606F03 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D816542A848A6F00606F03 /* Coordinator.swift */; };
@@ -99,6 +100,7 @@
 		069EC1582A934B6E002BBDE6 /* Residents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Residents.swift; sourceTree = "<group>"; };
 		069EC15A2A934B9D002BBDE6 /* ResidentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentsViewModel.swift; sourceTree = "<group>"; };
 		069EC15D2A934F35002BBDE6 /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
+		06AF99C12A935D13006BFBD4 /* ResidentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentRow.swift; sourceTree = "<group>"; };
 		06BCFF802A833C0700D212A9 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		06BCFF822A83C00000D212A9 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		06D816542A848A6F00606F03 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				069EC1542A93175A002BBDE6 /* NewResident.swift */,
 				069EC1582A934B6E002BBDE6 /* Residents.swift */,
 				069EC15A2A934B9D002BBDE6 /* ResidentsViewModel.swift */,
+				06AF99C12A935D13006BFBD4 /* ResidentRow.swift */,
 			);
 			path = " Residents";
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				065B0A332A6EBB9300B1D35F /* Task.swift in Sources */,
 				06BCFF832A83C00000D212A9 /* OnboardingViewModel.swift in Sources */,
 				063F8F2F2A77FD3F002792D5 /* LocalNotificationBody.swift in Sources */,
+				06AF99C22A935D13006BFBD4 /* ResidentRow.swift in Sources */,
 				174447F82A8664F10083142F /* Font+CustomFonts.swift in Sources */,
 				065B0A082A6EA90B00B1D35F /* ChoresApp.swift in Sources */,
 				069EC1572A93183F002BBDE6 /* NewResidentViewModel.swift in Sources */,
