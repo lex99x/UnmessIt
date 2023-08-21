@@ -14,6 +14,8 @@ struct NewTaskView: View {
     
     var body: some View {
         
+        Divider()
+        
         ScrollView {
             
             VStack(alignment: .leading, spacing: 24) {
@@ -22,29 +24,45 @@ struct NewTaskView: View {
                                          options: Task.taskOptions,
                                          selectedOption: $viewModel.selectedTaskTypeOption)
                 
-                Text("Identification")
-                    .font(.title3)
+                CustomTextFieldView(title: "Task name",
+                                    placeholder: "Take out the trash",
+                                    textfield: $viewModel.titleTextfield)
                 
-                CustomDescriptionInputView(whatToDo: $viewModel.title,
-                                           howToDo: $viewModel.description)
+                CustomTextFieldView(title: "Description",
+                                    placeholder: "How it should be done",
+                                    textfield: $viewModel.descriptionTextfield)
                 
                 Toggle("Important", isOn: $viewModel.isImportantToggleOn)
-                    .foregroundColor(.gray)
+                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    .foregroundColor(.textPrimaryColor)
                     .padding()
                     .inputOverlay()
+                    .background {
+                        Color.surfaceSecondaryColor
+                    }
                 
-                Text("When it will happen")
-                    .font(.title3)
-                
-                DatePicker("Date and time", selection: $viewModel.selectedStartDate)
-                    .padding()
-                    .foregroundColor(.gray)
-                    .inputOverlay()
+                VStack(alignment: .leading) {
+                    
+                    Text("When")
+                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
+                        .foregroundColor(.textPrimaryColor)
+                    
+                    DatePicker("Date and time", selection: $viewModel.selectedStartDate)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textPrimaryColor)
+                        .padding()
+                        .inputOverlay()
+                        .background {
+                            Color.surfaceSecondaryColor
+                        }
+                    
+                }
                 
                 VStack {
                     
                     Toggle("Recurrent task", isOn: $viewModel.isRecurrentToggleOn)
-                        .foregroundColor(.gray)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textPrimaryColor)
                     
                     if viewModel.isRecurrentToggleOn {
                         
@@ -64,8 +82,9 @@ struct NewTaskView: View {
                             }
                             
                         }
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textPrimaryColor)
                         .padding(.top, 11)
-                        .foregroundColor(.gray)
                         
                         HStack {
                             
@@ -90,7 +109,8 @@ struct NewTaskView: View {
                         Divider()
                         
                         Toggle("End repeat", isOn: $viewModel.isEndRepeatToggleOn)
-                            .foregroundColor(.gray)
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                            .foregroundColor(.textPrimaryColor)
                             .padding(.top, 11)
                         
                         if viewModel.isEndRepeatToggleOn {
@@ -98,8 +118,8 @@ struct NewTaskView: View {
                             Divider()
                             
                             DatePicker("Repeats until", selection: $viewModel.selectedEndRepeatDate, displayedComponents: .date)
-                                .foregroundColor(.gray)
-                                .padding(.top, 11)
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textPrimaryColor)                                .padding(.top, 11)
                             
                         }
                         
@@ -108,37 +128,43 @@ struct NewTaskView: View {
                 }
                 .padding()
                 .inputOverlay()
-                
-                Text("Who should do it")
-                    .font(.title3)
-                
-                CustomSelectionInputView(placeholder: "Assignees",
-                                         options: viewModel.assigneeOptions,
-                                         selectedOption: $viewModel.selectedAssigneeOption)
+                .background {
+                    Color.surfaceSecondaryColor
+                }
                 
             }
             .padding()
-            .navigationTitle("Add task")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         dismiss()
                     }, label: {
                         Text("Cancel")
+                            .font(Font.custom(Font.generalSansFontMedium, size: 17))
+                            .foregroundColor(.textAccentColor)
                     })
                 }
+                
+                ToolbarItem(placement: .principal) {
+                    Text("New task")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        viewModel.addNewTask()
+//                        viewModel.addNewTask()
                     }, label: {
                         Text("Save")
+                            .font(Font.custom(Font.generalSansFontMedium, size: 17))
+                            .foregroundColor(.textAccentColor)
                     })
                 }
+                
             }
             
         }
-//        .customBackground()
         
     }
     

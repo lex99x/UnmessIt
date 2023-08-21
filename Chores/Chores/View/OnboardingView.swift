@@ -27,7 +27,6 @@ struct OnboardingView: View {
                 .frame(maxWidth: .infinity, alignment: .top)
             
             CustomTextFieldView(title: "How would you like to be called?",
-                                optionalLabel: nil,
                                 placeholder: "Type your name or nickname",
                                 textfield: $viewModel.userNameTextfield)
             .padding(.top, 128)
@@ -95,7 +94,7 @@ struct OnboardingNotificationsView: View {
             
             Spacer()
             
-            NavigationLink(destination: EmptyView(), label: {
+            NavigationLink(destination: Tasks(), label: {
                 Text("Get started")
             })
             .buttonStyle(CustomButtonStyle(width: .infinity,
@@ -138,7 +137,6 @@ struct OnboardingNewPlaceView: View {
                 .fixedSize(horizontal: false, vertical: true)
             
             CustomTextFieldView(title: "Place's name",
-                                optionalLabel: nil,
                                 placeholder: "Give a name to this place",
                                 textfield: $placeNameTextfield)
             //            .padding(.top, 41)

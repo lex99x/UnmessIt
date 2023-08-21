@@ -18,13 +18,11 @@ struct NewPlaceView: View {
         VStack(alignment: .leading, spacing: 24) {
             
             CustomTextFieldView(title: "Name",
-                                optionalLabel: nil,
                                 placeholder: "Type the name of the place",
                                 textfield: $viewModel.nameTextfield)
             .padding(.top, 10)
             
             CustomTextFieldView(title: "Description",
-                                optionalLabel: "Optional",
                                 placeholder: "Small description about the place",
                                 textfield: $viewModel.descriptionTextfield)
             
@@ -33,9 +31,9 @@ struct NewPlaceView: View {
             
             CustomFilePickerView(files: $viewModel.files)
             
-            CustomTextFieldView(title: "URLs", optionalLabel: "Optional", placeholder: "Paste useful links here", textfield: $viewModel.urlsTextfield)
+            CustomTextFieldView(title: "URLs", placeholder: "Paste useful links here", textfield: $viewModel.urlsTextfield)
             
-            CustomTextFieldView(title: "Notes", optionalLabel: "Optional", placeholder: "Add useful information about living in this place", textfield: $viewModel.notesTextfield)
+            CustomTextFieldView(title: "Notes", placeholder: "Add useful information about living in this place", textfield: $viewModel.notesTextfield)
             
             Spacer()
             

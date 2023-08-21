@@ -5,12 +5,12 @@
 //  Created by Joao Lucas Camilo on 24/07/23.
 //
 
-import Foundation
+import SwiftUI
 import RealmSwift
 
 enum TaskCategory: String, PersistableEnum {
-    case none = "None", clothes = "Clothes", cooking = "Cooking", ligthCleaning = "Light cleaning",
-         heavyCleaning = "Heavy cleaning", groceries = "Groceries", payments = "Payments", pet = "Pet", custom = "Custom"
+    case clothes = "Clothes", cooking = "Cooking", ligthCleaning = "Light cleaning",
+         heavyCleaning = "Heavy cleaning", groceries = "Groceries", payments = "Payments", pet = "Pet"
 }
 
 enum TimePeriod: String, PersistableEnum {
@@ -19,15 +19,19 @@ enum TimePeriod: String, PersistableEnum {
 
 class Task: Object, ObjectKeyIdentifiable {
     
-    static let taskOptions: [String] = [TaskCategory.none.rawValue, TaskCategory.clothes.rawValue, TaskCategory.cooking.rawValue,
-                                        TaskCategory.ligthCleaning.rawValue, TaskCategory.heavyCleaning.rawValue, TaskCategory.groceries.rawValue,
-                                        TaskCategory.payments.rawValue, TaskCategory.pet.rawValue, TaskCategory.custom.rawValue]
+    static let taskOptions: [String] = [TaskCategory.clothes.rawValue,
+                                        TaskCategory.cooking.rawValue,
+                                        TaskCategory.ligthCleaning.rawValue,
+                                        TaskCategory.heavyCleaning.rawValue,
+                                        TaskCategory.groceries.rawValue,
+                                        TaskCategory.payments.rawValue,
+                                        TaskCategory.pet.rawValue]
     
     static let timePeriodOptions: [String] = [TimePeriod.hours.rawValue,
-                                        TimePeriod.days.rawValue,
-                                        TimePeriod.weeks.rawValue,
-                                        TimePeriod.months.rawValue,
-                                        TimePeriod.years.rawValue]
+                                              TimePeriod.days.rawValue,
+                                              TimePeriod.weeks.rawValue,
+                                              TimePeriod.months.rawValue,
+                                              TimePeriod.years.rawValue]
     
     enum Status: String, PersistableEnum {
         case done, pending, cantDo
@@ -50,11 +54,32 @@ class Task: Object, ObjectKeyIdentifiable {
     @Persisted var endRepeatDate: Date?
     
     // MARK: Enums
-    @Persisted var category: TaskCategory = .none
+    @Persisted var category: TaskCategory
     @Persisted var status: Status = .pending
     @Persisted var owner: TaskOwner?
     
     @Persisted var assignees = RealmSwift.List<User>()
+    
+    static func getTaskIconByCategory(taskCategory: TaskCategory) -> Image {
+        
+        switch taskCategory {
+            case .clothes:
+                return .clothesIcon
+            case .cooking:
+                return .cookingIcon
+            case .ligthCleaning:
+                return .lightCleaningIcon
+            case .heavyCleaning:
+                return .heavyCleaningIcon
+            case .groceries:
+                return .groceriesIcon
+            case .payments:
+                return .paymentsIcon
+            case .pet:
+                return .petsIcon
+        }
+        
+    }
     
     func updateStatus(status: Status){
         if let realm = self.realm {

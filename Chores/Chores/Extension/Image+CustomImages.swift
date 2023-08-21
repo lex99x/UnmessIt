@@ -19,7 +19,7 @@ extension Image {
     static let organizationIcon = Image("Organization")
     static let paymentsIcon = Image("Payments")
     static let petsIcon = Image("Pets")
-    static let shoppingIcon = Image("Shopping")
+    static let groceriesIcon = Image("Groceries")
  
     // MARK: General
     static let arrowLeftIcon = Image("ArrowLeft")

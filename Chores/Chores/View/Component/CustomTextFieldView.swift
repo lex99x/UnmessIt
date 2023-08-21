@@ -10,30 +10,23 @@ import SwiftUI
 struct CustomTextFieldView: View {
 
     let title: String
-    let optionalLabel: String?
     let placeholder: String
     
     var textfield: Binding<String>
     
     var body: some View {
         
-        VStack {
+        VStack(alignment: .leading) {
             
-            HStack {
-                
-                Text(title)
-                Spacer()
-                
-                if let optionalLabel = optionalLabel {
-                    Text(optionalLabel)
-                        .foregroundColor(.gray)
-                }
-                
-            }
-        
+            Text(title)
+                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    
             TextField(placeholder, text: textfield)
                 .padding()
                 .inputOverlay()
+                .background {
+                    Color.surfaceSecondaryColor
+                }
             
         }
         
@@ -44,7 +37,6 @@ struct CustomTextFieldView: View {
 struct CustomTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         CustomTextFieldView(title: "Title",
-                            optionalLabel: "Optional",
                             placeholder: "Placeholder here",
                             textfield: .constant(""))
         .padding()

@@ -134,6 +134,7 @@ struct Tasks: View {
                 })
             }
         }
+        .navigationBarBackButtonHidden()
         
     }
     
