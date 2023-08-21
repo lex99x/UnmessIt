@@ -12,12 +12,22 @@ import SwiftUI
 final class NewResidentViewModel: ObservableObject {
     
     @ObservedResults(Space.self) var spaces
+    private var token: NotificationToken? = nil
     
     @Published var residentName: String = ""
     @Published var selections: [String] = []
     
     
-    
+    init() {
+        token = spaces.observe({ (changes) in
+            switch changes {
+            case .error(_): break
+            case .initial(_): break
+            case .update(_, deletions: _, insertions: _, modifications: _):
+                self.objectWillChange.send()
+            }
+        })
+    }
     
     func addResident() {
         let user = User()

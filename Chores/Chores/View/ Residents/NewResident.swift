@@ -39,9 +39,9 @@ struct NewResident: View {
                         
                     }
                 }
-                
+                .listRowSeparator(.hidden)
+                .listRowInsets(EdgeInsets())
             }
-            
             .listStyle(.inset)
             
         }
@@ -107,16 +107,23 @@ struct MultipleSelectionRow: View {
     var action: () -> Void
 
     var body: some View {
+        
         Button(action: self.action) {
             HStack {
-                Image(self.title)
-                Text(self.title)
                 if self.isSelected {
-                    Spacer()
                     Image(systemName: "checkmark")
                 }
+                Text(self.title)
+                Spacer()
+                Image(self.title)
             }
+            
         }
+        .padding()
+        .overlay(
+          RoundedRectangle(cornerRadius: 5)
+            .stroke(Color.borderBorderDefault, lineWidth: 1)
+        )
     }
 }
 
