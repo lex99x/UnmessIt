@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 final class User: Object, ObjectKeyIdentifiable {
-    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted(primaryKey: true) var _id: ObjectId
     
     @Persisted var nickname = ""
     @Persisted var profilePhotoPath = ""

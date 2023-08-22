@@ -21,27 +21,30 @@ final class RealmHelper {
     
     static func realmA() -> Realm {
         let realm = inMemoryRealm()
-        let group = realm.objects(Space.self).first
-        if let group {
-            let user = User(value: ["nickname":"joaozinho", "preferences":["Cooking","Pet"]])
+        
+        if let group = realm.objects(Space.self).first {
+            let user = User(value: ["nickname":"\(names.randomElement())", "preferences":["Cooking","Pets"]])
             
-            for _ in 1...5 {
+            for _ in 1...3 {
                 try? realm.write {
                     group.residents.append(user)
                 }
             }
-        } else {
+        }
+        else {
             try? realm.write {
                 realm.add(Space())
             }
+            let user = User(value: ["nickname":"\(names.randomElement())", "preferences":["Cooking","Pets"]])
             
-            let user = User(value: ["nickname":"joaozinho", "preferences":["Cooking","Pet"]])
+            let group = realm.objects(Space.self).first
             
-            for _ in 1...5 {
+            for _ in 1...1 {
                 try? realm.write {
                     group?.residents.append(user)
                 }
             }
+
         }
         return realm
     }

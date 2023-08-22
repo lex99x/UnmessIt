@@ -46,9 +46,12 @@ extension Color {
     static let taskTypeBackgroudn = Color(hex: "DADBF7")
     static let taskRowBackground = Color(hex: "D6D6D6").opacity(0.5)
     
-    static let surfaceSurfaceSecondary: Color = Color(red: 0.96, green: 0.96, blue: 0.96)
+    static let surfaceSurfaceSecondary: Color = Color(hex:"F5F5F5")
     static let borderBorderDefault: Color = Color(red: 0.84, green: 0.84, blue: 0.84)
     
+    static let surfaceAccentPrimary: Color = Color(hex:"6DD6E4")
+    static let accent2: Color = Color(hex: "079AAD")
+    static let defaultRed: Color = Color(hex: "ED3A4C")
 }
 
 extension CGColor {

@@ -9,21 +9,75 @@ import SwiftUI
 import RealmSwift
 
 struct Residents: View {
+    
     @ObservedObject private var residentsViewModel = ResidentsViewModel()
+    @State private var isActive = false
+    @State private var showAlert = false
+    
+    @State private var selection: String? = nil
     
     var body: some View {
-        List {
-            ForEach(residentsViewModel.residents) { item in
-                Text(item.nickname)
+        //        NavigationView {
+        ZStack {
+            VStack {
+                List {
+                    ForEach(residentsViewModel.residents.freeze()) { item in
+                        ResidentRow(resident: item)
+                            .padding([.top, .bottom], 10)
+                            .swipeActions(edge: .trailing) {
+                                Button {
+                                    print(item)
+                                    print("aaa")
+                                    residentsViewModel.deleteItem(item: item)
+                                } label: {
+                                    Text("Delete")
+                                }.tint(.red)
+                            }
+                            .listRowSeparator(.hidden)
+                    }
+                    
+                    .listRowInsets(EdgeInsets())
+                    
+                }
                 
+                .padding()
+                .listStyle(.inset)
+                Spacer()
+                
+                NavigationLink(destination:NewResident(isEditing: false, resident: User())) {}
+                
+                NavigationLink(destination: NewResident(isEditing: false, resident: User()), tag: "A", selection: $selection) { EmptyView() }
+                
+                Button {
+                    selection = "A"
+                } label: {
+                    HStack {
+                        Image("UserAdd")
+                        Text("Add Resident")
+                        
+                    }
+                    //                        }.buttonStyle(CustomButtonStyle(width: .infinity,
+                    //                                                        foregroundColor: .black,
+                    //                                                        backgroundColor: .surfaceAccentPrimary))
+                    //
+                    .padding()
+                    
+                    
+                }
             }
+            .navigationTitle("Residents")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
-
+//}
 struct Residents_Previews: PreviewProvider {
     static var previews: some View {
-        Residents()
-            .environment(\.realm, RealmHelper.realmA())
+        
+            Residents()
+//                .environment(\.realm, RealmHelper.realmA())
+        
+        
     }
 }
+

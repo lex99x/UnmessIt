@@ -59,8 +59,8 @@ struct Tasks: View {
                                     .swipeActions(edge: .trailing) {
                                         
                                         Button {
-                                            viewModel.realm!.resolve(ThreadSafeReference(to: item))!.updateStatus(status: .done)
-                                            
+//                                            viewModel.realm!.resolve(ThreadSafeReference(to: item))!.updateStatus(status: .done)
+//
                                             print("aaa")
                                         } label: {
                                             Text("DONE")
@@ -70,8 +70,8 @@ struct Tasks: View {
                                     .swipeActions(edge: .leading) {
                                         
                                         Button {
-                                            viewModel.realm!.resolve(ThreadSafeReference(to: item))!.updateStatus(status: .cantDo)
-                                            
+//                                            viewModel.realm!.resolve(ThreadSafeReference(to: item))!.updateStatus(status: .cantDo)
+//                                            
                                             print("aaa")
                                         } label: {
                                             Text("notDone")

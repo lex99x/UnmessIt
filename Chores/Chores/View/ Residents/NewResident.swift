@@ -11,13 +11,13 @@ import RealmSwift
 struct NewResident: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var newResidentViewModel = NewResidentViewModel()
-    
-    @ObservedRealmObject var resident:User
+    let isEditing: Bool
+    @ObservedRealmObject var resident: User
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             
-            Text("Identification")
+            Text("Name")
                 .font(.title3)
             
             ResidentInputView(residentName: $newResidentViewModel.residentName)
@@ -46,12 +46,13 @@ struct NewResident: View {
             
         }
         .padding()
-        .navigationTitle("Add task")
+        .navigationBarBackButtonHidden(true)
+        .navigationTitle(isEditing ? "New Resident" : "Edit Resident")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
-//                    dismiss()
+                    dismiss()
                 }, label: {
                     Text("Cancel")
                 })
@@ -60,6 +61,13 @@ struct NewResident: View {
                 Button(action: {
 //                    viewModel.addNewTask()
                     print(newResidentViewModel.selections)
+                    if isEditing {
+                        newResidentViewModel.updateUser(item: resident)
+                    } else {
+                        newResidentViewModel.addResident()
+                    }
+                    
+                    dismiss()
                 }, label: {
                     Text("Save")
                 })
@@ -80,17 +88,16 @@ struct NewResident: View {
 }
 
 
-let user = User(value: ["nickname":"joaozinho", "preferences":["cooking"]])
 struct NewResident_Previews: PreviewProvider {
     static var previews: some View {
     
             Group {
 //                NavigationView {
-                    NewResident(resident: User())
+                NewResident(isEditing: false, resident: User())
                         .previewDisplayName("New User")
                     
                     let user = User(value: ["nickname":"joaozinho", "preferences":["Cooking"]])
-                    NewResident(resident: user)
+                    NewResident(isEditing: true, resident: user)
                         .previewDisplayName("Filled")
 
 //                }
@@ -114,6 +121,7 @@ struct MultipleSelectionRow: View {
                     Image(systemName: "checkmark")
                 }
                 Text(self.title)
+//                    .padding([.leading],50)
                 Spacer()
                 Image(self.title)
             }

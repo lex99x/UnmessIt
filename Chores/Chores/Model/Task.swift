@@ -9,10 +9,10 @@ import SwiftUI
 import RealmSwift
 
 enum TaskCategory: String, PersistableEnum {
-    case none = "None", clothes = "Clothes", cooking = "Cooking", ligthCleaning = "Light cleaning",
-         heavyCleaning = "Heavy cleaning", groceries = "Groceries", payments = "Payments", pet = "Pet", custom = "Custom"
+    case clothes = "Clothes", cooking = "Cooking", ligthCleaning = "Light cleaning",
+         heavyCleaning = "Heavy cleaning", groceries = "Groceries", payments = "Payments", pet = "Pets"
     
-    static let values: [TaskCategory] = [.clothes, .cooking, .ligthCleaning, .heavyCleaning, .groceries, .payments, .pet, .custom]
+    static let values: [TaskCategory] = [.clothes, .cooking, .ligthCleaning, .heavyCleaning, .groceries, .payments, .pet]
 }
 
 enum TimePeriod: String, PersistableEnum {
@@ -65,30 +65,22 @@ class Task: Object, ObjectKeyIdentifiable {
     static func getTaskIconByCategory(taskCategory: TaskCategory) -> Image {
         
         switch taskCategory {
-            case .clothes:
-                return .clothesIcon
-            case .cooking:
-                return .cookingIcon
-            case .ligthCleaning:
-                return .lightCleaningIcon
-            case .heavyCleaning:
-                return .heavyCleaningIcon
-            case .groceries:
-                return .groceriesIcon
-            case .payments:
-                return .paymentsIcon
-            case .pet:
-                return .petsIcon
+        case .clothes:
+            return .clothesIcon
+        case .cooking:
+            return .cookingIcon
+        case .ligthCleaning:
+            return .lightCleaningIcon
+        case .heavyCleaning:
+            return .heavyCleaningIcon
+        case .groceries:
+            return .groceriesIcon
+        case .payments:
+            return .paymentsIcon
+        case .pet:
+            return .petsIcon
         }
         
-    }
-    
-    func updateStatus(status: Status){
-        if let realm = self.realm {
-            try? realm.write({
-                self.status = status
-            })
-        }
     }
     
 }

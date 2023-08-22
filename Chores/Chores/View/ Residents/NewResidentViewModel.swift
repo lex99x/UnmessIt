@@ -46,5 +46,20 @@ final class NewResidentViewModel: ObservableObject {
         }
     }
     
+    func updateUser(item: User) {
+        if let thaw = item.thaw(),
+           let realm = thaw.realm {
+            try? realm.write {
+                var preferences = RealmSwift.List<TaskCategory>()
+                thaw.nickname = residentName
+                
+                for item in selections {
+                    preferences.append(TaskCategory(rawValue: item)!)
+                }
+                thaw.preferences = preferences
+            }
+        }
+    }
+    
     
 }

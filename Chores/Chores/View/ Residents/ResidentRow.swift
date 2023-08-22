@@ -11,49 +11,50 @@ struct ResidentRow: View {
     @ObservedRealmObject var resident: User
     
     var body: some View {
-        ZStack {
-            // inside card
-            HStack {
-                VStack {
-                    HStack {
-                        // Text
-                        VStack(alignment: .leading) {
-                            Text(resident.nickname)
-                                .padding(.bottom, 0.1)
-                                .font(.headline)
-
-                            HStack {
-                                ForEach(resident.preferences, id:\.self) {item in
-//                                    Text("Hahahaha")
-                                    PreferenceItem(imageName: item.rawValue)
+        NavigationLink(destination: NewResident(isEditing: true, resident: resident)) {
+            ZStack {
+                // inside card
+                HStack {
+                    VStack {
+                        HStack {
+                            // Text
+                            VStack(alignment: .leading) {
+                                Text(resident.nickname)
+                                    .padding(.bottom, 0.1)
+                                    .font(.headline)
+                                
+                                HStack {
+                                    ForEach(resident.preferences, id:\.self) {item in
+                                        //                                    Text("Hahahaha")
+                                        PreferenceItem(imageName: item.rawValue)
+                                    }
                                 }
                             }
                         }
+                        
+                        
+                        
                     }
                     
-                    
-                    
+                    Spacer()
+                    //                VStack {
+                    //                    Spacer()
+                    //                    // Status badge
+                    //                    TaskStatusBadge(status: item.status)
+                    //                        .padding([.bottom, .trailing])
+                    //
+                    //                }
                 }
-                
-                Spacer()
-//                VStack {
-//                    Spacer()
-//                    // Status badge
-//                    TaskStatusBadge(status: item.status)
-//                        .padding([.bottom, .trailing])
-//
-//                }
             }
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.borderBorderDefault, lineWidth: 1)
+            )
+            .background(Color.surfaceSurfaceSecondary)
+            .cornerRadius(16)
+            
         }
-        .padding()
-        .overlay(
-          RoundedRectangle(cornerRadius: 16)
-            .stroke(Color.borderBorderDefault, lineWidth: 1)
-        )
-        .background(Color.surfaceSurfaceSecondary)
-        .cornerRadius(16)
-        
-        
         
     }
 }
