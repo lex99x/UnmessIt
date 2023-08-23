@@ -14,79 +14,92 @@ import Foundation
 
 
 final class TaskViewModel: ObservableObject {
+    @ObservedResults(Task.self, sortDescriptor: SortDescriptor(keyPath: "createdAt", ascending: false)) var tasks
+    @ObservedResults(Space.self) var spaces
     
-    @Published var tasks = List<Task>()
-    
-    @Published var selectedSpaca: Space?
-    
-    @Published var filteredTasks = List<Task>()
-    
-    @Published var isAddingNewTask = false
+    @Published var isAddingNewTask: Bool = false
+    @Published var selectedSpace: Space?
     
     var realm: Realm?
-    
-    
     var token: NotificationToken? = nil
     
     init() {
+
         let realm = try? Realm()
         self.realm = realm
         
         if let space = realm?.objects(Space.self).first {
-            self.selectedSpaca = space
-            self.tasks = space.tasks
-        } else {
-            try? realm?.write({
-                let space = Space()
-                realm?.add(space)
-                
-                // testing tasks
-                space.tasks.append(Task())
-                space.tasks.append(Task())
-                space.tasks.append(Task())
-            })
+            self.selectedSpace = space
         }
         
-        
-        
-//        token = selectedSpaca?.observe({ [unowned self] (changes) in
-//            switch changes {
-//            case .error(_): break
-//            case .change(_, _): self.objectWillChange.send()
-//            case .deleted: self.selectedSpaca = nil
-//            }
-//
-//
-//        })
-        
-        token = selectedSpaca?.tasks.observe({ (changes) in
+              
+        token = spaces.observe({ (changes) in
             switch changes {
             case .error(_): break
             case .initial(_): break
-            case .update(_, deletions:_, insertions:_, modifications: _): self.objectWillChange.send()
+            case .update(_, deletions: _, insertions: _, modifications: _):
+                self.objectWillChange.send()
             }
         })
     }
     
     
-    func addNewTask() {
-        if let realm = selectedSpaca?.realm {
+    func deleteAll() {
+        if let selectedSpace = self.selectedSpace,
+           let realm = selectedSpace.realm {
             try? realm.write {
-                selectedSpaca?.tasks.append(Task())
+                for item in selectedSpace.tasks {
+                    realm.delete(item)
+                }
             }
         }
     }
     
-    
-    
-    func delete(at indexSet: IndexSet) {
-        if let index = indexSet.first,
-           let realm = tasks[index].realm {
-            
-            try? realm.write({
-                realm.delete(tasks[index])
-            })
+    func updateStatus(status: Task.Status, item: Task) {
+        if let updatedItem = item.thaw(),
+           let realm = updatedItem.realm {
+            try! realm.write {
+                updatedItem.status = status
+            }
         }
+        
+    }
+    
+    func registerOwner() {
+            let spaceOwner = User()
+            spaceOwner.nickname = "You"
+            spaceOwner.isSpaceOwner = true
+    
+            if let thaw = selectedSpace,
+               let realm = thaw.realm {
+                try? realm.write {
+                    thaw.residents.append(spaceOwner)
+                    print("added")
+                }
+            }
+    }
+    
+    func add(){
+        var itemList: [Task] = []
+        let item1:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(timeIntervalSinceNow: -600000000), "category":"pet"])
+        let item2:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(), "category":"pet"])
+        let item3:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(timeIntervalSinceNow: +600000000), "category":"pet"])
+        
+        itemList.append(item1)
+        itemList.append(item2)
+        itemList.append(item3)
+        
+        if let selectedSpace = self.selectedSpace,
+           let realm = selectedSpace.realm {
+            try? realm.write {
+                for foo in itemList {
+                    selectedSpace.tasks.append(foo)
+                }
+            }
+        }
+//        Memo.add(memo)
+            
+
     }
     
 //    func filterTasks(filterStr: String) {

@@ -17,7 +17,10 @@ struct TaskRow: View {
                     HStack {
                         // Type image
                         ZStack {
-//                            Image(item.type.rawValue)
+                            Image(item.category.rawValue)
+                                .padding(12)
+//
+//                            Image(systemName: "circle.fill")
 //                                .padding(12)
                         }
                         .background(Color(hex: "D6D6D6"))
@@ -30,6 +33,14 @@ struct TaskRow: View {
                             Text(item.title)
                                 .padding(.bottom, 0.1)
                                 .font(.callout)
+                            
+                        // Assignee
+                            
+                            HStack {
+                                Image.userAddIcon
+                                Text(item.assignees.first?.nickname ?? "No assigner")
+                                    .font(.subheadline)
+                            }
                             
                             HStack {
                                 switch item.createdAt.checkDay() {
@@ -89,19 +100,21 @@ struct TaskRow: View {
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            let item:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(timeIntervalSinceNow: -60000), "type":"Cooking"])
+            let item:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(timeIntervalSinceNow: -60000), "category":"pet"])
             
             TaskRow(item: item)
-                .frame(width: 358, height: 78)
+                .frame(width: 358, height: 103)
         }
         
     }
 }
 
 extension Date {
+    
     enum check {
         case today, yesterday, tomorrow, none
     }
+
     
     func timeIn24HourFormat() -> String {
         let formatter = DateFormatter()
@@ -137,6 +150,16 @@ extension Date {
         components.day = 1
         let firstDateOfMonth: Date = Calendar.current.date(from: components)!
         return firstDateOfMonth
+    }
+    
+    func nextDate() -> Date {
+        let nextDate = Calendar.current.date(byAdding: .day, value: 1, to: self)
+        return nextDate ?? Date()
+    }
+    
+    func previousDate() -> Date {
+        let previousDate = Calendar.current.date(byAdding: .day, value: -1, to: self)
+        return previousDate ?? Date()
     }
     
     func toString(format: String = "yyyy-MM-dd") -> String {

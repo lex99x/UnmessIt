@@ -11,11 +11,9 @@ import RealmSwift
 final class User: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id: ObjectId
     
-    @Persisted var nickname = ""
-    @Persisted var profilePhotoPath = ""
-    @Persisted var email = ""
+    @Persisted var nickname: String = ""
+    @Persisted var isSpaceOwner: Bool = false
     
     @Persisted var preferences = RealmSwift.List<TaskCategory>()
-    @Persisted var places = RealmSwift.List<Space>()
     
 }

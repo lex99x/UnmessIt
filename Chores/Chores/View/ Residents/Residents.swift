@@ -22,20 +22,25 @@ struct Residents: View {
             VStack {
                 List {
                     ForEach(residentsViewModel.residents.freeze()) { item in
-                        ResidentRow(resident: item)
-                            .padding([.top, .bottom], 10)
-                            .swipeActions(edge: .trailing) {
-                                Button {
-                                    print(item)
-                                    print("aaa")
-                                    residentsViewModel.deleteItem(item: item)
-                                } label: {
-                                    Text("Delete")
-                                }.tint(.red)
-                            }
-                            .listRowSeparator(.hidden)
+                        if item.isSpaceOwner {
+                            ResidentRow(resident: item)
+                                .padding([.top, .bottom], 10)
+                                .listRowSeparator(.hidden)
+                        } else {
+                            ResidentRow(resident: item)
+                                .padding([.top, .bottom], 10)
+                                .swipeActions(edge: .trailing) {
+                                    Button {
+                                        print(item)
+                                        print("aaa")
+                                        residentsViewModel.deleteItem(item: item)
+                                    } label: {
+                                        Text("Delete")
+                                    }.tint(.red)
+                                }
+                                .listRowSeparator(.hidden)
+                        }
                     }
-                    
                     .listRowInsets(EdgeInsets())
                     
                 }
@@ -44,7 +49,7 @@ struct Residents: View {
                 .listStyle(.inset)
                 Spacer()
                 
-                NavigationLink(destination:NewResident(isEditing: false, resident: User())) {}
+//                NavigationLink(destination:NewResident(isEditing: false, resident: User())) {}
                 
                 NavigationLink(destination: NewResident(isEditing: false, resident: User()), tag: "A", selection: $selection) { EmptyView() }
                 
@@ -56,10 +61,6 @@ struct Residents: View {
                         Text("Add Resident")
                         
                     }
-                    //                        }.buttonStyle(CustomButtonStyle(width: .infinity,
-                    //                                                        foregroundColor: .black,
-                    //                                                        backgroundColor: .surfaceAccentPrimary))
-                    //
                     .padding()
                     
                     

@@ -6,16 +6,24 @@
 //
 
 import SwiftUI
-
+import RealmSwift
 @main
-struct ChoresApp: App {
+struct ChoresApp: SwiftUI.App {
     let notificationService = LocalNotificaitonService.shared
+    @ObservedResults(Space.self) var spaces
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                @ObservedObject var viewModel = OnboardingViewModel()
-                OnboardingNewPlaceView(placeNameTextfield: $viewModel.placeNameTextfield, placeResidents: $viewModel.placeResidents)
+            if let currentSpace = spaces.first {
+                NavigationStack {
+                    Tasks()
+                }
+            } else {
+                ProgressView()
+                    .onAppear {
+                        $spaces.append(Space())
+                    }
             }
+            
 //            .onAppear {
 //                // MARK: Daily notification time
 //
@@ -29,4 +37,5 @@ struct ChoresApp: App {
 //            }
         }
     }
+    
 }
