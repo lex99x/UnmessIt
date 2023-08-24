@@ -11,9 +11,11 @@ import RealmSwift
 struct ChoresApp: SwiftUI.App {
     let notificationService = LocalNotificaitonService.shared
     @ObservedResults(Space.self) var spaces
+    
+    
     var body: some Scene {
         WindowGroup {
-            if let currentSpace = spaces.first {
+            if let space = spaces.first  {
                 NavigationStack {
                     Tasks()
                 }
@@ -23,18 +25,6 @@ struct ChoresApp: SwiftUI.App {
                         $spaces.append(Space())
                     }
             }
-            
-//            .onAppear {
-//                // MARK: Daily notification time
-//
-//                if notificationService.getPendingRequestsCount() == 0 {
-//
-//                    // MARK: fetch data to schedule tomorrow notification
-//
-//
-//
-//                }
-//            }
         }
     }
     

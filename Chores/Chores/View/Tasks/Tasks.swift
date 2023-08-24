@@ -73,8 +73,8 @@ struct Tasks: View {
                 
                 Button(action: {
                     // TODO: add navigation to add new task
-//                    viewModel.isAddingNewTask.toggle()
-                    viewModel.add()
+                    viewModel.isAddingNewTask.toggle()
+//                    viewModel.add()
                 }, label: {
                     Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
                 })
@@ -83,12 +83,11 @@ struct Tasks: View {
                                                backgroundColor: .accentColor))
                 .padding(.horizontal)
                 .padding(.bottom, 8)
-//                .sheet(isPresented: $viewModel.isAddingNewTask) {
-//                    NavigationStack {
-////                        NewTaskView()
-//                        Text("New task view")
-//                    }
-//                }
+                .sheet(isPresented: $viewModel.isAddingNewTask) {
+                    NavigationStack {
+                        NewTaskView(isEditing: false, task: Task())
+                    }
+                }
                 
             } else {
                 VStack {
@@ -126,8 +125,8 @@ struct Tasks: View {
                                         
                     Button(action: {
                         // TODO: add navigation to add new task
-    //                    viewModel.isAddingNewTask.toggle()
-                        viewModel.add()
+                        viewModel.isAddingNewTask.toggle()
+//                        viewModel.add()
                     }, label: {
                         Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
                     })
@@ -137,8 +136,8 @@ struct Tasks: View {
                     .padding()
                     .sheet(isPresented: $viewModel.isAddingNewTask) {
                         NavigationStack {
-//                            NewTaskView()
-                            Text("add new task")
+                            NewTaskView(isEditing: false, task: Task())
+//                            Text("add new task")
                         }
                     }
                     
@@ -199,8 +198,11 @@ struct Tasks: View {
         
         .onAppear {
             print("apareceu")
+            print(viewModel.selectedSpace?.residents.count)
+            
             if viewModel.selectedSpace?.residents.count == 0 {
                 viewModel.registerOwner()
+                
             }
         }
     }

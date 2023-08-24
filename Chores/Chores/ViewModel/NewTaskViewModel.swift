@@ -6,36 +6,92 @@
 //
 
 import SwiftUI
-//
-//class NewTaskViewModel: ObservableObject {
-//
-//    @Published var titleTextfield = ""
-//    @Published var descriptionTextfield = ""
-//
-//    @Published var selectedStartDate = Date.now
-//    @Published var selectedEndRepeatDate = Date.now
-//
-//    @Published var selectedTaskTypeOption = ""
-//    @Published var selectedTimeOption = 1
-//    @Published var selectedRepetionOption = TimePeriod.hours.rawValue
-//    @Published var selectedAssigneeOption = ""
-//
-//    @Published var isImportantToggleOn = false
-//    @Published var isRecurrentToggleOn = false
-//    @Published var isEndRepeatToggleOn = false
-//
-//    var assigneeOptions: [String] = ["Fulano", "Ciclano", "Beltrano"]
+import RealmSwift
+class NewTaskViewModel: ObservableObject {
+    @ObservedResults(Space.self) var spaces
+    @Published var selectedSpace: Space?
     
-//    func addNewTask() {
-//
-//        let task = Task()
-//
-//        guard case task.category = TaskCategory(rawValue: selectedTaskTypeOption) else { return }
-//        task.title = title
-//        task.desc = description
-//        task.isImportant = isImportantToggleOn
-//
-//
-//    }
     
-//}
+    var realm: Realm?
+    var token: NotificationToken? = nil
+    
+    @Published var titleTextfield = ""
+    @Published var descriptionTextfield = ""
+    
+    @Published var selectedStartDate = Date()
+    
+    //    @Published var selectedEndRepeatDate = Date.now
+    
+    @Published var selectedTaskTypeOption = ""
+    @Published var selectedTimeOption = 1
+    //    @Published var selectedRepetionOption = TimePeriod.hours.rawValue
+    
+    @Published var selectedAssigneeOption: User = User()
+    
+    @Published var isImportantToggleOn = false
+    //    @Published var isRecurrentToggleOn = false
+    //    @Published var isEndRepeatToggleOn = false
+    
+    //    @Published var assigneeNames: [String] = []
+    
+    //    var assigneeOptions: [String] = ["Fulano", "Ciclano", "Beltrano"]
+    //
+    
+    init() {
+        
+        let realm = try? Realm()
+        self.realm = realm
+        
+        if let space = realm?.objects(Space.self).first {
+            self.selectedSpace = space
+        }
+        
+        
+        token = spaces.observe({ (changes) in
+            switch changes {
+            case .error(_): break
+            case .initial(_): break
+            case .update(_, deletions: _, insertions: _, modifications: _):
+                self.objectWillChange.send()
+            }
+        })
+    }
+    
+    
+    func addNewTask() {
+        let task = Task()
+        print("aqui1")
+        print(selectedTaskTypeOption)
+        
+        task.category = TaskCategory(rawValue: selectedTaskTypeOption) ?? .clothes
+        task.title = titleTextfield
+        task.desc = descriptionTextfield
+        task.assignees.append(selectedAssigneeOption)
+        
+        print("aqiu2")
+        if let selectedSpace = self.selectedSpace,
+           let realm = selectedSpace.realm {
+            try? realm.write {
+                
+                selectedSpace.tasks.append(task)
+                
+            }
+        }
+        
+        
+    }
+    
+    func updateTask(item: Task) {
+        if let thaw = item.thaw(),
+           let realm = thaw.realm {
+            try? realm.write {
+                thaw.title = titleTextfield
+                thaw.desc = descriptionTextfield
+                thaw.assignees.removeAll()
+                thaw.assignees.append(selectedAssigneeOption)
+                
+            }
+        }
+    }
+    
+}

@@ -42,7 +42,26 @@ class Task: Object, ObjectKeyIdentifiable {
     
     @Persisted var assignees = RealmSwift.List<User>()
     
-    
+    static func getTaskIconByCategory(taskCategory: TaskCategory) -> Image {
+        
+        switch taskCategory {
+            case .clothes:
+                return .clothesIcon
+            case .cooking:
+                return .cookingIcon
+            case .ligthCleaning:
+                return .lightCleaningIcon
+            case .heavyCleaning:
+                return .heavyCleaningIcon
+            case .groceries:
+                return .groceriesIcon
+            case .payments:
+                return .paymentsIcon
+            case .pet:
+                return .petsIcon
+        }
+        
+    }
     
     // MARK: Removed for V1
     

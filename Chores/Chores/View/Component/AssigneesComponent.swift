@@ -1,18 +1,18 @@
 //
-//  CustomPickerView.swift
+//  AssigneesComponent.swift
 //  Chores
 //
-//  Created by Alex A. Rocha on 31/07/23.
+//  Created by Joao Lucas Camilo on 23/08/23.
 //
 
 import SwiftUI
-
-struct CustomSelectionInputView: View {
+import RealmSwift
+struct AssigneesComponent: View {
     
     let placeholder: String
-    let options: [String]
+    let options: RealmSwift.List<User>
         
-    @Binding var selectedOption: String
+    @Binding var selectedOption: User
     
     var body: some View {
         
@@ -23,13 +23,8 @@ struct CustomSelectionInputView: View {
                 Text(placeholder)
                     .foregroundColor(.textPrimaryColor)
                 Spacer()
-                Text(selectedOption)
+                Text(selectedOption.nickname)
                     .foregroundColor(.textSecondaryColor)
-                
-//                if let taskCategory = TaskCategory(rawValue: selectedOption) {
-//                    Task.getTaskIconByCategory(taskCategory: taskCategory)
-//                        .frame(width: 16, height: 16)
-//                }
                 
                 Menu(content: {
                     ForEach(options, id: \.self) { option in
@@ -37,10 +32,7 @@ struct CustomSelectionInputView: View {
                             selectedOption = option
                         }, label: {
                             HStack {
-                                Text(option)
-                                
-                                Task.getTaskIconByCategory(taskCategory: TaskCategory(rawValue: option) ?? TaskCategory.clothes)
-                                    .renderingMode(.original)
+                                Text(option.nickname)
                             }
                         })
                     }
@@ -65,15 +57,10 @@ struct CustomSelectionInputView: View {
     
 }
 
-struct CustomSelectionInputView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        
-        CustomSelectionInputView(placeholder: "Task type",
-                                 options: Task.taskOptions,
-                                 selectedOption: .constant(""))
-        .padding()
-        
-    }
-    
-}
+//struct AssigneesComponent_Previews: PreviewProvider {
+//    static var previews: some View {
+//        @State var user = User()
+//
+//        AssigneesComponent(placeholder: "fodasse", options: [User()])
+//    }
+//}

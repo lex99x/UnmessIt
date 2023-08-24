@@ -61,10 +61,13 @@ struct Residents: View {
                         Text("Add Resident")
                         
                     }
-                    .padding()
-                    
-                    
                 }
+                .buttonStyle(CustomButtonStyle(width: .infinity,
+                                               foregroundColor: .textInvertColor,
+                                               backgroundColor: .accentColor))
+                .padding()
+
+                
             }
             .navigationTitle("Residents")
             .navigationBarTitleDisplayMode(.inline)

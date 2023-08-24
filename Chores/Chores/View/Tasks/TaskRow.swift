@@ -10,102 +10,104 @@ import SwiftUI
 struct TaskRow: View {
     var item: Task
     var body: some View {
-        ZStack {
-            // inside card
-            HStack {
-                VStack {
-                    HStack {
-                        // Type image
-                        ZStack {
-                            Image(item.category.rawValue)
-                                .padding(12)
-//
-//                            Image(systemName: "circle.fill")
-//                                .padding(12)
-                        }
-                        .background(Color(hex: "D6D6D6"))
-                        .cornerRadius(16)
-                        .padding(12)
-                        
-                        
-                        // Text
-                        VStack(alignment: .leading) {
-                            Text(item.title)
-                                .padding(.bottom, 0.1)
-                                .font(.callout)
-                            
-                        // Assignee
-                            
-                            HStack {
-                                Image.userAddIcon
-                                Text(item.assignees.first?.nickname ?? "No assigner")
-                                    .font(.subheadline)
+        
+        NavigationLink(destination: TaskDetailsView(task: item)) {
+            ZStack {
+                // inside card
+                HStack {
+                    VStack {
+                        HStack {
+                            // Type image
+                            ZStack {
+                                Image(item.category.rawValue)
+                                    .padding(12)
+                                //
+                                //                            Image(systemName: "circle.fill")
+                                //                                .padding(12)
                             }
+                            .background(Color(hex: "D6D6D6"))
+                            .cornerRadius(16)
+                            .padding(12)
                             
-                            HStack {
-                                switch item.createdAt.checkDay() {
-                                case .today:
-                                    Text("Today")
-                                        .font(.subheadline)
-                                    
-                                case .yesterday:
-                                    Text("Yesterday")
-                                        .font(.subheadline)
-                                    
-                                case .tomorrow:
-                                    Text("Tomorrow")
-                                        .font(.subheadline)
-                                case .none:
-                                    Text(item.createdAt.toString(format: "dd-MM"))
+                            
+                            // Text
+                            VStack(alignment: .leading) {
+                                Text(item.title)
+                                    .padding(.bottom, 0.1)
+                                    .font(.callout)
+                                
+                                // Assignee
+                                
+                                HStack {
+                                    Image.userAddIcon
+                                    Text(item.assignees.first?.nickname ?? "No assigner")
                                         .font(.subheadline)
                                 }
                                 
-                                Image("Ellipse")
-                                .frame(width: 4, height: 4)
-                                .background(Color(red: 0.44, green: 0.49, blue: 0.59))
+                                HStack {
+                                    switch item.createdAt.checkDay() {
+                                    case .today:
+                                        Text("Today")
+                                            .font(.subheadline)
+                                        
+                                    case .yesterday:
+                                        Text("Yesterday")
+                                            .font(.subheadline)
+                                        
+                                    case .tomorrow:
+                                        Text("Tomorrow")
+                                            .font(.subheadline)
+                                    case .none:
+                                        Text(item.createdAt.toString(format: "dd-MM"))
+                                            .font(.subheadline)
+                                    }
                                     
-                                Text("\(item.createdAt.timeIn24HourFormat())")
-                                    .font(.subheadline)
-                                
+                                    Image("Ellipse")
+                                        .frame(width: 4, height: 4)
+                                        .background(Color(red: 0.44, green: 0.49, blue: 0.59))
+                                    
+                                    Text("\(item.createdAt.timeIn24HourFormat())")
+                                        .font(.subheadline)
+                                    
+                                }
                             }
                         }
+                        
+                        
+                        
                     }
                     
-                    
-                    
-                }
-                
-                Spacer()
-                VStack {
                     Spacer()
-                    // Status badge
-                    TaskStatusBadge(status: item.status)
-                        .padding([.bottom, .trailing])
-                    
+                    VStack {
+                        Spacer()
+                        // Status badge
+                        TaskStatusBadge(status: item.status)
+                            .padding([.bottom, .trailing])
+                        
+                    }
                 }
             }
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.borderBorderDefault, lineWidth: 1)
+            )
+            .background(Color.surfaceSurfaceSecondary)
+            .cornerRadius(16)
+                
         }
-        .overlay(
-          RoundedRectangle(cornerRadius: 16)
-            .stroke(Color.borderBorderDefault, lineWidth: 1)
-        )
-        .background(Color.surfaceSurfaceSecondary)
-        .cornerRadius(16)
-        
-        
-        
     }
 }
 
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            let item:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(timeIntervalSinceNow: -60000), "category":"pet"])
-            
-            TaskRow(item: item)
-                .frame(width: 358, height: 103)
+        NavigationStack {
+            Group {
+                let item:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(timeIntervalSinceNow: -60000), "category":"pet"])
+                
+                TaskRow(item: item)
+                    .frame(width: 358, height: 103)
+            }
         }
-        
     }
 }
 

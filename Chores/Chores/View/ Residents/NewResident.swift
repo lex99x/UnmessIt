@@ -12,6 +12,7 @@ struct NewResident: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var newResidentViewModel = NewResidentViewModel()
     let isEditing: Bool
+    
     @ObservedRealmObject var resident: User
     
     var body: some View {
