@@ -15,6 +15,7 @@ extension Color {
     static let textInvertColor = Color("TextInvert")
     static let surfaceButtonSecondaryColor = Color("SurfaceButtonSecondary")
     static let surfaceSecondaryColor = Color("SurfaceSecondary")
+    static let surfaceTertiaryColor = Color("SurfaceTertiary")
     static let categoryLightCleaningColor = Color("CategoryLightCleaning")
 }
 

@@ -20,12 +20,12 @@ struct TaskRow: View {
                             // Type image
                             ZStack {
                                 Image(item.category.rawValue)
+                                    .renderingMode(.original)
                                     .padding(12)
-                                //
-                                //                            Image(systemName: "circle.fill")
-                                //                                .padding(12)
                             }
-                            .background(Color(hex: "D6D6D6"))
+                            .background {
+                                Color.surfaceTertiaryColor
+                            }
                             .cornerRadius(16)
                             .padding(12)
                             
@@ -38,11 +38,11 @@ struct TaskRow: View {
                                 
                                 // Assignee
                                 
-                                HStack {
-                                    Image.userAddIcon
-                                    Text(item.assignees.first?.nickname ?? "No assigner")
-                                        .font(.subheadline)
-                                }
+//                                HStack {
+//                                    Image.userAddIcon
+//                                    Text(item.assignees.first?.nickname ?? "No assigner")
+//                                        .font(.subheadline)
+//                                }
                                 
                                 HStack {
                                     switch item.createdAt.checkDay() {
@@ -62,14 +62,16 @@ struct TaskRow: View {
                                             .font(.subheadline)
                                     }
                                     
-                                    Image("Ellipse")
+                                    Image(systemName: "circle.fill")
+                                        .resizable()
                                         .frame(width: 4, height: 4)
-                                        .background(Color(red: 0.44, green: 0.49, blue: 0.59))
                                     
                                     Text("\(item.createdAt.timeIn24HourFormat())")
-                                        .font(.subheadline)
                                     
                                 }
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textSecondaryColor)
+                                
                             }
                         }
                         
@@ -91,7 +93,9 @@ struct TaskRow: View {
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(Color.borderBorderDefault, lineWidth: 1)
             )
-            .background(Color.surfaceSurfaceSecondary)
+            .background {
+                Color.surfaceSecondaryColor
+            }
             .cornerRadius(16)
                 
         }

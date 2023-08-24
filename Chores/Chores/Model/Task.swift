@@ -9,8 +9,9 @@ import SwiftUI
 import RealmSwift
 
 enum TaskCategory: String, PersistableEnum {
-    case clothes, cooking, ligthCleaning, heavyCleaning, groceries, payments, pet
-    
+    case clothes = "Clothes", cooking = "Cooking", ligthCleaning = "Light cleaning",
+              heavyCleaning = "Heavy cleaning", groceries = "Groceries", payments = "Payments", pet = "Pet"
+
     static let values: [TaskCategory] = [.clothes, .cooking, .ligthCleaning, .heavyCleaning, .groceries, .payments, .pet]
 }
 

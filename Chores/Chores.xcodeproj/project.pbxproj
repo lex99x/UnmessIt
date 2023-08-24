@@ -191,7 +191,6 @@
 		065B0A062A6EA90B00B1D35F /* Chores */ = {
 			isa = PBXGroup;
 			children = (
-				069EC15C2A934F28002BBDE6 /* Utils */,
 				065B0A072A6EA90B00B1D35F /* ChoresApp.swift */,
 				174447F62A86646B0083142F /* Info.plist */,
 				065B0A312A6EB98300B1D35F /* Model */,
@@ -201,6 +200,7 @@
 				17213CED2A72BFC5002F0924 /* Style */,
 				067DFA1C2A6EC88100A0E2F6 /* Extension */,
 				063F8F2B2A77F643002792D5 /* Service */,
+				069EC15C2A934F28002BBDE6 /* Util */,
 				174447F32A8664030083142F /* Resource */,
 				065B0A0D2A6EA90C00B1D35F /* Preview Content */,
 			);
@@ -280,12 +280,12 @@
 			path = " Residents";
 			sourceTree = "<group>";
 		};
-		069EC15C2A934F28002BBDE6 /* Utils */ = {
+		069EC15C2A934F28002BBDE6 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				069EC15D2A934F35002BBDE6 /* RealmHelper.swift */,
 			);
-			path = Utils;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		06D816532A848A6400606F03 /* Manager */ = {

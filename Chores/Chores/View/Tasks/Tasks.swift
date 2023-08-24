@@ -9,6 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct Tasks: View {
+    
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = TaskViewModel()
     @State private var selection: String? = nil
@@ -16,24 +17,25 @@ struct Tasks: View {
     @State var isShowingDeleteAlert = false
     @State private var filterTimeInterval = 0
     
-//    var filtered: Results<Task> {
-//        if filterTimeInterval == 0 {
-//            return viewModel.tasks.where {
-//                $0.createdAt.timeIntervalSinceNow =
-//            }
-//        } else if filterTimeInterval == 1 {
-//            return viewModel.tasks.where {
-//                $0.createdAt < Date()
-//            }
-//        }
-//        else if filterTimeInterval == 3 {
-//            return viewModel.tasks.where {
-//                $0.createdAt > Date()
-//            }
-//        } else {
-//            return viewModel.tasks
-//        }
-//    }
+    //    var filtered: Results<Task> {
+    //        if filterTimeInterval == 0 {
+    //            return viewModel.tasks.where {
+    //                $0.createdAt.timeIntervalSinceNow =
+    //            }
+    //        } else if filterTimeInterval == 1 {
+    //            return viewModel.tasks.where {
+    //                $0.createdAt < Date()
+    //            }
+    //        }
+    //        else if filterTimeInterval == 3 {
+    //            return viewModel.tasks.where {
+    //                $0.createdAt > Date()
+    //            }
+    //        } else {
+    //            return viewModel.tasks
+    //        }
+    //    }
+    
     var content: Results<Task>{
         if searchText.isEmpty {
             return viewModel.tasks
@@ -45,67 +47,74 @@ struct Tasks: View {
         
     }
     
-    
     var body: some View {
+        
         VStack {
+            
             NavigationLink(destination: Residents(), tag: "A", selection: $selection) { EmptyView() }
             
             if viewModel.tasks.isEmpty {
                 
-                Spacer()
-                
-                VStack(spacing: 56) {
-                    VStack(alignment: .center) {
+                VStack {
+                    
+                    VStack(spacing: 24) {
+                        
+                        Image("EmptyState")
+                            .resizable()
+                            .frame(width: 199, height: 146)
+                            .padding(.bottom, 56)
+                        
                         Text("It's so quiet in here...")
-                            .font(.title)
-                            .fontWeight(.bold)
+                            .font(Font.custom(Font.generalSansFontSemibold, size: 28))
+                            .foregroundColor(.textPrimaryColor)
                         Text("To set up your preferences or add the people who live with you, tap “Manage residents”")
-                            .padding()
+                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                            .foregroundColor(.textSecondaryColor)
                         Text("To add a few tasks to your routine, tap the button below “Add a task”")
-                            .padding()
+                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                            .foregroundColor(.textSecondaryColor)
+                        
                     }
                     .multilineTextAlignment(.center)
-                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
-                    .foregroundColor(.textSecondaryColor)
-                }
-                
-                Spacer()
-                
-                Button(action: {
-                    // TODO: add navigation to add new task
-                    viewModel.isAddingNewTask.toggle()
-//                    viewModel.add()
-                }, label: {
-                    Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
-                })
-                .buttonStyle(CustomButtonStyle(width: .infinity,
-                                               foregroundColor: .textInvertColor,
-                                               backgroundColor: .accentColor))
-                .padding(.horizontal)
-                .padding(.bottom, 8)
-                .sheet(isPresented: $viewModel.isAddingNewTask) {
-                    NavigationStack {
-                        NewTaskView(isEditing: false, task: Task())
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        viewModel.isAddingNewTask.toggle()
+                    }, label: {
+                        Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
+                    })
+                    .buttonStyle(CustomButtonStyle(width: .infinity,
+                                                   foregroundColor: .textInvertColor,
+                                                   backgroundColor: .accentColor))
+                    .sheet(isPresented: $viewModel.isAddingNewTask) {
+                        NavigationStack {
+                            NewTaskView(isEditing: false, task: Task())
+                        }
                     }
+                    
                 }
+                .padding(.top, 64)
+                .padding(.horizontal)
                 
             } else {
                 VStack {
                     // MARK: Segmented Filter
-//                    VStack {
-//                        Picker("What is your favorite color?", selection: $filterTimeInterval) {
-//                            Text("Yesterday").tag(1)
-//                            Text("Today").tag(0)
-//                            Text("Tomorrow").tag(2)
-//                        }
-//                    }
-//                    .padding()
-//                    .pickerStyle(.segmented)
-//
+                    //                    VStack {
+                    //                        Picker("What is your favorite color?", selection: $filterTimeInterval) {
+                    //                            Text("Yesterday").tag(1)
+                    //                            Text("Today").tag(0)
+                    //                            Text("Tomorrow").tag(2)
+                    //                        }
+                    //                    }
+                    //                    .padding()
+                    //                    .pickerStyle(.segmented)
+                    //
                     List {
                         Section {
                             ForEach(content.freeze()) { item in
                                 TaskRow(item: item)
+//                                    .padding(.bottom, 4)
                                     .listRowSeparator(.hidden)
                                     .swipeActions(edge: .trailing) {
                                         
@@ -122,22 +131,22 @@ struct Tasks: View {
                         
                     }
                     .listStyle(.inset)
-                                        
+                    
                     Button(action: {
                         // TODO: add navigation to add new task
                         viewModel.isAddingNewTask.toggle()
-//                        viewModel.add()
+                        //                        viewModel.add()
                     }, label: {
                         Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
                     })
                     .buttonStyle(CustomButtonStyle(width: .infinity,
                                                    foregroundColor: .textInvertColor,
                                                    backgroundColor: .accentColor))
-                    .padding()
+                    .padding(.horizontal)
                     .sheet(isPresented: $viewModel.isAddingNewTask) {
                         NavigationStack {
                             NewTaskView(isEditing: false, task: Task())
-//                            Text("add new task")
+                            //                            Text("add new task")
                         }
                     }
                     
@@ -146,72 +155,80 @@ struct Tasks: View {
             }
         }
         .toolbar {
+            
             ToolbarItem(placement: .navigationBarLeading) {
-                Text("My Place")
+                Text("Tasks")
                     .font(Font.custom(Font.generalSansFontMedium, size: 17))
+                    .foregroundColor(.textPrimaryColor)
             }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     selection = "A"
-//                    print(viewModel.selectedSpace?.residents ?? ["fodasse"])
+                    //                    print(viewModel.selectedSpace?.residents ?? ["fodasse"])
                 } label: {
                     Image.userAddIcon
+                        .resizable()
+                        .frame(width: 20, height: 20)
                     Text("Manage residents")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textPrimaryColor)
                 }
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
+            
+            if !viewModel.tasks.isEmpty {
                 
-                Menu {
-                    Button(role: .destructive ,action: callDeleteAllTasks, label: {
-                        Text("Delete all Tasks")
-                            .tint(.red)
-                        Image.deleteIcon
-                            .foregroundColor(.red)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    
+                    Menu {
+                        Button(role: .destructive, action: callDeleteAllTasks, label: {
+                            Text("Delete all tasks")
+                                .tint(.red)
+                            Image.deleteIcon
+                                .foregroundColor(.red)
+                        })
+                    } label: {
+                        Button(action: {}, label: {
+                            Image.moreIcon
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.textPrimaryColor)
+                        })
+                    }
+                    .alert("Delete all tasks", isPresented: $isShowingDeleteAlert, actions: {
+                        Button("Cancel", role: .cancel) {
+                            isShowingDeleteAlert.toggle()
+                        }
+                        Button("Delete", role: .destructive) {
+                            viewModel.deleteAll()
+                            dismiss()
+                        }
+                    }, message: {
+                        Text("This action cannot be undone.\nAre you sure you want to delete all tasks from your place?")
                     })
-                } label: {
-                            Button(action: {}, label: {
-                                Image.moreIcon
-                                    .foregroundColor(.textPrimaryColor)
-                            })
-                            
+                    
                 }
-                
-                // delete all alert
-                .alert("Delete task", isPresented: $isShowingDeleteAlert, actions: {
-                    Button("Cancel", role: .cancel) {
-                        isShowingDeleteAlert.toggle()
-                    }
-                    Button("Delete All", role: .destructive) {
-                        viewModel.deleteAll()
-                        dismiss()
-                    }
-                }, message: {
-                    Text("This action cannot be undone.\nAre you sure you want to delete it?")
-                })
                 
             }
             
         }
-        
         .navigationBarBackButtonHidden()
-        .toolbarBackground(Color.red, for: .automatic)
-        
+//        .toolbarBackground(Color.red, for: .automatic)
         .onAppear {
-            print("apareceu")
+            
             print(viewModel.selectedSpace?.residents.count)
             
             if viewModel.selectedSpace?.residents.count == 0 {
                 viewModel.registerOwner()
-                
             }
+            
         }
-    }
         
+    }
     
     private func callDeleteAllTasks() {
         isShowingDeleteAlert.toggle()
     }
-    
     
 }
 

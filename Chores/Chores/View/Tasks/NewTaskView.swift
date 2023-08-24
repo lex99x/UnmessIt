@@ -9,12 +9,12 @@ import SwiftUI
 import RealmSwift
 
 struct NewTaskView: View {
+    
     @ObservedObject var viewModel = NewTaskViewModel()
     
     let isEditing: Bool
     @ObservedRealmObject var task: Task
     @Environment(\.dismiss) var dismiss
-    
     
     var body: some View {
 
@@ -28,6 +28,7 @@ struct NewTaskView: View {
                                          options: Task.taskOptions,
                                          selectedOption: $viewModel.selectedTaskTypeOption)
                 .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
+                    
                     if let recommendation = viewModel.recommendAssigneer(item: newValue) {
                         viewModel.selectedAssigneeOption = recommendation
                     } else {
@@ -36,8 +37,14 @@ struct NewTaskView: View {
                     
                 }
                 
-                NewInputView(residentName: $viewModel.titleTextfield)
-                
+                VStack(alignment: .leading) {
+                    Text("Task title")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    NewInputView(residentName: $viewModel.titleTextfield)
+                        .background {
+                            Color.surfaceSecondaryColor
+                        }
+                }
                 
                 CustomTextFieldView(title: "Description",
                                     placeholder: "How it should be done",
@@ -55,7 +62,7 @@ struct NewTaskView: View {
             }
             .padding()
             .navigationBarBackButtonHidden(true)
-            .navigationTitle(isEditing == false ? "New Task" : "Edit Task")
+            .navigationTitle(isEditing == false ? "New task" : "Edit task")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
