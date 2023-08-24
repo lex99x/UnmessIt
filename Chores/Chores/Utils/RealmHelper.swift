@@ -5,49 +5,49 @@
 //  Created by Joao Lucas Camilo on 21/08/23.
 //
 
-import RealmSwift
-import Foundation
-
-final class RealmHelper {
-    static let names = ["Joao", "Agatha", "Maria", "Alex", "Julia", "Fran"]
-    static let lastNames = ["Silva", "Costa", "Brenda", "Rocha"]
-    
-    static func inMemoryRealm() -> Realm {
-        var conf = Realm.Configuration.defaultConfiguration
-        conf.inMemoryIdentifier = "preview"
-        let realm = try! Realm(configuration: conf)
-        return realm
-    }
-    
-    static func realmA() -> Realm {
-        let realm = inMemoryRealm()
-        
-        if let group = realm.objects(Space.self).first {
-            let user = User(value: ["nickname":"\(names.randomElement())", "preferences":["Cooking","Pets"]])
-            
-            for _ in 1...3 {
-                try? realm.write {
-                    group.residents.append(user)
-                }
-            }
-        }
-        else {
-            try? realm.write {
-                realm.add(Space())
-            }
-            let user = User(value: ["nickname":"\(names.randomElement())", "preferences":["Cooking","Pets"]])
-            
-            let group = realm.objects(Space.self).first
-            
-            for _ in 1...1 {
-                try? realm.write {
-                    group?.residents.append(user)
-                }
-            }
-
-        }
-        return realm
-    }
+//import RealmSwift
+//import Foundation
+//
+//final class RealmHelper {
+//    static let names = ["Joao", "Agatha", "Maria", "Alex", "Julia", "Fran"]
+//    static let lastNames = ["Silva", "Costa", "Brenda", "Rocha"]
+//    
+//    static func inMemoryRealm() -> Realm {
+//        var conf = Realm.Configuration.defaultConfiguration
+//        conf.inMemoryIdentifier = "preview"
+//        let realm = try! Realm(configuration: conf)
+//        return realm
+//    }
+//    
+//    static func realmA() -> Realm {
+//        let realm = inMemoryRealm()
+//        
+//        if let group = realm.objects(Space.self).first {
+//            let user = User(value: ["nickname":"\(names.randomElement())", "preferences":["Cooking","Pets"]])
+//            
+//            for _ in 1...3 {
+//                try? realm.write {
+//                    group.residents.append(user)
+//                }
+//            }
+//        }
+//        else {
+//            try? realm.write {
+//                realm.add(Space())
+//            }
+//            let user = User(value: ["nickname":"\(names.randomElement())", "preferences":["Cooking","Pets"]])
+//            
+//            let group = realm.objects(Space.self).first
+//            
+//            for _ in 1...1 {
+//                try? realm.write {
+//                    group?.residents.append(user)
+//                }
+//            }
+//
+//        }
+//        return realm
+//    }
     
     
 //    static func realmWithItems() -> Realm {
@@ -100,4 +100,3 @@ final class RealmHelper {
 //        return realm
 //
 //    }
-}

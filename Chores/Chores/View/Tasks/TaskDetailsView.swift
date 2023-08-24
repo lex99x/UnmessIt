@@ -179,12 +179,13 @@ struct TaskDetailsView: View {
 //                }
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        selection = "A"
-                    }, label: {
-                        Image.editIcon
-                            .foregroundColor(.textAccentColor)
-                    })
+                    // MARK: REMOVED TO V1
+//                    Button(action: {
+//                        selection = "A"
+//                    }, label: {
+//                        Image.editIcon
+//                            .foregroundColor(.textAccentColor)
+//                    })
                     Button(action: {
                         isShowingDeleteAlert.toggle()
                     }, label: {

@@ -17,7 +17,7 @@ struct NewTaskView: View {
     
     
     var body: some View {
-        
+
         Divider()
         
         ScrollView {
@@ -27,6 +27,14 @@ struct NewTaskView: View {
                 CustomSelectionInputView(placeholder: "Task type",
                                          options: Task.taskOptions,
                                          selectedOption: $viewModel.selectedTaskTypeOption)
+                .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
+                    if let recommendation = viewModel.recommendAssigneer(item: newValue) {
+                        viewModel.selectedAssigneeOption = recommendation
+                    } else {
+                        viewModel.selectedAssigneeOption = User()
+                    }
+                    
+                }
                 
                 NewInputView(residentName: $viewModel.titleTextfield)
                 

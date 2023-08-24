@@ -55,6 +55,7 @@ class NewTaskViewModel: ObservableObject {
                 self.objectWillChange.send()
             }
         })
+
     }
     
     
@@ -94,4 +95,12 @@ class NewTaskViewModel: ObservableObject {
         }
     }
     
+    func recommendAssigneer(item: String) -> User? {
+        guard let category = TaskCategory(rawValue: item) else { return nil}
+        let recommendation = selectedSpace?.residents.where {
+            $0.preferences.contains(category)
+        }
+        
+        return recommendation?.randomElement()
+    }
 }
