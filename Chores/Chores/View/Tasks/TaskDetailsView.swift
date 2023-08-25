@@ -28,9 +28,12 @@ struct TaskDetailsView: View {
                     
                     Text(task.title)
                         .font(Font.custom(Font.generalSansFontMedium, size: 20))
-                    Text(task.desc)
-                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
-                    
+                    if task.desc.isEmpty{
+                        EmptyView()
+                    } else {
+                        Text(task.desc)
+                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    }
                 }
                 
                 HStack {

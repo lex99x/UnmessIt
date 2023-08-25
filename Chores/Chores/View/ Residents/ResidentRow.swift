@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 struct ResidentRow: View {
     @ObservedRealmObject var resident: User
-    
+     var threeColumnGrid = [GridItem(.fixed(50)), GridItem(.fixed(50)), GridItem(.fixed(50)),GridItem(.fixed(50)),GridItem(.fixed(50))]
     var body: some View {
         NavigationLink(destination: NewResident(isEditing: true, resident: resident)) {
             ZStack {
@@ -21,12 +21,23 @@ struct ResidentRow: View {
                             VStack(alignment: .leading) {
                                 Text(resident.nickname)
                                     .padding(.bottom, 0.1)
-                                    .font(.headline)
+                                    .font(Font.custom(Font.generalSansFontMedium, size: 17))
+                                    .foregroundColor(.textPrimaryColor)
                                 
                                 HStack {
-                                    ForEach(resident.preferences, id:\.self) {item in
-                                        //                                    Text("Hahahaha")
-                                        PreferenceItem(imageName: item.rawValue)
+                                    if resident.preferences.isEmpty {
+                                        Text("Tap to add your preferences.")
+                                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                            .foregroundColor(.textSecondaryColor)
+                                    }
+                                    HStack(alignment:.lastTextBaseline) {
+                                        LazyVGrid(columns: threeColumnGrid, spacing: 8) {
+                                            ForEach(resident.preferences, id:\.self) {item in
+                                                PreferenceItem(imageName: item.rawValue)
+                                                    .padding([.trailing, .leading], 1)
+                                        }
+                                        }
+                                        
                                     }
                                 }
                             }
@@ -46,14 +57,16 @@ struct ResidentRow: View {
                     //                }
                 }
             }
+            
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(Color.borderBorderDefault, lineWidth: 1)
             )
-            .background(Color.surfaceSurfaceSecondary)
+            .background {
+                Color.surfaceSecondaryColor
+            }
             .cornerRadius(16)
-            
         }
         
     }
@@ -61,12 +74,13 @@ struct ResidentRow: View {
 
 struct ResidentRow_Previews: PreviewProvider {
     static var previews: some View {
-        let user = User(value: ["nickname":"joaozinho", "preferences":["Cooking"]])
-        ResidentRow(resident: user)
-            .frame(width: 358, height: 78)
+        NavigationView {
+            let user = User(value: ["nickname":"joaozinho"])
+            ResidentRow(resident: user)
+                .frame(width: 358, height: 78)
+        }
     }
 }
-
 struct PreferenceItem: View {
     var imageName: String
     var body: some View {

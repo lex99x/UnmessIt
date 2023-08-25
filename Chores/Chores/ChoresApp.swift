@@ -27,5 +27,4 @@ struct ChoresApp: SwiftUI.App {
             }
         }
     }
-    
 }

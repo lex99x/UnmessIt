@@ -46,9 +46,20 @@ struct NewResident: View {
             .listStyle(.inset)
             
         }
+        .alert("", isPresented: $newResidentViewModel.hasError, actions: {
+//                    Button("Cancel", role: .cancel) {
+//                        isShowingDeleteAlert.toggle()
+//                    }
+            Button("OK", role: .cancel) {
+                newResidentViewModel.hasError = false
+            }
+        }, message: {
+            Text("Please insert a resident name")
+        })
+        
         .padding()
         .navigationBarBackButtonHidden(true)
-        .navigationTitle(isEditing ? "New Resident" : "Edit Resident")
+        .navigationTitle(isEditing ? "Edit Resident" : "New Resident")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -67,12 +78,14 @@ struct NewResident: View {
                     } else {
                         newResidentViewModel.addResident()
                     }
-                    
-                    dismiss()
+                    if newResidentViewModel.hasError == false {
+                        dismiss()
+                    }
                 }, label: {
                     Text("Save")
                 })
             }
+            
         }
         .onAppear {
             if resident.nickname.count > 0 {
@@ -86,6 +99,7 @@ struct NewResident: View {
             }
         }
     }
+
 }
 
 
@@ -143,7 +157,7 @@ struct ResidentInputView: View {
         VStack {
             
             VStack {
-                TextField("What should be done", text: residentName)
+                TextField("Resident name", text: residentName)
             }
         }
         .padding()

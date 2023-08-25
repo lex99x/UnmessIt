@@ -38,11 +38,11 @@ struct TaskRow: View {
                                 
                                 // Assignee
                                 
-//                                HStack {
-//                                    Image.userAddIcon
-//                                    Text(item.assignees.first?.nickname ?? "No assigner")
-//                                        .font(.subheadline)
-//                                }
+                                HStack {
+                                    Image.userAddIcon
+                                    Text(item.assignees.first?.nickname ?? "No assigner")
+                                        .font(.subheadline)
+                                }
                                 
                                 HStack {
                                     switch item.createdAt.checkDay() {

@@ -11,6 +11,7 @@ class NewTaskViewModel: ObservableObject {
     @ObservedResults(Space.self) var spaces
     @Published var selectedSpace: Space?
     
+    private let validator = CreateTaskValidator()
     
     var realm: Realm?
     var token: NotificationToken? = nil
@@ -29,6 +30,8 @@ class NewTaskViewModel: ObservableObject {
     @Published var selectedAssigneeOption: User = User()
     
     @Published var isImportantToggleOn = false
+    
+    @Published var hasError: Bool = false
     //    @Published var isRecurrentToggleOn = false
     //    @Published var isEndRepeatToggleOn = false
     
@@ -64,21 +67,25 @@ class NewTaskViewModel: ObservableObject {
         print("aqui1")
         print(selectedTaskTypeOption)
         
-        task.category = TaskCategory(rawValue: selectedTaskTypeOption) ?? .clothes
+        task.category = TaskCategory(rawValue: selectedTaskTypeOption) ?? .none
         task.title = titleTextfield
         task.desc = descriptionTextfield
         task.assignees.append(selectedAssigneeOption)
         
-        print("aqiu2")
-        if let selectedSpace = self.selectedSpace,
-           let realm = selectedSpace.realm {
-            try? realm.write {
-                
-                selectedSpace.tasks.append(task)
-                
+        do {
+            try validator.validate(task)
+            print("aqiu2")
+            if let selectedSpace = self.selectedSpace,
+               let realm = selectedSpace.realm {
+                try? realm.write {
+                    
+                    selectedSpace.tasks.append(task)
+                    
+                }
             }
+        } catch {
+            self.hasError = true
         }
-        
         
     }
     

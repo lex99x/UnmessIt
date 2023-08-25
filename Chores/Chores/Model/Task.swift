@@ -9,10 +9,10 @@ import SwiftUI
 import RealmSwift
 
 enum TaskCategory: String, PersistableEnum {
-    case clothes = "Clothes", cooking = "Cooking", ligthCleaning = "Light cleaning",
-              heavyCleaning = "Heavy cleaning", groceries = "Groceries", payments = "Payments", pet = "Pet"
+    case none, clothes = "Clothes", cooking = "Cooking", ligthCleaning = "Light Cleaning",
+              heavyCleaning = "Heavy Cleaning", organization = "Organization", payments = "Payments", pets = "Pets", shopping = "Shopping"
 
-    static let values: [TaskCategory] = [.clothes, .cooking, .ligthCleaning, .heavyCleaning, .groceries, .payments, .pet]
+    static let values: [TaskCategory] = [.clothes, .cooking, .ligthCleaning, .heavyCleaning, .organization, .payments, .pets, .shopping]
 }
 
 
@@ -26,9 +26,10 @@ class Task: Object, ObjectKeyIdentifiable {
                                         TaskCategory.cooking.rawValue,
                                         TaskCategory.ligthCleaning.rawValue,
                                         TaskCategory.heavyCleaning.rawValue,
-                                        TaskCategory.groceries.rawValue,
+                                        TaskCategory.organization.rawValue,
                                         TaskCategory.payments.rawValue,
-                                        TaskCategory.pet.rawValue]
+                                        TaskCategory.pets.rawValue,
+                                        TaskCategory.shopping.rawValue]
 
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var createdAt: Date = .init()
@@ -54,11 +55,15 @@ class Task: Object, ObjectKeyIdentifiable {
                 return .lightCleaningIcon
             case .heavyCleaning:
                 return .heavyCleaningIcon
-            case .groceries:
-                return .groceriesIcon
+            case .organization:
+                return .organizationIcon
             case .payments:
                 return .paymentsIcon
-            case .pet:
+            case .pets:
+                return .petsIcon
+            case .shopping:
+                return .shoppingIcon
+            case .none:
                 return .petsIcon
         }
         

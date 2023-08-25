@@ -14,12 +14,13 @@ extension Image {
     static let clothesIcon = Image("Clothes")
     static let cookingIcon = Image("Cooking")
     static let dogIcon = Image("Dog")
-    static let heavyCleaningIcon = Image("HeavyCleaning")
-    static let lightCleaningIcon = Image("LightCleaning")
+    static let heavyCleaningIcon = Image("Heavy Cleaning")
+    static let lightCleaningIcon = Image("Light Cleaning")
     static let organizationIcon = Image("Organization")
     static let paymentsIcon = Image("Payments")
     static let petsIcon = Image("Pets")
-    static let groceriesIcon = Image("Groceries")
+//    static let groceriesIcon = Image("Organization")
+    static let shoppingIcon = Image("Shopping")
  
     // MARK: General
     static let arrowLeftIcon = Image("ArrowLeft")

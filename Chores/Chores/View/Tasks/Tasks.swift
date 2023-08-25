@@ -114,7 +114,7 @@ struct Tasks: View {
                         Section {
                             ForEach(content.freeze()) { item in
                                 TaskRow(item: item)
-//                                    .padding(.bottom, 4)
+                                    .padding(.bottom, 8)
                                     .listRowSeparator(.hidden)
                                     .swipeActions(edge: .trailing) {
                                         

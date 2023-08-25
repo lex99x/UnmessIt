@@ -59,6 +59,17 @@ struct NewTaskView: View {
                                        options: viewModel.selectedSpace!.residents, selectedOption: $viewModel.selectedAssigneeOption)
                 }
                 
+                
+                .alert("Please check task fields", isPresented: $viewModel.hasError, actions: {
+//                    Button("Cancel", role: .cancel) {
+//                        isShowingDeleteAlert.toggle()
+//                    }
+                    Button("OK", role: .cancel) {
+                        viewModel.hasError = false
+                    }
+                }, message: {
+                    Text("Please check task category and title,\nthey can't be empty!")
+                })
             }
             .padding()
             .navigationBarBackButtonHidden(true)
@@ -87,8 +98,9 @@ struct NewTaskView: View {
                         } else {
                             viewModel.addNewTask()
                         }
-                        
-                        dismiss()
+                        if viewModel.hasError == false {
+                            dismiss()
+                        }
                     }, label: {
                         Text("Save")
                             .font(Font.custom(Font.generalSansFontMedium, size: 17))
@@ -129,7 +141,7 @@ struct NewTaskView_Previews: PreviewProvider {
                 var task: Task {
                     let newTask = Task()
                     newTask.title = "foo"
-                    newTask.category = .pet
+                    newTask.category = .pets
                     return newTask
                 }
                     NewTaskView(isEditing: true, task: task)

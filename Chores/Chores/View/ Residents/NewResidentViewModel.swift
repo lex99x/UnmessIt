@@ -16,7 +16,9 @@ final class NewResidentViewModel: ObservableObject {
     
     @Published var residentName: String = ""
     @Published var selections: [String] = []
+    @Published var hasError: Bool = false
     
+    private let validator = CreateResidentValidator()
     
     init() {
         token = spaces.observe({ (changes) in
@@ -37,28 +39,44 @@ final class NewResidentViewModel: ObservableObject {
             user.preferences.append(TaskCategory(rawValue: item)!)
         }
     
-        
-        if let space = spaces.first,
-           let realm = space.realm {
-            try? realm.write {
-                space.residents.append(user)
+        do {
+            try validator.validate(user)
+            
+            if let space = spaces.first,
+               let realm = space.realm {
+                try? realm.write {
+                    space.residents.append(user)
+                }
             }
+        } catch {
+            self.hasError = true
         }
+        
+        
     }
     
     func updateUser(item: User) {
-        if let thaw = item.thaw(),
-           let realm = thaw.realm {
-            try? realm.write {
-                var preferences = RealmSwift.List<TaskCategory>()
-                thaw.nickname = residentName
-                
-                for item in selections {
-                    preferences.append(TaskCategory(rawValue: item)!)
+            if let thaw = item.thaw(),
+               let realm = thaw.realm {
+                try? realm.write {
+                    var preferences = RealmSwift.List<TaskCategory>()
+                    do {
+                    thaw.nickname = residentName
+                    try validator.validate(thaw)
+                    
+                    for item in selections {
+                        preferences.append(TaskCategory(rawValue: item)!)
+                    }
+                        thaw.preferences.removeAll()
+                        thaw.preferences = preferences
                 }
-                thaw.preferences = preferences
+                    catch {
+                        self.hasError = true
+                    }
+                }
             }
-        }
+            
+
     }
     
     
