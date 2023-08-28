@@ -18,7 +18,7 @@ struct InputOverlayModifier: ViewModifier {
         content
             .overlay {
                 RoundedRectangle(cornerRadius: 5)
-                    .stroke(.gray, lineWidth: 0.5)
+                    .stroke(Color.borderDefaultColor, lineWidth: 0.5)
             }
     }
 }
