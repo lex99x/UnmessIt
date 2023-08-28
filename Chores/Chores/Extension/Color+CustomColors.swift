@@ -17,6 +17,7 @@ extension Color {
     static let surfaceSecondaryColor = Color("SurfaceSecondary")
     static let surfaceTertiaryColor = Color("SurfaceTertiary")
     static let categoryLightCleaningColor = Color("CategoryLightCleaning")
+    static let borderDefaultColor: Color = Color("BorderDefault")
 }
 
 extension Color {
@@ -48,7 +49,6 @@ extension Color {
     static let taskRowBackground = Color(hex: "D6D6D6").opacity(0.5)
     
     static let surfaceSurfaceSecondary: Color = Color(hex:"F5F5F5")
-    static let borderBorderDefault: Color = Color(red: 0.84, green: 0.84, blue: 0.84)
     
     static let surfaceAccentPrimary: Color = Color(hex:"6DD6E4")
     static let accent2: Color = Color(hex: "079AAD")

@@ -145,7 +145,7 @@ struct MultipleSelectionRow: View {
         .padding()
         .overlay(
           RoundedRectangle(cornerRadius: 5)
-            .stroke(Color.borderBorderDefault, lineWidth: 1)
+            .stroke(Color.borderDefaultColor, lineWidth: 1)
         )
     }
 }

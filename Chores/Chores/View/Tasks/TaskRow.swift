@@ -91,7 +91,7 @@ struct TaskRow: View {
             }
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.borderBorderDefault, lineWidth: 1)
+                    .stroke(Color.borderDefaultColor, lineWidth: 1)
             )
             .background {
                 Color.surfaceSecondaryColor

@@ -61,7 +61,7 @@ struct ResidentRow: View {
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.borderBorderDefault, lineWidth: 1)
+                    .stroke(Color.borderDefaultColor, lineWidth: 1)
             )
             .background {
                 Color.surfaceSecondaryColor
@@ -90,7 +90,7 @@ struct PreferenceItem: View {
         .padding(8)
         .overlay(
           RoundedRectangle(cornerRadius: 8)
-            .stroke(Color.borderBorderDefault, lineWidth: 1)
+            .stroke(Color.borderDefaultColor, lineWidth: 1)
         )
     }
 }
