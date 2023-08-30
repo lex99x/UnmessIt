@@ -9,10 +9,10 @@ import SwiftUI
 import RealmSwift
 struct ResidentRow: View {
     @ObservedRealmObject var resident: User
-     var threeColumnGrid = [GridItem(.fixed(50)), GridItem(.fixed(50)), GridItem(.fixed(50)),GridItem(.fixed(50)),GridItem(.fixed(50))]
+//     var threeColumnGrid = [GridItem(.fixed(50)), GridItem(.fixed(50)), GridItem(.fixed(50)),GridItem(.fixed(50)),GridItem(.fixed(50))]
+    var columns = [GridItem(.adaptive(minimum: 35))]
     var body: some View {
         NavigationLink(destination: NewResident(isEditing: true, resident: resident)) {
-            ZStack {
                 // inside card
                 HStack {
                     VStack {
@@ -29,15 +29,16 @@ struct ResidentRow: View {
                                         Text("Tap to add your preferences.")
                                             .font(Font.custom(Font.generalSansFontRegular, size: 15))
                                             .foregroundColor(.textSecondaryColor)
-                                    }
-                                    HStack(alignment:.lastTextBaseline) {
-                                        LazyVGrid(columns: threeColumnGrid, spacing: 8) {
-                                            ForEach(resident.preferences, id:\.self) {item in
-                                                PreferenceItem(imageName: item.rawValue)
-                                                    .padding([.trailing, .leading], 1)
+                                    } else {
+                                        HStack(alignment:.lastTextBaseline) {
+                                            LazyVGrid(columns: columns) {
+                                                ForEach(resident.preferences, id:\.self) {item in
+                                                    PreferenceItem(imageName: item.rawValue)
+                                                        .padding([.trailing, .leading], 1)
+                                                }
+                                            }
+                                            
                                         }
-                                        }
-                                        
                                     }
                                 }
                             }
@@ -56,7 +57,6 @@ struct ResidentRow: View {
                     //
                     //                }
                 }
-            }
             
             .padding()
             .overlay(
@@ -85,7 +85,11 @@ struct PreferenceItem: View {
     var imageName: String
     var body: some View {
         ZStack {
-            Image(imageName)
+            VStack {
+                Image(imageName)
+                    .resizable().frame(width: 16, height: 16)
+            }
+            .padding(2)
         }
         .padding(8)
         .overlay(
