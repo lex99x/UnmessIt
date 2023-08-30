@@ -195,7 +195,6 @@
 		065B0A062A6EA90B00B1D35F /* Chores */ = {
 			isa = PBXGroup;
 			children = (
-				06AF6D562A98493000675DC9 /* Utils */,
 				065B0A072A6EA90B00B1D35F /* ChoresApp.swift */,
 				174447F62A86646B0083142F /* Info.plist */,
 				065B0A312A6EB98300B1D35F /* Model */,
@@ -273,7 +272,7 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		069EC1532A93170F002BBDE6 /*  Residents */ = {
+		069EC1532A93170F002BBDE6 /* Residents */ = {
 			isa = PBXGroup;
 			children = (
 				069EC1562A93183F002BBDE6 /* NewResidentViewModel.swift */,
@@ -282,24 +281,17 @@
 				069EC15A2A934B9D002BBDE6 /* ResidentsViewModel.swift */,
 				06AF99C12A935D13006BFBD4 /* ResidentRow.swift */,
 			);
-			path = " Residents";
+			path = Residents;
 			sourceTree = "<group>";
 		};
 		069EC15C2A934F28002BBDE6 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				069EC15D2A934F35002BBDE6 /* RealmHelper.swift */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
-		06AF6D562A98493000675DC9 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
 				06AF6D572A98494500675DC9 /* TaskValidator.swift */,
 				06AF6D592A98569100675DC9 /* ResidentValidator.swift */,
 			);
-			path = Utils;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		06D816532A848A6400606F03 /* Manager */ = {
@@ -313,7 +305,7 @@
 		170FE7752A70049D00F7BD45 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				069EC1532A93170F002BBDE6 /*  Residents */,
+				069EC1532A93170F002BBDE6 /* Residents */,
 				066B70232A7D329600E9FB1E /* Tasks */,
 				17A834862A7A863600625FD2 /* Component */,
 				06D8165A2A848EFE00606F03 /* OnboardingView.swift */,
@@ -712,7 +704,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chores/Preview Content\"";
-				DEVELOPMENT_TEAM = KSG2U47VB3;
+				DEVELOPMENT_TEAM = ZPDCX326AZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chores/Info.plist;
@@ -730,9 +722,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.asd.Choresss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -763,9 +758,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.asd.Chores;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

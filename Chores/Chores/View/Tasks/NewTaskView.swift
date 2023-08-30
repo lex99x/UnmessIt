@@ -17,10 +17,10 @@ struct NewTaskView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-
-        Divider()
         
         ScrollView {
+            
+            Divider()
             
             VStack(alignment: .leading, spacing: 24) {
                 
@@ -112,8 +112,11 @@ struct NewTaskView: View {
             
 
         }
+        .background {
+            Color.surfacePrimaryColor
+                .ignoresSafeArea()
+        }
         .onAppear {
-            print("fodasse")
             if isEditing == true {
                 viewModel.titleTextfield = task.title
                 viewModel.descriptionTextfield = task.desc

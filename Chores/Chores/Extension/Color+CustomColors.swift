@@ -14,10 +14,13 @@ extension Color {
     static let textSecondaryColor = Color("TextSecondary")
     static let textInvertColor = Color("TextInvert")
     static let surfaceButtonSecondaryColor = Color("SurfaceButtonSecondary")
+    static let surfacePrimaryColor = Color("SurfacePrimary")
     static let surfaceSecondaryColor = Color("SurfaceSecondary")
     static let surfaceTertiaryColor = Color("SurfaceTertiary")
     static let categoryLightCleaningColor = Color("CategoryLightCleaning")
     static let borderDefaultColor: Color = Color("BorderDefault")
+    static let pendingTaskBadgeTextColor = Color("PendingTaskBadgeText")
+    static let pendingTaskBadgeBackgroundColor = Color("PendingTaskBadgeBackground")
 }
 
 extension Color {
@@ -35,9 +38,6 @@ extension Color {
 extension Color {
     static let btnDarkBackground = Color(red: 0.18, green: 0.21, blue: 0.28)
     static let lightModeTaskcardBackground = Color(hex: "EDEEFA")
-    
-    static let pendingTaskBadgeText = Color(hex: "FE9D35")
-    static let pendingTaskBadgeBackground = Color(hex: "FE9D35").opacity(0.15)
     
     static let doneTaskBadgeText = Color(hex: "67B173")
     static let doneTaskBadgeBackground = Color(hex: "67B173").opacity(0.15)

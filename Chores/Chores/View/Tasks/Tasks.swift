@@ -11,8 +11,9 @@ import RealmSwift
 struct Tasks: View {
     
     @Environment(\.dismiss) private var dismiss
+    
     @StateObject private var viewModel = TaskViewModel()
-    @State private var selection: String? = nil
+//    @State private var selection: String? = nil
     @State var searchText: String = ""
     @State var isShowingDeleteAlert = false
     @State private var filterTimeInterval = 0
@@ -51,7 +52,7 @@ struct Tasks: View {
         
         VStack {
             
-            NavigationLink(destination: Residents(), tag: "A", selection: $selection) { EmptyView() }
+//            NavigationLink(destination: Residents(), tag: "A", selection: $selection) { EmptyView() }
             
             if viewModel.tasks.isEmpty {
                 
@@ -77,39 +78,25 @@ struct Tasks: View {
                     }
                     .multilineTextAlignment(.center)
                     
-                    Spacer()
-                    
-                    Button(action: {
-                        viewModel.isAddingNewTask.toggle()
-                    }, label: {
-                        Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
-                    })
-                    .buttonStyle(CustomButtonStyle(width: .infinity,
-                                                   foregroundColor: .textInvertColor,
-                                                   backgroundColor: .accentColor))
-                    .sheet(isPresented: $viewModel.isAddingNewTask) {
-                        NavigationStack {
-                            NewTaskView(isEditing: false, task: Task())
-                        }
-                    }
-                    
                 }
                 .padding(.top, 64)
                 .padding(.horizontal)
-                
+                                
             } else {
+                
                 VStack {
-                    // MARK: Segmented Filter
-                    //                    VStack {
-                    //                        Picker("What is your favorite color?", selection: $filterTimeInterval) {
-                    //                            Text("Yesterday").tag(1)
-                    //                            Text("Today").tag(0)
-                    //                            Text("Tomorrow").tag(2)
-                    //                        }
-                    //                    }
-                    //                    .padding()
-                    //                    .pickerStyle(.segmented)
-                    //
+                    
+//                    MARK: Segmented Filter
+//                    VStack {
+//                        Picker("What is your favorite color?", selection: $filterTimeInterval) {
+//                            Text("Yesterday").tag(1)
+//                            Text("Today").tag(0)
+//                            Text("Tomorrow").tag(2)
+//                        }
+//                    }
+//                    .padding()
+//                    .pickerStyle(.segmented)
+                    
                     List {
                         Section {
                             ForEach(content.freeze()) { item in
@@ -132,27 +119,28 @@ struct Tasks: View {
                     }
                     .listStyle(.inset)
                     
-                    Button(action: {
-                        // TODO: add navigation to add new task
-                        viewModel.isAddingNewTask.toggle()
-                        //                        viewModel.add()
-                    }, label: {
-                        Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
-                    })
-                    .buttonStyle(CustomButtonStyle(width: .infinity,
-                                                   foregroundColor: .textInvertColor,
-                                                   backgroundColor: .accentColor))
-                    .padding(.horizontal)
-                    .sheet(isPresented: $viewModel.isAddingNewTask) {
-                        NavigationStack {
-                            NewTaskView(isEditing: false, task: Task())
-                            //                            Text("add new task")
-                        }
-                    }
-                    
                 }
                 .searchable(text: $searchText)
+                
             }
+            
+            Spacer()
+            
+            Button(action: {
+                viewModel.isAddingNewTask.toggle()
+            }, label: {
+                Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
+            })
+            .buttonStyle(CustomButtonStyle(width: .infinity,
+                                           foregroundColor: .textInvertColor,
+                                           backgroundColor: .accentColor))
+            .padding(.horizontal)
+            .sheet(isPresented: $viewModel.isAddingNewTask) {
+                NavigationStack {
+                    NewTaskView(isEditing: false, task: Task())
+                }
+            }
+            
         }
         .toolbar {
             
@@ -163,17 +151,16 @@ struct Tasks: View {
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    selection = "A"
-                    //                    print(viewModel.selectedSpace?.residents ?? ["fodasse"])
-                } label: {
+                
+                NavigationLink(destination: { Residents() }, label: {
                     Image.userAddIcon
                         .resizable()
                         .frame(width: 20, height: 20)
                     Text("Manage residents")
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                }
+                })
+                
             }
             
             if !viewModel.tasks.isEmpty {
@@ -213,10 +200,9 @@ struct Tasks: View {
             
         }
         .navigationBarBackButtonHidden()
-//        .toolbarBackground(Color.red, for: .automatic)
         .onAppear {
             
-            print(viewModel.selectedSpace?.residents.count)
+//            print(viewModel.selectedSpace?.residents.count)
             
             if viewModel.selectedSpace?.residents.count == 0 {
                 viewModel.registerOwner()
