@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol CreateResidentValidatorImpl {
     func validate(_ resident: User) throws
@@ -20,11 +21,24 @@ struct CreateResidentValidator: CreateResidentValidatorImpl {
         }
         
     }
+    
+    func validateString(_ name:String) throws {
+        if name.isEmpty {
+            throw CreateValidatorError.emptyName
+        }
+    }
+    
+    func validateExistentResident(_ residents: [User], nickname: String) {
+        
+    }
 }
+
+
 
 extension CreateResidentValidator {
     enum CreateValidatorError: LocalizedError {
         case emptyName
+        case residentExists
     }
 }
 
@@ -34,6 +48,9 @@ extension CreateResidentValidator.CreateValidatorError {
         switch self {
         case .emptyName:
             return "Please enter resident Name."
+        
+        case .residentExists:
+            return "Resident already exists."
         }
     }
 }
