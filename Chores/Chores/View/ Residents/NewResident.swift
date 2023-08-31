@@ -46,15 +46,15 @@ struct NewResident: View {
             .listStyle(.inset)
             
         }
-        .alert("", isPresented: $newResidentViewModel.hasError, actions: {
+        .alert("alert_resident_missing_fields_title".localized, isPresented: $newResidentViewModel.hasError, actions: {
 //                    Button("Cancel", role: .cancel) {
 //                        isShowingDeleteAlert.toggle()
 //                    }
-            Button("OK", role: .cancel) {
+            Button("alert_resident_missing_fields_action".localized, role: .cancel) {
                 newResidentViewModel.hasError = false
             }
         }, message: {
-            Text("Please insert a resident name")
+            Text("alert_resident_missing_fields_description".localized)
         })
         
         .padding()

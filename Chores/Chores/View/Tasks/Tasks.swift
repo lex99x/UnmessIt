@@ -195,16 +195,16 @@ struct Tasks: View {
                                 .foregroundColor(.textPrimaryColor)
                         })
                     }
-                    .alert("Delete all tasks", isPresented: $isShowingDeleteAlert, actions: {
-                        Button("Cancel", role: .cancel) {
+                    .alert("alert_delete_all_tasks_title".localized, isPresented: $isShowingDeleteAlert, actions: {
+                        Button("alert_delete_all_tasks_action_left".localized, role: .cancel) {
                             isShowingDeleteAlert.toggle()
                         }
-                        Button("Delete", role: .destructive) {
+                        Button("alert_delete_all_tasks_action_right".localized, role: .destructive) {
                             viewModel.deleteAll()
                             dismiss()
                         }
                     }, message: {
-                        Text("This action cannot be undone.\nAre you sure you want to delete all tasks from your place?")
+                        Text("alert_delete_all_tasks_description".localized)
                     })
                     
                 }

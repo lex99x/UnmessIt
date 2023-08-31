@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Chores
+
+  Created by Joao Lucas Camilo on 30/08/23.
+  
+*/
+
+
+//HOME - delete all tasks - ALERT
+"alert_delete_all_tasks_title" = "Delete all tasks";
+"alert_delete_all_tasks_description" = "This action cannot be undone. \nAre you sure you want to delete all the existing tasks?";
+"alert_delete_all_tasks_action_left" = "Cancel";
+"alert_delete_all_tasks_action_right" = "Delete";
+
+//DELETE TASK - ALERT
+"alert_delete_task_title" = "Delete task";
+"alert_delete_task_description" = "This action cannot be undone.\nAre you sure you want to delete it?";
+"alert_delete_task_action_left" = "Cancel";
+"alert_delete_task_action_right" = "Delete";
+
+//MISSING FIELDS - ALERT
+"alert_task_missing_fields_title" = "Missing required fields";
+"alert_task_missing_fields_description" = "Please enter all required information: task type, task name, date and time.";
+"alert_task_missing_fields_action" = "OK";
+
+// MISSING RESIDENT NAME - ALERT
+"alert_resident_missing_fields_title" = "Resident's name is required";
+"alert_resident_missing_fields_description" = "Please enter the resident's name.";
+"" = "OK";
