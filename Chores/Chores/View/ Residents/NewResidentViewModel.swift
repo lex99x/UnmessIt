@@ -17,10 +17,12 @@ final class NewResidentViewModel: ObservableObject {
     @Published var residentName: String = ""
     @Published var selections: [String] = []
     @Published var hasError: Bool = false
+    @Published var selectedSpace: Space?
     
     private let validator = CreateResidentValidator()
     
     init() {
+        self.selectedSpace = spaces.first
         token = spaces.observe({ (changes) in
             switch changes {
             case .error(_): break
@@ -56,14 +58,18 @@ final class NewResidentViewModel: ObservableObject {
     }
     
     func updateUser(item: User) {
+        
             if let thaw = item.thaw(),
                let realm = thaw.realm {
+                
                 try? realm.write {
                     var preferences = RealmSwift.List<TaskCategory>()
                     do {
-                    thaw.nickname = residentName
-                    try validator.validate(thaw)
-                    
+                        try validator.validateString(residentName)
+                        try validator.validateExistentResident(selectedSpace?.residents as? [User] ?? [], nickname: residentName)
+//                        print(selectedSpace?.residents.map{$0.nickname})
+                        let a = selectedSpace?.residents.map{$0.nickname}
+                        
                     for item in selections {
                         preferences.append(TaskCategory(rawValue: item)!)
                     }
@@ -73,6 +79,7 @@ final class NewResidentViewModel: ObservableObject {
                     catch {
                         self.hasError = true
                     }
+                    
                 }
             }
             

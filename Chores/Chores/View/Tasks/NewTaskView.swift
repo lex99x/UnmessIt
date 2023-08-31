@@ -60,15 +60,15 @@ struct NewTaskView: View {
                 }
                 
                 
-                .alert("Please check task fields", isPresented: $viewModel.hasError, actions: {
+                .alert("alert_task_missing_fields_title".localized, isPresented: $viewModel.hasError, actions: {
 //                    Button("Cancel", role: .cancel) {
 //                        isShowingDeleteAlert.toggle()
 //                    }
-                    Button("OK", role: .cancel) {
+                    Button("alert_task_missing_fields_action".localized, role: .cancel) {
                         viewModel.hasError = false
                     }
                 }, message: {
-                    Text("Please check task category and title,\nthey can't be empty!")
+                    Text("alert_task_missing_fields_description")
                 })
             }
             .padding()

@@ -138,14 +138,14 @@ struct TaskDetailsView: View {
                     Image.deleteIcon
                         .foregroundColor(.textCriticalColor)
                 })
-                .alert("Delete task", isPresented: $isShowingDeleteAlert, actions: {
-                    Button("Cancel", role: .cancel) {}
-                    Button("Delete", role: .destructive) {
+                .alert("alert_delete_task_title".localized, isPresented: $isShowingDeleteAlert, actions: {
+                    Button("alert_delete_task_action_left", role: .cancel) {}
+                    Button("alert_delete_task_action_right", role: .destructive) {
                         viewModel.deleteTask(item: task)
                         dismiss()
                     }
                 }, message: {
-                    Text("This action cannot be undone.\nAre you sure you want to delete it?")
+                    Text("alert_delete_task_description".localized)
                 })
             }
             

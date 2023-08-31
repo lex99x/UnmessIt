@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Chores
+
+  Created by Joao Lucas Camilo on 30/08/23.
+  
+*/
+
+// MISSING RESIDENT NAME - ALERT
+"alert_delete_resident_title" = "Nome deve ser preenchido";
+"alert_delete_resident_description" = "Por favor, preencha o nome do(a) residente.";
+"alert_delete_resident_tasks_action_left" = "OK";
+    
+
+//HOME - delete all tasks - ALERT
+"alert_delete_all_tasks_title" = "Apagar todas as tarefas";
+"alert_delete_all_tasks_description" = "Esta ação não poderá ser desfeita. \nTem certeza que deseja apagar todas as tarefas existentes?";
+"alert_delete_all_tasks_action_left" = "Cancelar";
+"alert_delete_all_tasks_action_right" = "Apagar";
+
+
+//DELETE TASK - ALERT
+"alert_delete_task_title" = "Apagar tarefa";
+"alert_delete_task_description" = "Essa ação não poderá ser desfeita.\Tem certeza que deseja apagar ?";
+"alert_delete_task_action_left" = "Cancelar";
+"alert_delete_task_action_right" = "Apagar";
+
+//MISSING FIELDS - ALERT
+"alert_task_missing_fields_title" = "Alguns campos obrigatórios estão vazios";
+"alert_task_missing_fields_description" = "Por favor, preencha todos os campos obrigatórios: tipo de tarefa, nome da tarefa, data e hora.";
+"alert_task_missing_fields_action" = "OK";
