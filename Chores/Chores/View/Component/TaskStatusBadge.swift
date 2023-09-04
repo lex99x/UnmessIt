@@ -22,7 +22,7 @@ struct TaskStatusBadge: View {
         self.status = status
         switch status {
         case .pending:
-            self.colors = (.pendingTaskBadgeTextColor, .pendingTaskBadgeBackgroundColor)
+            self.colors = (.badgeTextPendingColor, .badgeSurfacePending)
             self.content = ("exclamationmark.circle", "Pending")
         case .done:
             self.colors = (.doneTaskBadgeText, .doneTaskBadgeBackground)

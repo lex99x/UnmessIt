@@ -25,23 +25,15 @@ struct CustomSelectionInputView: View {
                 Spacer()
                 Text(selectedOption)
                     .foregroundColor(.textSecondaryColor)
-                
-//                if let taskCategory = TaskCategory(rawValue: selectedOption) {
-//                    Task.getTaskIconByCategory(taskCategory: taskCategory)
-//                        .frame(width: 16, height: 16)
-//                }
-                
+                                
                 Menu(content: {
                     ForEach(options, id: \.self) { option in
-                        Button(action: {
+                        Button(role: .cancel, action: {
                             selectedOption = option
                         }, label: {
-                            HStack {
-                                Text(option)
-                                
-                                Task.getTaskIconByCategory(taskCategory: TaskCategory(rawValue: option) ?? TaskCategory.clothes)
-                                    .renderingMode(.original)
-                            }
+                            Text(option)
+                            Image(option)
+                                .renderingMode(.original)
                         })
                     }
                 }, label: {
@@ -59,6 +51,9 @@ struct CustomSelectionInputView: View {
         .inputOverlay()
         .background {
             Color.surfaceSecondaryColor
+        }
+        .onAppear {
+            print("Category" + options.last!.replacingOccurrences(of: " ", with: ""))
         }
         
     }

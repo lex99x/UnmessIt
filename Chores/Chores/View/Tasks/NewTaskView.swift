@@ -113,7 +113,7 @@ struct NewTaskView: View {
 
         }
         .background {
-            Color.surfacePrimaryColor
+            Color.surfaceSheetColor
                 .ignoresSafeArea()
         }
         .onAppear {
