@@ -1,132 +1,168 @@
-////
-////  TaskDetailsView.swift
-////  Chores
-////
-////  Created by Alex A. Rocha on 16/08/23.
-////
+//
+//  TaskDetailsView.swift
+//  Chores
+//
+//  Created by Alex A. Rocha on 16/08/23.
+//
 
 import SwiftUI
 import RealmSwift
 
 struct TaskDetailsView: View {
     
+    @Environment(\.dismiss) private var dismiss
+    
     @ObservedRealmObject var task: Task
     @ObservedObject private var viewModel = TaskDetailViewModel()
+    
     @State private var selection: String? = nil
     @State var isShowingDeleteAlert = false
-    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         
-        NavigationLink(destination: NewTaskView(isEditing: true, task: self.task), tag: "A", selection: $selection) { EmptyView() }
+//        NavigationLink(destination: NewTaskView(isEditing: true, task: self.task), tag: "A", selection: $selection) { EmptyView() }
         
-        HStack {
-            VStack(alignment: .leading, spacing: 24) {
-                
-                // MARK: Title + Description
-                VStack(alignment: .leading, spacing: 16) {
-                    
-                    Text(task.title)
-                        .font(Font.custom(Font.generalSansFontMedium, size: 20))
-                    
-                    if !task.desc.isEmpty {
-                        Text(task.desc)
-                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
-                    }
-                    
-                }
+        VStack(alignment: .leading, spacing: 16) {
+                        
+            HStack {
                 
                 HStack {
-                    Image(systemName: "person")
-                    Text(task.assignees.first?.nickname ?? "You")
+                    Task.getTaskIconByCategory(taskCategory: task.category)
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                        .foregroundColor(.textAccentColor)
+                    Text(task.category.rawValue)
+                        .foregroundColor(.textPrimaryColor)
                 }
                 .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                .foregroundColor(.textSecondaryColor)
-                    
-                // MARK: Tags
-                HStack(spacing: 8) {
-                    
-                    HStack {
-                        Text(task.category.rawValue)
-                            .foregroundColor(.textPrimaryColor)
-                        Task.getTaskIconByCategory(taskCategory: task.category)
-                            .resizable()
-                            .frame(width: 16, height: 16)
-                            .foregroundColor(.categoryLightCleaningColor)
-                    }
-                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 8)
-                    .inputOverlay()
-                    .background {
-                        Color.surfaceSecondaryColor
-                    }
-                    
-                }
-                
-                HStack {
-                    Text(task.createdAt.formatted(date: .abbreviated, time: .omitted))
-                    Spacer()
-                }
-                .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                .foregroundColor(.textPrimaryColor)
-                .padding()
-                .inputOverlay()
+                .padding(.vertical, 8)
+                .padding(.horizontal, 12)
                 .background {
                     Color.surfaceSecondaryColor
+                        .clipShape(Capsule())
                 }
                 
                 Spacer()
                 
+                TaskStatusBadge(status: task.status)
+                
             }
-            .padding(.top, 24)
-            .navigationTitle("View task")
-            .navigationBarTitleDisplayMode(.inline)
+                
+            Text(task.title)
+                .font(Font.custom(Font.generalSansFontRegular, size: 20))
+                .fontWeight(.medium)
+            
+            if !task.desc.isEmpty {
+                Text(task.desc)
+                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
+            }
+            
+            if let assignee = task.assignees.first {
+                HStack {
+                    Image(systemName: "person")
+                        .padding(4)
+                        .background {
+                            Color.surfaceSecondaryColor
+                                .cornerRadius(8)
+                        }
+                    Text(assignee.nickname)
+                }
+                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                .foregroundColor(.textSecondaryColor)
+            }
+            
+            HStack {
+                Text(task.createdAt.formatted(date: .abbreviated, time: .omitted))
+                Image(systemName: "circle.fill")
+                    .resizable()
+                    .frame(width: 4, height: 4)
+                Text(task.createdAt.formatted(date: .omitted, time: .shortened))
+            }
+            .padding(.top, 29)
+            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+            .foregroundColor(.textPrimaryColor)
             
             Spacer()
             
-        }
-        .padding(.horizontal)
-        
-        .toolbar {
-            //
-            //                ToolbarItem(placement: .navigationBarLeading) {
-            //                    Button(action: {}, label: {
-            //                        HStack {
-            //                            Image.arrowLeftIcon
-            //                            Text("Back")
-            //                        }
-            //                        .foregroundColor(.textAccentColor)
-            //                    })
-            //                }
-            
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                // MARK: REMOVED TO V1
-                //                    Button(action: {
-                //                        selection = "A"
-                //                    }, label: {
-                //                        Image.editIcon
-                //                            .foregroundColor(.textAccentColor)
-                //                    })
+            if task.status == .pending {
+                
                 Button(action: {
-                    isShowingDeleteAlert.toggle()
+                    task.status = .done
                 }, label: {
-                    Image.deleteIcon
-                        .foregroundColor(.textCriticalColor)
-                })
-                .alert("alert_delete_task_title".localized, isPresented: $isShowingDeleteAlert, actions: {
-                    Button("alert_delete_task_action_left", role: .cancel) {}
-                    Button("alert_delete_task_action_right", role: .destructive) {
-                        viewModel.deleteTask(item: task)
-                        dismiss()
+                    HStack {
+                        Image.doneStatusIcon
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text("Mark as done")
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                            .fontWeight(.medium)
                     }
-                }, message: {
-                    Text("alert_delete_task_description".localized)
                 })
+                .buttonStyle(CustomButtonStyle(width: .infinity,
+                                               foregroundColor: .badgeTextDoneColor,
+                                               backgroundColor: .badgeSurfaceDoneColor))
+                
+            } else {
+                
+                Button(action: {
+                    task.status = .pending
+                }, label: {
+                    HStack {
+                        Image.pendingStatusIcon
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text("Mark as pending")
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                            .fontWeight(.medium)
+                    }
+                })
+                .buttonStyle(CustomButtonStyle(width: .infinity,
+                                               foregroundColor: .badgeTextPendingColor,
+                                               backgroundColor: .badgeSurfacePendingColor))
+                
             }
             
         }
-        
+        .padding(.top, 24)
+        .padding(.horizontal)
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    HStack {
+                        Image.arrowLeftIcon
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text("Back")
+                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    }
+                    .foregroundColor(.textAccentColor)
+                })
+            }
+
+            ToolbarItem(placement: .principal) {
+                Text("View task")
+                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    .foregroundColor(.textPrimaryColor)
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {}, label: {
+                    Image.editIcon
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.textAccentColor)
+                })
+            }
+
+        }
+        .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+
     }
 
 }

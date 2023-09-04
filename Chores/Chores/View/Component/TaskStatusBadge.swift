@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct TaskStatusBadge: View {
-//    enum Status {
-//        case pending, done, notDone
-//    }
-//
     
     @State var status: Task.Status
     
@@ -21,30 +17,39 @@ struct TaskStatusBadge: View {
     init(status: Task.Status) {
         self.status = status
         switch status {
-        case .pending:
-            self.colors = (.badgeTextPendingColor, .badgeSurfacePending)
-            self.content = ("exclamationmark.circle", "Pending")
-        case .done:
-            self.colors = (.doneTaskBadgeText, .doneTaskBadgeBackground)
-            self.content = ("checkmark.circle", "Done")
-        case .cantDo:
-            self.colors = (.notDoneTaskBadgeText, .notDoneTaskBadgeBackground)
-            self.content = ("circle.slash", "Not done")
+            case .pending:
+                self.colors = (.badgeTextPendingColor, .badgeSurfacePendingColor)
+                self.content = ("exclamationmark.circle", "Pending")
+            case .done:
+                self.colors = (.doneTaskBadgeText, .doneTaskBadgeBackground)
+                self.content = ("checkmark.circle", "Done")
+            case .cantDo:
+                self.colors = (.notDoneTaskBadgeText, .notDoneTaskBadgeBackground)
+                self.content = ("circle.slash", "Not done")
         }
     }
+    
     var body: some View {
         ZStack {
-            HStack(spacing: 10) {
+            HStack(spacing: 8) {
                 Image(systemName: self.content.0)
                     .foregroundColor(self.colors.0)
                 Text(self.content.1)
                     .foregroundColor(self.colors.0)
             }
-            .padding(.leading, 6)
-            .padding(.trailing, 8)
-            .padding(.vertical, 4)
+            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
             .background(self.colors.1)
             .cornerRadius(16)
         }
+    }
+    
+}
+
+struct TaskStatusBadge_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskStatusBadge(status: .done)
+        TaskStatusBadge(status: .pending)
     }
 }

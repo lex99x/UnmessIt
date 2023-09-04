@@ -44,11 +44,11 @@ extension Color {
     // MARK: Badge colors
     static let badgeTextDoneColor = Color("BadgeTextDone")
     static let badgeTextPendingColor = Color("BadgeTextPending")
-    static let badgeTextBlocked = Color("BadgeTextBlocked")
+    static let badgeTextBlockedColor = Color("BadgeTextBlocked")
 
-    static let badgeSurfaceDone = Color("BadgeSurfaceDone")
-    static let badgeSurfacePending = Color("BadgeSurfacePending")
-    static let badgeSurfaceBlocked = Color("BadgeSurfaceBlocked")
+    static let badgeSurfaceDoneColor = Color("BadgeSurfaceDone")
+    static let badgeSurfacePendingColor = Color("BadgeSurfacePending")
+    static let badgeSurfaceBlockedColor = Color("BadgeSurfaceBlocked")
     
 }
 
