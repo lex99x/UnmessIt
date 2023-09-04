@@ -28,12 +28,12 @@ struct TaskDetailsView: View {
                     
                     Text(task.title)
                         .font(Font.custom(Font.generalSansFontMedium, size: 20))
-                    if task.desc.isEmpty{
-                        EmptyView()
-                    } else {
+                    
+                    if !task.desc.isEmpty {
                         Text(task.desc)
                             .font(Font.custom(Font.generalSansFontRegular, size: 17))
                     }
+                    
                 }
                 
                 HStack {
@@ -48,7 +48,7 @@ struct TaskDetailsView: View {
                     
                     HStack {
                         Text(task.category.rawValue)
-                            .foregroundColor(.textSecondaryColor)
+                            .foregroundColor(.textPrimaryColor)
                         Task.getTaskIconByCategory(taskCategory: task.category)
                             .resizable()
                             .frame(width: 16, height: 16)
@@ -62,34 +62,11 @@ struct TaskDetailsView: View {
                         Color.surfaceSecondaryColor
                     }
                     
-                    //                if task.isImportant {
-                    //
-                    //                    HStack {
-                    //                        Text("Important task")
-                    //                        Image.pinIcon
-                    //                            .resizable()
-                    //                            .frame(width: 16, height: 16)
-                    //                    }
-                    //                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                    //                    .foregroundColor(.textSecondaryColor)
-                    //                    .padding(.vertical, 6)
-                    //                    .padding(.horizontal, 8)
-                    //                    .inputOverlay()
-                    //                    .background {
-                    //                        Color.surfaceSecondaryColor
-                    //                    }
-                    //
-                    //                }
-                    
                 }
                 
                 HStack {
-                    
                     Text(task.createdAt.formatted(date: .abbreviated, time: .omitted))
                     Spacer()
-                    Text("One time task")
-                    
-                    
                 }
                 .font(Font.custom(Font.generalSansFontRegular, size: 15))
                 .foregroundColor(.textPrimaryColor)
@@ -102,7 +79,6 @@ struct TaskDetailsView: View {
                 Spacer()
                 
             }
-//            .border(.red, width: 1)
             .padding(.top, 24)
             .navigationTitle("View task")
             .navigationBarTitleDisplayMode(.inline)

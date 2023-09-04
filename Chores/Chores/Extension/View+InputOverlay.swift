@@ -20,5 +20,9 @@ struct InputOverlayModifier: ViewModifier {
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(Color.borderDefaultColor, lineWidth: 0.5)
             }
+            .background {
+                Color.surfaceSecondaryColor
+                    .cornerRadius(5)
+            }
     }
 }
