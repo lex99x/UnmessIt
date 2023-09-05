@@ -24,21 +24,27 @@ struct NewTaskView: View {
             
             VStack(alignment: .leading, spacing: 24) {
                 
-                CustomSelectionInputView(placeholder: "Task type",
-                                         options: Task.taskOptions,
-                                         selectedOption: $viewModel.selectedTaskTypeOption)
-                .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
+                VStack(alignment: .leading) {
                     
-                    if let recommendation = viewModel.recommendAssigneer(item: newValue) {
-                        viewModel.selectedAssigneeOption = recommendation
-                    } else {
-                        viewModel.selectedAssigneeOption = User()
+                    Text("Task type")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    CustomSelectionInputView(placeholder: "Select a type",
+                                             options: Task.taskOptions,
+                                             selectedOption: $viewModel.selectedTaskTypeOption)
+                    .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
+                        
+                        if let recommendation = viewModel.recommendAssigneer(item: newValue) {
+                            viewModel.selectedAssigneeOption = recommendation
+                        } else {
+                            viewModel.selectedAssigneeOption = User()
+                        }
+                        
                     }
                     
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Task title")
+                    Text("Task name")
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))
                     NewInputView(residentName: $viewModel.titleTextfield)
                         .background {
@@ -47,15 +53,35 @@ struct NewTaskView: View {
                 }
                 
                 CustomTextFieldView(title: "Description",
-                                    placeholder: "How it should be done",
+                                    placeholder: "How it should be done...",
+                                    isOptional: true,
                                     textfield: $viewModel.descriptionTextfield)
                 
-                
                 VStack(alignment: .leading) {
-                    Text("Assignee")
+                    
+                    Text("When")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+//                        .fontWeight(.medium)
+
+                    VStack {
+                        DatePicker("Date", selection: .constant(Date()), displayedComponents: .date)
+                        Divider()
+                            .padding(.vertical, 2)
+                        DatePicker("Time", selection: .constant(Date()), displayedComponents: .hourAndMinute)
+                    }
+                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
+
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 12)
+                    .inputOverlay()
+
+                }
+                    
+                VStack(alignment: .leading) {
+                    Text("Resident in charge")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    AssigneesComponent(placeholder: "Select a resident",
+                    AssigneesComponent(placeholder: "Select a resident...",
                                        options: viewModel.selectedSpace!.residents, selectedOption: $viewModel.selectedAssigneeOption)
                 }
                 
@@ -86,11 +112,11 @@ struct NewTaskView: View {
                     })
                 }
                 
-//                ToolbarItem(placement: .principal) {
-//                    Text("New task")
-//                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
-//                }
-//
+                ToolbarItem(placement: .principal) {
+                    Text(isEditing ? "Edit task" : "New task")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         if isEditing {
@@ -109,15 +135,14 @@ struct NewTaskView: View {
                 }
                 
             }
-            
 
         }
-        .background {
-            Color.surfaceSheetColor
-                .ignoresSafeArea()
-        }
+//        .background {
+//            Color.surfaceSheetColor
+//                .ignoresSafeArea()
+//        }
         .onAppear {
-            if isEditing == true {
+            if isEditing {
                 viewModel.titleTextfield = task.title
                 viewModel.descriptionTextfield = task.desc
                 viewModel.selectedTaskTypeOption = task.category.rawValue
@@ -163,7 +188,7 @@ struct NewInputView: View {
         VStack {
             
             VStack {
-                TextField("What should be done", text: residentName)
+                TextField("What should be done...", text: residentName)
             }
         }
         .padding()

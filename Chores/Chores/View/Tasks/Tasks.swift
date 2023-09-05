@@ -142,6 +142,7 @@ struct Tasks: View {
             }
             
         }
+        .navigationBarBackButtonHidden()
         .toolbar {
             
             ToolbarItem(placement: .navigationBarLeading) {
@@ -199,7 +200,8 @@ struct Tasks: View {
             }
             
         }
-        .navigationBarBackButtonHidden()
+        .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
             
 //            print(viewModel.selectedSpace?.residents.count)

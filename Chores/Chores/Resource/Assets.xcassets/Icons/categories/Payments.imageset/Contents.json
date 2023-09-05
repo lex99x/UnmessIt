@@ -1,6 +1,16 @@
 {
   "images" : [
     {
+      "filename" : "Payments 1.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
       "filename" : "Payments.svg",
       "idiom" : "universal"
     }

@@ -19,11 +19,13 @@ struct NewPlaceView: View {
             
             CustomTextFieldView(title: "Name",
                                 placeholder: "Type the name of the place",
+                                isOptional: false,
                                 textfield: $viewModel.nameTextfield)
             .padding(.top, 10)
             
             CustomTextFieldView(title: "Description",
                                 placeholder: "Small description about the place",
+                                isOptional: true,
                                 textfield: $viewModel.descriptionTextfield)
             
             Text("Agreements, terms and rules")
@@ -31,9 +33,15 @@ struct NewPlaceView: View {
             
             CustomFilePickerView(files: $viewModel.files)
             
-            CustomTextFieldView(title: "URLs", placeholder: "Paste useful links here", textfield: $viewModel.urlsTextfield)
+            CustomTextFieldView(title: "URLs",
+                                placeholder: "Paste useful links here",
+                                isOptional: false,
+                                textfield: $viewModel.urlsTextfield)
             
-            CustomTextFieldView(title: "Notes", placeholder: "Add useful information about living in this place", textfield: $viewModel.notesTextfield)
+            CustomTextFieldView(title: "Notes",
+                                placeholder: "Add useful information about living in this place",
+                                isOptional: false,
+                                textfield: $viewModel.notesTextfield)
             
             Spacer()
             

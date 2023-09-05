@@ -12,21 +12,31 @@ struct CustomTextFieldView: View {
     let title: String
     let placeholder: String
     
+    let isOptional: Bool
     var textfield: Binding<String>
     
     var body: some View {
         
-        VStack(alignment: .leading) {
+        VStack {
             
-            Text(title)
-                .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                    
+            HStack {
+                
+                Text(title)
+                    .fontWeight(.medium)
+                    .foregroundColor(.textPrimaryColor)
+                
+                if isOptional {
+                    Spacer()
+                    Text("Optional")
+                        .foregroundColor(.textSecondaryColor)
+                }
+                
+            }
+            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+
             TextField(placeholder, text: textfield)
                 .padding()
                 .inputOverlay()
-                .background {
-                    Color.surfaceSecondaryColor
-                }
             
         }
         
@@ -38,6 +48,7 @@ struct CustomTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         CustomTextFieldView(title: "Title",
                             placeholder: "Placeholder here",
+                            isOptional: true,
                             textfield: .constant(""))
         .padding()
     }

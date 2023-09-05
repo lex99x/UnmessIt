@@ -1,6 +1,16 @@
 {
   "images" : [
     {
+      "filename" : "Heavy Cleaning.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
       "filename" : "HeavyCleaning.svg",
       "idiom" : "universal"
     }

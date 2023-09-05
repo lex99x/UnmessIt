@@ -44,9 +44,9 @@ struct Residents: View {
                     .listRowInsets(EdgeInsets())
                     
                 }
-                
                 .padding()
                 .listStyle(.inset)
+                
                 Spacer()
                 
 //                NavigationLink(destination:NewResident(isEditing: false, resident: User())) {}
@@ -71,6 +71,8 @@ struct Residents: View {
             }
             .navigationTitle("Residents")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
         }
     }
 }

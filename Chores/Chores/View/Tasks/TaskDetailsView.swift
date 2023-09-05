@@ -78,7 +78,6 @@ struct TaskDetailsView: View {
                     .frame(width: 4, height: 4)
                 Text(task.createdAt.formatted(date: .omitted, time: .shortened))
             }
-            .padding(.top, 29)
             .font(Font.custom(Font.generalSansFontRegular, size: 17))
             .foregroundColor(.textPrimaryColor)
             
@@ -169,7 +168,7 @@ struct TaskDetailsView: View {
 
 struct TaskDetailsView_Previews: PreviewProvider {
     
-    static let mockedTask = Task(value: ["title": "Take ou the trash",
+    static let mockedTask = Task(value: ["title": "Take out the trash",
                                          "desc": "Empty all trash cans and take it out before 14h. Don't forget that box for recycling.",
                                          "isImportant": true,
                                          "category": TaskCategory.ligthCleaning,
