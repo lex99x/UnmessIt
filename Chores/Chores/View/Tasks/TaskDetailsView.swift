@@ -91,9 +91,11 @@ struct TaskDetailsView: View {
                 Button(action: {
                     if task.status == .done {
                         viewModel.updateStatus(item: task, status: .pending)
+                        isActive = true
                     } else {
                         viewModel.updateStatus(item: task, status: .done)
 //                        playSounds("done_sound")
+                        isActive = false
                     }
                     isActive.toggle()
                 }, label: {
@@ -162,12 +164,6 @@ struct TaskDetailsView: View {
         }
         .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        
-        .onAppear {
-            if task.status == .done {
-                isActive.toggle()
-            }
-        }
     }
         
 
