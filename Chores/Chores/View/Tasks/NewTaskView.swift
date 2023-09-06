@@ -43,15 +43,6 @@ struct NewTaskView: View {
                     }
                 }
                 
-//                VStack(alignment: .leading) {
-//                    Text("Task name")
-//                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
-//                    NewInputView(residentName: $viewModel.titleTextfield)
-//                        .background {
-//                            Color.surfaceSecondaryColor
-//                        }
-//                }
-                
                 CustomTextFieldView(title: "Task name",
                                     placeholder: "What should be done...",
                                     isOptional: false,
@@ -107,9 +98,9 @@ struct NewTaskView: View {
             .padding(.vertical, 8)
             .padding(.horizontal,16)
             .navigationBarBackButtonHidden()
-            .navigationTitle(isEditing == false ? "New task" : "Edit task")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         dismiss()
@@ -146,10 +137,10 @@ struct NewTaskView: View {
             }
 
         }
-//        .background {
-//            Color.surfaceSheetColor
-//                .ignoresSafeArea()
-//        }
+        .background {
+            Color.surfaceSheetColor
+                .ignoresSafeArea()
+        }
         .onAppear {
             if isEditing {
                 viewModel.titleTextfield = task.title
@@ -159,12 +150,10 @@ struct NewTaskView: View {
                 // MARK: REFACTOR WHEN HAVE MULTIPLE ASSIGNEERS
                 viewModel.selectedAssigneeOption = task.assignees.first!
             }
-//
         }
         
     }
         
-    
 }
 
 struct NewTaskView_Previews: PreviewProvider {

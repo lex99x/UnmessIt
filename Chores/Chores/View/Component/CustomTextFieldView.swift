@@ -17,16 +17,16 @@ struct CustomTextFieldView: View {
     
     var body: some View {
         
-        VStack (alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 8) {
             
             HStack {
                 
                 Text(title)
                     .fontWeight(.medium)
                     .foregroundColor(.textPrimaryColor)
-                Spacer()
                 
                 if isOptional {
+                    Spacer()
                     Text("Optional")
                         .foregroundColor(.textSecondaryColor)
                 }

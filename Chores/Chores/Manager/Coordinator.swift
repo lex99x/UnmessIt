@@ -9,7 +9,8 @@ import SwiftUI
 
 
 enum Page: String, Identifiable {
-    case onboarding, addPlace, tasks
+    case // onboarding, addPlace,
+         tasks
     
     var id: String {
         self.rawValue
@@ -57,10 +58,10 @@ class Coordinator: ObservableObject {
     @ViewBuilder
     func build(page: Page) -> some View {
         switch page {
-        case .onboarding:
-            OnboardingView()
-        case .addPlace:
-            NewPlaceView()
+//        case .onboarding:
+//            OnboardingView()
+//        case .addPlace:
+//            NewPlaceView()
         case .tasks:
             Tasks()
         }
