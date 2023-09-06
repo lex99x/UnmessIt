@@ -22,7 +22,7 @@ struct InputOverlayModifier: ViewModifier {
             }
             .background {
                 Color.surfaceSecondaryColor
-                    .cornerRadius(5)
+                    .cornerRadius(8)
             }
     }
 }

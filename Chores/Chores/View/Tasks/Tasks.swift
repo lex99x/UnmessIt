@@ -137,9 +137,10 @@ struct Tasks: View {
                 NavigationLink(destination: { Residents() }, label: {
                     Image.groupIcon
                         .resizable()
+                        .foregroundColor(.textAccentColor)
                         .frame(width: 20, height: 20)
                     Text("Manage residents")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
                         .foregroundColor(.textAccentColor)
                 })
                 
