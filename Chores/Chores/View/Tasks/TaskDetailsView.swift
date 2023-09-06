@@ -91,11 +91,11 @@ struct TaskDetailsView: View {
                 Button(action: {
                     if task.status == .done {
                         viewModel.updateStatus(item: task, status: .pending)
-                        isActive = true
+                        isActive = false
                     } else {
                         viewModel.updateStatus(item: task, status: .done)
 //                        playSounds("done_sound")
-                        isActive = false
+                        isActive = true
                     }
                     isActive.toggle()
                 }, label: {
