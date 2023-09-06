@@ -40,6 +40,7 @@
 		06D816552A848A6F00606F03 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D816542A848A6F00606F03 /* Coordinator.swift */; };
 		06D816592A848B0400606F03 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D816582A848B0400606F03 /* CoordinatorView.swift */; };
 		06D8165B2A848EFE00606F03 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D8165A2A848EFE00606F03 /* OnboardingView.swift */; };
+		06FAAC8B2AA76C9500BF615F /* ParticleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FAAC8A2AA76C9500BF615F /* ParticleEffect.swift */; };
 		170FE76F2A70003B00F7BD45 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 170FE76E2A70003B00F7BD45 /* Realm */; };
 		170FE7712A70003B00F7BD45 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 170FE7702A70003B00F7BD45 /* RealmSwift */; };
 		170FE7732A70020300F7BD45 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170FE7722A70020300F7BD45 /* Space.swift */; };
@@ -119,6 +120,7 @@
 		06D816542A848A6F00606F03 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		06D816582A848B0400606F03 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		06D8165A2A848EFE00606F03 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		06FAAC8A2AA76C9500BF615F /* ParticleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleEffect.swift; sourceTree = "<group>"; };
 		170FE7722A70020300F7BD45 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		170FE7772A70051400F7BD45 /* NewPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewModel.swift; sourceTree = "<group>"; };
 		170FE7792A70055100F7BD45 /* NewPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		065B0A062A6EA90B00B1D35F /* Chores */ = {
 			isa = PBXGroup;
 			children = (
+				06FAAC892AA76C8200BF615F /* Animations */,
 				065B0A072A6EA90B00B1D35F /* ChoresApp.swift */,
 				174447F62A86646B0083142F /* Info.plist */,
 				065B0A312A6EB98300B1D35F /* Model */,
@@ -307,6 +310,14 @@
 				06D816542A848A6F00606F03 /* Coordinator.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		06FAAC892AA76C8200BF615F /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				06FAAC8A2AA76C9500BF615F /* ParticleEffect.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		170FE7752A70049D00F7BD45 /* View */ = {
@@ -538,6 +549,7 @@
 				170FE7732A70020300F7BD45 /* Space.swift in Sources */,
 				06BCFF812A833C0700D212A9 /* TaskViewModel.swift in Sources */,
 				0629C3542A8D0EA3007739CB /* TaskRow.swift in Sources */,
+				06FAAC8B2AA76C9500BF615F /* ParticleEffect.swift in Sources */,
 				06241C252A72A1AF00FFCDC4 /* User.swift in Sources */,
 				069EC15E2A934F35002BBDE6 /* RealmHelper.swift in Sources */,
 				069EC1592A934B6E002BBDE6 /* Residents.swift in Sources */,
@@ -726,7 +738,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Chores/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KSG2U47VB3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chores/Info.plist;
