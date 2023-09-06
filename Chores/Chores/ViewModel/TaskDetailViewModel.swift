@@ -36,6 +36,15 @@ final class TaskDetailViewModel: ObservableObject {
         print(selectedSpace?.tasks)
     }
     
+    func updateStatus(item: Task, status: Task.Status) {
+        if let thaw = item.thaw(),
+           let realm = thaw.realm {
+            try? realm.write {
+                thaw.status = status
+            }
+        }
+    }
+    
     func sayHi() {
         print("hello")
     }
