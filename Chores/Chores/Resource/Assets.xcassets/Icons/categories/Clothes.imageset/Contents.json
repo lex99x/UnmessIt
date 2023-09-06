@@ -1,6 +1,16 @@
 {
   "images" : [
     {
+      "filename" : "Clothes 1.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
       "filename" : "Clothes.svg",
       "idiom" : "universal"
     }

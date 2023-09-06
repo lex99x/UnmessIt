@@ -28,6 +28,7 @@ struct OnboardingView: View {
             
             CustomTextFieldView(title: "How would you like to be called?",
                                 placeholder: "Type your name or nickname",
+                                isOptional: false,
                                 textfield: $viewModel.userNameTextfield)
             .padding(.top, 128)
             
@@ -138,6 +139,7 @@ struct OnboardingNewPlaceView: View {
             
             CustomTextFieldView(title: "Place's name",
                                 placeholder: "Give a name to this place",
+                                isOptional: false,
                                 textfield: $placeNameTextfield)
             //            .padding(.top, 41)
             

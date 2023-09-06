@@ -23,7 +23,7 @@ struct CustomSelectionInputView: View {
                 }, label: {
                     Text(option)
                     Image(option)
-//                    .renderingMode(.original)
+                        .renderingMode(.original)
                 })
             }
         }, label: {
@@ -33,13 +33,15 @@ struct CustomSelectionInputView: View {
             
             if let taskCategory = TaskCategory(rawValue: placeholder) {
                 Task.getTaskIconByCategory(taskCategory: taskCategory)
-                    .frame(width: 16, height: 16)
-                    .foregroundColor(.textSecondaryColor)
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(Color("Category" + taskCategory.rawValue.replacingOccurrences(of: " ", with: "")))
             }
             
             Spacer()
             
             Image.popupButtonIcon
+                .resizable()
                 .frame(width: 16, height: 16)
                 .foregroundColor(.textSecondaryColor)
             

@@ -37,23 +37,21 @@ struct Tasks: View {
     //        }
     //    }
     
-    var content: Results<Task>{
+    var content: Results<Task> {
         if searchText.isEmpty {
             return viewModel.tasks
-        }else {
+        } else {
             return viewModel.tasks.where {
                 $0.title.contains(searchText)
             }
         }
-        
     }
     
     var body: some View {
         
         VStack {
             
-//            NavigationLink(destination: Residents(), tag: "A", selection: $selection) { EmptyView() }
-            
+            // MARK: Empty State
             if viewModel.tasks.isEmpty {
                 
                 VStack {
@@ -86,17 +84,6 @@ struct Tasks: View {
                 
                 VStack {
                     
-//                    MARK: Segmented Filter
-//                    VStack {
-//                        Picker("What is your favorite color?", selection: $filterTimeInterval) {
-//                            Text("Yesterday").tag(1)
-//                            Text("Today").tag(0)
-//                            Text("Tomorrow").tag(2)
-//                        }
-//                    }
-//                    .padding()
-//                    .pickerStyle(.segmented)
-                    
                     List {
                         Section {
                             ForEach(content.freeze()) { item in
@@ -107,7 +94,6 @@ struct Tasks: View {
                                         
                                         Button {
                                             viewModel.updateStatus(status: .done, item: item)
-                                            print("aaa")
                                         } label: {
                                             Text("DONE")
                                         }.tint(.green)
@@ -121,6 +107,7 @@ struct Tasks: View {
                     
                 }
                 .searchable(text: $searchText)
+                .padding(.top, 12)
                 
             }
             
@@ -142,44 +129,49 @@ struct Tasks: View {
             }
             
         }
+        .navigationBarBackButtonHidden()
         .toolbar {
-            
-            ToolbarItem(placement: .navigationBarLeading) {
-                Text("Tasks")
-                    .font(Font.custom(Font.generalSansFontMedium, size: 17))
-                    .foregroundColor(.textPrimaryColor)
-            }
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 
                 NavigationLink(destination: { Residents() }, label: {
-                    Image.userAddIcon
+                    Image.groupIcon
                         .resizable()
                         .frame(width: 20, height: 20)
                     Text("Manage residents")
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                        .foregroundColor(.textPrimaryColor)
+                        .foregroundColor(.textAccentColor)
                 })
                 
             }
             
             if !viewModel.tasks.isEmpty {
                 
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Tasks")
+//                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+//                        .fontWeight(.medium)
+//                        .foregroundColor(.textPrimaryColor)
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     
                     Menu {
                         Button(role: .destructive, action: callDeleteAllTasks, label: {
                             Text("Delete all tasks")
-                                .tint(.red)
+//                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+//                                .foregroundColor(.textCriticalColor)
                             Image.deleteIcon
-                                .foregroundColor(.red)
+//                                .resizable()
+//                                .frame(width: 20, height: 20)
+//                                .foregroundColor(.textCriticalColor)
                         })
                     } label: {
                         Button(action: {}, label: {
                             Image.moreIcon
                                 .resizable()
                                 .frame(width: 20, height: 20)
-                                .foregroundColor(.textPrimaryColor)
+                                .foregroundColor(.textAccentColor)
                         })
                     }
                     .alert("alert_delete_all_tasks_title".localized, isPresented: $isShowingDeleteAlert, actions: {
@@ -199,7 +191,8 @@ struct Tasks: View {
             }
             
         }
-        .navigationBarBackButtonHidden()
+        .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
             
 //            print(viewModel.selectedSpace?.residents.count)
@@ -225,4 +218,3 @@ struct Tasks_Previews: PreviewProvider {
         }
     }
 }
-

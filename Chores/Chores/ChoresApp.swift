@@ -7,11 +7,12 @@
 
 import SwiftUI
 import RealmSwift
+
 @main
 struct ChoresApp: SwiftUI.App {
-    let notificationService = LocalNotificaitonService.shared
-    @ObservedResults(Space.self) var spaces
     
+//    let notificationService = LocalNotificaitonService.shared
+    @ObservedResults(Space.self) var spaces
     
     var body: some Scene {
         WindowGroup {
@@ -27,4 +28,5 @@ struct ChoresApp: SwiftUI.App {
             }
         }
     }
+    
 }

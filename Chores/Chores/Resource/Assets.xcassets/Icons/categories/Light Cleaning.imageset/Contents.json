@@ -1,6 +1,16 @@
 {
   "images" : [
     {
+      "filename" : "Light Cleaning.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
       "filename" : "LightCleaning.svg",
       "idiom" : "universal"
     }
