@@ -47,7 +47,7 @@ struct CustomSelectionInputView: View {
             
         })
         .font(Font.custom(Font.generalSansFontRegular, size: 15))
-        .padding(.vertical)
+        .padding(.vertical, 12)
         .padding(.horizontal, 12)
         .inputOverlay()
         
@@ -59,7 +59,7 @@ struct CustomSelectionInputView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        CustomSelectionInputView(placeholder: "Select a type",
+        CustomSelectionInputView(placeholder: "Select a type...",
                                  options: Task.taskOptions,
                                  selectedOption: .constant(""))
         .padding()

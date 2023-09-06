@@ -15,14 +15,14 @@ struct CustomButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundColor(foregroundColor)
-            .bold(true)
+            .foregroundColor(.textPrimaryColor)
+//            .bold(true)
             .frame(maxWidth: width)
             .padding()
             .background {
                 backgroundColor
             }
-            .clipShape(RoundedRectangle(cornerRadius: 5))
+            .clipShape(RoundedRectangle(cornerRadius: 6))
     }
     
 }

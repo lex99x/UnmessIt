@@ -24,11 +24,12 @@ struct NewTaskView: View {
             
             VStack(alignment: .leading, spacing: 24) {
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 8) {
                     
                     Text("Task type")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                    CustomSelectionInputView(placeholder: "Select a type",
+                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
+                        .foregroundColor(.textPrimaryColor)
+                    CustomSelectionInputView(placeholder: "Select a type...",
                                              options: Task.taskOptions,
                                              selectedOption: $viewModel.selectedTaskTypeOption)
                     .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
@@ -40,38 +41,43 @@ struct NewTaskView: View {
                         }
                         
                     }
-                    
                 }
                 
-                VStack(alignment: .leading) {
-                    Text("Task name")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                    NewInputView(residentName: $viewModel.titleTextfield)
-                        .background {
-                            Color.surfaceSecondaryColor
-                        }
-                }
+//                VStack(alignment: .leading) {
+//                    Text("Task name")
+//                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
+//                    NewInputView(residentName: $viewModel.titleTextfield)
+//                        .background {
+//                            Color.surfaceSecondaryColor
+//                        }
+//                }
+                
+                CustomTextFieldView(title: "Task name",
+                                    placeholder: "What should be done...",
+                                    isOptional: false,
+                                    textfield: $viewModel.titleTextfield)
+                
                 
                 CustomTextFieldView(title: "Description",
                                     placeholder: "How it should be done...",
                                     isOptional: true,
                                     textfield: $viewModel.descriptionTextfield)
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 8) {
                     
                     Text("When")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
-//                        .fontWeight(.medium)
+                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
+                        .foregroundColor(.textPrimaryColor)
 
-                    VStack {
+                   VStack(alignment: .leading, spacing: 6){
                         DatePicker("Date", selection: $viewModel.selectedDate, displayedComponents: .date)
                         Divider()
-                            .padding(.vertical, 2)
                         DatePicker("Time", selection: $viewModel.selectedTime, displayedComponents: .hourAndMinute)
                     }
                     .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    .foregroundColor(.textPrimaryColor)
 
-                    .padding(.vertical, 10)
+                    .padding(.vertical, 6)
                     .padding(.horizontal, 12)
                     .inputOverlay()
 
@@ -98,7 +104,8 @@ struct NewTaskView: View {
                     Text("alert_task_missing_fields_description")
                 })
             }
-            .padding()
+            .padding(.vertical, 8)
+            .padding(.horizontal,16)
             .navigationBarBackButtonHidden()
             .navigationTitle(isEditing == false ? "New task" : "Edit task")
             .navigationBarTitleDisplayMode(.inline)
@@ -108,7 +115,7 @@ struct NewTaskView: View {
                         dismiss()
                     }, label: {
                         Text("Cancel")
-                            .font(Font.custom(Font.generalSansFontMedium, size: 17))
+                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
                             .foregroundColor(.textAccentColor)
                     })
                 }
@@ -116,6 +123,7 @@ struct NewTaskView: View {
                 ToolbarItem(placement: .principal) {
                     Text(isEditing ? "Edit task" : "New task")
                         .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                        .foregroundColor(.textPrimaryColor)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -130,7 +138,7 @@ struct NewTaskView: View {
                         }
                     }, label: {
                         Text("Save")
-                            .font(Font.custom(Font.generalSansFontMedium, size: 17))
+                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
                             .foregroundColor(.textAccentColor)
                     })
                 }
@@ -183,9 +191,7 @@ struct NewTaskView_Previews: PreviewProvider {
 struct NewInputView: View {
     var residentName: Binding<String>
     var body: some View {
-        
         VStack {
-            
             VStack {
                 TextField("What should be done...", text: residentName)
             }

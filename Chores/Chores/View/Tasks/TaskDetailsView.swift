@@ -7,9 +7,9 @@
 
 import SwiftUI
 import RealmSwift
+import AVFoundation
 
 struct TaskDetailsView: View {
-    
     @Environment(\.dismiss) private var dismiss
     
     @ObservedRealmObject var task: Task
@@ -17,6 +17,9 @@ struct TaskDetailsView: View {
     
     @State private var selection: String? = nil
     @State var isShowingDeleteAlert = false
+    @State private var isActive = false
+    
+
     
     var body: some View {
         
@@ -83,45 +86,43 @@ struct TaskDetailsView: View {
             
             Spacer()
             
-            if task.status == .pending {
+
                 
                 Button(action: {
-                    task.status = .done
+                    if task.status == .done {
+                        viewModel.updateStatus(item: task, status: .pending)
+                    } else {
+                        viewModel.updateStatus(item: task, status: .done)
+//                        playSounds("done_sound")
+                    }
+                    isActive.toggle()
                 }, label: {
                     HStack {
-                        Image.doneStatusIcon
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        Text("Mark as done")
+                        if task.status == .done {
+                            Image.pendingStatusIcon
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        } else {
+                            Image.doneStatusIcon
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
+                        
+                        Text(task.status == .done ? "Mark as pending" : "Mak as done")
                             .font(Font.custom(Font.generalSansFontRegular, size: 15))
                             .fontWeight(.medium)
                     }
                 })
-                .buttonStyle(CustomButtonStyle(width: .infinity,
-                                               foregroundColor: .badgeTextDoneColor,
-                                               backgroundColor: .badgeSurfaceDoneColor))
-                
-            } else {
-                
-                Button(action: {
-                    task.status = .pending
-                }, label: {
-                    HStack {
-                        Image.pendingStatusIcon
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        Text("Mark as pending")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                            .fontWeight(.medium)
-                    }
-                })
-                .buttonStyle(CustomButtonStyle(width: .infinity,
-                                               foregroundColor: .badgeTextPendingColor,
-                                               backgroundColor: .badgeSurfacePendingColor))
-                
+                .buttonStyle(task.status == .done ? CustomButtonStyle(width: .infinity,
+                                                                         foregroundColor: .badgeTextPendingColor,
+                                                                         backgroundColor: .badgeSurfacePendingColor) : CustomButtonStyle(width: .infinity,
+                                                                                                                                         foregroundColor: .badgeTextDoneColor,
+                                                                                                                                         backgroundColor: .badgeSurfaceDoneColor))
+            
+                .particleEffect(image: "star", status: isActive, activeTint: .badgeTextDoneColor, inactiveTint: .gray)
             }
             
-        }
+//        }
         .padding(.top, 24)
         .padding(.horizontal)
         .navigationBarBackButtonHidden()
@@ -161,8 +162,14 @@ struct TaskDetailsView: View {
         }
         .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-
+        
+        .onAppear {
+            if task.status == .done {
+                isActive.toggle()
+            }
+        }
     }
+        
 
 }
 

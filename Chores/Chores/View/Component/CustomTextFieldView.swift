@@ -17,16 +17,16 @@ struct CustomTextFieldView: View {
     
     var body: some View {
         
-        VStack {
+        VStack (alignment: .leading, spacing: 8) {
             
             HStack {
                 
                 Text(title)
                     .fontWeight(.medium)
                     .foregroundColor(.textPrimaryColor)
+                Spacer()
                 
                 if isOptional {
-                    Spacer()
                     Text("Optional")
                         .foregroundColor(.textSecondaryColor)
                 }
@@ -35,7 +35,8 @@ struct CustomTextFieldView: View {
             .font(Font.custom(Font.generalSansFontRegular, size: 15))
 
             TextField(placeholder, text: textfield)
-                .padding()
+                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                .padding(12)
                 .inputOverlay()
             
         }
