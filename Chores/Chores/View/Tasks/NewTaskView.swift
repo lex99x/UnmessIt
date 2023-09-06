@@ -81,9 +81,9 @@ struct NewTaskView: View {
                     Text("Resident in charge")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    AssigneesComponent(placeholder: "Select a resident...",
-                                       options: viewModel.selectedSpace!.residents,
-                                       selectedOption: $viewModel.selectedAssigneeOption)
+                    AssigneesInputView(placeholder: "Select a resident...",
+                                       assignees: viewModel.selectedSpace!.residents,
+                                       selectedAssignee: $viewModel.selectedAssigneeOption)
                 }
                 
                 

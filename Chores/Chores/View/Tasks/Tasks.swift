@@ -11,31 +11,10 @@ import RealmSwift
 struct Tasks: View {
     
     @Environment(\.dismiss) private var dismiss
-    
     @StateObject private var viewModel = TaskViewModel()
-//    @State private var selection: String? = nil
-    @State var searchText: String = ""
-    @State var isShowingDeleteAlert = false
-    @State private var filterTimeInterval = 0
     
-    //    var filtered: Results<Task> {
-    //        if filterTimeInterval == 0 {
-    //            return viewModel.tasks.where {
-    //                $0.createdAt.timeIntervalSinceNow =
-    //            }
-    //        } else if filterTimeInterval == 1 {
-    //            return viewModel.tasks.where {
-    //                $0.createdAt < Date()
-    //            }
-    //        }
-    //        else if filterTimeInterval == 3 {
-    //            return viewModel.tasks.where {
-    //                $0.createdAt > Date()
-    //            }
-    //        } else {
-    //            return viewModel.tasks
-    //        }
-    //    }
+    @State private var searchText: String = ""
+    @State private var isShowingDeleteAlert = false
     
     var content: Results<Task> {
         if searchText.isEmpty {

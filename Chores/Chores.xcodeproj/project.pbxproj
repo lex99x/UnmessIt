@@ -34,7 +34,7 @@
 		06AF6D5D2A9F734B00675DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06AF6D5F2A9F734B00675DC9 /* Localizable.strings */; };
 		06AF6D622AA0803A00675DC9 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF6D612AA0803A00675DC9 /* String+localized.swift */; };
 		06AF99C22A935D13006BFBD4 /* ResidentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF99C12A935D13006BFBD4 /* ResidentRow.swift */; };
-		06B06F4F2A96A30500B166F3 /* AssigneesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B06F4E2A96A30500B166F3 /* AssigneesComponent.swift */; };
+		06B06F4F2A96A30500B166F3 /* AssigneesInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B06F4E2A96A30500B166F3 /* AssigneesInputView.swift */; };
 		06BCFF812A833C0700D212A9 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF802A833C0700D212A9 /* TaskViewModel.swift */; };
 		06BCFF832A83C00000D212A9 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF822A83C00000D212A9 /* OnboardingViewModel.swift */; };
 		06D816552A848A6F00606F03 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D816542A848A6F00606F03 /* Coordinator.swift */; };
@@ -113,7 +113,7 @@
 		06AF6D602A9F735000675DC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		06AF6D612AA0803A00675DC9 /* String+localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		06AF99C12A935D13006BFBD4 /* ResidentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentRow.swift; sourceTree = "<group>"; };
-		06B06F4E2A96A30500B166F3 /* AssigneesComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssigneesComponent.swift; sourceTree = "<group>"; };
+		06B06F4E2A96A30500B166F3 /* AssigneesInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssigneesInputView.swift; sourceTree = "<group>"; };
 		06BCFF802A833C0700D212A9 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		06BCFF822A83C00000D212A9 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		06D816542A848A6F00606F03 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 				17CE41D32A78108500A622A1 /* CustomDescriptionInputView.swift */,
 				17DDC0472A8270EA00D02BB8 /* CustomSectionHeaderView.swift */,
 				065590B02A814BC100A0B5B4 /* TaskStatusBadge.swift */,
-				06B06F4E2A96A30500B166F3 /* AssigneesComponent.swift */,
+				06B06F4E2A96A30500B166F3 /* AssigneesInputView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -529,7 +529,7 @@
 				066B70222A7BFD7400E9FB1E /* Color+CustomColors.swift in Sources */,
 				17213CE92A72B449002F0924 /* CustomTextFieldView.swift in Sources */,
 				17CE41CC2A77EA0100A622A1 /* PlacesView.swift in Sources */,
-				06B06F4F2A96A30500B166F3 /* AssigneesComponent.swift in Sources */,
+				06B06F4F2A96A30500B166F3 /* AssigneesInputView.swift in Sources */,
 				17CE41CE2A77F13800A622A1 /* NewTaskView.swift in Sources */,
 				066B70252A7D339300E9FB1E /* TaskItem.swift in Sources */,
 				06AF6D582A98494500675DC9 /* TaskValidator.swift in Sources */,
