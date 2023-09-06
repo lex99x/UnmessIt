@@ -29,6 +29,7 @@ extension Image {
     static let copyIcon = Image("Copy")
     static let deleteIcon = Image("Delete")
     static let editIcon = Image("Edit")
+    static let groupIcon = Image("Group")
     static let leaveIcon = Image("Leave")
     static let moreIcon = Image("More")
     static let pinIcon = Image("Pin")

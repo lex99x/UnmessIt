@@ -19,7 +19,8 @@ class NewTaskViewModel: ObservableObject {
     @Published var titleTextfield = ""
     @Published var descriptionTextfield = ""
     
-    @Published var selectedStartDate = Date()
+    @Published var selectedDate = Date()
+    @Published var selectedTime = Date()
     
     //    @Published var selectedEndRepeatDate = Date.now
     

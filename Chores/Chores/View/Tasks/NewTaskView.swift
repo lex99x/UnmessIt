@@ -10,11 +10,11 @@ import RealmSwift
 
 struct NewTaskView: View {
     
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = NewTaskViewModel()
     
     let isEditing: Bool
     @ObservedRealmObject var task: Task
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         
@@ -64,10 +64,10 @@ struct NewTaskView: View {
 //                        .fontWeight(.medium)
 
                     VStack {
-                        DatePicker("Date", selection: .constant(Date()), displayedComponents: .date)
+                        DatePicker("Date", selection: $viewModel.selectedDate, displayedComponents: .date)
                         Divider()
                             .padding(.vertical, 2)
-                        DatePicker("Time", selection: .constant(Date()), displayedComponents: .hourAndMinute)
+                        DatePicker("Time", selection: $viewModel.selectedTime, displayedComponents: .hourAndMinute)
                     }
                     .font(Font.custom(Font.generalSansFontRegular, size: 15))
 
@@ -82,7 +82,8 @@ struct NewTaskView: View {
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
                     AssigneesComponent(placeholder: "Select a resident...",
-                                       options: viewModel.selectedSpace!.residents, selectedOption: $viewModel.selectedAssigneeOption)
+                                       options: viewModel.selectedSpace!.residents,
+                                       selectedOption: $viewModel.selectedAssigneeOption)
                 }
                 
                 
@@ -98,7 +99,7 @@ struct NewTaskView: View {
                 })
             }
             .padding()
-            .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden()
             .navigationTitle(isEditing == false ? "New task" : "Edit task")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -159,26 +160,24 @@ struct NewTaskView: View {
 }
 
 struct NewTaskView_Previews: PreviewProvider {
+    
     static var previews: some View {
+        
         NavigationStack {
-            Group {
-//                NavigationView {
-                NewTaskView(isEditing: false, task: Task())
-                        .previewDisplayName("New Task")
-                    
-                var task: Task {
-                    let newTask = Task()
-                    newTask.title = "foo"
-                    newTask.category = .pets
-                    return newTask
-                }
-                    NewTaskView(isEditing: true, task: task)
-                        .previewDisplayName("Filled")
-
-//                }
-            }
+            
+            NewTaskView(isEditing: false, task: Task())
+                
+//            var task: Task {
+//                let newTask = Task()
+//                newTask.title = "foo"
+//                newTask.category = .pets
+//                return newTask
+//            }
+        
         }
+        
     }
+    
 }
 
 struct NewInputView: View {
