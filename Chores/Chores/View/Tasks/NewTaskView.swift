@@ -12,6 +12,7 @@ struct NewTaskView: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = NewTaskViewModel()
+    @State var isShowingDeleteAlert = false
     
     let isEditing: Bool
     @ObservedRealmObject var task: Task
@@ -29,7 +30,7 @@ struct NewTaskView: View {
                     Text("Task type")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    CustomSelectionInputView(placeholder: "Select a type...",
+                    CustomSelectionInputView(placeholder: viewModel.selectedTaskTypeOption.isEmpty ? "Select a option" : viewModel.selectedTaskTypeOption,
                                              options: Task.taskOptions,
                                              selectedOption: $viewModel.selectedTaskTypeOption)
                     .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
@@ -42,15 +43,6 @@ struct NewTaskView: View {
                         
                     }
                 }
-                
-//                VStack(alignment: .leading) {
-//                    Text("Task name")
-//                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
-//                    NewInputView(residentName: $viewModel.titleTextfield)
-//                        .background {
-//                            Color.surfaceSecondaryColor
-//                        }
-//                }
                 
                 CustomTextFieldView(title: "Task name",
                                     placeholder: "What should be done...",
@@ -92,7 +84,7 @@ struct NewTaskView: View {
                                        selectedAssignee: $viewModel.selectedAssigneeOption)
                 }
                 
-                
+
                 .alert("alert_task_missing_fields_title".localized, isPresented: $viewModel.hasError, actions: {
 //                    Button("Cancel", role: .cancel) {
 //                        isShowingDeleteAlert.toggle()
@@ -103,6 +95,33 @@ struct NewTaskView: View {
                 }, message: {
                     Text("alert_task_missing_fields_description")
                 })
+                    
+                // delete task alert
+                .alert("alert_delete_all_tasks_title".localized, isPresented: $isShowingDeleteAlert, actions: {
+                    Button("alert_delete_all_tasks_action_left".localized, role: .cancel) {
+                        isShowingDeleteAlert.toggle()
+                    }
+                    Button("alert_delete_all_tasks_action_right".localized, role: .destructive) {
+                        viewModel.deleteTask(item: task)
+                        dismiss()
+                    }
+                }, message: {
+                    Text("alert_delete_all_tasks_description".localized)
+                })
+                
+                Spacer()
+                
+                if isEditing {
+                    Button(action: {
+                        isShowingDeleteAlert.toggle()
+                    }, label: {
+                        Label(title: { Text("Delete Task") }, icon: { Image.deleteIcon })
+                    })
+                    .buttonStyle(CustomButtonStyle(width: .infinity,
+                                                   foregroundColor: .textInvertColor,
+                                                   backgroundColor: .accentColor))
+                    .padding(.top, 100)
+                }
             }
             .padding(.vertical, 8)
             .padding(.horizontal,16)
@@ -152,12 +171,16 @@ struct NewTaskView: View {
 //        }
         .onAppear {
             if isEditing {
+                viewModel.selectedTaskTypeOption = task.category.rawValue
                 viewModel.titleTextfield = task.title
                 viewModel.descriptionTextfield = task.desc
-                viewModel.selectedTaskTypeOption = task.category.rawValue
-
+                viewModel.selectedDate = task.createdAt
+                
                 // MARK: REFACTOR WHEN HAVE MULTIPLE ASSIGNEERS
                 viewModel.selectedAssigneeOption = task.assignees.first!
+                
+                print([viewModel.selectedTaskTypeOption])
+    
             }
 //
         }
@@ -166,28 +189,6 @@ struct NewTaskView: View {
         
     
 }
-
-struct NewTaskView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        
-        NavigationStack {
-            
-            NewTaskView(isEditing: false, task: Task())
-                
-//            var task: Task {
-//                let newTask = Task()
-//                newTask.title = "foo"
-//                newTask.category = .pets
-//                return newTask
-//            }
-        
-        }
-        
-    }
-    
-}
-
 struct NewInputView: View {
     var residentName: Binding<String>
     var body: some View {
@@ -200,4 +201,19 @@ struct NewInputView: View {
         .inputOverlay()
         
     }
+}
+
+
+struct NewTaskView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        
+        NavigationStack {
+            
+            NewTaskView(isEditing: true, task: Task())
+
+        }
+        
+    }
+    
 }

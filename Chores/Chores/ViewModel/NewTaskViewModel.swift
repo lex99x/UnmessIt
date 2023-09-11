@@ -73,6 +73,7 @@ class NewTaskViewModel: ObservableObject {
         task.desc = descriptionTextfield
         task.assignees.append(selectedAssigneeOption)
         
+        
         do {
             try validator.validate(task)
             print("aqiu2")
@@ -90,10 +91,20 @@ class NewTaskViewModel: ObservableObject {
         
     }
     
+    func deleteTask(item: Task) {
+        if let thaw = item.thaw(),
+           let realm = thaw.realm {
+            try? realm.write {
+                realm.delete(thaw)
+            }
+        }
+    }
+    
     func updateTask(item: Task) {
         if let thaw = item.thaw(),
            let realm = thaw.realm {
             try? realm.write {
+                thaw.category = TaskCategory(rawValue: selectedTaskTypeOption) ?? .none
                 thaw.title = titleTextfield
                 thaw.desc = descriptionTextfield
                 thaw.assignees.removeAll()

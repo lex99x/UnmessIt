@@ -97,7 +97,6 @@ struct TaskDetailsView: View {
 //                        playSounds("done_sound")
                         isActive = true
                     }
-                    isActive.toggle()
                 }, label: {
                     HStack {
                         if task.status == .done {
@@ -122,7 +121,16 @@ struct TaskDetailsView: View {
                                                                                                                                          backgroundColor: .badgeSurfaceDoneColor))
             
                 .particleEffect(image: "star", status: isActive, activeTint: .badgeTextDoneColor, inactiveTint: .gray)
+            
+            
+            
             }
+        .sheet(isPresented: $viewModel.isAddingNewTask) {
+            NavigationStack {
+                NewTaskView(isEditing: true, task: task)
+            }
+        }
+        
             
 //        }
         .padding(.top, 24)
@@ -153,12 +161,15 @@ struct TaskDetailsView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {}, label: {
+                Button(action: {
+                    viewModel.isAddingNewTask.toggle()
+                }, label: {
                     Image.editIcon
                         .resizable()
                         .frame(width: 20, height: 20)
                         .foregroundColor(.textAccentColor)
                 })
+                
             }
 
         }

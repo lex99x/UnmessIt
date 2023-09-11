@@ -19,7 +19,7 @@ struct CustomSelectionInputView: View {
             ForEach(options, id: \.self) { option in
                 Button(action: {
                     selectedOption = option
-                    placeholder = selectedOption
+                    self.placeholder = selectedOption
                 }, label: {
                     Text(option)
                     Image(option)
