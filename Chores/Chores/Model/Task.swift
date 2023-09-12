@@ -33,6 +33,7 @@ class Task: Object, ObjectKeyIdentifiable {
 
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var createdAt: Date = .init()
+    @Persisted var whenDo: Date = .init()
     
     @Persisted var title: String = ""
     @Persisted var desc: String = ""

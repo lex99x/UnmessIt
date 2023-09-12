@@ -40,12 +40,12 @@ struct TaskRow: View {
                                 
                                 HStack {
                                     Image.userAddIcon
-                                    Text(item.assignees.first?.nickname ?? "No assigner")
+                                    Text((item.assignees.first?.nickname.isEmpty)! ? "No assignee" : item.assignees.first?.nickname ?? "")
                                         .font(.subheadline)
                                 }
                                 
                                 HStack {
-                                    switch item.createdAt.checkDay() {
+                                    switch item.whenDo.checkDay() {
                                     case .today:
                                         Text("Today")
                                             .font(.subheadline)
@@ -58,7 +58,7 @@ struct TaskRow: View {
                                         Text("Tomorrow")
                                             .font(.subheadline)
                                     case .none:
-                                        Text(item.createdAt.toString(format: "dd-MM"))
+                                        Text(item.whenDo.toString(format: "dd-MM"))
                                             .font(.subheadline)
                                     }
                                     
@@ -66,7 +66,7 @@ struct TaskRow: View {
                                         .resizable()
                                         .frame(width: 4, height: 4)
                                     
-                                    Text("\(item.createdAt.timeIn24HourFormat())")
+                                    Text("\(item.whenDo.timeIn24HourFormat())")
                                     
                                 }
                                 .font(Font.custom(Font.generalSansFontRegular, size: 15))
@@ -106,7 +106,7 @@ struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             Group {
-                let item:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(timeIntervalSinceNow: -60000), "category":"pet"])
+                let item:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "whenDo":Date(timeIntervalSinceNow: -60000), "category":"pet"])
                 
                 TaskRow(item: item)
                     .frame(width: 358, height: 103)

@@ -12,7 +12,7 @@ import RealmSwift
 final class TaskDetailViewModel: ObservableObject {
     @ObservedResults(Space.self) var spaces
     @Published var selectedSpace: Space?
-    
+    @Published var isAddingNewTask = false
     var realm: Realm?
     var token: NotificationToken? = nil
     

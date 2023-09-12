@@ -14,7 +14,7 @@ import Foundation
 
 
 final class TaskViewModel: ObservableObject {
-    @ObservedResults(Task.self, sortDescriptor: SortDescriptor(keyPath: "createdAt", ascending: false)) var tasks
+    @ObservedResults(Task.self, sortDescriptor: SortDescriptor(keyPath: "whenDo", ascending: false)) var tasks
     @ObservedResults(Space.self) var spaces
     
     @Published var isAddingNewTask: Bool = false
@@ -81,9 +81,9 @@ final class TaskViewModel: ObservableObject {
     
     func add(){
         var itemList: [Task] = []
-        let item1:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(timeIntervalSinceNow: -600000000), "category":"pet"])
-        let item2:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(), "category":"pet"])
-        let item3:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "createdAt":Date(timeIntervalSinceNow: +600000000), "category":"pet"])
+        let item1:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "whenDo":Date(timeIntervalSinceNow: -600000000), "category":"pet"])
+        let item2:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "whenDo":Date(), "category":"pet"])
+        let item3:Task = .init(value: ["title":"U need to do \(Int.random(in: 0...999))", "status": "done", "whenDo":Date(timeIntervalSinceNow: +600000000), "category":"pet"])
         
         itemList.append(item1)
         itemList.append(item2)

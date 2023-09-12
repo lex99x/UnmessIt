@@ -12,6 +12,7 @@ struct NewTaskView: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = NewTaskViewModel()
+    @State var isShowingDeleteAlert = false
     
     let isEditing: Bool
     @ObservedRealmObject var task: Task
@@ -29,7 +30,7 @@ struct NewTaskView: View {
                     Text("Task type")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    CustomSelectionInputView(placeholder: "Select a type...",
+                    CustomSelectionInputView(placeholder: isEditing ?  task.category.rawValue : "Select a option...",
                                              options: Task.taskOptions,
                                              selectedOption: $viewModel.selectedTaskTypeOption)
                     .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
@@ -55,15 +56,14 @@ struct NewTaskView: View {
                                     textfield: $viewModel.descriptionTextfield)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    
                     Text("When")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
 
                    VStack(alignment: .leading, spacing: 6){
-                        DatePicker("Date", selection: $viewModel.selectedDate, displayedComponents: .date)
+                       DatePicker("Date", selection: $viewModel.selectedDate, displayedComponents: .date)
                         Divider()
-                        DatePicker("Time", selection: $viewModel.selectedTime, displayedComponents: .hourAndMinute)
+                        DatePicker("Time", selection: $viewModel.selectedDate , displayedComponents: .hourAndMinute)
                     }
                     .font(Font.custom(Font.generalSansFontRegular, size: 15))
                     .foregroundColor(.textPrimaryColor)
@@ -78,22 +78,46 @@ struct NewTaskView: View {
                     Text("Resident in charge")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    AssigneesInputView(placeholder: "Select a resident...",
+                    AssigneesInputView(placeholder: isEditing ? task.assignees.first!.nickname : "Select a resident...",
                                        assignees: viewModel.selectedSpace!.residents,
                                        selectedAssignee: $viewModel.selectedAssigneeOption)
                 }
                 
-                
+
                 .alert("alert_task_missing_fields_title".localized, isPresented: $viewModel.hasError, actions: {
-//                    Button("Cancel", role: .cancel) {
-//                        isShowingDeleteAlert.toggle()
-//                    }
                     Button("alert_task_missing_fields_action".localized, role: .cancel) {
                         viewModel.hasError = false
                     }
                 }, message: {
                     Text("alert_task_missing_fields_description")
                 })
+                    
+                // delete task alert
+                .alert("alert_delete_all_tasks_title".localized, isPresented: $isShowingDeleteAlert, actions: {
+                    Button("alert_delete_all_tasks_action_left".localized, role: .cancel) {
+                        isShowingDeleteAlert.toggle()
+                    }
+                    Button("alert_delete_all_tasks_action_right".localized, role: .destructive) {
+                        viewModel.deleteTask(item: task)
+                        dismiss()
+                    }
+                }, message: {
+                    Text("alert_delete_all_tasks_description".localized)
+                })
+                
+                Spacer()
+                
+                if isEditing {
+                    Button(action: {
+                        isShowingDeleteAlert.toggle()
+                    }, label: {
+                        Label(title: { Text("Delete Task") }, icon: { Image.deleteIcon })
+                    })
+                    .buttonStyle(CustomButtonStyle(width: .infinity,
+                                                   foregroundColor: .textInvertColor,
+                                                   backgroundColor: .accentColor))
+                    .padding(.top, 100)
+                }
             }
             .padding(.vertical, 8)
             .padding(.horizontal,16)
@@ -145,38 +169,21 @@ struct NewTaskView: View {
             if isEditing {
                 viewModel.titleTextfield = task.title
                 viewModel.descriptionTextfield = task.desc
-                viewModel.selectedTaskTypeOption = task.category.rawValue
-
-                // MARK: REFACTOR WHEN HAVE MULTIPLE ASSIGNEERS
                 viewModel.selectedAssigneeOption = task.assignees.first!
+                viewModel.selectedTaskTypeOption = task.category.rawValue
+                viewModel.selectedDate = task.whenDo
+//
+                // MARK: REFACTOR WHEN HAVE MULTIPLE ASSIGNEERS
+//                viewModel.selectedAssigneeOption = task.assignees.first!
+                print(task.assignees)
+                print([viewModel.selectedTaskTypeOption])
+    
             }
         }
         
     }
         
 }
-
-struct NewTaskView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        
-        NavigationStack {
-            
-            NewTaskView(isEditing: false, task: Task())
-                
-//            var task: Task {
-//                let newTask = Task()
-//                newTask.title = "foo"
-//                newTask.category = .pets
-//                return newTask
-//            }
-        
-        }
-        
-    }
-    
-}
-
 struct NewInputView: View {
     var residentName: Binding<String>
     var body: some View {
@@ -189,4 +196,19 @@ struct NewInputView: View {
         .inputOverlay()
         
     }
+}
+
+
+struct NewTaskView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        
+        NavigationStack {
+            
+            NewTaskView(isEditing: true, task: Task())
+
+        }
+        
+    }
+    
 }

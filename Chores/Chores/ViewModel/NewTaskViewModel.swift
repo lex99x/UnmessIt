@@ -20,29 +20,20 @@ class NewTaskViewModel: ObservableObject {
     @Published var descriptionTextfield = ""
     
     @Published var selectedDate = Date()
-    @Published var selectedTime = Date()
-    
-    //    @Published var selectedEndRepeatDate = Date.now
     
     @Published var selectedTaskTypeOption = ""
     @Published var selectedTimeOption = 1
-    //    @Published var selectedRepetionOption = TimePeriod.hours.rawValue
+    
     
     @Published var selectedAssigneeOption: User = User()
     
     @Published var isImportantToggleOn = false
     
     @Published var hasError: Bool = false
-    //    @Published var isRecurrentToggleOn = false
-    //    @Published var isEndRepeatToggleOn = false
     
-    //    @Published var assigneeNames: [String] = []
-    
-    //    var assigneeOptions: [String] = ["Fulano", "Ciclano", "Beltrano"]
-    //
     
     init() {
-        
+
         let realm = try? Realm()
         self.realm = realm
         
@@ -72,6 +63,7 @@ class NewTaskViewModel: ObservableObject {
         task.title = titleTextfield
         task.desc = descriptionTextfield
         task.assignees.append(selectedAssigneeOption)
+        task.whenDo = selectedDate
         
         do {
             try validator.validate(task)
@@ -90,15 +82,29 @@ class NewTaskViewModel: ObservableObject {
         
     }
     
+    func deleteTask(item: Task) {
+        if let thaw = item.thaw(),
+           let realm = thaw.realm {
+            try? realm.write {
+                realm.delete(thaw)
+            }
+        }
+    }
+    
     func updateTask(item: Task) {
         if let thaw = item.thaw(),
            let realm = thaw.realm {
             try? realm.write {
+                thaw.category = TaskCategory(rawValue: selectedTaskTypeOption) ?? .none
                 thaw.title = titleTextfield
                 thaw.desc = descriptionTextfield
-                thaw.assignees.removeAll()
-                thaw.assignees.append(selectedAssigneeOption)
+                thaw.whenDo = selectedDate
                 
+                if !selectedAssigneeOption.nickname.isEmpty {
+                    thaw.assignees.removeAll()
+                    thaw.assignees.append(selectedAssigneeOption)
+                    
+                }
             }
         }
     }
