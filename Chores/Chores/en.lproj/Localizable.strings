@@ -28,3 +28,45 @@
 "alert_resident_missing_fields_title" = "Resident's name is required";
 "alert_resident_missing_fields_description" = "Please enter the resident's name.";
 "" = "OK";
+
+
+
+
+//MANAGE RESIDENTS
+"residents_title" = "Manage residents";
+"residents_subtitle" = "Add the people who live with you.";
+"residents_card_description" = "Tap to edit";
+"residents_button_add_resident" = "Add resident";
+
+// ADD RESIDENTS - SHEET
+"resident_button_cancel" = "Cancel";
+"new_resident_title" = "New resident";
+"resident_button_save" = "Save";
+
+"resident_input_name_title" = "Resident's name";
+"resident_input_name_placeholder" = "Name or nickname";
+//Preferences
+"preferences_title" = "Preferred or usual tasks";
+"Clothes" = "Clothes";
+"Cooking" = "Cooking";
+"Heavy Cleaning" = "Heavy cleaning";
+"Light Cleaning" = "Light cleaning";
+"Organization" = "Organization";
+"Payments" = "Payments";
+"Pets" = "Pets";
+"Shopping" = "Shopping";
+"preferences_others" = "Other";
+
+
+
+// EDIT RESIDENTS - SHEET
+"edit_resident_title" = "Edit resident";
+"edit_resident_button_delete" = "Remove resident";
+
+
+// DELETE RESIDENT - ALERT
+"alert_delete_resident_title" = "Remove resident";
+"alert_delete_resident_description" = "This action cannot be undone. \nAre you sure you want to delete this resident?";
+"alert_delete_resident_tasks_action_left" = "Cancel";
+"alert_delete_resident_tasks_action_right" = "Remove";
+
