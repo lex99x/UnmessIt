@@ -51,7 +51,7 @@ struct Residents: View {
                 
 //                NavigationLink(destination:NewResident(isEditing: false, resident: User())) {}
                 
-                NavigationLink(destination: NewResident(isEditing: false, resident: User()), tag: "A", selection: $selection) { EmptyView() }
+                NavigationLink(destination: NewResident(isEditing: false, isSpaceOwner: false, resident: User()), tag: "A", selection: $selection) { EmptyView() }
                 
                 Button {
                     selection = "A"

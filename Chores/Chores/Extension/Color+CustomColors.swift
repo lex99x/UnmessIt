@@ -82,6 +82,9 @@ extension Color {
     static let surfaceAccentPrimary: Color = Color(hex:"6DD6E4")
     static let accent2: Color = Color(hex: "079AAD")
     static let defaultRed: Color = Color(hex: "ED3A4C")
+    
+    static let text_criticalText = Color(hex: "FF6B7A")
+    static let surface_surfaceTetriary = Color(hex: "242424")
 }
 
 extension CGColor {    

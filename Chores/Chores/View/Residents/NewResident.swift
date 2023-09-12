@@ -9,43 +9,99 @@ import SwiftUI
 import RealmSwift
 
 struct NewResident: View {
+    
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var newResidentViewModel = NewResidentViewModel()
     let isEditing: Bool
-    
+    let isSpaceOwner: Bool
+    @State private var isShowingDeleteAlert = false
     @ObservedRealmObject var resident: User
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+                
+        VStack {
             
-            Text("Name")
-                .font(.title3)
-            
-            ResidentInputView(residentName: $newResidentViewModel.residentName)
-            
-            
-            
-            Text("Prefered Tasks")
-                .font(.title3)
-            
-            List {
-                ForEach(TaskCategory.values, id: \.self) { item in
-                    MultipleSelectionRow(title: item.rawValue, isSelected: newResidentViewModel.selections.contains(item.rawValue)) {
-                        if newResidentViewModel.selections.contains(item.rawValue) {
-                            newResidentViewModel.selections.removeAll(where: { $0 == item.rawValue })
+            VStack(alignment: .leading, spacing: 12) {
+                
+                Text("resident_input_name_title".localized)
+                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    .fontWeight(.medium)
+                    .foregroundColor(.textPrimaryColor)
+                
+                ResidentInputView(residentName: $newResidentViewModel.residentName)
+                
+                HStack {
+                    
+                    Text("preferences_title".localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .fontWeight(.medium)
+                        .foregroundColor(.textPrimaryColor)
+                    
+                    Spacer()
+                    
+                    Text("optional".localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textSecondaryColor)
+                    
+                }
+                
+                ZStack {
+                    ScrollView {
+                        ForEach(TaskCategory.values, id: \.self) { item in
+                            MultipleSelectionRow(title: item.rawValue, isSelected: newResidentViewModel.selections.contains(item.rawValue)) {
+                                if newResidentViewModel.selections.contains(item.rawValue) {
+                                    newResidentViewModel.selections.removeAll(where: { $0 == item.rawValue })
+                                }
+                                else {
+                                    newResidentViewModel.selections.append(item.rawValue)
+                                }
+                            }
+                            if item.rawValue != TaskCategory.values.last?.rawValue {
+                                Divider()
+                            }
                         }
-                        else {
-                            newResidentViewModel.selections.append(item.rawValue)
-                        }
+                        .overlay(
+                          RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.borderDefaultColor, lineWidth: 3)
+                        )
+//                        .foregroundColor(Color.accent2)
+                        .background(Color.surfaceSecondaryColor)
+                        .cornerRadius(10)
+                    }
+//                    .foregroundColor(Color.accent2)
+                    
+                }
+                
+                
+            }
+            
+            if isEditing == true && isSpaceOwner == false {
+                Spacer()
+                Button {
+                    isShowingDeleteAlert.toggle()
+                } label: {
+                    HStack {
+                        Image.userRemoveIcon
+                        Text("alert_delete_resident_title".localized)
                         
                     }
                 }
-                .listRowSeparator(.hidden)
-                .listRowInsets(EdgeInsets())
+                .buttonStyle(CustomButtonStyle(width: .infinity,
+                                               foregroundColor: .surface_surfaceTetriary,
+                                               backgroundColor: .text_criticalText))
             }
-            .listStyle(.inset)
-            
         }
+        .alert("alert_delete_resident_title".localized, isPresented: $isShowingDeleteAlert, actions: {
+            Button("alert_delete_resident_tasks_action_left".localized, role: .cancel) {
+                isShowingDeleteAlert.toggle()
+            }
+            Button("alert_delete_resident_tasks_action_right".localized, role: .destructive) {
+                newResidentViewModel.deleteResident(item: resident)
+                dismiss()
+            }
+        }, message: {
+            Text("alert_delete_resident_description".localized)
+        })
         .alert("alert_resident_missing_fields_title".localized, isPresented: $newResidentViewModel.hasError, actions: {
 //                    Button("Cancel", role: .cancel) {
 //                        isShowingDeleteAlert.toggle()
@@ -56,19 +112,28 @@ struct NewResident: View {
         }, message: {
             Text("alert_resident_missing_fields_description".localized)
         })
-        
-        .padding()
+        .padding(.top, 24)
+        .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
-        .navigationTitle(isEditing ? "Edit Resident" : "New Resident")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
                     dismiss()
                 }, label: {
-                    Text("Cancel")
+                    Text("resident_button_cancel".localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                        .fontWeight(.medium)
+                        .foregroundColor(.textAccentColor)
                 })
             }
+            
+            ToolbarItem(placement: .principal) {
+                Text(isEditing ? "edit_resident_title".localized : "new_resident_title".localized)
+                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    .foregroundColor(.textPrimaryColor)
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
 //                    viewModel.addNewTask()
@@ -82,11 +147,20 @@ struct NewResident: View {
                         dismiss()
                     }
                 }, label: {
-                    Text("Save")
+                    Text("resident_button_save".localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                        .fontWeight(.medium)
+                        .foregroundColor(.textAccentColor)
                 })
             }
             
         }
+        .background {
+            Color.surfaceSheetColor
+                .ignoresSafeArea()
+        }
+        .toolbarBackground(Color.surfaceSheetColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
             if resident.nickname.count > 0 {
                 newResidentViewModel.residentName = resident.nickname
@@ -102,25 +176,25 @@ struct NewResident: View {
 
 }
 
-
-struct NewResident_Previews: PreviewProvider {
-    static var previews: some View {
-    
-            Group {
-//                NavigationView {
-                NewResident(isEditing: false, resident: User())
-                        .previewDisplayName("New User")
-                    
-                    let user = User(value: ["nickname":"joaozinho", "preferences":["Cooking"]])
-                    NewResident(isEditing: true, resident: user)
-                        .previewDisplayName("Filled")
-
-//                }
-            }
-            
-                
-        }
-    }
+//
+//struct NewResident_Previews: PreviewProvider {
+//    static var previews: some View {
+//    
+//            Group {
+////                NavigationView {
+//                NewResident(isEditing: false, isSpaceOwner: false, resident: User())
+//                        .previewDisplayName("New User")
+//                    
+//                    let user = User(value: ["nickname":"joaozinho", "preferences":["Cooking"]])
+//                    NewResident(isEditing: true, resident: user)
+//                        .previewDisplayName("Filled")
+//
+////                }
+//            }
+//            
+//                
+//        }
+//    }
 
 
 struct MultipleSelectionRow: View {
@@ -129,24 +203,34 @@ struct MultipleSelectionRow: View {
     var action: () -> Void
 
     var body: some View {
-        
-        Button(action: self.action) {
-            HStack {
-                if self.isSelected {
-                    Image(systemName: "checkmark")
+        ZStack{
+            Button(action: self.action) {
+                HStack {
+                    if self.isSelected {
+                        Image.checkIcon
+                            .frame(width: 24, height: 24)
+                    }
+                    Text(self.title.localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textPrimaryColor)
+                    Spacer()
+                    Image(self.title)
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(Color("Category" + self.title.replacingOccurrences(of: " ", with: "")))
                 }
-                Text(self.title)
-//                    .padding([.leading],50)
-                Spacer()
-                Image(self.title)
+                
             }
-            
         }
-        .padding()
-        .overlay(
-          RoundedRectangle(cornerRadius: 5)
-            .stroke(Color.borderDefaultColor, lineWidth: 1)
-        )
+        .padding(.horizontal, 18)
+        .padding(.vertical, 6)
+        .background {
+            Color.surfaceSecondaryColor
+        }
+
+//        .overlay(
+//          RoundedRectangle(cornerRadius: 5)
+//            .stroke(Color.borderDefaultColor, lineWidth: 3)
+//        )
     }
 }
 

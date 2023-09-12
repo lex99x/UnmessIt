@@ -9,10 +9,11 @@ import SwiftUI
 import RealmSwift
 struct ResidentRow: View {
     @ObservedRealmObject var resident: User
+//    @Binding var isSpaceOwner: Bool
 //     var threeColumnGrid = [GridItem(.fixed(50)), GridItem(.fixed(50)), GridItem(.fixed(50)),GridItem(.fixed(50)),GridItem(.fixed(50))]
     var columns = [GridItem(.adaptive(minimum: 35))]
     var body: some View {
-        NavigationLink(destination: NewResident(isEditing: true, resident: resident)) {
+        NavigationLink(destination: NewResident(isEditing: true, isSpaceOwner: resident.isSpaceOwner ? true : false, resident: resident)) {
                 // inside card
                 HStack {
                     VStack {

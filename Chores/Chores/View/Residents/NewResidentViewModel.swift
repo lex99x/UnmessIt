@@ -57,6 +57,16 @@ final class NewResidentViewModel: ObservableObject {
         
     }
     
+    func deleteResident(item: User) {
+        if let updatedItem = item.thaw(),
+           let realm = updatedItem.realm {
+            print(updatedItem)
+            try! realm.write {
+                realm.delete(updatedItem)
+            }
+        }
+    }
+    
     func updateUser(item: User) {
         
             if let thaw = item.thaw(),
@@ -66,10 +76,10 @@ final class NewResidentViewModel: ObservableObject {
                     var preferences = RealmSwift.List<TaskCategory>()
                     do {
                         try validator.validateString(residentName)
-                        try validator.validateExistentResident(selectedSpace?.residents as? [User] ?? [], nickname: residentName)
-//                        print(selectedSpace?.residents.map{$0.nickname})
-                        let a = selectedSpace?.residents.map{$0.nickname}
-                        
+//                        try validator.validateExistentResident(selectedSpace?.residents as? [User] ?? [], nickname: residentName)
+////                        print(selectedSpace?.residents.map{$0.nickname})
+//                        let a = selectedSpace?.residents.map{$0.nickname}
+                        thaw.nickname = residentName
                     for item in selections {
                         preferences.append(TaskCategory(rawValue: item)!)
                     }
