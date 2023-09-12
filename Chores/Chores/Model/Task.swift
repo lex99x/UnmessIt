@@ -70,8 +70,6 @@ class Task: Object, ObjectKeyIdentifiable {
     }
     
     // MARK: Removed for V1
-    
-    //
     //        switch taskCategory {
     //        case .clothes:
     //            return .clothesIcon
@@ -116,6 +114,17 @@ class Task: Object, ObjectKeyIdentifiable {
     
     //    enum TimePeriod: String, PersistableEnum {
     //    case hours = "Hours", days = "Days", weeks = "Weeks", months = "Months", years = "Years"
-    //}
+    // }
 
+}
+
+extension Task {
+    
+    static let mockedTask = Task(value: ["title": "Take out the trash",
+                                         "desc": "Empty all trash cans and take it out before 14h. Don't forget that box for recycling.",
+                                         "isImportant": true,
+                                         "category": TaskCategory.ligthCleaning,
+                                         "startDate": Date.now,
+                                         "assignees":  as [String : Any])
+    
 }

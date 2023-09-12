@@ -28,7 +28,7 @@ struct NewResident: View {
             Text("Prefered Tasks")
                 .font(.title3)
             
-            List {
+            List {g
                 ForEach(TaskCategory.values, id: \.self) { item in
                     MultipleSelectionRow(title: item.rawValue, isSelected: newResidentViewModel.selections.contains(item.rawValue)) {
                         if newResidentViewModel.selections.contains(item.rawValue) {

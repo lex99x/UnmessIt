@@ -22,3 +22,13 @@ final class Space: Object, ObjectKeyIdentifiable {
     @Persisted var tasks =  RealmSwift.List<Task>()
     @Persisted var residents = RealmSwift.List<User>()
 }
+
+extension Space {
+    
+    static let mockedSpace = Space(value: ["title": "Mocked Space",
+                                           "desc": "...",
+                                           "membersNumber": 1,
+                                           "terms": "...",
+                                           "residents": ])
+    
+}

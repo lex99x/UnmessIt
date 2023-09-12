@@ -171,16 +171,9 @@ struct TaskDetailsView: View {
 
 struct TaskDetailsView_Previews: PreviewProvider {
     
-    static let mockedTask = Task(value: ["title": "Take out the trash",
-                                         "desc": "Empty all trash cans and take it out before 14h. Don't forget that box for recycling.",
-                                         "isImportant": true,
-                                         "category": TaskCategory.ligthCleaning,
-                                         "startDate": Date.now,
-                                         "endRepeatDate": Date.now] as [String : Any])
-    
     static var previews: some View {
         NavigationStack {
-            TaskDetailsView(task: TaskDetailsView_Previews.mockedTask)
+            TaskDetailsView(task: Task.mockedTask)
         }
     }
     
