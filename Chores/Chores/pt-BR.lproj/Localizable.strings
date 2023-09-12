@@ -6,6 +6,8 @@
   
 */
 
+"optional" = "Opcional";
+
 // MISSING RESIDENT NAME - ALERT
 "alert_delete_resident_title" = "Nome deve ser preenchido";
 "alert_delete_resident_description" = "Por favor, preencha o nome do(a) residente.";

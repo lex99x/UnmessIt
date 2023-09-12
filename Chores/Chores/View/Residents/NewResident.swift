@@ -9,6 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct NewResident: View {
+    
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var newResidentViewModel = NewResidentViewModel()
     let isEditing: Bool
@@ -17,16 +18,32 @@ struct NewResident: View {
     @ObservedRealmObject var resident: User
     
     var body: some View {
+                
         VStack {
+            
             VStack(alignment: .leading, spacing: 12) {
                 
                 Text("resident_input_name_title".localized)
-                    .font(.title3)
+                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    .fontWeight(.medium)
+                    .foregroundColor(.textPrimaryColor)
                 
                 ResidentInputView(residentName: $newResidentViewModel.residentName)
                 
-                Text("preferences_title".localized)
-                    .font(.title3)
+                HStack {
+                    
+                    Text("preferences_title".localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .fontWeight(.medium)
+                        .foregroundColor(.textPrimaryColor)
+                    
+                    Spacer()
+                    
+                    Text("optional".localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textSecondaryColor)
+                    
+                }
                 
                 ZStack {
                     ScrollView {
@@ -43,16 +60,12 @@ struct NewResident: View {
                                 Divider()
                             }
                         }
-                        
                         .overlay(
                           RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.borderDefaultColor, lineWidth: 3)
-
-                            
                         )
 //                        .foregroundColor(Color.accent2)
-//                        .background(Color(hex: "303030"))
-                        .background(Color(hex: "303030"))
+                        .background(Color.surfaceSecondaryColor)
                         .cornerRadius(10)
                     }
 //                    .foregroundColor(Color.accent2)
@@ -99,10 +112,9 @@ struct NewResident: View {
         }, message: {
             Text("alert_resident_missing_fields_description".localized)
         })
-        
-        .padding()
+        .padding(.top, 24)
+        .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
-        .navigationTitle(isEditing ? "edit_resident_title".localized : "new_resident_title".localized)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -110,8 +122,18 @@ struct NewResident: View {
                     dismiss()
                 }, label: {
                     Text("resident_button_cancel".localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                        .fontWeight(.medium)
+                        .foregroundColor(.textAccentColor)
                 })
             }
+            
+            ToolbarItem(placement: .principal) {
+                Text(isEditing ? "edit_resident_title".localized : "new_resident_title".localized)
+                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    .foregroundColor(.textPrimaryColor)
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
 //                    viewModel.addNewTask()
@@ -126,10 +148,19 @@ struct NewResident: View {
                     }
                 }, label: {
                     Text("resident_button_save".localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                        .fontWeight(.medium)
+                        .foregroundColor(.textAccentColor)
                 })
             }
             
         }
+        .background {
+            Color.surfaceSheetColor
+                .ignoresSafeArea()
+        }
+        .toolbarBackground(Color.surfaceSheetColor, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
             if resident.nickname.count > 0 {
                 newResidentViewModel.residentName = resident.nickname
@@ -176,21 +207,25 @@ struct MultipleSelectionRow: View {
             Button(action: self.action) {
                 HStack {
                     if self.isSelected {
-                        Image(systemName: "checkmark")
-                            .foregroundColor(Color(hex: "F5F5F5"))
+                        Image.checkIcon
+                            .frame(width: 24, height: 24)
                     }
                     Text(self.title.localized)
-                        .foregroundColor(Color(hex: "F5F5F5"))
-    //                    .padding([.leading],50)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textPrimaryColor)
                     Spacer()
                     Image(self.title)
-                        .renderingMode(.original)
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(Color("Category" + self.title.replacingOccurrences(of: " ", with: "")))
                 }
                 
             }
         }
-        .padding()
-//        .background(Color(hex: "303030"))
+        .padding(.horizontal, 18)
+        .padding(.vertical, 6)
+        .background {
+            Color.surfaceSecondaryColor
+        }
 
 //        .overlay(
 //          RoundedRectangle(cornerRadius: 5)

@@ -6,6 +6,7 @@
   
 */
 
+"optional" = "Optional";
 
 //HOME - delete all tasks - ALERT
 "alert_delete_all_tasks_title" = "Delete all tasks";
