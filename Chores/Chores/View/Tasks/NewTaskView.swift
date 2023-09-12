@@ -30,7 +30,7 @@ struct NewTaskView: View {
                     Text("Task type")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    CustomSelectionInputView(placeholder: viewModel.selectedTaskTypeOption.isEmpty ? "Select a option" : viewModel.selectedTaskTypeOption,
+                    CustomSelectionInputView(placeholder: isEditing ?  task.category.rawValue : "Select a option...",
                                              options: Task.taskOptions,
                                              selectedOption: $viewModel.selectedTaskTypeOption)
                     .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
@@ -56,15 +56,14 @@ struct NewTaskView: View {
                                     textfield: $viewModel.descriptionTextfield)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    
                     Text("When")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
 
                    VStack(alignment: .leading, spacing: 6){
-                        DatePicker("Date", selection: $viewModel.selectedDate, displayedComponents: .date)
+                       DatePicker("Date", selection: $viewModel.selectedDate, displayedComponents: .date)
                         Divider()
-                        DatePicker("Time", selection: $viewModel.selectedTime, displayedComponents: .hourAndMinute)
+                        DatePicker("Time", selection: $viewModel.selectedDate , displayedComponents: .hourAndMinute)
                     }
                     .font(Font.custom(Font.generalSansFontRegular, size: 15))
                     .foregroundColor(.textPrimaryColor)
@@ -79,16 +78,13 @@ struct NewTaskView: View {
                     Text("Resident in charge")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    AssigneesInputView(placeholder: "Select a resident...",
+                    AssigneesInputView(placeholder: isEditing ? task.assignees.first!.nickname : "Select a resident...",
                                        assignees: viewModel.selectedSpace!.residents,
                                        selectedAssignee: $viewModel.selectedAssigneeOption)
                 }
                 
 
                 .alert("alert_task_missing_fields_title".localized, isPresented: $viewModel.hasError, actions: {
-//                    Button("Cancel", role: .cancel) {
-//                        isShowingDeleteAlert.toggle()
-//                    }
                     Button("alert_task_missing_fields_action".localized, role: .cancel) {
                         viewModel.hasError = false
                     }
@@ -171,14 +167,15 @@ struct NewTaskView: View {
 //        }
         .onAppear {
             if isEditing {
-                viewModel.selectedTaskTypeOption = task.category.rawValue
                 viewModel.titleTextfield = task.title
                 viewModel.descriptionTextfield = task.desc
-                viewModel.selectedDate = task.createdAt
-                
-                // MARK: REFACTOR WHEN HAVE MULTIPLE ASSIGNEERS
                 viewModel.selectedAssigneeOption = task.assignees.first!
-                
+                viewModel.selectedTaskTypeOption = task.category.rawValue
+                viewModel.selectedDate = task.whenDo
+//
+                // MARK: REFACTOR WHEN HAVE MULTIPLE ASSIGNEERS
+//                viewModel.selectedAssigneeOption = task.assignees.first!
+                print(task.assignees)
                 print([viewModel.selectedTaskTypeOption])
     
             }

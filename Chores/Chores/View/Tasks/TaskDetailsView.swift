@@ -75,11 +75,11 @@ struct TaskDetailsView: View {
             }
             
             HStack {
-                Text(task.createdAt.formatted(date: .abbreviated, time: .omitted))
+                Text(task.whenDo.formatted(date: .abbreviated, time: .omitted))
                 Image(systemName: "circle.fill")
                     .resizable()
                     .frame(width: 4, height: 4)
-                Text(task.createdAt.formatted(date: .omitted, time: .shortened))
+                Text(task.whenDo.formatted(date: .omitted, time: .shortened))
             }
             .font(Font.custom(Font.generalSansFontRegular, size: 17))
             .foregroundColor(.textPrimaryColor)
