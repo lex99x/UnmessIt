@@ -91,7 +91,7 @@ struct TaskCardView: View {
 
 struct TaskCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskCardView(task: Task.mockedTask)
+        TaskCardView(task: Task())
             .padding()
     }
 }

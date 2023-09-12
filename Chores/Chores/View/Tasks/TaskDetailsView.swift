@@ -173,7 +173,7 @@ struct TaskDetailsView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationStack {
-            TaskDetailsView(task: Task.mockedTask)
+            TaskDetailsView(task: Task())
         }
     }
     
