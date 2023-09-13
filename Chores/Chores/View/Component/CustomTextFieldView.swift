@@ -27,7 +27,7 @@ struct CustomTextFieldView: View {
                 
                 if isOptional {
                     Spacer()
-                    Text("Optional")
+                    Text("optional")
                         .foregroundColor(.textSecondaryColor)
                 }
                 

@@ -188,13 +188,13 @@
 		065B0A062A6EA90B00B1D35F /* Chores */ = {
 			isa = PBXGroup;
 			children = (
-				06FAAC892AA76C8200BF615F /* Animations */,
 				065B0A072A6EA90B00B1D35F /* ChoresApp.swift */,
 				174447F62A86646B0083142F /* Info.plist */,
 				065B0A312A6EB98300B1D35F /* Model */,
 				170FE7752A70049D00F7BD45 /* View */,
 				170FE7762A70050800F7BD45 /* ViewModel */,
 				06D816532A848A6400606F03 /* Manager */,
+				06FAAC892AA76C8200BF615F /* Animation */,
 				17213CED2A72BFC5002F0924 /* Style */,
 				067DFA1C2A6EC88100A0E2F6 /* Extension */,
 				063F8F2B2A77F643002792D5 /* Service */,
@@ -297,12 +297,12 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		06FAAC892AA76C8200BF615F /* Animations */ = {
+		06FAAC892AA76C8200BF615F /* Animation */ = {
 			isa = PBXGroup;
 			children = (
 				06FAAC8A2AA76C9500BF615F /* ParticleEffect.swift */,
 			);
-			path = Animations;
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		170FE7752A70049D00F7BD45 /* View */ = {

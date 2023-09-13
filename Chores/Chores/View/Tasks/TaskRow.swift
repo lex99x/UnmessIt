@@ -40,22 +40,22 @@ struct TaskRow: View {
                                 
                                 HStack {
                                     Image.userAddIcon
-                                    Text((item.assignees.first?.nickname.isEmpty)! ? "No assignee" : item.assignees.first?.nickname ?? "")
+                                    Text((item.assignees.first?.nickname.isEmpty)! ? "no_assignee".localized : item.assignees.first?.nickname ?? "")
                                         .font(.subheadline)
                                 }
                                 
                                 HStack {
                                     switch item.whenDo.checkDay() {
                                     case .today:
-                                        Text("Today")
+                                        Text("today")
                                             .font(.subheadline)
                                         
                                     case .yesterday:
-                                        Text("Yesterday")
+                                        Text("yesterday")
                                             .font(.subheadline)
                                         
                                     case .tomorrow:
-                                        Text("Tomorrow")
+                                        Text("tomorrow")
                                             .font(.subheadline)
                                     case .none:
                                         Text(item.whenDo.toString(format: "dd-MM"))

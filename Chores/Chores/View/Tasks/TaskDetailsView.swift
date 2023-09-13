@@ -10,6 +10,7 @@ import RealmSwift
 import AVFoundation
 
 struct TaskDetailsView: View {
+    
     @Environment(\.dismiss) private var dismiss
     
     @ObservedRealmObject var task: Task
@@ -19,14 +20,12 @@ struct TaskDetailsView: View {
     @State var isShowingDeleteAlert = false
     @State private var isActive = false
     
-
-    
     var body: some View {
         
 //        NavigationLink(destination: NewTaskView(isEditing: true, task: self.task), tag: "A", selection: $selection) { EmptyView() }
         
         VStack(alignment: .leading, spacing: 16) {
-                        
+            
             HStack {
                 
                 HStack {
@@ -34,7 +33,7 @@ struct TaskDetailsView: View {
                         .resizable()
                         .frame(width: 16, height: 16)
                         .foregroundColor(.textAccentColor)
-                    Text(task.category.rawValue)
+                    Text(task.category.rawValue) // MARK: LOCALIZE THIS
                         .foregroundColor(.textPrimaryColor)
                 }
                 .font(Font.custom(Font.generalSansFontRegular, size: 15))
@@ -50,7 +49,7 @@ struct TaskDetailsView: View {
                 TaskStatusBadge(status: task.status)
                 
             }
-                
+            
             Text(task.title)
                 .font(Font.custom(Font.generalSansFontRegular, size: 20))
                 .fontWeight(.medium)
@@ -61,17 +60,19 @@ struct TaskDetailsView: View {
             }
             
             if let assignee = task.assignees.first {
-                HStack {
-                    Image(systemName: "person")
-                        .padding(4)
-                        .background {
-                            Color.surfaceSecondaryColor
-                                .cornerRadius(8)
-                        }
-                    Text(assignee.nickname)
+                if !assignee.nickname.isEmpty {
+                    HStack {
+                        Image.userIcon
+                            .padding(4)
+                            .background {
+                                Color.surfaceSecondaryColor
+                                    .cornerRadius(8)
+                            }
+                        Text(assignee.nickname)
+                    }
+                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    .foregroundColor(.textSecondaryColor)
                 }
-                .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                .foregroundColor(.textSecondaryColor)
             }
             
             HStack {
@@ -86,59 +87,55 @@ struct TaskDetailsView: View {
             
             Spacer()
             
-
-                
-                Button(action: {
+            Button(action: {
+                if task.status == .done {
+                    viewModel.updateStatus(item: task, status: .pending)
+                    isActive = false
+                } else {
+                    viewModel.updateStatus(item: task, status: .done)
+//                    playSounds("done_sound")
+                    isActive = true
+                }
+            }, label: {
+                HStack {
                     if task.status == .done {
-                        viewModel.updateStatus(item: task, status: .pending)
-                        isActive = false
+                        Image.pendingStatusIcon
+                            .resizable()
+                            .frame(width: 20, height: 20)
                     } else {
-                        viewModel.updateStatus(item: task, status: .done)
-//                        playSounds("done_sound")
-                        isActive = true
+                        Image.doneStatusIcon
+                            .resizable()
+                            .frame(width: 20, height: 20)
                     }
-                }, label: {
-                    HStack {
-                        if task.status == .done {
-                            Image.pendingStatusIcon
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                        } else {
-                            Image.doneStatusIcon
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                        }
-                        
-                        Text(task.status == .done ? "Mark as pending" : "Mak as done")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                            .fontWeight(.medium)
-                    }
-                })
-                .buttonStyle(task.status == .done ? CustomButtonStyle(width: .infinity,
-                                                                         foregroundColor: .badgeTextPendingColor,
-                                                                         backgroundColor: .badgeSurfacePendingColor) : CustomButtonStyle(width: .infinity,
-                                                                                                                                         foregroundColor: .badgeTextDoneColor,
-                                                                                                                                         backgroundColor: .badgeSurfaceDoneColor))
+                    
+                    Text(task.status == .done ? "view_task_button_pending" : "view_task_button_done")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .fontWeight(.medium)
+                }
+            })
+            .buttonStyle(task.status == .done ? CustomButtonStyle(width: .infinity,
+                                                                  foregroundColor: .badgeTextPendingColor,
+                                                                  backgroundColor: .badgeSurfacePendingColor) : CustomButtonStyle(width: .infinity,
+                                                                                                                                  foregroundColor: .badgeTextDoneColor,
+                                                                                                                                  backgroundColor: .badgeSurfaceDoneColor))
             
-                .particleEffect(image: "star", status: isActive, activeTint: .badgeTextDoneColor, inactiveTint: .gray)
+            .particleEffect(image: "star", status: isActive, activeTint: .badgeTextDoneColor, inactiveTint: .gray)
             
             
             
-            }
+        }
         .sheet(isPresented: $viewModel.isAddingNewTask) {
             NavigationStack {
                 NewTaskView(isEditing: true, task: task)
             }
         }
         
-            
-//        }
         .padding(.top, 24)
         .padding(.horizontal)
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-
+            
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
                     dismiss()
@@ -147,19 +144,19 @@ struct TaskDetailsView: View {
                         Image.arrowLeftIcon
                             .resizable()
                             .frame(width: 20, height: 20)
-                        Text("Back")
+                        Text("button_back")
                             .font(Font.custom(Font.generalSansFontRegular, size: 17))
                     }
                     .foregroundColor(.textAccentColor)
                 })
             }
-
+            
             ToolbarItem(placement: .principal) {
-                Text("View task")
+                Text("view_task_title")
                     .font(Font.custom(Font.generalSansFontRegular, size: 17))
                     .foregroundColor(.textPrimaryColor)
             }
-
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     viewModel.isAddingNewTask.toggle()
@@ -171,13 +168,13 @@ struct TaskDetailsView: View {
                 })
                 
             }
-
+            
         }
         .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }
-        
-
+    
+    
 }
 
 struct TaskDetailsView_Previews: PreviewProvider {

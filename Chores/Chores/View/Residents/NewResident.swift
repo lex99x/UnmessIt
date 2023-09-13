@@ -18,7 +18,7 @@ struct NewResident: View {
     @ObservedRealmObject var resident: User
     
     var body: some View {
-                
+        
         VStack {
             
             VStack(alignment: .leading, spacing: 12) {
@@ -46,6 +46,7 @@ struct NewResident: View {
                 }
                 
                 ZStack {
+                    
                     ScrollView {
                         ForEach(TaskCategory.values, id: \.self) { item in
                             MultipleSelectionRow(title: item.rawValue, isSelected: newResidentViewModel.selections.contains(item.rawValue)) {
@@ -61,8 +62,8 @@ struct NewResident: View {
                             }
                         }
                         .overlay(
-                          RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.borderDefaultColor, lineWidth: 3)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.borderDefaultColor, lineWidth: 3)
                         )
 //                        .foregroundColor(Color.accent2)
                         .background(Color.surfaceSecondaryColor)
@@ -71,7 +72,6 @@ struct NewResident: View {
 //                    .foregroundColor(Color.accent2)
                     
                 }
-                
                 
             }
             
@@ -82,14 +82,18 @@ struct NewResident: View {
                 } label: {
                     HStack {
                         Image.userRemoveIcon
-                        Text("alert_delete_resident_title".localized)
-                        
+                            .frame(width: 20, height: 20)
+                        Text("edit_resident_button_delete")
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                            .fontWeight(.medium)
                     }
+                    .foregroundColor(.textCriticalColor)
                 }
                 .buttonStyle(CustomButtonStyle(width: .infinity,
-                                               foregroundColor: .surface_surfaceTetriary,
-                                               backgroundColor: .text_criticalText))
+                                               foregroundColor: nil,
+                                               backgroundColor: .surfaceTertiaryColor))
             }
+            
         }
         .alert("alert_delete_resident_title".localized, isPresented: $isShowingDeleteAlert, actions: {
             Button("alert_delete_resident_tasks_action_left".localized, role: .cancel) {
@@ -103,20 +107,21 @@ struct NewResident: View {
             Text("alert_delete_resident_description".localized)
         })
         .alert("alert_resident_missing_fields_title".localized, isPresented: $newResidentViewModel.hasError, actions: {
-//                    Button("Cancel", role: .cancel) {
-//                        isShowingDeleteAlert.toggle()
-//                    }
+//            Button("Cancel", role: .cancel) {
+//                isShowingDeleteAlert.toggle()
+//            }
             Button("alert_resident_missing_fields_action".localized, role: .cancel) {
                 newResidentViewModel.hasError = false
             }
         }, message: {
             Text("alert_resident_missing_fields_description".localized)
         })
-        .padding(.top, 24)
+        .padding(.top, 26)
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
                     dismiss()
@@ -173,35 +178,14 @@ struct NewResident: View {
             }
         }
     }
-
+    
 }
-
-//
-//struct NewResident_Previews: PreviewProvider {
-//    static var previews: some View {
-//    
-//            Group {
-////                NavigationView {
-//                NewResident(isEditing: false, isSpaceOwner: false, resident: User())
-//                        .previewDisplayName("New User")
-//                    
-//                    let user = User(value: ["nickname":"joaozinho", "preferences":["Cooking"]])
-//                    NewResident(isEditing: true, resident: user)
-//                        .previewDisplayName("Filled")
-//
-////                }
-//            }
-//            
-//                
-//        }
-//    }
-
 
 struct MultipleSelectionRow: View {
     var title: String
     var isSelected: Bool
     var action: () -> Void
-
+    
     var body: some View {
         ZStack{
             Button(action: self.action) {
@@ -226,7 +210,6 @@ struct MultipleSelectionRow: View {
         .background {
             Color.surfaceSecondaryColor
         }
-
 //        .overlay(
 //          RoundedRectangle(cornerRadius: 5)
 //            .stroke(Color.borderDefaultColor, lineWidth: 3)
@@ -235,11 +218,12 @@ struct MultipleSelectionRow: View {
 }
 
 struct ResidentInputView: View {
+    
     var residentName: Binding<String>
+    
     var body: some View {
         
         VStack {
-            
             VStack {
                 TextField("Resident name", text: residentName)
             }
@@ -248,5 +232,5 @@ struct ResidentInputView: View {
         .inputOverlay()
         
     }
+    
 }
-

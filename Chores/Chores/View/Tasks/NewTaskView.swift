@@ -27,10 +27,10 @@ struct NewTaskView: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     
-                    Text("Task type")
+                    Text("task_input_type_title")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    CustomSelectionInputView(placeholder: isEditing ?  task.category.rawValue : "Select a option...",
+                    CustomSelectionInputView(placeholder: isEditing ?  task.category.rawValue : "task_input_type_placeholder".localized,
                                              options: Task.taskOptions,
                                              selectedOption: $viewModel.selectedTaskTypeOption)
                     .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
@@ -44,26 +44,25 @@ struct NewTaskView: View {
                     }
                 }
                 
-                CustomTextFieldView(title: "Task name",
-                                    placeholder: "What should be done...",
+                CustomTextFieldView(title: "task_input_name_title".localized,
+                                    placeholder: "task_input_name_placeholder".localized,
                                     isOptional: false,
                                     textfield: $viewModel.titleTextfield)
                 
-                
-                CustomTextFieldView(title: "Description",
-                                    placeholder: "How it should be done...",
+                CustomTextFieldView(title: "task_input_description_title".localized,
+                                    placeholder: "task_input_description_placeholder".localized,
                                     isOptional: true,
                                     textfield: $viewModel.descriptionTextfield)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("When")
+                    Text("task_input_when_title")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
 
                    VStack(alignment: .leading, spacing: 6){
-                       DatePicker("Date", selection: $viewModel.selectedDate, displayedComponents: .date)
+                       DatePicker("task_input_when_date", selection: $viewModel.selectedDate, displayedComponents: .date)
                         Divider()
-                        DatePicker("Time", selection: $viewModel.selectedDate , displayedComponents: .hourAndMinute)
+                        DatePicker("task_input_when_time", selection: $viewModel.selectedDate , displayedComponents: .hourAndMinute)
                     }
                     .font(Font.custom(Font.generalSansFontRegular, size: 15))
                     .foregroundColor(.textPrimaryColor)
@@ -71,18 +70,16 @@ struct NewTaskView: View {
                     .padding(.vertical, 6)
                     .padding(.horizontal, 12)
                     .inputOverlay()
-
                 }
                     
                 VStack(alignment: .leading) {
-                    Text("Resident in charge")
+                    Text("task_assignee_title")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    AssigneesInputView(placeholder: isEditing ? task.assignees.first!.nickname : "Select a resident...",
+                    AssigneesInputView(placeholder: isEditing ? task.assignees.first!.nickname : "task_assignee_placeholder".localized,
                                        assignees: viewModel.selectedSpace!.residents,
                                        selectedAssignee: $viewModel.selectedAssigneeOption)
                 }
-                
 
                 .alert("alert_task_missing_fields_title".localized, isPresented: $viewModel.hasError, actions: {
                     Button("alert_task_missing_fields_action".localized, role: .cancel) {
@@ -105,22 +102,32 @@ struct NewTaskView: View {
                     Text("alert_delete_all_tasks_description".localized)
                 })
                 
-                Spacer()
+//                Spacer()
                 
                 if isEditing {
+                    Spacer()
                     Button(action: {
                         isShowingDeleteAlert.toggle()
                     }, label: {
-                        Label(title: { Text("Delete Task") }, icon: { Image.deleteIcon })
+                        
+                        HStack {
+                            Image.userRemoveIcon
+                                .frame(width: 20, height: 20)
+                            Text("edit_resident_button_delete")
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .fontWeight(.medium)
+                        }
+                        .foregroundColor(.textCriticalColor)
+                                                
                     })
                     .buttonStyle(CustomButtonStyle(width: .infinity,
-                                                   foregroundColor: .textInvertColor,
-                                                   backgroundColor: .accentColor))
-                    .padding(.top, 100)
+                                                   foregroundColor: nil,
+                                                   backgroundColor: .surfaceTertiaryColor))
                 }
+                
             }
-            .padding(.vertical, 8)
-            .padding(.horizontal,16)
+            .padding(.top, 26)
+            .padding(.horizontal)
             .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -129,14 +136,14 @@ struct NewTaskView: View {
                     Button(action: {
                         dismiss()
                     }, label: {
-                        Text("Cancel")
+                        Text("task_button_cancel")
                             .font(Font.custom(Font.generalSansFontRegular, size: 17))
                             .foregroundColor(.textAccentColor)
                     })
                 }
                 
                 ToolbarItem(placement: .principal) {
-                    Text(isEditing ? "Edit task" : "New task")
+                    Text(isEditing ? "edit_task_title" : "new_task_title")
                         .font(Font.custom(Font.generalSansFontRegular, size: 17))
                         .foregroundColor(.textPrimaryColor)
                 }
@@ -152,7 +159,7 @@ struct NewTaskView: View {
                             dismiss()
                         }
                     }, label: {
-                        Text("Save")
+                        Text("task_button_save")
                             .font(Font.custom(Font.generalSansFontRegular, size: 17))
                             .foregroundColor(.textAccentColor)
                     })
@@ -172,8 +179,8 @@ struct NewTaskView: View {
                 viewModel.selectedAssigneeOption = task.assignees.first!
                 viewModel.selectedTaskTypeOption = task.category.rawValue
                 viewModel.selectedDate = task.whenDo
-//
-                // MARK: REFACTOR WHEN HAVE MULTIPLE ASSIGNEERS
+                
+//                MARK: REFACTOR WHEN HAVE MULTIPLE ASSIGNEERS
 //                viewModel.selectedAssigneeOption = task.assignees.first!
                 print(task.assignees)
                 print([viewModel.selectedTaskTypeOption])
@@ -184,12 +191,13 @@ struct NewTaskView: View {
     }
         
 }
+
 struct NewInputView: View {
     var residentName: Binding<String>
     var body: some View {
         VStack {
             VStack {
-                TextField("What should be done...", text: residentName)
+                TextField("task_input_name_placeholder", text: residentName)
             }
         }
         .padding()
@@ -197,7 +205,6 @@ struct NewInputView: View {
         
     }
 }
-
 
 struct NewTaskView_Previews: PreviewProvider {
     

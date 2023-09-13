@@ -42,13 +42,13 @@ struct Tasks: View {
                             .frame(width: 199, height: 146)
                             .padding(.bottom, 56)
                         
-                        Text("It's so quiet in here...")
+                        Text("home_empty_title")
                             .font(Font.custom(Font.generalSansFontSemibold, size: 28))
                             .foregroundColor(.textPrimaryColor)
-                        Text("To set up your preferences or add the people who live with you, tap “Manage residents”")
+                        Text("home_empty_description_1")
                             .font(Font.custom(Font.generalSansFontRegular, size: 17))
                             .foregroundColor(.textSecondaryColor)
-                        Text("To add a few tasks to your routine, tap the button below “Add a task”")
+                        Text("home_empty_description_2")
                             .font(Font.custom(Font.generalSansFontRegular, size: 17))
                             .foregroundColor(.textSecondaryColor)
                         
@@ -58,7 +58,7 @@ struct Tasks: View {
                 }
                 .padding(.top, 64)
                 .padding(.horizontal)
-                                
+                
             } else {
                 
                 VStack {
@@ -74,12 +74,13 @@ struct Tasks: View {
                                         Button {
                                             viewModel.updateStatus(status: .done, item: item)
                                         } label: {
-                                            Text("DONE")
-                                        }.tint(.green)
+                                            Text("home_task_status_done".localized.uppercased())
+                                        }
+                                        .tint(.green)
+                                        
                                     }
                             }
                         }
-                        
                         
                     }
                     .listStyle(.inset)
@@ -95,7 +96,14 @@ struct Tasks: View {
             Button(action: {
                 viewModel.isAddingNewTask.toggle()
             }, label: {
-                Label(title: { Text("Add a task") }, icon: { Image.plusIcon })
+                Label(title: {
+                    Text("home_button_add_task")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .fontWeight(.medium)
+                }, icon: {
+                    Image.plusIcon
+                })
+                .foregroundColor(.textInvertColor)
             })
             .buttonStyle(CustomButtonStyle(width: .infinity,
                                            foregroundColor: .textInvertColor,
@@ -118,7 +126,7 @@ struct Tasks: View {
                         .resizable()
                         .foregroundColor(.textAccentColor)
                         .frame(width: 20, height: 20)
-                    Text("Manage residents")
+                    Text("home_manage_residents")
                         .font(Font.custom(Font.generalSansFontRegular, size: 17))
                         .foregroundColor(.textAccentColor)
                 })
@@ -127,24 +135,12 @@ struct Tasks: View {
             
             if !viewModel.tasks.isEmpty {
                 
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Tasks")
-//                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
-//                        .fontWeight(.medium)
-//                        .foregroundColor(.textPrimaryColor)
-                }
-                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     
                     Menu {
                         Button(role: .destructive, action: callDeleteAllTasks, label: {
-                            Text("Delete all tasks")
-//                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
-//                                .foregroundColor(.textCriticalColor)
+                            Text("home_delete_all_task")
                             Image.deleteIcon
-//                                .resizable()
-//                                .frame(width: 20, height: 20)
-//                                .foregroundColor(.textCriticalColor)
                         })
                     } label: {
                         Button(action: {}, label: {

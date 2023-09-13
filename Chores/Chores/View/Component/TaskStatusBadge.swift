@@ -19,10 +19,10 @@ struct TaskStatusBadge: View {
         switch status {
             case .pending:
                 self.colors = (.badgeTextPendingColor, .badgeSurfacePendingColor)
-                self.content = ("exclamationmark.circle", "Pending")
+                self.content = ("exclamationmark.circle", "home_task_status_pending".localized)
             case .done:
                 self.colors = (.doneTaskBadgeText, .doneTaskBadgeBackground)
-                self.content = ("checkmark.circle", "Done")
+                self.content = ("checkmark.circle", "home_task_status_done".localized)
             case .cantDo:
                 self.colors = (.notDoneTaskBadgeText, .notDoneTaskBadgeBackground)
                 self.content = ("circle.slash", "Not done")

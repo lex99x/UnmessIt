@@ -1,18 +1,107 @@
 /* 
-  Localizable.strings
-  Chores
+ Localizable.strings
+ Chores
+ 
+ Created by Joao Lucas Camilo on 30/08/23.
+ 
+ */
 
-  Created by Joao Lucas Camilo on 30/08/23.
-  
-*/
+//
+//// General
+//"optional" = "Opcional";
+//
+//// HOME
+//"add_task" = "Adicione uma tarefa";
+//
+//// MISSING RESIDENT NAME - ALERT
+//"alert_delete_resident_title" = "Nome deve ser preenchido";
+//"alert_delete_resident_description" = "Por favor, preencha o nome do(a) residente.";
+//"alert_delete_resident_tasks_action_left" = "OK";
+//
+//
+////HOME - delete all tasks - ALERT
+//"alert_delete_all_tasks_title" = "Apagar todas as tarefas";
+//"alert_delete_all_tasks_description" = "Esta ação não poderá ser desfeita. \nTem certeza que deseja apagar todas as tarefas existentes?";
+//"alert_delete_all_tasks_action_left" = "Cancelar";
+//"alert_delete_all_tasks_action_right" = "Apagar";
+//
+//
+////DELETE TASK - ALERT
+//"alert_delete_task_title" = "Apagar tarefa";
+//"alert_delete_task_description" = "Essa ação não poderá ser desfeita.\Tem certeza que deseja apagar ?";
+//"alert_delete_task_action_left" = "Cancelar";
+//"alert_delete_task_action_right" = "Apagar";
+//
+////MISSING FIELDS - ALERT
+//"alert_task_missing_fields_title" = "Alguns campos obrigatórios estão vazios";
+//"alert_task_missing_fields_description" = "Por favor, preencha todos os campos obrigatórios: tipo de tarefa, nome da tarefa, data e hora.";
+//"alert_task_missing_fields_action" = "OK";
+//
+//
+//// EDIT RESIDENTS - SHEET
+//"edit_resident_title" = "Editar residente";
+//"edit_resident_button_delete" = "Remover residente";
+//
+//
+//// DELETE RESIDENT - ALERT
+//"alert_delete_resident_title" = "Remover residente";
+//"alert_delete_resident_description" = "Esta ação não poderá ser desfeita. \nTem certeza que deseja remover este(a) residente?";
+//"alert_delete_resident_tasks_action_left" = "Cancelar";
+//"alert_delete_resident_tasks_action_right" = "Remover";
+//
+////MANAGE RESIDENTS
+//"residents_title" = "Gerenciar residentes";
+//"residents_subtilte" = "Adicione as pessoas que vivem com você.\nDeslize para a esquerda para editar ou remover um residente.";
+//"residents_card_description" = "Toque para editar";
+//"residents_button_add_resident" = "Adicionar residente";
+//
+//// ADD RESIDENTS - SHEET
+//"resident_button_cancel" = "Cancelar";
+//"new_resident_title" = "Adicionar residente";
+//"resident_button_save" = "Salvar";
+//
+//"resident_input_name_title" = "Nome do(a) residente";
+//"resident_input_name_placeholder" = "Nome ou apelido";
+////Preferences
+//"preferences_title" = "Tarefas que prefere ou costuma realizar";
+//"Clothes" = "Roupas";
+//"Cooking" = "Cozinhar";
+//"Heavy Cleaning" = "Limpeza pesada";
+//"Light Cleaning" = "Limpeza leve";
+//"Organization" = "Organização";
+//"Payments" = "Pagamentos";
+//"Pets" = "Animais de estimação";
+//"Shopping" = "Compras";
+//"preferences_others" = "Outros";
 
+// GENERAL
 "optional" = "Opcional";
+"today" = "Hoje";
+"yesterday" = "Ontem";
+"tomorrow" = "Amanhã";
+"no_assignee" = "Ninguém"; // MARK: LOCALIZE THIS
 
-// MISSING RESIDENT NAME - ALERT
-"alert_delete_resident_title" = "Nome deve ser preenchido";
-"alert_delete_resident_description" = "Por favor, preencha o nome do(a) residente.";
-"alert_delete_resident_tasks_action_left" = "OK";
-    
+//HOME - default
+"home_title" = "Tarefas";
+"home_menu_icon" = "Mais opções";
+"home_delete_all_task" = "Apagar tarefas";
+"home_manage_residents" = "Gerenciar residentes";
+"home_segmented_control_all" = "Todas";
+"home_segmented_control_today" = "Hoje";
+"home_segmented_control_future" = "Futuras";
+"home_segmented_control_past" = "Passadas";
+"home_search_placeholder" = "Buscar";
+"home_button_add_task" = "Adicionar tarefa";
+
+//HOME - empty state
+"home_empty_title" = "Está tão quieto por aqui...";
+"home_empty_description_1" = "Para definir suas preferências ou adicionar pessoas que moram com você, toque em “Gerencias residentes”";
+"home_empty_description_2" = "Para adicionar tarefas à sua rotina, toque em “Adicionar tarefa”";
+
+//HOME - task card
+"home_task_title" = "%@";
+"home_task_status_pending" = "Pendente";
+"home_task_status_done" = "Feito";
 
 //HOME - delete all tasks - ALERT
 "alert_delete_all_tasks_title" = "Apagar todas as tarefas";
@@ -21,16 +110,34 @@
 "alert_delete_all_tasks_action_right" = "Apagar";
 
 
-//DELETE TASK - ALERT
-"alert_delete_task_title" = "Apagar tarefa";
-"alert_delete_task_description" = "Essa ação não poderá ser desfeita.\Tem certeza que deseja apagar ?";
-"alert_delete_task_action_left" = "Cancelar";
-"alert_delete_task_action_right" = "Apagar";
 
-//MISSING FIELDS - ALERT
-"alert_task_missing_fields_title" = "Alguns campos obrigatórios estão vazios";
-"alert_task_missing_fields_description" = "Por favor, preencha todos os campos obrigatórios: tipo de tarefa, nome da tarefa, data e hora.";
-"alert_task_missing_fields_action" = "OK";
+
+//MANAGE RESIDENTS
+"residents_title" = "Gerenciar residentes";
+"residents_subtilte" = "Adicione as pessoas que vivem com você.\nDeslize para a esquerda para editar ou remover um residente.";
+"residents_card_description" = "Toque para editar";
+"residents_button_add_resident" = "Adicionar residente";
+"residents_title" = "Residentes";
+"residents_tap_to_add" = "Toque para adicionar preferências";
+
+// ADD RESIDENTS - SHEET
+"resident_button_cancel" = "Cancelar";
+"new_resident_title" = "Adicionar residente";
+"resident_button_save" = "Salvar";
+
+"resident_input_name_title" = "Nome do(a) residente";
+"resident_input_name_placeholder" = "Nome ou apelido";
+//Preferences
+"preferences_title" = "Tarefas que prefere ou costuma realizar";
+"preferences_clothes" = "Roupas";
+"preferences_cooking" = "Cozinhar";
+"preferences_heavy_cleaning" = "Limpeza pesada";
+"preferences_light_cleaning" = "Limpeza leve";
+"preferences_organization" = "Organização";
+"preferences_payments" = "Pagamentos";
+"preferences_pets" = "Animais de estimação";
+"preferences_shopping" = "Compras";
+"preferences_others" = "Outros";
 
 
 // EDIT RESIDENTS - SHEET
@@ -44,28 +151,108 @@
 "alert_delete_resident_tasks_action_left" = "Cancelar";
 "alert_delete_resident_tasks_action_right" = "Remover";
 
-//MANAGE RESIDENTS
-"residents_title" = "Gerenciar residentes";
-"residents_subtilte" = "Adicione as pessoas que vivem com você.\nDeslize para a esquerda para editar ou remover um residente.";
-"residents_card_description" = "Toque para editar";
-"residents_button_add_resident" = "Adicionar residente";
 
-// ADD RESIDENTS - SHEET
-"resident_button_cancel" = "Cancelar";
-"new_resident_title" = "Adicionar residente";
-"resident_button_save" = "Salvar";
+// MISSING RESIDENT NAME - ALERT
+"alert_delete_resident_title" = "Nome deve ser preenchido";
+"alert_delete_resident_description" = "Por favor, preencha o nome do(a) residente.";
+"alert_delete_resident_tasks_action_left" = "OK";
 
-"resident_input_name_title" = "Nome do(a) residente";
-"resident_input_name_placeholder" = "Nome ou apelido";
-//Preferences
-"preferences_title" = "Tarefas que prefere ou costuma realizar";
-"Clothes" = "Roupas";
-"Cooking" = "Cozinhar";
-"Heavy Cleaning" = "Limpeza pesada";
-"Light Cleaning" = "Limpeza leve";
-"Organization" = "Organização";
-"Payments" = "Pagamentos";
-"Pets" = "Animais de estimação";
-"Shopping" = "Compras";
-"preferences_others" = "Outros";
+// EXISTING RESIDENT NAME - ALERT
+"alert_delete_resident_title" = "O nome inseritdo já existe";
+"alert_delete_resident_description" = "Por favor, digite um nome diferente.";
+"alert_delete_resident_tasks_action_left" = "OK";
 
+
+
+
+//VIEW TASK
+"button_back" = "Voltar";
+"view_task_title" = "Ver tarefa";
+"view_task_edit_icon" = "Editar";
+"view_task_type" = "%@";
+"view_task_status" = "%@";
+"view_task_important" = "Importante";
+"view_task_name" = "%@";
+"view_task_description" = "%@";
+"view_task_assignee" = "%@";
+"view_task_date" = "%@";
+"view_task_time" = " • %@";
+"view_task_one_time" = "Não recorrente";
+"view_task_recurrent" = "Recorrente";
+"view_task_repeats" = "Repete a cada %@ %@";
+"view_task_until" = "até %@";
+"view_task_schedule" = "Programação";
+"view_task_next_ocurrences" = "Próximas 3 ocorrências";
+"view_task_button_done" = "Marcar como feito";
+"view_task_button_pending" = "Marcar como pendente";
+
+
+
+
+//NEW TASK
+"task_button_cancel" = "Cancelar";
+"new_task_title" = "Nova tarefa";
+"task_button_save" = "Salvar";
+"task_input_type_title" = "Tipo de tarefa";
+"task_input_type_placeholder" = "Escolha um tipo...";
+// task_type = preference...
+"task_input_name_title" = "Nome da tarefa";
+"task_input_name_placeholder" = "O que deve ser feito...";
+
+"task_input_description_title" = "Descrição";
+"task_input_description_placeholder" = "Como deve ser feito...";
+
+"task_important" = "Importante";
+
+"task_input_when_title" = "Quando";
+"task_input_when" = "Data e hora";
+"task_input_when_date" = "Data";
+"task_input_when_time" = "Hora";
+
+"task_recurrent" = "Recorrente";
+"task_input_repeat_every" = "Repete a cada";
+"task_input_repeat_every_hour" = "Hora";
+"task_input_repeat_every_hours" = "Horas";
+"task_input_repeat_every_day" = "Dia";
+"task_input_repeat_every_days" = "Dias";
+"task_input_repeat_every_week" = "Semana";
+"task_input_repeat_every_weeks" = "Semanas";
+"task_input_repeat_every_month" = "Mês";
+"task_input_repeat_every_months" = "Meses";
+"ntask_input_repeat_every_year" = "Ano";
+"task_input_repeat_every_years" = "Anos";
+"task_end_repeat" = "Termina repetição";
+"task_input_repeat_until" = "Repete até";
+
+"task_assignee_title" = "Residente responsável";
+"task_assignee_placeholder" = "Selecione um(a) residente...";
+"task_assignee_suggested" = "Sugerido(a)";
+
+
+
+//EDIT TASK
+"edit_task_title" = "Editar tarefa";
+"edit_task_button_delete" = "Apagar tarefa";
+
+
+
+//DELETE TASK - ALERT
+"alert_delete_task_title" = "Apagar tarefa";
+"alert_delete_task_description" = "Essa ação não poderá ser desfeita.\Tem certeza que deseja apagar ?";
+"alert_delete_task_action_left" = "Cancelar";
+"alert_delete_task_action_right" = "Apagar";
+
+
+
+//MISSING FIELDS - ALERT
+"alert_task_missing_fields_title" = "Alguns campos obrigatórios estão vazios";
+"alert_task_missing_fields_description" = "Por favor, preencha todos os campos obrigatórios: tipo de tarefa, nome da tarefa, data e hora.";
+"alert_task_missing_fields_action" = "OK";
+
+
+//NOTIFICATIONS
+"notification_generic_title" = "Tarefas pendentes para hoje";
+"notification_generic_description" = "Toque para ver no aplicativo. Não esqueça de marcar como feitas as tarefas já realizadas.";
+
+"notification_important_title" = "Tarefas pendentes para hoje";
+"notification_important_description" = "Toque para ver no aplicativo. Não esqueça de marcar como feitas as tarefas já realizadas.";
