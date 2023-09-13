@@ -6,27 +6,30 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct TaskCardView: View {
         
+    @ObservedRealmObject var task: Task
+    
     var body: some View {
         
         HStack {
             
-            Image.lightCleaningIcon
+            Task.getTaskIconByCategory(taskCategory: task.category)
                 .resizable()
                 .frame(width: 28, height: 28)
                 .padding(.vertical, 22)
                 .padding(.horizontal, 11)
+                .foregroundColor(Color("Category" + task.category.rawValue.replacingOccurrences(of: " ", with: "")))
                 .background {
                     Color.surfaceTertiaryColor
                         .cornerRadius(12)
                 }
-                .foregroundColor(.categoryLightCleaningColor)
             
             VStack(alignment: .leading, spacing: 6) {
                 
-                Text("Take out the trash")
+                Text(task.title)
                     .fontWeight(.medium)
                     .foregroundColor(.textPrimaryColor)
                 
@@ -41,22 +44,24 @@ struct TaskCardView: View {
                                 .cornerRadius(8)
                         }
                     
-                    Text("Fulano de Tal")
-                        .foregroundColor(.textSecondaryColor)
+                    if let assignee = task.assignees.first {
+                        Text(assignee.nickname)
+                            .foregroundColor(.textSecondaryColor)
+                    }
                     
                 }
                 
                 HStack {
                     
-                    Text("Today")
+                    Text(task.createdAt.formatted(date: .abbreviated, time: .omitted))
                     Image(systemName: "circle.fill")
                         .resizable()
                         .frame(width: 4, height: 4)
-                    Text("12:00")
+                    Text(task.createdAt.formatted(date: .omitted, time: .shortened))
                     
                     Spacer()
                     
-                    TaskStatusBadge(status: .pending)
+                    TaskStatusBadge(status: task.status)
                     
                 }
                 .foregroundColor(.textSecondaryColor)
@@ -79,12 +84,14 @@ struct TaskCardView: View {
             Color.surfaceSecondaryColor
                 .cornerRadius(16)
         }
+        
     }
+    
 }
 
 struct TaskCardView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskCardView()
+        TaskCardView(task: Task())
             .padding()
     }
 }

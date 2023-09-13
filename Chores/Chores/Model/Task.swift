@@ -71,8 +71,6 @@ class Task: Object, ObjectKeyIdentifiable {
     }
     
     // MARK: Removed for V1
-    
-    //
     //        switch taskCategory {
     //        case .clothes:
     //            return .clothesIcon
@@ -117,6 +115,6 @@ class Task: Object, ObjectKeyIdentifiable {
     
     //    enum TimePeriod: String, PersistableEnum {
     //    case hours = "Hours", days = "Days", weeks = "Weeks", months = "Months", years = "Years"
-    //}
+    // }
 
 }
