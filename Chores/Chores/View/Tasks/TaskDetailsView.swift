@@ -124,11 +124,14 @@ struct TaskDetailsView: View {
             
             
         }
-        .sheet(isPresented: $viewModel.isAddingNewTask) {
+        .sheet(isPresented: $viewModel.isAddingNewTask, onDismiss: {
+            dismiss()
+        }) {
             NavigationStack {
                 NewTaskView(isEditing: true, task: task)
             }
         }
+        
         
         .padding(.top, 24)
         .padding(.horizontal)

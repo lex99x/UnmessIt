@@ -39,13 +39,17 @@ struct AssigneesInputView: View {
                 .frame(width: 16, height: 16)
                 .foregroundColor(.textSecondaryColor)
         })
+        .onChange(of: selectedAssignee) { newValue in
+            if !newValue.nickname.isEmpty {
+                placeholder = newValue.nickname
+            }
+            }
         .font(Font.custom(Font.generalSansFontRegular, size: 15))
         .padding(.vertical)
         .padding(.horizontal, 12)
         .inputOverlay()
         
     }
-    
 }
 
 struct AssigneesComponent_Previews: PreviewProvider {

@@ -76,7 +76,7 @@ struct NewTaskView: View {
                     Text("task_assignee_title")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    AssigneesInputView(placeholder: isEditing ? task.assignees.first!.nickname : "task_assignee_placeholder".localized,
+                    AssigneesInputView(placeholder: isEditing ? task.assignees.first?.nickname ?? "" : "task_assignee_placeholder".localized,
                                        assignees: viewModel.selectedSpace!.residents,
                                        selectedAssignee: $viewModel.selectedAssigneeOption)
                 }
@@ -96,7 +96,7 @@ struct NewTaskView: View {
                     }
                     Button("alert_delete_all_tasks_action_right".localized, role: .destructive) {
                         viewModel.deleteTask(item: task)
-                        dismiss()
+                        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
                     }
                 }, message: {
                     Text("alert_delete_all_tasks_description".localized)
