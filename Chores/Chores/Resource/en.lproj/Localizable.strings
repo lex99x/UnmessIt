@@ -80,7 +80,7 @@
 "today" = "Today";
 "yesterday" = "Yesterday";
 "tomorrow" = "Tomorrow";
-"no_assignee" = "None"; // MARK: LOCALIZE THIS
+"no_assignee" = "No one"; // MARK: LOCALIZE THIS
 
 //HOME - default
 "home_title" = "Tasks";
