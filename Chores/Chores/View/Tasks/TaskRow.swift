@@ -40,7 +40,10 @@ struct TaskRow: View {
                                 
                                 HStack {
                                     Image.userAddIcon
-                                    Text((item.assignees.first?.nickname.isEmpty)! ? "no_assignee".localized : item.assignees.first?.nickname ?? "")
+//                                    Text(item.assignees.first?.nickname ? "no_assignee".localized : item.assignees.first?.nickname ?? "")
+//                                        .font(.subheadline)
+                                    
+                                    Text(item.assignees.first?.nickname ?? "no_assignee".localized)
                                         .font(.subheadline)
                                 }
                                 

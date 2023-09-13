@@ -176,7 +176,7 @@ struct NewTaskView: View {
             if isEditing {
                 viewModel.titleTextfield = task.title
                 viewModel.descriptionTextfield = task.desc
-                viewModel.selectedAssigneeOption = task.assignees.first!
+                viewModel.selectedAssigneeOption = task.assignees.first ?? User()
                 viewModel.selectedTaskTypeOption = task.category.rawValue
                 viewModel.selectedDate = task.whenDo
                 

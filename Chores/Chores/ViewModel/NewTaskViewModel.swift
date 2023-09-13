@@ -62,7 +62,11 @@ class NewTaskViewModel: ObservableObject {
         task.category = TaskCategory(rawValue: selectedTaskTypeOption) ?? .none
         task.title = titleTextfield
         task.desc = descriptionTextfield
-        task.assignees.append(selectedAssigneeOption)
+        
+        if !selectedAssigneeOption.nickname.isEmpty {
+            task.assignees.append(selectedAssigneeOption)
+        }
+        
         task.whenDo = selectedDate
         
         do {
