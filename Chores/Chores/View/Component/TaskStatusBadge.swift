@@ -31,15 +31,19 @@ struct TaskStatusBadge: View {
     
     var body: some View {
         ZStack {
-            HStack(spacing: 8) {
+            HStack {
                 Image(systemName: self.content.0)
+                    .resizable()
+                    .frame(width: 16, height: 16)
                     .foregroundColor(self.colors.0)
                 Text(self.content.1)
                     .foregroundColor(self.colors.0)
+                    .fixedSize()
             }
             .font(Font.custom(Font.generalSansFontRegular, size: 15))
-            .padding(.vertical, 8)
-            .padding(.horizontal, 12)
+            .padding(.leading, 8)
+            .padding(.trailing, 12)
+            .padding(.vertical, 4)
             .background(self.colors.1)
             .cornerRadius(16)
         }

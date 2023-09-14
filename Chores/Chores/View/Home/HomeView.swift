@@ -1,5 +1,5 @@
 //
-//  Tasks.swift
+//  HomeView.swift
 //  Chores
 //
 //  Created by Joao Lucas Camilo on 03/08/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct Tasks: View {
+struct HomeView: View {
     
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = TaskViewModel()
@@ -62,29 +62,24 @@ struct Tasks: View {
             } else {
                 
                 VStack {
-                    
                     List {
-                        Section {
-                            ForEach(content.freeze()) { item in
-                                TaskRow(item: item)
-                                    .padding(.bottom, 8)
-                                    .listRowSeparator(.hidden)
-                                    .swipeActions(edge: .trailing) {
-                                        
-                                        Button {
-                                            viewModel.updateStatus(status: .done, item: item)
-                                        } label: {
-                                            Text("home_task_status_done".localized.uppercased())
-                                        }
-                                        .tint(.green)
-                                        
+                        ForEach(content.freeze()) { task in
+                            
+                            TaskCardView(task: task)
+                                .swipeActions(edge: .trailing) {
+                                    Button {
+                                        viewModel.updateStatus(status: .done, item: task)
+                                    } label: {
+                                        Text("home_task_status_done".localized.uppercased())
                                     }
-                            }
+                                    .tint(.green)
+                                }
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(EdgeInsets(top: 8, leading: .zero, bottom: 8, trailing: .zero))
+                            
                         }
-                        
                     }
                     .listStyle(.inset)
-                    
                 }
                 .searchable(text: $searchText)
                 .padding(.top, 12)
@@ -108,7 +103,6 @@ struct Tasks: View {
             .buttonStyle(CustomButtonStyle(width: .infinity,
                                            foregroundColor: .textInvertColor,
                                            backgroundColor: .accentColor))
-            .padding(.horizontal)
             .sheet(isPresented: $viewModel.isAddingNewTask) {
                 NavigationStack {
                     NewTaskView(isEditing: false, task: Task())
@@ -116,6 +110,7 @@ struct Tasks: View {
             }
             
         }
+        .padding(.horizontal)
         .navigationBarBackButtonHidden()
         .toolbar {
             
@@ -171,8 +166,6 @@ struct Tasks: View {
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
             
-//            print(viewModel.selectedSpace?.residents.count)
-            
             if viewModel.selectedSpace?.residents.count == 0 {
                 viewModel.registerOwner()
             }
@@ -190,7 +183,7 @@ struct Tasks: View {
 struct Tasks_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            Tasks()
+            HomeView()
         }
     }
 }

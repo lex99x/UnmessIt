@@ -20,7 +20,7 @@
 		065B0A232A6EA90C00B1D35F /* ChoresUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A222A6EA90C00B1D35F /* ChoresUITests.swift */; };
 		065B0A252A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A242A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift */; };
 		065B0A332A6EBB9300B1D35F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A322A6EBB9300B1D35F /* Task.swift */; };
-		066B70202A7BF75100E9FB1E /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B701F2A7BF75100E9FB1E /* Tasks.swift */; };
+		066B70202A7BF75100E9FB1E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B701F2A7BF75100E9FB1E /* HomeView.swift */; };
 		066B70222A7BFD7400E9FB1E /* Color+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B70212A7BFD7400E9FB1E /* Color+CustomColors.swift */; };
 		066B70252A7D339300E9FB1E /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B70242A7D339300E9FB1E /* TaskItem.swift */; };
 		067DFA1E2A6EC89000A0E2F6 /* Decodable+LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067DFA1D2A6EC89000A0E2F6 /* Decodable+LoadData.swift */; };
@@ -92,7 +92,7 @@
 		065B0A222A6EA90C00B1D35F /* ChoresUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresUITests.swift; sourceTree = "<group>"; };
 		065B0A242A6EA90C00B1D35F /* ChoresUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		065B0A322A6EBB9300B1D35F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		066B701F2A7BF75100E9FB1E /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		066B701F2A7BF75100E9FB1E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		066B70212A7BFD7400E9FB1E /* Color+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CustomColors.swift"; sourceTree = "<group>"; };
 		066B70242A7D339300E9FB1E /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		067DFA1D2A6EC89000A0E2F6 /* Decodable+LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+LoadData.swift"; sourceTree = "<group>"; };
@@ -241,16 +241,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		066B70232A7D329600E9FB1E /* Tasks */ = {
+		066B70232A7D329600E9FB1E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				066B701F2A7BF75100E9FB1E /* Tasks.swift */,
+				066B701F2A7BF75100E9FB1E /* HomeView.swift */,
 				17CE41CD2A77F13800A622A1 /* NewTaskView.swift */,
 				066B70242A7D339300E9FB1E /* TaskItem.swift */,
 				1794525D2A8CF461002FECC5 /* TaskDetailsView.swift */,
 				0629C3532A8D0EA3007739CB /* TaskRow.swift */,
 			);
-			path = Tasks;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		067DFA1C2A6EC88100A0E2F6 /* Extension */ = {
@@ -309,8 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				17A834862A7A863600625FD2 /* Component */,
+				066B70232A7D329600E9FB1E /* Home */,
 				069EC1532A93170F002BBDE6 /* Residents */,
-				066B70232A7D329600E9FB1E /* Tasks */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -509,7 +509,7 @@
 				06AF6D622AA0803A00675DC9 /* String+Localized.swift in Sources */,
 				17213CEF2A72BFDA002F0924 /* CustomButtonStyle.swift in Sources */,
 				17CE41D02A7806F600A622A1 /* CustomSelectionInputView.swift in Sources */,
-				066B70202A7BF75100E9FB1E /* Tasks.swift in Sources */,
+				066B70202A7BF75100E9FB1E /* HomeView.swift in Sources */,
 				17CE41D22A780A3600A622A1 /* NewTaskViewModel.swift in Sources */,
 				063F8F2D2A77F665002792D5 /* LocalNotificationService.swift in Sources */,
 				06AF6D5A2A98569100675DC9 /* ResidentValidator.swift in Sources */,

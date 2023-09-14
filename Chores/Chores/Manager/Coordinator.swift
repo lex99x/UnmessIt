@@ -63,7 +63,7 @@ class Coordinator: ObservableObject {
 //        case .addPlace:
 //            NewPlaceView()
         case .tasks:
-            Tasks()
+            HomeView()
         }
     }
     

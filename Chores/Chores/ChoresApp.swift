@@ -18,7 +18,7 @@ struct ChoresApp: SwiftUI.App {
         WindowGroup {
             if let space = spaces.first  {
                 NavigationStack {
-                    Tasks()
+                    HomeView()
                 }
             } else {
                 ProgressView()
