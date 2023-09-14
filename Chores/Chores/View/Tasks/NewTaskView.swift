@@ -90,16 +90,16 @@ struct NewTaskView: View {
                 })
                     
                 // delete task alert
-                .alert("alert_delete_all_tasks_title".localized, isPresented: $isShowingDeleteAlert, actions: {
-                    Button("alert_delete_all_tasks_action_left".localized, role: .cancel) {
+                .alert("alert_delete_task_title".localized, isPresented: $isShowingDeleteAlert, actions: {
+                    Button("alert_delete_task_action_left".localized, role: .cancel) {
                         isShowingDeleteAlert.toggle()
                     }
-                    Button("alert_delete_all_tasks_action_right".localized, role: .destructive) {
+                    Button("alert_delete_task_action_right".localized, role: .destructive) {
                         viewModel.deleteTask(item: task)
                         UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
                     }
                 }, message: {
-                    Text("alert_delete_all_tasks_description".localized)
+                    Text("alert_delete_task_description".localized)
                 })
                 
 //                Spacer()
@@ -111,9 +111,9 @@ struct NewTaskView: View {
                     }, label: {
                         
                         HStack {
-                            Image.userRemoveIcon
+                            Image.deleteIcon
                                 .frame(width: 20, height: 20)
-                            Text("edit_resident_button_delete")
+                            Text("edit_task_button_delete")
                                 .font(Font.custom(Font.generalSansFontRegular, size: 15))
                                 .fontWeight(.medium)
                         }

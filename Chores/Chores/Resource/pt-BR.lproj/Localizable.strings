@@ -75,11 +75,8 @@
 //"preferences_others" = "Outros";
 
 // GENERAL
+"button_back" = "Voltar";
 "optional" = "Opcional";
-"today" = "Hoje";
-"yesterday" = "Ontem";
-"tomorrow" = "Amanhã";
-"no_assignee" = "Ninguém"; // MARK: LOCALIZE THIS
 
 //HOME - default
 "home_title" = "Tarefas";
@@ -102,10 +99,14 @@
 "home_task_title" = "%@";
 "home_task_status_pending" = "Pendente";
 "home_task_status_done" = "Feito";
+"today" = "Hoje";
+"yesterday" = "Ontem";
+"tomorrow" = "Amanhã";
+"no_assignee" = "Sem responsável"; // MARK: LOCALIZE THIS
 
 //HOME - delete all tasks - ALERT
 "alert_delete_all_tasks_title" = "Apagar todas as tarefas";
-"alert_delete_all_tasks_description" = "Esta ação não poderá ser desfeita. \nTem certeza que deseja apagar todas as tarefas existentes?";
+"alert_delete_all_tasks_description" = "Esta ação não poderá ser desfeita. \nTem certeza que deseja apagar todas as tarefas?";
 "alert_delete_all_tasks_action_left" = "Cancelar";
 "alert_delete_all_tasks_action_right" = "Apagar";
 
@@ -114,7 +115,7 @@
 
 //MANAGE RESIDENTS
 "residents_title" = "Gerenciar residentes";
-"residents_subtilte" = "Adicione as pessoas que vivem com você.\nDeslize para a esquerda para editar ou remover um residente.";
+"residents_subtilte" = "Adicione as pessoas que vivem com você.";
 "residents_card_description" = "Toque para editar";
 "residents_button_add_resident" = "Adicionar residente";
 "residents_title" = "Residentes";
@@ -129,15 +130,15 @@
 "resident_input_name_placeholder" = "Nome ou apelido";
 //Preferences
 "preferences_title" = "Tarefas que prefere ou costuma realizar";
-"preferences_clothes" = "Roupas";
-"preferences_cooking" = "Cozinhar";
-"preferences_heavy_cleaning" = "Limpeza pesada";
-"preferences_light_cleaning" = "Limpeza leve";
-"preferences_organization" = "Organização";
-"preferences_payments" = "Pagamentos";
-"preferences_pets" = "Animais de estimação";
-"preferences_shopping" = "Compras";
-"preferences_others" = "Outros";
+"task_type_clothes" = "Roupas";
+"task_type_cooking" = "Cozinhar";
+"task_type_heavy_cleaning" = "Limpeza pesada";
+"task_type_light_cleaning" = "Limpeza leve";
+"task_type_organization" = "Organização";
+"task_type_payments" = "Pagamentos";
+"task_type_pets" = "Animais de estimação";
+"task_type_shopping" = "Compras";
+"task_type_others" = "Outros";
 
 
 // EDIT RESIDENTS - SHEET
@@ -148,25 +149,24 @@
 // DELETE RESIDENT - ALERT
 "alert_delete_resident_title" = "Remover residente";
 "alert_delete_resident_description" = "Esta ação não poderá ser desfeita. \nTem certeza que deseja remover este(a) residente?";
-"alert_delete_resident_tasks_action_left" = "Cancelar";
-"alert_delete_resident_tasks_action_right" = "Remover";
+"alert_delete_resident_action_left" = "Cancelar";
+"alert_delete_resident_action_right" = "Remover";
 
 
 // MISSING RESIDENT NAME - ALERT
-"alert_delete_resident_title" = "Nome deve ser preenchido";
-"alert_delete_resident_description" = "Por favor, preencha o nome do(a) residente.";
-"alert_delete_resident_tasks_action_left" = "OK";
+"alert_resident_missing_fields_title" = "Nome deve ser preenchido";
+"alert_resident_missing_fields_description" = "Por favor, preencha o nome do(a) residente.";
+"alert_resident_missing_fields_action" = "OK";
 
 // EXISTING RESIDENT NAME - ALERT
-"alert_delete_resident_title" = "O nome inseritdo já existe";
-"alert_delete_resident_description" = "Por favor, digite um nome diferente.";
-"alert_delete_resident_tasks_action_left" = "OK";
+"alert_resident_existing_name_title" = "O nome inserido já existe";
+"alert_resident_existing_name_description" = "Por favor, digite um nome diferente.";
+"alert_resident_existing_name_action" = "OK";
 
 
 
 
 //VIEW TASK
-"button_back" = "Voltar";
 "view_task_title" = "Ver tarefa";
 "view_task_edit_icon" = "Editar";
 "view_task_type" = "%@";
@@ -238,7 +238,7 @@
 
 //DELETE TASK - ALERT
 "alert_delete_task_title" = "Apagar tarefa";
-"alert_delete_task_description" = "Essa ação não poderá ser desfeita.\Tem certeza que deseja apagar ?";
+"alert_delete_task_description" = "Essa ação não poderá ser desfeita.\nTem certeza que deseja apagar esta tarefa?";
 "alert_delete_task_action_left" = "Cancelar";
 "alert_delete_task_action_right" = "Apagar";
 
