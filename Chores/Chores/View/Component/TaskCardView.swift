@@ -95,8 +95,13 @@ struct TaskCardView: View {
                 .stroke(Color.borderDefaultColor, lineWidth: 0.5)
         )
         .background {
+            
             Color.surfaceSecondaryColor
                 .cornerRadius(16)
+            
+            NavigationLink("", destination: TaskDetailsView(task: task))
+                .opacity(0)
+            
         }
 
     }
