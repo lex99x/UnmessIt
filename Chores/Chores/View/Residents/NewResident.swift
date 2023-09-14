@@ -66,9 +66,11 @@ struct NewResident: View {
                                 .stroke(Color.borderDefaultColor, lineWidth: 3)
                         )
 //                        .foregroundColor(Color.accent2)
+                        
                         .background(Color.surfaceSecondaryColor)
                         .cornerRadius(10)
                     }
+                    .padding()
 //                    .foregroundColor(Color.accent2)
                     
                 }
@@ -192,6 +194,8 @@ struct MultipleSelectionRow: View {
                 HStack {
                     if self.isSelected {
                         Image.checkIcon
+                            .renderingMode(.template)
+                            .foregroundColor(.textPrimaryColor)
                             .frame(width: 24, height: 24)
                     }
                     Text(self.title.localized)
@@ -207,6 +211,7 @@ struct MultipleSelectionRow: View {
         }
         .padding(.horizontal, 18)
         .padding(.vertical, 6)
+//        .padding([.top, .bottom], 2)
         .background {
             Color.surfaceSecondaryColor
         }

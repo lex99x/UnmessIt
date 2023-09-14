@@ -56,7 +56,6 @@ class NewTaskViewModel: ObservableObject {
     
     func addNewTask() {
         let task = Task()
-        print("aqui1")
         print(selectedTaskTypeOption)
         
         task.category = TaskCategory(rawValue: selectedTaskTypeOption) ?? .none
@@ -71,7 +70,6 @@ class NewTaskViewModel: ObservableObject {
         
         do {
             try validator.validate(task)
-            print("aqiu2")
             if let selectedSpace = self.selectedSpace,
                let realm = selectedSpace.realm {
                 try? realm.write {

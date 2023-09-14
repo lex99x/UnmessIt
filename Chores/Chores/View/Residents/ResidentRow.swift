@@ -84,7 +84,9 @@ struct PreferenceItem: View {
         ZStack {
             VStack {
                 Image(imageName)
+                    .renderingMode(.original)
                     .resizable().frame(width: 16, height: 16)
+                    
             }
             .padding(2)
         }
