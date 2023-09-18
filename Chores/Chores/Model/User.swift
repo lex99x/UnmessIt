@@ -12,9 +12,9 @@ final class User: Object, ObjectKeyIdentifiable {
     
     @Persisted(primaryKey: true) var _id: ObjectId
     
-    @Persisted var nickname: String = ""
-    @Persisted var isSpaceOwner: Bool = false
-    @Persisted var preferences = RealmSwift.List<TaskCategory>()
+    @Persisted var nickname = ""
+    @Persisted var isSpaceOwner = false
+    @Persisted var preferences = List<TaskCategory>()
     
 }
 

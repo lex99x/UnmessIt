@@ -22,18 +22,17 @@
 		065B0A332A6EBB9300B1D35F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B0A322A6EBB9300B1D35F /* Task.swift */; };
 		066B70202A7BF75100E9FB1E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B701F2A7BF75100E9FB1E /* HomeView.swift */; };
 		066B70222A7BFD7400E9FB1E /* Color+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B70212A7BFD7400E9FB1E /* Color+CustomColors.swift */; };
-		066B70252A7D339300E9FB1E /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B70242A7D339300E9FB1E /* TaskItem.swift */; };
 		067DFA1E2A6EC89000A0E2F6 /* Decodable+LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067DFA1D2A6EC89000A0E2F6 /* Decodable+LoadData.swift */; };
 		069EC1552A93175A002BBDE6 /* NewResident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069EC1542A93175A002BBDE6 /* NewResident.swift */; };
 		069EC1572A93183F002BBDE6 /* NewResidentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069EC1562A93183F002BBDE6 /* NewResidentViewModel.swift */; };
-		069EC1592A934B6E002BBDE6 /* Residents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069EC1582A934B6E002BBDE6 /* Residents.swift */; };
+		069EC1592A934B6E002BBDE6 /* ManageResidentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069EC1582A934B6E002BBDE6 /* ManageResidentsView.swift */; };
 		069EC15B2A934B9D002BBDE6 /* ResidentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069EC15A2A934B9D002BBDE6 /* ResidentsViewModel.swift */; };
 		069EC15E2A934F35002BBDE6 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069EC15D2A934F35002BBDE6 /* RealmHelper.swift */; };
 		06AF6D582A98494500675DC9 /* TaskValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF6D572A98494500675DC9 /* TaskValidator.swift */; };
 		06AF6D5A2A98569100675DC9 /* ResidentValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF6D592A98569100675DC9 /* ResidentValidator.swift */; };
 		06AF6D5D2A9F734B00675DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06AF6D5F2A9F734B00675DC9 /* Localizable.strings */; };
 		06AF6D622AA0803A00675DC9 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF6D612AA0803A00675DC9 /* String+Localized.swift */; };
-		06AF99C22A935D13006BFBD4 /* ResidentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF99C12A935D13006BFBD4 /* ResidentRow.swift */; };
+		06AF99C22A935D13006BFBD4 /* ResidentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF99C12A935D13006BFBD4 /* ResidentCardView.swift */; };
 		06B06F4F2A96A30500B166F3 /* AssigneesInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B06F4E2A96A30500B166F3 /* AssigneesInputView.swift */; };
 		06BCFF812A833C0700D212A9 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCFF802A833C0700D212A9 /* TaskViewModel.swift */; };
 		06D816552A848A6F00606F03 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D816542A848A6F00606F03 /* Coordinator.swift */; };
@@ -94,11 +93,10 @@
 		065B0A322A6EBB9300B1D35F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		066B701F2A7BF75100E9FB1E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		066B70212A7BFD7400E9FB1E /* Color+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CustomColors.swift"; sourceTree = "<group>"; };
-		066B70242A7D339300E9FB1E /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		067DFA1D2A6EC89000A0E2F6 /* Decodable+LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+LoadData.swift"; sourceTree = "<group>"; };
 		069EC1542A93175A002BBDE6 /* NewResident.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewResident.swift; sourceTree = "<group>"; };
 		069EC1562A93183F002BBDE6 /* NewResidentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewResidentViewModel.swift; sourceTree = "<group>"; };
-		069EC1582A934B6E002BBDE6 /* Residents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Residents.swift; sourceTree = "<group>"; };
+		069EC1582A934B6E002BBDE6 /* ManageResidentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageResidentsView.swift; sourceTree = "<group>"; };
 		069EC15A2A934B9D002BBDE6 /* ResidentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentsViewModel.swift; sourceTree = "<group>"; };
 		069EC15D2A934F35002BBDE6 /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		06AF6D572A98494500675DC9 /* TaskValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskValidator.swift; sourceTree = "<group>"; };
@@ -106,7 +104,7 @@
 		06AF6D5E2A9F734B00675DC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		06AF6D602A9F735000675DC9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		06AF6D612AA0803A00675DC9 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
-		06AF99C12A935D13006BFBD4 /* ResidentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentRow.swift; sourceTree = "<group>"; };
+		06AF99C12A935D13006BFBD4 /* ResidentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentCardView.swift; sourceTree = "<group>"; };
 		06B06F4E2A96A30500B166F3 /* AssigneesInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssigneesInputView.swift; sourceTree = "<group>"; };
 		06BCFF802A833C0700D212A9 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		06D816542A848A6F00606F03 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -245,8 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				066B701F2A7BF75100E9FB1E /* HomeView.swift */,
+				172F3B662AA8D222009C08D0 /* TaskCardView.swift */,
+				065590B02A814BC100A0B5B4 /* TaskStatusBadge.swift */,
 				17CE41CD2A77F13800A622A1 /* NewTaskView.swift */,
-				066B70242A7D339300E9FB1E /* TaskItem.swift */,
 				1794525D2A8CF461002FECC5 /* TaskDetailsView.swift */,
 				0629C3532A8D0EA3007739CB /* TaskRow.swift */,
 			);
@@ -270,11 +269,11 @@
 		069EC1532A93170F002BBDE6 /* Residents */ = {
 			isa = PBXGroup;
 			children = (
-				069EC1582A934B6E002BBDE6 /* Residents.swift */,
+				069EC1582A934B6E002BBDE6 /* ManageResidentsView.swift */,
 				069EC1562A93183F002BBDE6 /* NewResidentViewModel.swift */,
 				069EC1542A93175A002BBDE6 /* NewResident.swift */,
 				069EC15A2A934B9D002BBDE6 /* ResidentsViewModel.swift */,
-				06AF99C12A935D13006BFBD4 /* ResidentRow.swift */,
+				06AF99C12A935D13006BFBD4 /* ResidentCardView.swift */,
 			);
 			path = Residents;
 			sourceTree = "<group>";
@@ -351,8 +350,6 @@
 				17213CE82A72B449002F0924 /* CustomTextFieldView.swift */,
 				17CE41CF2A7806F600A622A1 /* CustomSelectionInputView.swift */,
 				17213CEA2A72BE1D002F0924 /* CustomFilePickerView.swift */,
-				172F3B662AA8D222009C08D0 /* TaskCardView.swift */,
-				065590B02A814BC100A0B5B4 /* TaskStatusBadge.swift */,
 				06B06F4E2A96A30500B166F3 /* AssigneesInputView.swift */,
 			);
 			path = Component;
@@ -517,7 +514,6 @@
 				17213CE92A72B449002F0924 /* CustomTextFieldView.swift in Sources */,
 				06B06F4F2A96A30500B166F3 /* AssigneesInputView.swift in Sources */,
 				17CE41CE2A77F13800A622A1 /* NewTaskView.swift in Sources */,
-				066B70252A7D339300E9FB1E /* TaskItem.swift in Sources */,
 				06AF6D582A98494500675DC9 /* TaskValidator.swift in Sources */,
 				069EC1552A93175A002BBDE6 /* NewResident.swift in Sources */,
 				170FE7732A70020300F7BD45 /* Space.swift in Sources */,
@@ -526,14 +522,14 @@
 				06FAAC8B2AA76C9500BF615F /* ParticleEffect.swift in Sources */,
 				06241C252A72A1AF00FFCDC4 /* User.swift in Sources */,
 				069EC15E2A934F35002BBDE6 /* RealmHelper.swift in Sources */,
-				069EC1592A934B6E002BBDE6 /* Residents.swift in Sources */,
+				069EC1592A934B6E002BBDE6 /* ManageResidentsView.swift in Sources */,
 				17CE41D62A78131600A622A1 /* View+InputOverlay.swift in Sources */,
 				06D816552A848A6F00606F03 /* Coordinator.swift in Sources */,
 				172F3B672AA8D222009C08D0 /* TaskCardView.swift in Sources */,
 				06081FD52A96BF95009E398B /* TaskDetailViewModel.swift in Sources */,
 				065B0A332A6EBB9300B1D35F /* Task.swift in Sources */,
 				063F8F2F2A77FD3F002792D5 /* LocalNotificationBody.swift in Sources */,
-				06AF99C22A935D13006BFBD4 /* ResidentRow.swift in Sources */,
+				06AF99C22A935D13006BFBD4 /* ResidentCardView.swift in Sources */,
 				174447F82A8664F10083142F /* Font+CustomFonts.swift in Sources */,
 				065B0A082A6EA90B00B1D35F /* ChoresApp.swift in Sources */,
 				069EC1572A93183F002BBDE6 /* NewResidentViewModel.swift in Sources */,

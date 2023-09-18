@@ -116,7 +116,7 @@ struct HomeView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 
-                NavigationLink(destination: { Residents() }, label: {
+                NavigationLink(destination: { ManageResidentsView() }, label: {
                     Image.groupIcon
                         .resizable()
                         .foregroundColor(.textAccentColor)
