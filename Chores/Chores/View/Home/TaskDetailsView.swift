@@ -28,24 +28,8 @@ struct TaskDetailsView: View {
             
             HStack {
                 
-                HStack {
-                    Task.getTaskIconByCategory(taskCategory: task.category)
-                        .resizable()
-                        .frame(width: 16, height: 16)
-                        .foregroundColor(.textAccentColor)
-                    Text(task.category.rawValue) // MARK: LOCALIZE THIS
-                        .foregroundColor(.textPrimaryColor)
-                }
-                .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                .padding(.vertical, 8)
-                .padding(.horizontal, 12)
-                .background {
-                    Color.surfaceSecondaryColor
-                        .clipShape(Capsule())
-                }
-                
+                TaskCategoryBadge(taskCategory: task.category)
                 Spacer()
-                
                 TaskStatusBadge(status: task.status)
                 
             }
@@ -132,7 +116,6 @@ struct TaskDetailsView: View {
             }
         }
         
-        
         .padding(.top, 24)
         .padding(.horizontal)
         .navigationBarBackButtonHidden()
@@ -184,7 +167,7 @@ struct TaskDetailsView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationStack {
-            TaskDetailsView(task: Task())
+            TaskDetailsView(task: Task.mockedTask)
         }
     }
     

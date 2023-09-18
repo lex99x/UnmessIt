@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct CategoryBadgeView: View {
+struct TaskCategoryHomeBadge: View {
     
     let category: TaskCategory
     
@@ -37,7 +37,7 @@ struct TaskCardView: View {
         
         HStack {
                         
-            CategoryBadgeView(category: task.category)
+            TaskCategoryHomeBadge(category: task.category)
                 .padding(12)
                                                 
             VStack(alignment: .leading, spacing: 6) {

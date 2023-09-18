@@ -43,6 +43,7 @@
 		17213CE92A72B449002F0924 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CE82A72B449002F0924 /* CustomTextFieldView.swift */; };
 		17213CEB2A72BE1D002F0924 /* CustomFilePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CEA2A72BE1D002F0924 /* CustomFilePickerView.swift */; };
 		17213CEF2A72BFDA002F0924 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17213CEE2A72BFDA002F0924 /* CustomButtonStyle.swift */; };
+		1727D5752AB8A406003312E5 /* TaskCategoryBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1727D5742AB8A406003312E5 /* TaskCategoryBadge.swift */; };
 		172F3B672AA8D222009C08D0 /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F3B662AA8D222009C08D0 /* TaskCardView.swift */; };
 		174447F82A8664F10083142F /* Font+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174447F72A8664F10083142F /* Font+CustomFonts.swift */; };
 		1794525E2A8CF461002FECC5 /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1794525D2A8CF461002FECC5 /* TaskDetailsView.swift */; };
@@ -113,6 +114,7 @@
 		17213CE82A72B449002F0924 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		17213CEA2A72BE1D002F0924 /* CustomFilePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFilePickerView.swift; sourceTree = "<group>"; };
 		17213CEE2A72BFDA002F0924 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
+		1727D5742AB8A406003312E5 /* TaskCategoryBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCategoryBadge.swift; sourceTree = "<group>"; };
 		172F3B662AA8D222009C08D0 /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
 		174447F62A86646B0083142F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174447F72A8664F10083142F /* Font+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+CustomFonts.swift"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				066B701F2A7BF75100E9FB1E /* HomeView.swift */,
 				172F3B662AA8D222009C08D0 /* TaskCardView.swift */,
+				1727D5742AB8A406003312E5 /* TaskCategoryBadge.swift */,
 				065590B02A814BC100A0B5B4 /* TaskStatusBadge.swift */,
 				17CE41CD2A77F13800A622A1 /* NewTaskView.swift */,
 				1794525D2A8CF461002FECC5 /* TaskDetailsView.swift */,
@@ -503,6 +506,7 @@
 				067DFA1E2A6EC89000A0E2F6 /* Decodable+LoadData.swift in Sources */,
 				1794525E2A8CF461002FECC5 /* TaskDetailsView.swift in Sources */,
 				179452602A8D1D8A002FECC5 /* Image+CustomImages.swift in Sources */,
+				1727D5752AB8A406003312E5 /* TaskCategoryBadge.swift in Sources */,
 				06AF6D622AA0803A00675DC9 /* String+Localized.swift in Sources */,
 				17213CEF2A72BFDA002F0924 /* CustomButtonStyle.swift in Sources */,
 				17CE41D02A7806F600A622A1 /* CustomSelectionInputView.swift in Sources */,
