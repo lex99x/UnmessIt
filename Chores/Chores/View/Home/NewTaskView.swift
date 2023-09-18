@@ -19,7 +19,7 @@ struct NewTaskView: View {
     
     var body: some View {
         
-        ScrollView {
+        VStack {
             
             Divider()
             
@@ -102,23 +102,21 @@ struct NewTaskView: View {
                     Text("alert_delete_task_description".localized)
                 })
                 
-//                Spacer()
+                Spacer()
                 
                 if isEditing {
-                    Spacer()
                     Button(action: {
                         isShowingDeleteAlert.toggle()
                     }, label: {
-                        
                         HStack {
                             Image.deleteIcon
+                                .resizable()
                                 .frame(width: 20, height: 20)
                             Text("edit_task_button_delete")
                                 .font(Font.custom(Font.generalSansFontRegular, size: 15))
                                 .fontWeight(.medium)
                         }
                         .foregroundColor(.textCriticalColor)
-                                                
                     })
                     .buttonStyle(CustomButtonStyle(width: .infinity,
                                                    foregroundColor: nil,
@@ -173,7 +171,9 @@ struct NewTaskView: View {
                 .ignoresSafeArea()
         }
         .onAppear {
+            
             if isEditing {
+                
                 viewModel.titleTextfield = task.title
                 viewModel.descriptionTextfield = task.desc
                 viewModel.selectedAssigneeOption = task.assignees.first ?? User()
@@ -186,6 +186,7 @@ struct NewTaskView: View {
                 print([viewModel.selectedTaskTypeOption])
     
             }
+            
         }
         
     }

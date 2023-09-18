@@ -18,7 +18,7 @@ struct NewResident: View {
     @ObservedRealmObject var resident: User
     
     var body: some View {
-                
+                        
         VStack {
             
             VStack(alignment: .leading, spacing: 12) {
@@ -75,20 +75,25 @@ struct NewResident: View {
                 
             }
             
+            Spacer()
+            
             if isEditing == true && isSpaceOwner == false {
-                Spacer()
                 Button {
                     isShowingDeleteAlert.toggle()
                 } label: {
                     HStack {
                         Image.userRemoveIcon
+                            .resizable()
+                            .frame(width: 20, height: 20)
                         Text("alert_delete_resident_title".localized)
-                        
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                            .fontWeight(.medium)
                     }
+                    .foregroundColor(.textCriticalColor)
                 }
                 .buttonStyle(CustomButtonStyle(width: .infinity,
-                                               foregroundColor: .surface_surfaceTetriary,
-                                               backgroundColor: .text_criticalText))
+                                               foregroundColor: nil,
+                                               backgroundColor: .surfaceTertiaryColor))
             }
         }
         .alert("alert_delete_resident_title".localized, isPresented: $isShowingDeleteAlert, actions: {

@@ -97,6 +97,8 @@ struct HomeView: View {
                         .fontWeight(.medium)
                 }, icon: {
                     Image.plusIcon
+                        .resizable()
+                        .frame(width: 20, height: 20)
                 })
                 .foregroundColor(.textInvertColor)
             })
