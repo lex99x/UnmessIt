@@ -10,8 +10,6 @@ import RealmSwift
 
 struct Residents: View {
     
-    @Environment(\.dismiss) private var dismiss
-    
     @ObservedObject private var residentsViewModel = ResidentsViewModel()
     @State private var isActive = false
     @State private var showAlert = false
@@ -19,6 +17,7 @@ struct Residents: View {
     @State private var selection: String? = nil
     
     var body: some View {
+        //        NavigationView {
         ZStack {
             VStack {
                 List {
@@ -33,11 +32,11 @@ struct Residents: View {
                                 .swipeActions(edge: .trailing) {
                                     Button {
                                         print(item)
+                                        print("aaa")
                                         residentsViewModel.deleteItem(item: item)
                                     } label: {
-                                        Text("alert_delete_all_tasks_action_right")
-                                    }
-                                    .tint(.red)
+                                        Text("Delete")
+                                    }.tint(.red)
                                 }
                                 .listRowSeparator(.hidden)
                         }
@@ -49,63 +48,42 @@ struct Residents: View {
                 .listStyle(.inset)
                 
                 Spacer()
-                                
+                
+//                NavigationLink(destination:NewResident(isEditing: false, resident: User())) {}
+                
                 NavigationLink(destination: NewResident(isEditing: false, isSpaceOwner: false, resident: User()), tag: "A", selection: $selection) { EmptyView() }
-
+                
                 Button {
                     selection = "A"
                 } label: {
-                    Label(title: {
-                        Text("residents_button_add_resident")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                            .fontWeight(.medium)
-                    }, icon: {
-                        Image.userAddIcon
-                    })
-                    .foregroundColor(.textInvertColor)
+                    HStack {
+                        Image("UserAdd")
+                        Text("Add Resident")
+                        
+                    }
                 }
                 .buttonStyle(CustomButtonStyle(width: .infinity,
                                                foregroundColor: .textInvertColor,
                                                backgroundColor: .accentColor))
-                .padding(.horizontal)
+                .padding()
+
                 
             }
-            .navigationBarBackButtonHidden()
+            .navigationTitle("Residents")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        dismiss()
-                    }, label: {
-                        HStack {
-                            Image.arrowLeftIcon
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                            Text("button_back")
-                                .font(Font.custom(Font.generalSansFontRegular, size: 17))
-                        }
-                        .foregroundColor(.textAccentColor)
-                    })
-                }
-                
-                ToolbarItemGroup(placement: .principal) {
-                    Text("residents_title")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
-                        .foregroundColor(.textPrimaryColor)
-                }
-                
-            }
             .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
         }
-        
     }
-    
 }
-
+//}
 struct Residents_Previews: PreviewProvider {
     static var previews: some View {
-        Residents()
+        
+            Residents()
+//                .environment(\.realm, RealmHelper.realmA())
+        
+        
     }
 }
+
