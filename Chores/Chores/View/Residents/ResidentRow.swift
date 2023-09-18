@@ -29,7 +29,7 @@ struct ResidentRow: View {
                                 
                                 HStack {
                                     if resident.preferences.isEmpty {
-                                        Text("Tap to add your preferences.")
+                                        Text("residents_card_description".localized)
                                             .font(Font.custom(Font.generalSansFontRegular, size: 15))
                                             .foregroundColor(.textSecondaryColor)
                                         Spacer()
@@ -78,7 +78,6 @@ struct ResidentRow: View {
         }
         
     }
-                .frame(width: .infinity)
 }
 }
 

@@ -64,15 +64,15 @@
 //"resident_input_name_placeholder" = "Nome ou apelido";
 ////Preferences
 //"preferences_title" = "Tarefas que prefere ou costuma realizar";
-//"Clothes" = "Roupas";
-//"Cooking" = "Cozinhar";
-//"Heavy Cleaning" = "Limpeza pesada";
-//"Light Cleaning" = "Limpeza leve";
-//"Organization" = "Organização";
-//"Payments" = "Pagamentos";
-//"Pets" = "Animais de estimação";
-//"Shopping" = "Compras";
-//"preferences_others" = "Outros";
+"Clothes" = "Roupas";
+"Cooking" = "Cozinhar";
+"Heavy Cleaning" = "Limpeza pesada";
+"Light Cleaning" = "Limpeza leve";
+"Organization" = "Organização";
+"Payments" = "Pagamentos";
+"Pets" = "Animais de estimação";
+"Shopping" = "Compras";
+"preferences_others" = "Outros";
 
 // GENERAL
 "button_back" = "Voltar";
@@ -115,7 +115,7 @@
 
 //MANAGE RESIDENTS
 "residents_title" = "Gerenciar residentes";
-"residents_subtilte" = "Adicione as pessoas que vivem com você.";
+"residents_subtilte" = "Adicione as pessoas que vivem com você";
 "residents_card_description" = "Toque para editar";
 "residents_button_add_resident" = "Adicionar residente";
 "residents_title" = "Residentes";
@@ -140,6 +140,11 @@
 "task_type_shopping" = "Compras";
 "task_type_others" = "Outros";
 
+//MANAGE RESIDENTS
+"residents_title" = "Gerenciar residentes";
+"residents_subtilte" = "Adicione as pessoas que vivem com você.";
+"residents_card_description" = "Toque para editar";
+"residents_button_add_resident" = "Adicionar residente";
 
 // EDIT RESIDENTS - SHEET
 "edit_resident_title" = "Editar residente";

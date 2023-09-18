@@ -14,52 +14,39 @@ struct Residents: View {
     @State private var isActive = false
     @State private var showAlert = false
     @State private var isEditingResident = false
-    @State private var selection: String? = nil
     
     var body: some View {
-        //        NavigationView {
         ZStack {
             VStack {
                 List {
-                    ForEach(residentsViewModel.residents.freeze()) { item in
-                        if item.isSpaceOwner {
-                            ResidentRow(resident: item)
-                                .padding([.top, .bottom], 10)
-                                .listRowSeparator(.hidden)
-                        } else {
-                            ResidentRow(resident: item)
-                                .padding([.top, .bottom], 10)
-                                .swipeActions(edge: .trailing) {
-                                    Button {
-                                        print(item)
-                                        print("aaa")
-                                        residentsViewModel.deleteItem(item: item)
-                                    } label: {
-                                        Text("Delete")
-                                    }.tint(.red)
-                                }
-                                .listRowSeparator(.hidden)
+                    Section {
+                        ForEach(residentsViewModel.residents.freeze()) { item in
+                            if item.isSpaceOwner {
+                                ResidentRow(resident: item)
+                                    .padding([.top, .bottom], 10)
+                                    .listRowSeparator(.hidden)
+                            } else {
+                                ResidentRow(resident: item)
+                                    .padding([.top, .bottom], 10)
+                                    .listRowSeparator(.hidden)
+                            }
                         }
+                        .listRowInsets(EdgeInsets())
+                        
+                    } footer: {
+                        Text("residents_subtilte".localized)
                     }
-                    .listRowInsets(EdgeInsets())
-                    
                 }
                 .padding()
                 .listStyle(.inset)
                 
                 Spacer()
-                
-//                NavigationLink(destination:NewResident(isEditing: false, resident: User())) {}
-                
-//                NavigationLink(destination: NewResident(isEditing: false, isSpaceOwner: false, resident: User()), tag: "A", selection: $selection) { EmptyView() }
-                
                 Button {
-//                    selection = "A"
                     isEditingResident.toggle()
                 } label: {
                     HStack {
-                        Image("UserAdd")
-                        Text("Add Resident")
+                        Image.userAddIcon
+                        Text("residents_button_add_resident".localized)
                         
                     }
                 }
@@ -70,7 +57,7 @@ struct Residents: View {
 
                 
             }
-            .navigationTitle("Residents")
+            .navigationTitle("residents_title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
@@ -83,12 +70,11 @@ struct Residents: View {
         }
     }
 }
-//}
+
 struct Residents_Previews: PreviewProvider {
     static var previews: some View {
         
             Residents()
-//                .environment(\.realm, RealmHelper.realmA())
         
         
     }

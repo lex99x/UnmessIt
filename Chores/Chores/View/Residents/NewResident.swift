@@ -209,6 +209,7 @@ struct MultipleSelectionRow: View {
                     if self.isSelected {
                         Image.checkIcon
                             .frame(width: 24, height: 24)
+                            .foregroundColor(.textPrimaryColor)
                     }
                     Text(self.title.localized)
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))
