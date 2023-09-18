@@ -9,13 +9,15 @@ import SwiftUI
 import RealmSwift
 struct ResidentRow: View {
     @ObservedRealmObject var resident: User
+    @State var isEditingResident = false
 //    @Binding var isSpaceOwner: Bool
 //     var threeColumnGrid = [GridItem(.fixed(50)), GridItem(.fixed(50)), GridItem(.fixed(50)),GridItem(.fixed(50)),GridItem(.fixed(50))]
     var columns = [GridItem(.adaptive(minimum: 35))]
     var body: some View {
-        NavigationLink(destination: NewResident(isEditing: true, isSpaceOwner: resident.isSpaceOwner ? true : false, resident: resident)) {
+//        NavigationLink(destination: NewResident(isEditing: true, isSpaceOwner: resident.isSpaceOwner ? true : false, resident: resident)) {
                 // inside card
                 HStack {
+                    Button {isEditingResident.toggle()} label: {
                     VStack {
                         HStack {
                             // Text
@@ -30,6 +32,7 @@ struct ResidentRow: View {
                                         Text("Tap to add your preferences.")
                                             .font(Font.custom(Font.generalSansFontRegular, size: 15))
                                             .foregroundColor(.textSecondaryColor)
+                                        Spacer()
                                     } else {
                                         HStack(alignment:.lastTextBaseline) {
                                             LazyVGrid(columns: columns) {
@@ -47,9 +50,9 @@ struct ResidentRow: View {
                         
                         
                         
-                    }
+//                    }
                     
-                    Spacer()
+                    
                     //                VStack {
                     //                    Spacer()
                     //                    // Status badge
@@ -58,7 +61,6 @@ struct ResidentRow: View {
                     //
                     //                }
                 }
-            
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
@@ -69,8 +71,15 @@ struct ResidentRow: View {
             }
             .cornerRadius(16)
         }
+        .sheet(isPresented: $isEditingResident) {
+            NavigationStack {
+                NewResident(isEditing: true, isSpaceOwner: resident.isSpaceOwner ? true : false, resident: resident)
+            }
+        }
         
     }
+                .frame(width: .infinity)
+}
 }
 
 struct ResidentRow_Previews: PreviewProvider {

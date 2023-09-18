@@ -13,7 +13,7 @@ struct Residents: View {
     @ObservedObject private var residentsViewModel = ResidentsViewModel()
     @State private var isActive = false
     @State private var showAlert = false
-    
+    @State private var isEditingResident = false
     @State private var selection: String? = nil
     
     var body: some View {
@@ -51,10 +51,11 @@ struct Residents: View {
                 
 //                NavigationLink(destination:NewResident(isEditing: false, resident: User())) {}
                 
-                NavigationLink(destination: NewResident(isEditing: false, isSpaceOwner: false, resident: User()), tag: "A", selection: $selection) { EmptyView() }
+//                NavigationLink(destination: NewResident(isEditing: false, isSpaceOwner: false, resident: User()), tag: "A", selection: $selection) { EmptyView() }
                 
                 Button {
-                    selection = "A"
+//                    selection = "A"
+                    isEditingResident.toggle()
                 } label: {
                     HStack {
                         Image("UserAdd")
@@ -73,6 +74,12 @@ struct Residents: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(Color.surfaceSecondaryColor, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
+            
+            .sheet(isPresented: $isEditingResident) {
+                NavigationStack {
+                    NewResident(isEditing: false, isSpaceOwner: false, resident: User())
+                }
+            }
         }
     }
 }
