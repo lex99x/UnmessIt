@@ -10,6 +10,7 @@ import RealmSwift
 import AVFoundation
 
 struct TaskDetailsView: View {
+    let selectionFeedback = UISelectionFeedbackGenerator()
     
     @Environment(\.dismiss) private var dismiss
     
@@ -79,7 +80,11 @@ struct TaskDetailsView: View {
                     viewModel.updateStatus(item: task, status: .done)
 //                    playSounds("done_sound")
                     isActive = true
+                    
+                    selectionFeedback.prepare()
+                    selectionFeedback.selectionChanged()
                 }
+                    
             }, label: {
                 HStack {
                     if task.status == .done {
@@ -96,7 +101,14 @@ struct TaskDetailsView: View {
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .fontWeight(.medium)
                 }
-            })
+                
+            }
+                
+            )
+            
+            
+            
+            
             .buttonStyle(task.status == .done ? CustomButtonStyle(width: .infinity,
                                                                   foregroundColor: .badgeTextPendingColor,
                                                                   backgroundColor: .badgeSurfacePendingColor) : CustomButtonStyle(width: .infinity,
@@ -108,6 +120,7 @@ struct TaskDetailsView: View {
             
             
         }
+        
         .sheet(isPresented: $viewModel.isAddingNewTask, onDismiss: {
             dismiss()
         }) {
