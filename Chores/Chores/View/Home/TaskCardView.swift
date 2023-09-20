@@ -60,43 +60,58 @@ struct TaskCardView: View {
                     Text(task.assignees.first?.localizedNickname() ?? "no_assignee".localized)
                         .foregroundColor(.textSecondaryColor)
                     
+                    Spacer()
+                    
+                    Image.chevronRightIcon
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                        .foregroundColor(.textSecondaryColor)
+                        .padding(.trailing, 4)
+                    
                 }
                 
                 HStack {
-                    
-                    switch task.whenDo.checkDay() {
-                        case .yesterday:
-                            Text("yesterday")
+                        switch task.whenDo.checkDay() {
                         case .today:
                             Text("today")
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textSecondaryColor)
+                            
+                        case .yesterday:
+                            Text("yesterday")
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textSecondaryColor)
+                            
                         case .tomorrow:
                             Text("tomorrow")
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textSecondaryColor)
                         case .none:
-                            Text(task.whenDo.formatted(date: .abbreviated, time: .omitted))
-                                .fixedSize()
-                    }
-                    
+                            Text(task.whenDo.formatted(.dateTime.day().month()))
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textSecondaryColor)
+                        }
                     Image(systemName: "circle.fill")
                         .resizable()
                         .frame(width: 4, height: 4)
-                    Text(task.whenDo.formatted(date: .omitted, time: .shortened))
-                        .fixedSize()
+
+                    Text("\(task.whenDo.formatted(date: .omitted, time: .shortened))")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .foregroundColor(.textSecondaryColor)
                     
                     Spacer()
                     
-                    TaskStatusBadge(status: task.status)
+
+                        ZStack(alignment: .trailing) {
+                            TaskStatusBadge(status: task.status)
+                                .padding(.trailing, 8)
+                        }
                     
                 }
                 .foregroundColor(.textSecondaryColor)
-                
+             
             }
-                                                        
-            Image.chevronRightIcon
-                .resizable()
-                .frame(width: 16, height: 16)
-                .foregroundColor(.textSecondaryColor)
-                .padding(.trailing, 4)
-                        
+
         }
         .font(Font.custom(Font.generalSansFontRegular, size: 15))
         .overlay(
@@ -113,9 +128,9 @@ struct TaskCardView: View {
                 .opacity(0)
             
         }
-
+        
     }
-    
+        
 }
 
 extension Task {

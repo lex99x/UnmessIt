@@ -102,7 +102,6 @@ struct NewTaskView: View {
                     }
                     Button("alert_delete_task_action_right".localized, role: .destructive) {
                         viewModel.deleteTask(item: task)
-                        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
                     }
                 }, message: {
                     Text("alert_delete_task_description".localized)

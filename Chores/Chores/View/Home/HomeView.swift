@@ -67,13 +67,32 @@ struct HomeView: View {
                             
                             TaskCardView(task: task)
                                 .swipeActions(edge: .trailing) {
-                                    Button {
-                                        viewModel.updateStatus(status: .done, item: task)
-                                    } label: {
-                                        Text("home_task_status_done".localized.uppercased())
+                                    if task.status == .pending {
+                                        Button {
+                                            viewModel.updateStatus(status: .done, item: task)
+                                        } label: {
+                                            VStack {
+                                                Image.doneStatusIcon
+                                                Text("home_task_status_done".localized.uppercased())
+                                            }
+                                            
+                                        }
+                                        .tint(.surfaceSwipeDone)
+                                    } else {
+                                        Button {
+                                            viewModel.updateStatus(status: .pending, item: task)
+                                        } label: {
+                                            VStack {
+                                                Image.pendingStatusIcon
+                                                Text("home_task_status_pending".localized.uppercased())
+                                            }
+                                            
+                                        }
+                                        .tint(.surfaceSwipePending)
                                     }
-                                    .tint(.green)
+                                    
                                 }
+                                .listRowBackground(Color.clear)
                                 .listRowSeparator(.hidden)
                                 .listRowInsets(EdgeInsets(top: 8, leading: .zero, bottom: 8, trailing: .zero))
                             
