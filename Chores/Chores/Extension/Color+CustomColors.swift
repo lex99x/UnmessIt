@@ -50,6 +50,9 @@ extension Color {
     static let badgeSurfacePendingColor = Color("BadgeSurfacePending")
     static let badgeSurfaceBlockedColor = Color("BadgeSurfaceBlocked")
     
+    static let surfaceSwipeDone = Color("SurfaceSwipeDone")
+    static let surfaceSwipePending = Color("SurfaceSwipePending")
+    
 }
 
 extension Color {
