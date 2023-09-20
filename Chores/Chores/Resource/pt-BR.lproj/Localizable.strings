@@ -120,7 +120,7 @@
 "residents_card_description" = "Toque para editar";
 "residents_button_add_resident" = "Adicionar residente";
 "residents_title" = "Residentes";
-"residents_tap_to_add" = "Toque para adicionar preferências";
+"residents_tap_to_add" = "Toque para editar";
 
 // ADD RESIDENTS - SHEET
 "resident_button_cancel" = "Cancelar";

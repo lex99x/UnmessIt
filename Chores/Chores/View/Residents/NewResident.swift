@@ -18,60 +18,56 @@ struct NewResident: View {
     @ObservedRealmObject var resident: User
     
     var body: some View {
-                        
+        
         VStack {
             
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading) {
                 
-                Text("resident_input_name_title".localized)
-                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                    .fontWeight(.medium)
-                    .foregroundColor(.textPrimaryColor)
-                
-                ResidentInputView(residentName: $newResidentViewModel.residentName)
+                CustomTextFieldView(title: "resident_input_name_title".localized,
+                                    placeholder: "resident_input_name_placeholder",
+                                    isOptional: false,
+                                    textfield: $newResidentViewModel.residentName)
                 
                 HStack {
                     
                     Text("preferences_title".localized)
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .fontWeight(.medium)
                         .foregroundColor(.textPrimaryColor)
                     
                     Spacer()
                     
                     Text("optional".localized)
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .foregroundColor(.textSecondaryColor)
                     
                 }
+                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                .padding(.top, 24)
                 
-                ZStack {
-                    ScrollView {
-                        ForEach(TaskCategory.values, id: \.self) { item in
-                            MultipleSelectionRow(title: item.rawValue, isSelected: newResidentViewModel.selections.contains(item.rawValue)) {
-                                if newResidentViewModel.selections.contains(item.rawValue) {
-                                    newResidentViewModel.selections.removeAll(where: { $0 == item.rawValue })
-                                }
-                                else {
-                                    newResidentViewModel.selections.append(item.rawValue)
-                                }
-                            }
-                            if item.rawValue != TaskCategory.values.last?.rawValue {
-                                Divider()
+                ScrollView {
+                    ForEach(TaskCategory.values, id: \.self) { item in
+                        
+                        MultipleSelectionRow(title: item.rawValue, isSelected: newResidentViewModel.selections.contains(item.rawValue)) {
+                            if newResidentViewModel.selections.contains(item.rawValue) {
+                                newResidentViewModel.selections.removeAll(where: { $0 == item.rawValue })
+                            } else {
+                                newResidentViewModel.selections.append(item.rawValue)
                             }
                         }
-                        .overlay(
-                          RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.borderDefaultColor, lineWidth: 3)
-                        )
-//                        .foregroundColor(Color.accent2)
-                        .background(Color.surfaceSecondaryColor)
-                        .cornerRadius(10)
+                        .padding(.top, (item.rawValue == TaskCategory.values.first?.rawValue) ? 8 : .zero)
+                        .padding(.bottom, (item.rawValue == TaskCategory.values.last?.rawValue) ? 8 : .zero)
+                        
+                        if item.rawValue != TaskCategory.values.last?.rawValue {
+                            Divider()
+                        }
+                        
                     }
-//                    .foregroundColor(Color.accent2)
-                    
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.borderDefaultColor, lineWidth: 0.5)
+                    )
+                    .background(Color.surfaceSecondaryColor)
+                    .cornerRadius(10)
                 }
-                
                 
             }
             
@@ -95,6 +91,7 @@ struct NewResident: View {
                                                foregroundColor: nil,
                                                backgroundColor: .surfaceTertiaryColor))
             }
+            
         }
         .alert("alert_delete_resident_title".localized, isPresented: $isShowingDeleteAlert, actions: {
             Button("alert_delete_resident_tasks_action_left".localized, role: .cancel) {
@@ -108,9 +105,9 @@ struct NewResident: View {
             Text("alert_delete_resident_description".localized)
         })
         .alert("alert_resident_missing_fields_title".localized, isPresented: $newResidentViewModel.hasError, actions: {
-//                    Button("Cancel", role: .cancel) {
-//                        isShowingDeleteAlert.toggle()
-//                    }
+//            Button("Cancel", role: .cancel) {
+//                isShowingDeleteAlert.toggle()
+//            }
             Button("alert_resident_missing_fields_action".localized, role: .cancel) {
                 newResidentViewModel.hasError = false
             }
@@ -122,6 +119,7 @@ struct NewResident: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
                     dismiss()
@@ -167,6 +165,7 @@ struct NewResident: View {
         .toolbarBackground(Color.surfaceSheetColor, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
+            
             if resident.nickname.count > 0 {
                 newResidentViewModel.residentName = resident.nickname
             }
@@ -176,84 +175,56 @@ struct NewResident: View {
                     newResidentViewModel.selections.append(item.rawValue)
                 }
             }
+            
         }
+        
     }
-
+    
 }
-
-//
-//struct NewResident_Previews: PreviewProvider {
-//    static var previews: some View {
-//
-//            Group {
-////                NavigationView {
-//                NewResident(isEditing: false, isSpaceOwner: false, resident: User())
-//                        .previewDisplayName("New User")
-//
-//                    let user = User(value: ["nickname":"joaozinho", "preferences":["Cooking"]])
-//                    NewResident(isEditing: true, resident: user)
-//                        .previewDisplayName("Filled")
-//
-////                }
-//            }
-//
-//
-//        }
-//    }
 
 
 struct MultipleSelectionRow: View {
+    
     var title: String
     var isSelected: Bool
     var action: () -> Void
-
+    
     var body: some View {
-        ZStack{
+        
+        ZStack {
+            
             Button(action: self.action) {
+                
                 HStack {
-                    if self.isSelected {
-                        Image.checkIcon
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(.textPrimaryColor)
-                    }
+                    
+                    Image.checkIcon
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(.textPrimaryColor)
+                        .opacity(isSelected ? 1 : 0)
+                  
                     Text(self.title.localized)
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .foregroundColor(.textPrimaryColor)
+                        .padding(.leading, 8)
+                    
                     Spacer()
+                    
                     Image(self.title)
                         .frame(width: 24, height: 24)
                         .foregroundColor(Color("Category" + self.title.replacingOccurrences(of: " ", with: "")))
+                    
                 }
                 
             }
+            
         }
-        .padding(.horizontal, 18)
-        .padding(.vertical, 6)
+        .padding(.vertical, 4)
+        .padding(.leading, 12)
+        .padding(.trailing, 16)
         .background {
             Color.surfaceSecondaryColor
         }
-
-//        .overlay(
-//          RoundedRectangle(cornerRadius: 5)
-//            .stroke(Color.borderDefaultColor, lineWidth: 3)
-//        )
-    }
-}
-
-struct ResidentInputView: View {
-    var residentName: Binding<String>
-    var body: some View {
-        
-        VStack {
-            
-            VStack {
-                TextField("Resident name", text: residentName)
-            }
-        }
-        .padding()
-        .inputOverlay()
         
     }
+    
 }
-
-

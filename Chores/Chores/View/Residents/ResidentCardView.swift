@@ -26,35 +26,45 @@ struct ResidentCardView: View {
         
         HStack {
             Button { isEditingResident.toggle() } label: {
-                VStack {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 12) {
-                            
-                            Text(resident.nickname)
-                                .font(Font.custom(Font.generalSansFontRegular, size: 17))
-                                .fontWeight(.medium)
-                                .foregroundColor(.textPrimaryColor)
-            
-                            HStack {
-                                if resident.preferences.isEmpty {
-                                    Text("residents_tap_to_add")
-                                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                                        .foregroundColor(.textSecondaryColor)
-                                    Spacer()
-                                } else {
-                                    HStack(alignment: .lastTextBaseline) {
-                                        LazyVGrid(columns: columns) {
-                                            ForEach(resident.preferences, id: \.self) {item in
-                                                PreferenceItem(imageName: item.rawValue)
-                                                    .padding([.trailing, .leading], 1)
-                                            }
+                VStack(alignment: .leading, spacing: 12) {
+                    
+                    Text(resident.nickname)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                        .fontWeight(.medium)
+                        .foregroundColor(.textPrimaryColor)
+                    
+                    ZStack {
+                        
+                        // MARK: CONTINUE FROM HERE
+                        HStack {
+                            Spacer()
+                            Image.chevronRightIcon
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                                .foregroundColor(.textSecondaryColor)
+                        }
+                        .offset(y: -18)
+                        
+                        HStack {
+                            if resident.preferences.isEmpty {
+                                Text("residents_tap_to_add")
+                                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                    .foregroundColor(.textSecondaryColor)
+                                Spacer()
+                            } else {
+                                HStack(alignment: .lastTextBaseline) {
+                                    LazyVGrid(columns: columns) {
+                                        ForEach(resident.preferences, id: \.self) { item in
+                                            PreferenceItem(imageName: item.rawValue)
+//                                                .padding([.trailing, .leading], 1)
                                         }
                                     }
                                 }
                             }
-                            
                         }
+                        
                     }
+                            
                 }
                 .padding(12)
                 .overlay(
@@ -84,7 +94,8 @@ struct PreferenceItem: View {
             VStack {
                 Image(imageName)
                     .renderingMode(.original)
-                    .resizable().frame(width: 16, height: 16)
+                    .resizable()
+                    .frame(width: 16, height: 16)
             }
             .padding(2)
         }

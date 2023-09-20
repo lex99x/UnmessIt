@@ -117,7 +117,7 @@
 "residents_subtitle" = "Add the people who live with you.";
 "residents_card_description" = "Tap to edit";
 "residents_button_add_resident" = "Add resident";
-"residents_tap_to_add" = "Tap to add the preferences";
+"residents_tap_to_add" = "Tap to edit";
 
 // ADD RESIDENTS - SHEET
 "resident_button_cancel" = "Cancel";
