@@ -33,7 +33,7 @@ final class TaskDetailViewModel: ObservableObject {
                 realm.delete(thaw)
             }
         }
-        print(selectedSpace?.tasks)
+//        print(selectedSpace?.tasks)
     }
     
     func updateStatus(item: Task, status: Task.Status) {
