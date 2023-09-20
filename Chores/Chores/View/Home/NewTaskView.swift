@@ -30,6 +30,7 @@ struct NewTaskView: View {
                     Text("task_input_type_title")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
+                    
                     CustomSelectionInputView(placeholder: isEditing ?  task.category.rawValue : "task_input_type_placeholder".localized,
                                              options: Task.taskOptions,
                                              selectedOption: $viewModel.selectedTaskTypeOption)
@@ -42,6 +43,7 @@ struct NewTaskView: View {
                         }
                         
                     }
+                    
                 }
                 
                 CustomTextFieldView(title: "task_input_name_title".localized,
@@ -55,32 +57,36 @@ struct NewTaskView: View {
                                     textfield: $viewModel.descriptionTextfield)
                 
                 VStack(alignment: .leading, spacing: 8) {
+                    
                     Text("task_input_when_title")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-
-                   VStack(alignment: .leading, spacing: 6){
-                       DatePicker("task_input_when_date", selection: $viewModel.selectedDate, displayedComponents: .date)
+                    
+                    VStack(alignment: .leading, spacing: 6){
+                        DatePicker("task_input_when_date", selection: $viewModel.selectedDate, displayedComponents: .date)
                         Divider()
                         DatePicker("task_input_when_time", selection: $viewModel.selectedDate , displayedComponents: .hourAndMinute)
                     }
                     .font(Font.custom(Font.generalSansFontRegular, size: 15))
                     .foregroundColor(.textPrimaryColor)
-
                     .padding(.vertical, 6)
                     .padding(.horizontal, 12)
                     .inputOverlay()
-                }
                     
+                }
+                
                 VStack(alignment: .leading) {
+                    
                     Text("task_assignee_title")
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
-                    AssigneesInputView(placeholder: isEditing ? task.assignees.first?.nickname ?? "" : "task_assignee_placeholder".localized,
+                        
+                    AssigneesInputView(placeholder: task.assignees.first?.nickname ?? "task_assignee_placeholder".localized,
                                        assignees: viewModel.selectedSpace!.residents,
                                        selectedAssignee: $viewModel.selectedAssigneeOption)
+                    
                 }
-
+                
                 .alert("alert_task_missing_fields_title".localized, isPresented: $viewModel.hasError, actions: {
                     Button("alert_task_missing_fields_action".localized, role: .cancel) {
                         viewModel.hasError = false
@@ -88,7 +94,7 @@ struct NewTaskView: View {
                 }, message: {
                     Text("alert_task_missing_fields_description")
                 })
-                    
+                
                 // delete task alert
                 .alert("alert_delete_task_title".localized, isPresented: $isShowingDeleteAlert, actions: {
                     Button("alert_delete_task_action_left".localized, role: .cancel) {
@@ -164,14 +170,14 @@ struct NewTaskView: View {
                 }
                 
             }
-
+            
         }
         .background {
             Color.surfaceSheetColor
                 .ignoresSafeArea()
         }
         .onAppear {
-            
+                        
             if isEditing {
                 
                 viewModel.titleTextfield = task.title
@@ -184,13 +190,13 @@ struct NewTaskView: View {
 //                viewModel.selectedAssigneeOption = task.assignees.first!
                 print(task.assignees)
                 print([viewModel.selectedTaskTypeOption])
-    
+                
             }
             
         }
         
     }
-        
+    
 }
 
 struct NewInputView: View {
@@ -210,13 +216,9 @@ struct NewInputView: View {
 struct NewTaskView_Previews: PreviewProvider {
     
     static var previews: some View {
-        
         NavigationStack {
-            
             NewTaskView(isEditing: true, task: Task())
-
         }
-        
     }
     
 }
