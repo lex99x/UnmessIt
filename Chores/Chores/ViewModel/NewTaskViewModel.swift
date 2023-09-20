@@ -94,19 +94,26 @@ class NewTaskViewModel: ObservableObject {
     }
     
     func updateTask(item: Task) {
+        
         if let thaw = item.thaw(),
            let realm = thaw.realm {
-            try? realm.write {
-                thaw.category = TaskCategory(rawValue: selectedTaskTypeOption) ?? .none
-                thaw.title = titleTextfield
-                thaw.desc = descriptionTextfield
-                thaw.whenDo = selectedDate
+            do{
+                try validator.validateString(titleTextfield)
                 
-                if !selectedAssigneeOption.nickname.isEmpty {
-                    thaw.assignees.removeAll()
-                    thaw.assignees.append(selectedAssigneeOption)
+                try? realm.write {
+                    thaw.category = TaskCategory(rawValue: selectedTaskTypeOption) ?? .none
+                    thaw.title = titleTextfield
+                    thaw.desc = descriptionTextfield
+                    thaw.whenDo = selectedDate
                     
+                    if !selectedAssigneeOption.nickname.isEmpty {
+                        thaw.assignees.removeAll()
+                        thaw.assignees.append(selectedAssigneeOption)
+                        
+                    }
                 }
+            } catch {
+                self.hasError = true
             }
         }
     }
