@@ -21,14 +21,14 @@ struct CustomSelectionInputView: View {
                     selectedOption = option
                     self.placeholder = selectedOption
                 }, label: {
-                    Text(option)
+                    Text(option.localized)
                     Image(option)
                         .renderingMode(.original)
                 })
             }
         }, label: {
             
-            Text(placeholder)
+            Text(placeholder.localized)
                 .foregroundColor(.textPrimaryColor)
             
             if let taskCategory = TaskCategory(rawValue: placeholder) {

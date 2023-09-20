@@ -17,7 +17,7 @@ struct TaskCategoryBadge: View {
                 .resizable()
                 .frame(width: 16, height: 16)
                 .foregroundColor(.textAccentColor)
-            Text(taskCategory.rawValue) // MARK: LOCALIZE THIS
+            Text(taskCategory.rawValue.localized)
                 .foregroundColor(.textPrimaryColor)
         }
         .font(Font.custom(Font.generalSansFontRegular, size: 15))
