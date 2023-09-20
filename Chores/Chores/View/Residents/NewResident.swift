@@ -97,7 +97,7 @@ struct NewResident: View {
             Button("alert_delete_resident_action_left".localized, role: .cancel) {
                 isShowingDeleteAlert.toggle()
             }
-            Button("alert_delete_resident_action_left".localized, role: .destructive) {
+            Button("alert_delete_resident_action_right".localized, role: .destructive) {
                 newResidentViewModel.deleteResident(item: resident)
                 dismiss()
             }
