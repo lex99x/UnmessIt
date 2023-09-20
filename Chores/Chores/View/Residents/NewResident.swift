@@ -24,7 +24,7 @@ struct NewResident: View {
             VStack(alignment: .leading) {
                 
                 CustomTextFieldView(title: "resident_input_name_title".localized,
-                                    placeholder: "resident_input_name_placeholder",
+                                    placeholder: "resident_input_name_placeholder".localized,
                                     isOptional: false,
                                     textfield: $newResidentViewModel.residentName)
                 
@@ -167,7 +167,7 @@ struct NewResident: View {
         .onAppear {
             
             if resident.nickname.count > 0 {
-                newResidentViewModel.residentName = resident.nickname
+                newResidentViewModel.residentName = resident.localizedNickname()
             }
             
             if resident.preferences.count > 0 {

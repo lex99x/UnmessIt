@@ -79,6 +79,7 @@
 "button_back" = "Back";
 "optional" = "Optional";
 "delete" = "Delete";
+"you" = "You";
 
 //HOME - default
 "home_title" = "Tasks";

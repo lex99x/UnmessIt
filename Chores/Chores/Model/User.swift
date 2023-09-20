@@ -24,3 +24,17 @@ extension User {
                                          "isSpaceOwner": true] as [String : Any])
     
 }
+
+extension User {
+    
+    func localizedNickname() -> String {
+        
+        if nickname == "You" {
+            return "you".localized
+        }
+        
+        return nickname
+        
+    }
+    
+}

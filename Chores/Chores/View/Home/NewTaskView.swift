@@ -81,7 +81,7 @@ struct NewTaskView: View {
                         .font(Font.custom(Font.generalSansFontMedium, size: 15))
                         .foregroundColor(.textPrimaryColor)
                         
-                    AssigneesInputView(placeholder: task.assignees.first?.nickname ?? "task_assignee_placeholder".localized,
+                    AssigneesInputView(placeholder: task.assignees.first?.localizedNickname() ?? "task_assignee_placeholder".localized,
                                        assignees: viewModel.selectedSpace!.residents,
                                        selectedAssignee: $viewModel.selectedAssigneeOption)
                     

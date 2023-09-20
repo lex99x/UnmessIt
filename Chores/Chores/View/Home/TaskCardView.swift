@@ -57,19 +57,29 @@ struct TaskCardView: View {
                                 .cornerRadius(8)
                         }
                     
-                    Text(task.assignees.first?.nickname ?? "no_assignee".localized)
+                    Text(task.assignees.first?.localizedNickname() ?? "no_assignee".localized)
                         .foregroundColor(.textSecondaryColor)
                     
                 }
                 
                 HStack {
                     
-                    Text(task.createdAt.formatted(date: .abbreviated, time: .omitted))
-                        .fixedSize()
+                    switch task.whenDo.checkDay() {
+                        case .yesterday:
+                            Text("yesterday")
+                        case .today:
+                            Text("today")
+                        case .tomorrow:
+                            Text("tomorrow")
+                        case .none:
+                            Text(task.whenDo.formatted(date: .abbreviated, time: .omitted))
+                                .fixedSize()
+                    }
+                    
                     Image(systemName: "circle.fill")
                         .resizable()
                         .frame(width: 4, height: 4)
-                    Text(task.createdAt.formatted(date: .omitted, time: .shortened))
+                    Text(task.whenDo.formatted(date: .omitted, time: .shortened))
                         .fixedSize()
                     
                     Spacer()

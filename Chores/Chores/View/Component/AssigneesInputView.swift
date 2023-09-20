@@ -20,10 +20,10 @@ struct AssigneesInputView: View {
             ForEach(assignees, id: \.self) { option in
                 Button(action: {
                     selectedAssignee = option
-                    placeholder = selectedAssignee.nickname
+                    placeholder = selectedAssignee.localizedNickname()
                 }, label: {
                     HStack {
-                        Text(option.nickname)
+                        Text(option.localizedNickname())
                     }
                 })
             }
@@ -41,15 +41,16 @@ struct AssigneesInputView: View {
         })
         .onChange(of: selectedAssignee) { newValue in
             if !newValue.nickname.isEmpty {
-                placeholder = newValue.nickname
+                placeholder = newValue.localizedNickname()
             }
-            }
+        }
         .font(Font.custom(Font.generalSansFontRegular, size: 15))
         .padding(.vertical)
         .padding(.horizontal, 12)
         .inputOverlay()
         
     }
+    
 }
 
 struct AssigneesComponent_Previews: PreviewProvider {

@@ -28,14 +28,13 @@ struct ResidentCardView: View {
             Button { isEditingResident.toggle() } label: {
                 VStack(alignment: .leading, spacing: 12) {
                     
-                    Text(resident.nickname)
+                    Text(resident.localizedNickname())
                         .font(Font.custom(Font.generalSansFontRegular, size: 17))
                         .fontWeight(.medium)
                         .foregroundColor(.textPrimaryColor)
                     
                     ZStack {
                         
-                        // MARK: CONTINUE FROM HERE
                         HStack {
                             Spacer()
                             Image.chevronRightIcon
@@ -56,7 +55,6 @@ struct ResidentCardView: View {
                                     LazyVGrid(columns: columns) {
                                         ForEach(resident.preferences, id: \.self) { item in
                                             PreferenceItem(imageName: item.rawValue)
-//                                                .padding([.trailing, .leading], 1)
                                         }
                                     }
                                 }

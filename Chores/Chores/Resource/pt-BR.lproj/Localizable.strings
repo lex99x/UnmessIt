@@ -78,6 +78,7 @@
 "button_back" = "Voltar";
 "optional" = "Opcional";
 "delete" = "Apagar";
+"you" = "Você";
 
 //HOME - default
 "home_title" = "Tarefas";
@@ -116,7 +117,7 @@
 
 //MANAGE RESIDENTS
 "residents_title" = "Gerenciar residentes";
-"residents_subtilte" = "Adicione as pessoas que vivem com você";
+"residents_subtitle" = "Adicione as pessoas que vivem com você";
 "residents_card_description" = "Toque para editar";
 "residents_button_add_resident" = "Adicionar residente";
 "residents_title" = "Residentes";
