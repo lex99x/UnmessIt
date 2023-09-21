@@ -63,7 +63,7 @@ struct ManageResidentsView: View {
                         .resizable()
                         .frame(width: 20, height: 20)
                     Text("residents_button_add_resident")
-                        .fontWeight(.medium)
+                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
                 }
                 .foregroundColor(.textInvertColor)
             }
@@ -87,7 +87,7 @@ struct ManageResidentsView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text("button_back")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
                     }
                     .foregroundColor(.textAccentColor)
                 })

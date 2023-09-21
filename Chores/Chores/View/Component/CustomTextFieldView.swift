@@ -22,17 +22,17 @@ struct CustomTextFieldView: View {
             HStack {
                 
                 Text(title)
-                    .fontWeight(.medium)
+                    .font(Font.custom(Font.generalSansFontMedium, size: 15))
                     .foregroundColor(.textPrimaryColor)
                 
                 if isOptional {
                     Spacer()
                     Text("optional")
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .foregroundColor(.textSecondaryColor)
                 }
                 
             }
-            .font(Font.custom(Font.generalSansFontRegular, size: 15))
 
             TextField(placeholder, text: textfield)
                 .font(Font.custom(Font.generalSansFontRegular, size: 15))

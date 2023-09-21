@@ -164,8 +164,7 @@ struct NewTaskView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text("edit_task_button_delete")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                            .fontWeight(.medium)
+                            .font(Font.custom(Font.generalSansFontMedium, size: 15))
                     }
                     .foregroundColor(.textCriticalColor)
                 })
