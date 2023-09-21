@@ -107,26 +107,6 @@ struct NewTaskView: View {
                         Text("alert_delete_task_description".localized)
                     })
                     
-                    Spacer()
-                    
-                    if isEditing {
-                        Button(action: {
-                            isShowingDeleteAlert.toggle()
-                        }, label: {
-                            HStack {
-                                Image.deleteIcon
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                Text("edit_task_button_delete")
-                                    .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                                    .fontWeight(.medium)
-                            }
-                            .foregroundColor(.textCriticalColor)
-                        })
-                        .buttonStyle(CustomButtonStyle(width: .infinity,
-                                                       foregroundColor: nil,
-                                                       backgroundColor: .surfaceTertiaryColor))
-                    }
                     
                 }
                 .padding(.top, 26)
@@ -171,6 +151,31 @@ struct NewTaskView: View {
                 }
                 
             }
+            Spacer()
+            ZStack {
+                
+            
+            if isEditing {
+                Button(action: {
+                    isShowingDeleteAlert.toggle()
+                }, label: {
+                    HStack {
+                        Image.deleteIcon
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text("edit_task_button_delete")
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                            .fontWeight(.medium)
+                    }
+                    .foregroundColor(.textCriticalColor)
+                })
+                .buttonStyle(CustomButtonStyle(width: .infinity,
+                                               foregroundColor: nil,
+                                               backgroundColor: .surfaceTertiaryColor))
+            }
+                    
+            }
+            .padding(.horizontal)
         }
         .ignoresSafeArea(.keyboard)
         .onTapGesture {
