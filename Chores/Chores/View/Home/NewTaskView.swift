@@ -75,7 +75,7 @@ struct NewTaskView: View {
                         
                     }
                     
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 8) {
                         
                         Text("task_assignee_title")
                             .font(Font.custom(Font.generalSansFontMedium, size: 15))
@@ -109,7 +109,7 @@ struct NewTaskView: View {
                     
                     
                 }
-                .padding(.top, 26)
+//                .padding(.top, 8)
                 .padding(.horizontal)
                 .navigationBarBackButtonHidden()
                 .navigationBarTitleDisplayMode(.inline)
