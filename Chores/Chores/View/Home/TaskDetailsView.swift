@@ -40,7 +40,7 @@ struct TaskDetailsView: View {
             
             if !task.desc.isEmpty {
                 Text(task.desc)
-                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    .font(Font.custom(Font.generalSansFontRegular, size: 16))
             }
             
             if let assignee = task.assignees.first {
@@ -52,7 +52,7 @@ struct TaskDetailsView: View {
                                 Color.surfaceSecondaryColor
                                     .cornerRadius(8)
                             }
-                        Text(assignee.nickname)
+                        Text(assignee.localizedNickname())
                     }
                     .font(Font.custom(Font.generalSansFontRegular, size: 15))
                     .foregroundColor(.textSecondaryColor)
@@ -66,7 +66,7 @@ struct TaskDetailsView: View {
                     .frame(width: 4, height: 4)
                 Text(task.whenDo.formatted(date: .omitted, time: .shortened))
             }
-            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+            .font(Font.custom(Font.generalSansFontRegular, size: 16))
             .foregroundColor(.textPrimaryColor)
             
             Spacer()
@@ -89,30 +89,42 @@ struct TaskDetailsView: View {
                     if task.status == .done {
                         Image.pendingStatusIcon
                             .resizable()
-                            .frame(width: 20, height: 20)
+                            .frame(width: 18, height: 18)
+                            .foregroundColor(.badgeTextPendingColor)
+
                     } else {
                         Image.doneStatusIcon
                             .resizable()
-                            .frame(width: 20, height: 20)
+                            .frame(width: 18, height: 18)
+                            .foregroundColor(.badgeTextDoneColor)
+
                     }
+
                     
-                    Text(task.status == .done ? "view_task_button_pending" : "view_task_button_done")
-                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
+                    if(task.status == .done) {
+                        Text("view_task_button_pending")
+                            .foregroundColor(.badgeTextPendingColor)
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    } else {
+                        Text("view_task_button_done")
+                            .foregroundColor(.badgeTextDoneColor)
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                    }
                 }
+                
                 
             }
                 
             )
-            
-            
-            
-            
-            .buttonStyle(task.status == .done ? CustomButtonStyle(width: .infinity,
-                                                                  foregroundColor: .badgeTextPendingColor,
-                                                                  backgroundColor: .badgeSurfacePendingColor) : CustomButtonStyle(width: .infinity,
-                                                                                                                                  foregroundColor: .badgeTextDoneColor,
-                                                                                                                                  backgroundColor: .badgeSurfaceDoneColor))
-            
+            .buttonStyle(task.status == .done ? 
+                        CustomButtonStyle(width: .infinity,
+                                           foregroundColor: .badgeTextPendingColor,
+                                           backgroundColor: .badgeSurfacePendingColor) 
+                        :
+                        CustomButtonStyle(width: .infinity,
+                                          foregroundColor: .badgeTextDoneColor,
+                                          backgroundColor: .badgeSurfaceDoneColor)
+            )
             .particleEffect(image: "star", status: isActive, activeTint: .badgeTextDoneColor, inactiveTint: .gray)
             
             
@@ -127,7 +139,7 @@ struct TaskDetailsView: View {
             }
         }
         
-        .padding(.top, 24)
+        .padding(.top, 16)
         .padding(.horizontal)
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
@@ -142,7 +154,7 @@ struct TaskDetailsView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text("button_back")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                            .font(Font.custom(Font.generalSansFontRegular, size: 16))
                     }
                     .foregroundColor(.textAccentColor)
                 })
@@ -150,7 +162,7 @@ struct TaskDetailsView: View {
             
             ToolbarItem(placement: .principal) {
                 Text("view_task_title")
-                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    .font(Font.custom(Font.generalSansFontRegular, size: 16))
                     .foregroundColor(.textPrimaryColor)
             }
             

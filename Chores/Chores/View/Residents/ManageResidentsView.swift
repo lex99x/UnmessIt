@@ -63,7 +63,7 @@ struct ManageResidentsView: View {
                         .resizable()
                         .frame(width: 20, height: 20)
                     Text("residents_button_add_resident")
-                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
                 }
                 .foregroundColor(.textInvertColor)
             }
@@ -72,7 +72,7 @@ struct ManageResidentsView: View {
                                            backgroundColor: .accentColor))
             
         }
-        .padding(.top, 24)
+        .padding(.top, 12)
         .padding(.horizontal)
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
@@ -87,7 +87,7 @@ struct ManageResidentsView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text("button_back")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                            .font(Font.custom(Font.generalSansFontRegular, size: 16))
                     }
                     .foregroundColor(.textAccentColor)
                 })
@@ -95,7 +95,7 @@ struct ManageResidentsView: View {
             
             ToolbarItem(placement: .principal) {
                 Text("residents_title")
-                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    .font(Font.custom(Font.generalSansFontRegular, size: 16))
                     .foregroundColor(.textPrimaryColor)
             }
             

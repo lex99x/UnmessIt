@@ -31,7 +31,7 @@ struct NewTaskView: View {
                             .font(Font.custom(Font.generalSansFontMedium, size: 15))
                             .foregroundColor(.textPrimaryColor)
                         
-                        CustomSelectionInputView(placeholder: isEditing ?  task.category.rawValue : "task_input_type_placeholder".localized,
+                        CustomSelectionInputView(placeholder: isEditing ?    task.category.rawValue : "task_input_type_placeholder".localized,
                                                  options: Task.taskOptions,
                                                  selectedOption: $viewModel.selectedTaskTypeOption)
                         .onChange(of: viewModel.selectedTaskTypeOption) { newValue in
@@ -109,7 +109,7 @@ struct NewTaskView: View {
                     
                     
                 }
-//                .padding(.top, 8)
+                .padding(.top, 12)
                 .padding(.horizontal)
                 .navigationBarBackButtonHidden()
                 .navigationBarTitleDisplayMode(.inline)
@@ -120,14 +120,14 @@ struct NewTaskView: View {
                             dismiss()
                         }, label: {
                             Text("task_button_cancel")
-                                .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                                .font(Font.custom(Font.generalSansFontRegular, size: 16))
                                 .foregroundColor(.textAccentColor)
                         })
                     }
                     
                     ToolbarItem(placement: .principal) {
                         Text(isEditing ? "edit_task_title" : "new_task_title")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                            .font(Font.custom(Font.generalSansFontRegular, size: 16))
                             .foregroundColor(.textPrimaryColor)
                     }
                     
@@ -143,7 +143,7 @@ struct NewTaskView: View {
                             }
                         }, label: {
                             Text("task_button_save")
-                                .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                                .font(Font.custom(Font.generalSansFontRegular, size: 16))
                                 .foregroundColor(.textAccentColor)
                         })
                     }
@@ -164,7 +164,7 @@ struct NewTaskView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                         Text("edit_task_button_delete")
-                            .font(Font.custom(Font.generalSansFontMedium, size: 15))
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
                     }
                     .foregroundColor(.textCriticalColor)
                 })

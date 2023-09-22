@@ -83,7 +83,6 @@ struct NewResident: View {
                             .frame(width: 20, height: 20)
                         Text("alert_delete_resident_title".localized)
                             .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                            .fontWeight(.medium)
                     }
                     .foregroundColor(.textCriticalColor)
                 }
@@ -114,7 +113,7 @@ struct NewResident: View {
         }, message: {
             Text("alert_resident_missing_fields_description".localized)
         })
-        .padding(.top, 24)
+        .padding(.top, 12)
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
@@ -125,15 +124,14 @@ struct NewResident: View {
                     dismiss()
                 }, label: {
                     Text("resident_button_cancel".localized)
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                        .fontWeight(.medium)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 16))
                         .foregroundColor(.textAccentColor)
                 })
             }
             
             ToolbarItem(placement: .principal) {
                 Text(isEditing ? "edit_resident_title".localized : "new_resident_title".localized)
-                    .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                    .font(Font.custom(Font.generalSansFontRegular, size: 16))
                     .foregroundColor(.textPrimaryColor)
             }
             
@@ -151,8 +149,7 @@ struct NewResident: View {
                     }
                 }, label: {
                     Text("resident_button_save".localized)
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                        .fontWeight(.medium)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 16))
                         .foregroundColor(.textAccentColor)
                 })
             }

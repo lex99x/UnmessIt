@@ -15,11 +15,11 @@ struct TaskCategoryHomeBadge: View {
     var body: some View {
         
         Task.getTaskIconByCategory(taskCategory: category)
+            .renderingMode(.original)
             .resizable()
             .frame(width: 24, height: 24)
             .padding(.vertical, 22)
             .padding(.horizontal, 11)
-            .foregroundColor(Color("Category" + category.rawValue.replacingOccurrences(of: " ", with: "")))
             .background {
                 Color.surfaceTertiaryColor
                     .cornerRadius(12)
@@ -59,17 +59,15 @@ struct TaskCardView: View {
                     
                     Text(task.assignees.first?.localizedNickname() ?? "no_assignee".localized)
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                        .foregroundColor(.textSecondaryColor)
                     
                     Spacer()
                     
                     Image.chevronRightIcon
                         .resizable()
                         .frame(width: 16, height: 16)
-                        .foregroundColor(.textSecondaryColor)
                         .padding(.trailing, 4)
                     
-                }
+                }.foregroundColor(.textSecondaryColor)
                 
                 HStack {
                         switch task.whenDo.checkDay() {
@@ -94,7 +92,7 @@ struct TaskCardView: View {
                         }
                     Image(systemName: "circle.fill")
                         .resizable()
-                        .frame(width: 4, height: 4)
+                        .frame(width: 4, height: 4).foregroundColor(.textSecondaryColor)
 
                     Text("\(task.whenDo.formatted(date: .omitted, time: .shortened))")
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))

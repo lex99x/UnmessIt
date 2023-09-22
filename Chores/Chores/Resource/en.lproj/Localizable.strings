@@ -95,8 +95,8 @@
 
 //HOME - empty state
 "home_empty_title" = "It's so quiet and empty in here...";
-"home_empty_description_1" = "To set up your preferences or add the people who live with you, tap “Manage residents”";
-"home_empty_description_2" = "To add a few tasks to your routine, tap the button below “Add a task”";
+"home_empty_description_1" = "To set up housemates and preferences, go to “Manage residents”";
+"home_empty_description_2" = "To create tasks, tap “Add a task”";
 
 //HOME - task card
 "home_task_title" = "%@";

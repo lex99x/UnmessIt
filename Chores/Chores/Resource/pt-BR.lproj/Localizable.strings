@@ -64,15 +64,16 @@
 //"resident_input_name_placeholder" = "Nome ou apelido";
 ////Preferences
 //"preferences_title" = "Tarefas que prefere ou costuma realizar";
-"Clothes" = "Roupas";
-"Cooking" = "Cozinhar";
-"Heavy Cleaning" = "Limpeza pesada";
-"Light Cleaning" = "Limpeza leve";
-"Organization" = "Organização";
-"Payments" = "Pagamentos";
-"Pets" = "Animais de estimação";
-"Shopping" = "Compras";
-"Others" = "Outros";
+
+//"Clothes" = "Roupas";
+//"Cooking" = "Cozinhar";
+//"Heavy Cleaning" = "Limpeza pesada";
+//"Light Cleaning" = "Limpeza leve";
+//"Organization" = "Organização";
+//"Payments" = "Pagamentos";
+//"Pets" = "Animais de estimação";
+//"Shopping" = "Compras";
+//"Others" = "Outros";
 
 // GENERAL
 "button_back" = "Voltar";
@@ -94,8 +95,8 @@
 
 //HOME - empty state
 "home_empty_title" = "Está tão quieto por aqui...";
-"home_empty_description_1" = "Para definir suas preferências ou adicionar pessoas que moram com você, toque em “Gerencias residentes”";
-"home_empty_description_2" = "Para adicionar tarefas à sua rotina, toque em “Adicionar tarefa”";
+"home_empty_description_1" = "Para adicionar moradores e preferências, vá em “Gerenciar residentes”";
+"home_empty_description_2" = "Para criar novas tarefas, toque no botão “Adicionar tarefa”";
 
 //HOME - task card
 "home_task_title" = "%@";

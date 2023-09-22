@@ -14,9 +14,9 @@ struct TaskCategoryBadge: View {
     var body: some View {
         HStack {
             Task.getTaskIconByCategory(taskCategory: taskCategory)
+                .renderingMode(.original)
                 .resizable()
                 .frame(width: 16, height: 16)
-                .foregroundColor(.textAccentColor)
             Text(taskCategory.rawValue.localized)
                 .foregroundColor(.textPrimaryColor)
         }

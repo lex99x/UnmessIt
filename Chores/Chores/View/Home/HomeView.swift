@@ -46,10 +46,10 @@ struct HomeView: View {
                             .font(Font.custom(Font.generalSansFontSemibold, size: 28))
                             .foregroundColor(.textPrimaryColor)
                         Text("home_empty_description_1")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                            .font(Font.custom(Font.generalSansFontRegular, size: 16))
                             .foregroundColor(.textSecondaryColor)
                         Text("home_empty_description_2")
-                            .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                            .font(Font.custom(Font.generalSansFontRegular, size: 16))
                             .foregroundColor(.textSecondaryColor)
                         
                     }
@@ -116,7 +116,7 @@ struct HomeView: View {
             }, label: {
                 Label(title: {
                     Text("home_button_add_task")
-                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
                 }, icon: {
                     Image.plusIcon
                         .resizable()
@@ -146,7 +146,7 @@ struct HomeView: View {
                         .foregroundColor(.textAccentColor)
                         .frame(width: 20, height: 20)
                     Text("home_manage_residents")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .font(Font.custom(Font.generalSansFontRegular, size: 16))
                         .foregroundColor(.textAccentColor)
                 })
                 

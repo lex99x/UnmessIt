@@ -29,7 +29,7 @@ extension User {
     
     func localizedNickname() -> String {
         
-        if nickname == "You" {
+        if nickname == "You" || nickname == "Você" {
             return "you".localized
         }
         
