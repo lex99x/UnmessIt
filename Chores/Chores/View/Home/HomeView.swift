@@ -73,7 +73,9 @@ struct HomeView: View {
                                         } label: {
                                             VStack {
                                                 Image.doneStatusIcon
-                                                Text("home_task_status_done".localized.uppercased())
+                                                Text("home_task_status_done".localized)
+                                                    .font(Font.custom(Font.generalSansFontMedium, size: 15))
+
                                             }
                                             
                                         }
@@ -84,7 +86,9 @@ struct HomeView: View {
                                         } label: {
                                             VStack {
                                                 Image.pendingStatusIcon
-                                                Text("home_task_status_pending".localized.uppercased())
+                                                Text("home_task_status_pending".localized)
+                                                    .font(Font.custom(Font.generalSansFontMedium, size: 15))
+
                                             }
                                             
                                         }
@@ -112,8 +116,7 @@ struct HomeView: View {
             }, label: {
                 Label(title: {
                     Text("home_button_add_task")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                        .fontWeight(.medium)
+                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
                 }, icon: {
                     Image.plusIcon
                         .resizable()
@@ -143,7 +146,7 @@ struct HomeView: View {
                         .foregroundColor(.textAccentColor)
                         .frame(width: 20, height: 20)
                     Text("home_manage_residents")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .foregroundColor(.textAccentColor)
                 })
                 

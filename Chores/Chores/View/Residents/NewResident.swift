@@ -125,7 +125,7 @@ struct NewResident: View {
                     dismiss()
                 }, label: {
                     Text("resident_button_cancel".localized)
-                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .fontWeight(.medium)
                         .foregroundColor(.textAccentColor)
                 })
@@ -151,7 +151,7 @@ struct NewResident: View {
                     }
                 }, label: {
                     Text("resident_button_save".localized)
-                        .font(Font.custom(Font.generalSansFontRegular, size: 17))
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .fontWeight(.medium)
                         .foregroundColor(.textAccentColor)
                 })

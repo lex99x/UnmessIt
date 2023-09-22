@@ -10,9 +10,9 @@ import RealmSwift
 
 enum TaskCategory: String, PersistableEnum {
     case none, clothes = "Clothes", cooking = "Cooking", ligthCleaning = "Light Cleaning",
-              heavyCleaning = "Heavy Cleaning", organization = "Organization", payments = "Payments", pets = "Pets", shopping = "Shopping"
+              heavyCleaning = "Heavy Cleaning", organization = "Organization", payments = "Payments", pets = "Pets", shopping = "Shopping", others = "Others"
 
-    static let values: [TaskCategory] = [.clothes, .cooking, .ligthCleaning, .heavyCleaning, .organization, .payments, .pets, .shopping]
+    static let values: [TaskCategory] = [.clothes, .cooking, .ligthCleaning, .heavyCleaning, .organization, .payments, .pets, .shopping, .others]
 }
 
 
@@ -29,7 +29,8 @@ class Task: Object, ObjectKeyIdentifiable {
                                         TaskCategory.organization.rawValue,
                                         TaskCategory.payments.rawValue,
                                         TaskCategory.pets.rawValue,
-                                        TaskCategory.shopping.rawValue]
+                                        TaskCategory.shopping.rawValue,
+                                        TaskCategory.others.rawValue]
 
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var createdAt: Date = .init()
@@ -66,6 +67,8 @@ class Task: Object, ObjectKeyIdentifiable {
                 return .shoppingIcon
             case .none:
                 return .petsIcon
+            case .others:
+                return .othersIcon
         }
         
     }

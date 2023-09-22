@@ -36,8 +36,7 @@ struct TaskDetailsView: View {
             }
             
             Text(task.title)
-                .font(Font.custom(Font.generalSansFontRegular, size: 20))
-                .fontWeight(.medium)
+                .font(Font.custom(Font.generalSansFontMedium, size: 20))
             
             if !task.desc.isEmpty {
                 Text(task.desc)
@@ -98,8 +97,7 @@ struct TaskDetailsView: View {
                     }
                     
                     Text(task.status == .done ? "view_task_button_pending" : "view_task_button_done")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                        .fontWeight(.medium)
+                        .font(Font.custom(Font.generalSansFontMedium, size: 15))
                 }
                 
             }

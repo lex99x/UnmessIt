@@ -43,14 +43,14 @@ struct TaskCardView: View {
             VStack(alignment: .leading, spacing: 6) {
                 
                 Text(task.title)
-                    .fontWeight(.medium)
+                    .font(Font.custom(Font.generalSansFontMedium, size: 17))
                     .foregroundColor(.textPrimaryColor)
                 
                 HStack(spacing: 8) {
                     
                     Image.userIcon
                         .resizable()
-                        .frame(width: 12, height: 12)
+                        .frame(width: 16, height: 16)
                         .padding(4)
                         .background {
                             Color.surfaceTertiaryColor
@@ -58,6 +58,7 @@ struct TaskCardView: View {
                         }
                     
                     Text(task.assignees.first?.localizedNickname() ?? "no_assignee".localized)
+                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .foregroundColor(.textSecondaryColor)
                     
                     Spacer()
@@ -108,12 +109,11 @@ struct TaskCardView: View {
                         }
                     
                 }
-                .foregroundColor(.textSecondaryColor)
              
             }
 
         }
-        .font(Font.custom(Font.generalSansFontRegular, size: 15))
+        .padding(.trailing, 4)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .inset(by: 0.25)

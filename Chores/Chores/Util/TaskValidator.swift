@@ -14,6 +14,12 @@ protocol CreateTaskValidatorImpl {
 
 struct CreateTaskValidator: CreateTaskValidatorImpl {
     
+    func validateString(_ name:String) throws {
+        if name.isEmpty {
+            throw CreateValidatorError.emptyName
+        }
+    }
+    
     func validate(_ task: Task) throws {
         
         if task.title.isEmpty {
@@ -31,6 +37,7 @@ extension CreateTaskValidator {
     enum CreateValidatorError: LocalizedError {
         case emptyCategory
         case emptyTitle
+        case emptyName
     }
 }
 
@@ -42,6 +49,8 @@ extension CreateTaskValidator.CreateValidatorError {
             return "Please choose one category"
         case .emptyTitle:
             return "Please insert a title"
+        case .emptyName:
+            return "foo"
         }
     }
 }
