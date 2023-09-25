@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct TaskCategoryBadge: View {
-    
+    @Environment(\.sizeCategory) var sizeCategory
     let taskCategory: TaskCategory
     
     var body: some View {
         HStack {
             Task.getTaskIconByCategory(taskCategory: taskCategory)
                 .renderingMode(.original)
-                .resizable()
+//                .resizable()
                 .frame(width: 16, height: 16)
+                .minimumScaleFactor(sizeCategory.isAccessibilityCategory ? 2.0 : 1.0)
             Text(taskCategory.rawValue.localized)
                 .foregroundColor(.textPrimaryColor)
+            
         }
         .font(Font.custom(Font.generalSansFontRegular, size: 15))
         .padding(.leading, 8)

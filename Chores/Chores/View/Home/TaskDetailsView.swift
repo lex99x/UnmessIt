@@ -11,7 +11,7 @@ import AVFoundation
 
 struct TaskDetailsView: View {
     let selectionFeedback = UISelectionFeedbackGenerator()
-    
+    @Environment(\.sizeCategory) var sizeCategory
     @Environment(\.dismiss) private var dismiss
     
     @ObservedRealmObject var task: Task
@@ -26,15 +26,26 @@ struct TaskDetailsView: View {
 //        NavigationLink(destination: NewTaskView(isEditing: true, task: self.task), tag: "A", selection: $selection) { EmptyView() }
         
         VStack(alignment: .leading, spacing: 16) {
-            
-            HStack {
+            if sizeCategory.isAccessibilityCategory {
+                VStack(alignment:.leading) {
+                    
+                    TaskCategoryBadge(taskCategory: task.category)
+                        .padding([.bottom])
+                    TaskStatusBadge(status: task.status)
+                    
+                }
                 
-                TaskCategoryBadge(taskCategory: task.category)
-                Spacer()
-                TaskStatusBadge(status: task.status)
+            } else {
+                HStack {
+                    
+                    TaskCategoryBadge(taskCategory: task.category)
+                    Spacer()
+                    TaskStatusBadge(status: task.status)
+                    
+                }
                 
             }
-            
+
             Text(task.title)
                 .font(Font.custom(Font.generalSansFontMedium, size: 20))
             

@@ -30,7 +30,7 @@ struct TaskCategoryHomeBadge: View {
 }
 
 struct TaskCardView: View {
-        
+    @Environment(\.sizeCategory) var sizeCategory
     @ObservedRealmObject var task: Task
     
     var body: some View {
@@ -45,6 +45,7 @@ struct TaskCardView: View {
                 Text(task.title)
                     .font(Font.custom(Font.generalSansFontMedium, size: 17))
                     .foregroundColor(.textPrimaryColor)
+                    .lineLimit(0)
                 
                 HStack(spacing: 8) {
                     
@@ -59,6 +60,7 @@ struct TaskCardView: View {
                     
                     Text(task.assignees.first?.localizedNickname() ?? "no_assignee".localized)
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                        .lineLimit(0)
                     
                     Spacer()
                     
@@ -69,7 +71,10 @@ struct TaskCardView: View {
                     
                 }.foregroundColor(.textSecondaryColor)
                 
-                HStack {
+                if sizeCategory.isAccessibilityCategory {
+                    
+                    
+                    VStack {
                         switch task.whenDo.checkDay() {
                         case .today:
                             Text("today")
@@ -90,27 +95,63 @@ struct TaskCardView: View {
                                 .font(Font.custom(Font.generalSansFontRegular, size: 15))
                                 .foregroundColor(.textSecondaryColor)
                         }
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .frame(width: 4, height: 4).foregroundColor(.textSecondaryColor)
-
-                    Text("\(task.whenDo.formatted(date: .omitted, time: .shortened))")
-                        .font(Font.custom(Font.generalSansFontRegular, size: 15))
-                        .foregroundColor(.textSecondaryColor)
-                    
-                    Spacer()
-                    
-
+                        Text("\(task.whenDo.formatted(date: .omitted, time: .shortened))")
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                            .foregroundColor(.textSecondaryColor)
+                        
+                        Spacer()
+                        
+                        
                         ZStack(alignment: .trailing) {
                             TaskStatusBadge(status: task.status)
                                 .padding(.trailing, 8)
                         }
-                    
+                        
+                    }
+                } else {
+                    HStack {
+                        switch task.whenDo.checkDay() {
+                        case .today:
+                            Text("today")
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textSecondaryColor)
+                            
+                        case .yesterday:
+                            Text("yesterday")
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textSecondaryColor)
+                            
+                        case .tomorrow:
+                            Text("tomorrow")
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textSecondaryColor)
+                        case .none:
+                            Text(task.whenDo.formatted(.dateTime.day().month()))
+                                .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                                .foregroundColor(.textSecondaryColor)
+                        }
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 4, height: 4).foregroundColor(.textSecondaryColor)
+                        
+                        Text("\(task.whenDo.formatted(date: .omitted, time: .shortened))")
+                            .font(Font.custom(Font.generalSansFontRegular, size: 15))
+                            .foregroundColor(.textSecondaryColor)
+                        
+                        Spacer()
+                        
+                        
+                        ZStack(alignment: .trailing) {
+                            TaskStatusBadge(status: task.status)
+                                .padding(.trailing, 8)
+                        }
+                        
+                    }
                 }
-             
             }
 
         }
+        .padding([.top,.bottom], 10)
         .padding(.trailing, 4)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
