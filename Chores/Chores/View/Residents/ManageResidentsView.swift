@@ -51,6 +51,7 @@ struct ManageResidentsView: View {
                         .foregroundColor(.textSecondaryColor)
                 }
             }
+            .listRowBackground(Color.clear)
             .listStyle(.inset)
             
             Spacer()

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskStatusBadge: View {
-    
+    @Environment(\.sizeCategory) var sizeCategory
     let status: Task.Status
     
     let statusIcon: Image
@@ -41,8 +41,10 @@ struct TaskStatusBadge: View {
         ZStack {
             HStack {
                 statusIcon
+                    .renderingMode(.original)
                     .resizable()
                     .frame(width: 16, height: 16)
+                    .minimumScaleFactor(sizeCategory.isAccessibilityCategory ? 2.0 : 1.0)
                     .foregroundColor(contentColor)
                 Text(statusText)
                     .foregroundColor(contentColor)
