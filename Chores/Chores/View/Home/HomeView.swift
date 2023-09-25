@@ -129,7 +129,7 @@ struct HomeView: View {
                                            backgroundColor: .accentColor))
             .sheet(isPresented: $viewModel.isAddingNewTask) {
                 NavigationStack {
-                    NewTaskView(isEditing: false, task: Task())
+                    NewTaskView(isEditing: false, didDeleteTask: .constant(false), task: Task())
                 }
             }
             

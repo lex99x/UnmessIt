@@ -120,10 +120,12 @@ struct TaskDetailsView: View {
         }
         
         .sheet(isPresented: $viewModel.isAddingNewTask, onDismiss: {
-            dismiss()
+            if viewModel.didDeleteTask {
+                dismiss()
+            }
         }) {
             NavigationStack {
-                NewTaskView(isEditing: true, task: task)
+                NewTaskView(isEditing: true, didDeleteTask: $viewModel.didDeleteTask, task: task)
             }
         }
         
