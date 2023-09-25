@@ -31,7 +31,7 @@ struct TaskDetailsView: View {
                     
                     TaskCategoryBadge(taskCategory: task.category)
                         .padding([.bottom])
-                    TaskStatusBadge(status: task.status, isResized: sizeCategory.isAccessibilityCategory)
+                    TaskStatusBadge(status: task.status)
                     
                 }
                 
@@ -40,7 +40,7 @@ struct TaskDetailsView: View {
                     
                     TaskCategoryBadge(taskCategory: task.category)
                     Spacer()
-                    TaskStatusBadge(status: task.status, isResized: sizeCategory.isAccessibilityCategory)
+                    TaskStatusBadge(status: task.status)
                     
                 }
                 
