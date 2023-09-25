@@ -9,12 +9,14 @@ import SwiftUI
 import RealmSwift
 
 struct NewTaskView: View {
-    
+        
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = NewTaskViewModel()
     @State var isShowingDeleteAlert = false
     
     let isEditing: Bool
+    @Binding var didDeleteTask: Bool
+
     @ObservedRealmObject var task: Task
     
     var body: some View {
@@ -101,7 +103,9 @@ struct NewTaskView: View {
                             isShowingDeleteAlert.toggle()
                         }
                         Button("alert_delete_task_action_right".localized, role: .destructive) {
+                            didDeleteTask.toggle()
                             viewModel.deleteTask(item: task)
+                            dismiss()
                         }
                     }, message: {
                         Text("alert_delete_task_description".localized)
@@ -225,7 +229,7 @@ struct NewTaskView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationStack {
-            NewTaskView(isEditing: true, task: Task())
+            NewTaskView(isEditing: true, didDeleteTask: .constant(false), task: Task())
         }
     }
     
