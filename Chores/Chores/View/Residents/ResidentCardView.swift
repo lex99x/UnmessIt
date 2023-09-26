@@ -76,7 +76,7 @@ struct ResidentCardView: View {
             }
             .sheet(isPresented: $isEditingResident) {
                 NavigationStack {
-                    NewResident(isEditing: true, isSpaceOwner: resident.isSpaceOwner ? true : false, resident: resident)
+                    NewResidentView(isEditing: true, isSpaceOwner: resident.isSpaceOwner ? true : false, resident: resident)
                 }
             }
         }

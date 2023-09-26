@@ -105,7 +105,7 @@ struct ManageResidentsView: View {
         .toolbarBackground(.visible, for: .navigationBar)
         .sheet(isPresented: $isEditingResident) {
             NavigationStack {
-                NewResident(isEditing: false, isSpaceOwner: false, resident: User())
+                NewResidentView(isEditing: false, isSpaceOwner: false, resident: User())
             }
         }
         

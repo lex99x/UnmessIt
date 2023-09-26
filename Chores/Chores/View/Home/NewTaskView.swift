@@ -33,7 +33,7 @@ struct NewTaskView: View {
                             .font(Font.custom(Font.generalSansFontMedium, size: 15))
                             .foregroundColor(.textPrimaryColor)
                         
-                        CustomSelectionInputView(placeholder: isEditing ?    task.category.rawValue : "task_input_type_placeholder".localized,
+                        CustomSelectionInputView(placeholder: isEditing ? task.category.rawValue : "task_input_type_placeholder".localized,
                                                  options: Task.taskOptions,
                                                  selectedOption: $viewModel.selectedTaskTypeOption)
                         .onChange(of: viewModel.selectedTaskTypeOption) { newValue in

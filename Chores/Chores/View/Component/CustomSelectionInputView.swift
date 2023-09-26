@@ -21,7 +21,7 @@ struct CustomSelectionInputView: View {
                     selectedOption = option
                     self.placeholder = selectedOption
                 }, label: {
-                    Text(option.localized)
+                    Text(("task_type_" + option.lowercased().replacingOccurrences(of: " ", with: "_")).localized)
                     Image(option)
                         .renderingMode(.original)
                 })

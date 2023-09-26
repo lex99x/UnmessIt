@@ -1,5 +1,5 @@
 //
-//  NewResident.swift
+//  NewResidentView.swift
 //  Chores
 //
 //  Created by Joao Lucas Camilo on 20/08/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct NewResident: View {
+struct NewResidentView: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var newResidentViewModel = NewResidentViewModel()
@@ -190,7 +190,7 @@ struct MultipleSelectionRow: View {
         
         ZStack {
             
-            Button(action: self.action) {
+            Button(action: action) {
                 
                 HStack {
                     
@@ -199,16 +199,16 @@ struct MultipleSelectionRow: View {
                         .foregroundColor(.textPrimaryColor)
                         .opacity(isSelected ? 1 : 0)
                   
-                    Text(self.title.localized)
+                    Text(("task_type_" + title.lowercased().replacingOccurrences(of: " ", with: "_")).localized)
                         .font(Font.custom(Font.generalSansFontRegular, size: 15))
                         .foregroundColor(.textPrimaryColor)
                         .padding(.leading, 8)
                     
                     Spacer()
                     
-                    Image(self.title)
+                    Image(title)
                         .frame(width: 24, height: 24)
-                        .foregroundColor(Color("Category" + self.title.replacingOccurrences(of: " ", with: "")))
+                        .foregroundColor(Color("Category" + title.replacingOccurrences(of: " ", with: "")))
                     
                 }
                 
