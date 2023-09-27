@@ -15,10 +15,10 @@ struct TaskCategoryBadge: View {
         HStack {
             Task.getTaskIconByCategory(taskCategory: taskCategory)
                 .renderingMode(.original)
-//                .resizable()
+                .resizable()
                 .frame(width: 16, height: 16)
                 .minimumScaleFactor(sizeCategory.isAccessibilityCategory ? 2.0 : 1.0)
-            Text(taskCategory.rawValue.localized)
+            Text(("task_type_" + taskCategory.rawValue.lowercased().replacingOccurrences(of: " ", with: "_")).localized)
                 .foregroundColor(.textPrimaryColor)
             
         }

@@ -19,7 +19,7 @@ struct CustomSelectionInputView: View {
             ForEach(options, id: \.self) { option in
                 Button(action: {
                     selectedOption = option
-                    self.placeholder = selectedOption
+                    placeholder = selectedOption
                 }, label: {
                     Text(("task_type_" + option.lowercased().replacingOccurrences(of: " ", with: "_")).localized)
                     Image(option)
@@ -27,8 +27,8 @@ struct CustomSelectionInputView: View {
                 })
             }
         }, label: {
-            
-            Text(placeholder.localized)
+                        
+            Text(selectedOption.isEmpty ? placeholder.localized : ("task_type_" + placeholder.lowercased().replacingOccurrences(of: " ", with: "_")).localized)
                 .foregroundColor(.textPrimaryColor)
             
             if let taskCategory = TaskCategory(rawValue: placeholder) {
